@@ -9,6 +9,18 @@ const LandingPage: React.FC = () => {
         <p>Fedezd fel, amit kínálunk.</p>
         <button className="cta-button">Ismerd meg most!</button>
       </div>
+      <div className="hero-section">
+        <h1>Üdvözlünk a weboldalunkon!</h1>
+        <p>Fedezd fel, amit kínálunk.</p>
+      </div>
+      <div className="hero-section">
+        <h1>Üdvözlünk a weboldalunkon!</h1>
+        <p>Fedezd fel, amit kínálunk.</p>
+      </div>
+      <div className="hero-section">
+        <h1>Üdvözlünk a weboldalunkon!</h1>
+        <p>Fedezd fel, amit kínálunk.</p>
+      </div>
     </div>
   );
 };
