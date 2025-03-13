@@ -1,0 +1,52 @@
+@use "../styles/colors.scss";
+
+.contacts-page {
+  background-color: colors.$palette-secondary-2;
+  color: colors.$palette-neutral;
+
+  .contacts-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+    font-size: 1.3rem;
+    gap: 1rem;
+
+    .link-container {
+      background-color: colors.$palette-secondary-3-o50;
+      border-radius: 0.8rem;
+      padding: 8px;
+
+      &:hover {
+        background-color: colors.$palette-secondary-3;
+      }
+    }
+
+    a {
+      color: colors.$palette-neutral;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    [class*="fa"] {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+  }
+
+  .social-label {
+    display: flex;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .social-wrapper {
+    display: flex;
+    justify-content: center;
+
+    [class*="fa"] {
+      font-size: 1.4rem;
+      margin-right: 1.5rem;
+    }
+  }
+}

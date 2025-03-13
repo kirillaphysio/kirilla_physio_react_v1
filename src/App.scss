@@ -1,0 +1,11 @@
+.App {
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+
+  > [class$="-page"] {
+    flex: 1;
+    padding: 0 2rem;
+  }
+}
