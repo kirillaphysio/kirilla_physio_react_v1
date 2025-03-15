@@ -2,11 +2,14 @@ import React from 'react';
 import "./ContactsPage.scss"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faPhone} from "@fortawesome/free-solid-svg-icons";
+import Map from "../components/map/Map";
 
 const Contacts: React.FC = () => {
   return (
     <div className="contacts-page">
       <h1>Ha szükséged van a segítségemre, itt megtalálsz!</h1>
+
+      <Map />
 
       <div className="contacts-wrapper">
         <span className="link-container"><a href={"mailto: kirillaphysio@gmail.com"}><FontAwesomeIcon icon={faEnvelope} />Ha bármi kérdésed van, írj egy emailt nekem! (kirillaphysio@gmail.com)</a></span>

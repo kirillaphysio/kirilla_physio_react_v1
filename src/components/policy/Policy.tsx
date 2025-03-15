@@ -1,7 +1,7 @@
 import "./policy.scss"
 import {NavLink} from "react-router";
 
-const Social = () => {
+const Policy = () => {
   return (
     <div className={"policy"}>
       <NavLink to={"/aszf"}>Ászf</NavLink>
@@ -11,4 +11,4 @@ const Social = () => {
   );
 };
 
-export default Social;
+export default Policy;
