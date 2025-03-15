@@ -12,10 +12,10 @@
   .social-wrapper {
     display: flex;
     justify-content: center;
+    gap: 1.5rem;
 
     [class*="fa"] {
       font-size: 1.4rem;
-      margin-right: 1.5rem;
     }
   }
 }
