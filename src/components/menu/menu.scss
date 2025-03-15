@@ -1,0 +1,53 @@
+@use "../../styles/colors.scss";
+
+.menu {
+  &.mobile {
+    margin: 0 -32px;
+  }
+
+  .menu-nav {
+    &.mobile {
+      position: absolute;
+      top: 48px;
+      left: -100%;
+      width: 100%;
+      height: calc(100% - 48px);
+      height: -webkit-fill-available;
+      background: white;
+      z-index: 1000;
+
+      transition: left .3s;
+
+      &.open {
+        left: 0;
+      }
+    }
+  }
+
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &:not(.mobile) {
+      display: flex;
+    }
+
+    li {
+      display: flex;
+
+      > * {
+        flex: 1;
+        padding: 10px 20px;
+
+        &.active {
+          background-color: colors.$palette-secondary-3-o50;
+        }
+
+        &:not(.active):hover {
+          background-color: colors.$palette-secondary-3-o20;
+        }
+      }
+    }
+  }
+}
