@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 
+// TODO add fallback route and page
+
 function App() {
   return (
     <div className="app">
