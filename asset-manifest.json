@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/kirilla_physio_react_v1/static/css/main.afda4573.css",
+    "main.js": "/kirilla_physio_react_v1/static/js/main.61782d44.js",
+    "static/js/453.63f15700.chunk.js": "/kirilla_physio_react_v1/static/js/453.63f15700.chunk.js",
+    "index.html": "/kirilla_physio_react_v1/index.html",
+    "main.afda4573.css.map": "/kirilla_physio_react_v1/static/css/main.afda4573.css.map",
+    "main.61782d44.js.map": "/kirilla_physio_react_v1/static/js/main.61782d44.js.map",
+    "453.63f15700.chunk.js.map": "/kirilla_physio_react_v1/static/js/453.63f15700.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.afda4573.css",
+    "static/js/main.61782d44.js"
+  ]
+}
