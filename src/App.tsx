@@ -20,6 +20,8 @@ function App() {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/online-programs" element={<Programs />} />
           <Route path="/individual-treatments" element={<Treatments />} />
+
+          <Route element={<div className="other-page">Ez az oldal nem található</div>} />
         </Routes>
         <Footer />
       </BrowserRouter>

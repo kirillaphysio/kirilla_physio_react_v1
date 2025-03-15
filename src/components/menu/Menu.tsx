@@ -18,11 +18,9 @@ export const Menu = () => {
   const hamburgerRef = useRef<any>(null);
   const location = useLocation();
 
-  console.log(location);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  // const toggleMenu = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
   useEffect(() => {
     setIsOpen(false);
