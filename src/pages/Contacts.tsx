@@ -14,13 +14,7 @@ const Contacts: React.FC = () => {
         <span className="link-container"><a href={"tel: +36202668447"}><FontAwesomeIcon icon={faPhone} />Vagy csörögj rám munkaidöben (+36202668447)</a></span>
       </div>
 
-      <label className="social-label">Vedd fel velem a kapcsolatot a közösségi média oldalaimon!</label>
-      <div className="social-wrapper">
-        <FontAwesomeIcon icon={faFacebook} />
-        <FontAwesomeIcon icon={faInstagram} />
-        <FontAwesomeIcon icon={faTiktok} />
-        <FontAwesomeIcon icon={faYoutube} />
-      </div>
+
     </div>
   );
 };

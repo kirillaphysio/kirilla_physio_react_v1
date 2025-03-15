@@ -33,20 +33,4 @@
       margin-right: 1rem;
     }
   }
-
-  .social-label {
-    display: flex;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .social-wrapper {
-    display: flex;
-    justify-content: center;
-
-    [class*="fa"] {
-      font-size: 1.4rem;
-      margin-right: 1.5rem;
-    }
-  }
 }

@@ -1,11 +1,18 @@
-.App {
+.app {
   height: 100dvh;
 
   display: flex;
   flex-direction: column;
 
+  > * {
+    width: fit-content;
+    width: -webkit-fill-available;
+    max-width: 1024px;
+    margin: auto;
+    padding: 0 2rem;
+  }
+
   > [class$="-page"] {
     flex: 1;
-    padding: 0 2rem;
   }
 }
