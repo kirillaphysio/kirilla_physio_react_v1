@@ -4,7 +4,7 @@ import LandingPage from './pages/LandingPage';
 import Contacts from './pages/Contacts';
 import Programs from './pages/Programs';
 import Treatments from './pages/Treatments';
-import { BrowserRouter, Routes, Route } from "react-router";
+import { HashRouter, Routes, Route } from "react-router";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 
@@ -13,7 +13,7 @@ import Footer from "./components/footer/Footer";
 function App() {
   return (
     <div className="app">
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -24,7 +24,7 @@ function App() {
           <Route element={<div className="other-page">Ez az oldal nem található</div>} />
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
