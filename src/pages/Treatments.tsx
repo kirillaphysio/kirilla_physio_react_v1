@@ -1,10 +1,14 @@
 import React from 'react';
+import {isMobile} from 'react-device-detect';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+import { Autoplay, Navigation, Pagination, A11y } from 'swiper/modules';
+import 'swiper/scss';
+import 'swiper/scss/autoplay';
+import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
+
+import {opinions} from "../components/opinions/opinions";
+import "../components/opinions/opinions.scss"
 
 const Treatments: React.FC = () => {
   return (
@@ -12,20 +16,25 @@ const Treatments: React.FC = () => {
       Egyeni kezelesek
 
       <Swiper
-        // install Swiper modules
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={50}
-        slidesPerView={3}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: true,
+        }}
+        grabCursor={true}
+        loop={true}
+        modules={[Autoplay, Navigation, Pagination, A11y]}
         navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        onSwiper={(swiper: any) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
+        pagination={{ dynamicBullets: true }}
+        slidesPerView={isMobile ? 1 : 3}
+        spaceBetween={32}
+        style={{
+          "--swiper-navigation-size": "22px"
+        }}
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
+        {opinions.map((opinion: any) => (<SwiperSlide className={`opinion ${isMobile ? "mobile" : "desktop"}`}>
+          <p className="message">{opinion.description}</p>
+          <div className="author">{opinion.author}</div>
+        </SwiperSlide>))}
       </Swiper>
     </div>
   );
