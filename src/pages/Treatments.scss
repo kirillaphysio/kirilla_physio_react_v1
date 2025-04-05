@@ -9,6 +9,10 @@
     flex-wrap: wrap;
     gap: 8px;
     padding: 0;
+
+    &.mobile {
+      flex-direction: column;
+    }
     
     li {
       list-style: none;
@@ -26,5 +30,27 @@
       justify-content: center;
       gap: 8px;
     }
+  }
+
+  .help-list {
+    padding-inline-start: 16px;
+    text-align: start;
+
+    li {
+      list-style: "– ";
+    }
+  }
+
+  .price-list {
+    padding-inline-start: 16px;
+    text-align: start;
+
+    li {
+      list-style: none;
+    }
+  }
+
+  .price-info {
+    font-style: italic;
   }
 }

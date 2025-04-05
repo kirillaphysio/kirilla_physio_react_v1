@@ -13,8 +13,6 @@ $cardPadding: 32px;
   height: $cardHeight;
   color: colors.$palette-neutral;
 
-  background-color: colors.$palette-secondary-3-o20;
-
   &.mobile {
     width: calc(100% - 2 * $cardPadding) !important;
   }

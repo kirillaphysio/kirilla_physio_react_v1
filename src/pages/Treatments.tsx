@@ -31,7 +31,7 @@ const Treatments: React.FC = () => {
     <div className="treatment-page">
       <h1>Egyéni kezelések</h1>
 
-      <ul className="local-menu">
+      <ul className={`local-menu ${isMobile && "mobile"}`}>
         <li onClick={() => scrollToSection(bookingRef)}><FontAwesomeIcon icon={faArrowUpRightFromSquare} />Időpont foglalás</li>
         <li onClick={() => scrollToSection(helpRef)}><FontAwesomeIcon icon={faArrowUpRightFromSquare} /> Miben tudok segíteni?</li>
         <li onClick={() => scrollToSection(therapiesRef)}><FontAwesomeIcon icon={faArrowUpRightFromSquare} /> Terápiák</li>
@@ -52,7 +52,7 @@ const Treatments: React.FC = () => {
         <label>Miben tudok segíteni?</label>
 
         <p>A leggyakorib panaszok, amikkel foglalkozom:</p>
-        <ul>
+        <ul className="help-list">
           <li>derékfájás, nyakfájás, hátfájás (porckorongsérv/becsípődés, instabilitás, csigolyaelcsúszás, izom túlfeszülés, ízületi blokk)</li>
           <li>végtagba sugárzó fájdalom, zsibbadás, és izomerő csökkenés</li>
           <li>ízületi fájdalmak és mozgástartomány beszűkülés (gerinc, váll, könyök, csukló, kéz, csípő, térd, boka, láb)</li>
@@ -72,7 +72,7 @@ const Treatments: React.FC = () => {
       <section ref={pricesRef} className="hero-section">
         <label>Árak</label>
 
-        <ul>
+        <ul className="price-list">
           <li>
             <h4>Állapofelmérés 20.000 Ft (60 perc)</h4>
             <p>
@@ -87,7 +87,7 @@ const Treatments: React.FC = () => {
           </li>
         </ul>
 
-        <div>Fizetés készpénzzel vagy azonnali átutalással a kezelés végén.</div>
+        <span className="price-info">Fizetés készpénzzel vagy azonnali átutalással a kezelés végén.</span>
       </section>
 
       <section ref={feedbackRef} className="hero-section">
@@ -127,6 +127,16 @@ const Treatments: React.FC = () => {
       <section ref={policyRef} className="hero-section">
         <label>Szabályzat</label>
 
+        <h5>Késés</h5>
+        <p>Amennyit késel az időpontodról, annyival kevesebb időt tudok rádszánni.
+          Ha miattam kezdünk késve (pl. ha megcsúsztam az előző páciensemmel), az természetesen nem a te idődből megy, annál tovább tartom a kezelésed.
+          Nagyon igyekszem tartani a menetrendet, hogy ez minél kisebb eséllyel történjen meg.</p>
+
+        <h5>Lemondási feltételek</h5>
+        <p>Az időpontod lemondását, vagy másik napra módosítását legkésőbb az eredeti időpont előtt 24 órával tudom elfogadni. Kérlek minél hamarabb szólj, hogy legyen lehetőségem másnak átadni a helyed! (Itt tudsz szólni: e-mailben kirillaphysio@gmail.com, vagy telefonon: +26202668447)
+          24 órán belüli időpont lemondás (vagy másik napra módosítás) esetén a kezelés díját 3 napon belül szükséges megtéríteni. (Ez akkor is érvenyes, ha egyáltalán nem szólsz, de nem jelensz meg az időpontodon.)</p>
+
+        <h5>Köszönöm szépen, hogy tiszteletben tartod a munkámat és az időmet!</h5>
       </section>
     </div>
   );
