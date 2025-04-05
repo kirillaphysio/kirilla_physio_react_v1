@@ -1,0 +1,30 @@
+@use "../styles/colors.scss";
+@use "../styles/heroSection.scss";
+
+.treatment-page {
+  .local-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    
+    li {
+      list-style: none;
+
+      height: 32px;
+      min-width: 160px;
+      max-width: 320px;
+      background-color: colors.$palette-primary;
+      color: colors.$palette-neutral;
+      padding: 8px;
+      border-radius: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+  }
+}

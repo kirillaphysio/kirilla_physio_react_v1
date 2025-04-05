@@ -1,0 +1,96 @@
+@use "./colors.scss";
+
+.hero-section {
+  margin: 0 -32px;
+  text-align: center;
+  padding: 100px 20px;
+
+  &:nth-child(n) {
+    background-color: colors.$palette-primary;
+    color: colors.$palette-neutral;
+  }
+
+  &:nth-child(2n) {
+    background-color: colors.$palette-neutral;
+    color: colors.$palette-secondary-2;
+  }
+
+  &:nth-child(3n) {
+    background-color: colors.$palette-secondary-2;
+    color: colors.$palette-neutral;
+  }
+
+  &:nth-child(4n) {
+    background-color: colors.$palette-secondary-4;
+    color: colors.$font-color-primary;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
+  .cta-button {
+    background-color: colors.$palette-secondary-4;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: colors.$palette-secondary-2;
+    }
+  }
+}
+
+// Mobil optimalizálás
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 20px; // Csökkentett padding a mobil eszközökhöz
+
+    h1 {
+      font-size: 28px; // Kisebb cím mobilon
+    }
+
+    p {
+      font-size: 16px; // Kisebb leírás mobilon
+    }
+
+    label {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .cta-button {
+      padding: 12px 24px; // Kisebb gomb mobilon
+      font-size: 14px; // Kisebb gomb szöveg
+    }
+  }
+}
+
+// További optimalizálás kisebb képernyőkhöz (pl. telefonok)
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 40px 20px; // Még kisebb padding
+
+    h1 {
+      font-size: 24px; // Még kisebb cím
+    }
+
+    p {
+      font-size: 14px; // Még kisebb leírás
+    }
+
+    .cta-button {
+      padding: 10px 20px; // Még kisebb gomb
+      font-size: 12px; // Még kisebb gomb szöveg
+    }
+  }
+}
