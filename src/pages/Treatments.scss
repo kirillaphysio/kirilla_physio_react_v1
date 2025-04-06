@@ -16,6 +16,7 @@
     
     li {
       list-style: none;
+      cursor: pointer;
 
       height: 32px;
       min-width: 160px;
@@ -29,6 +30,10 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+
+      &:hover {
+        background-color: colors.$palette-secondary-3;
+      }
     }
   }
 
