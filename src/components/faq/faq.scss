@@ -1,11 +1,23 @@
-.faq {
-  .faq-item {
-    p {
-      height: 0;
+@use "../../styles/colors.scss";
 
-      &.active {
-        height: 100px;
+.faq {
+  text-align: initial;
+
+  .faq-item {
+    h5 > svg {
+      transition: transform 0.1s ease-in-out;
+      margin-right: 8px;
+
+      &.expanded {
+        transform: rotate(-180deg);
       }
+    }
+
+    section {
+      font-size: 1rem;
+      background-color: colors.$palette-neutral-o30;
+      padding: 8px;
+      border-radius: 8px;
     }
   }
 }

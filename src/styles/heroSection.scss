@@ -25,14 +25,20 @@
     color: colors.$font-color-primary;
   }
 
-  h1 {
+  > h1 {
     font-size: 36px;
     margin-bottom: 20px;
   }
 
-  p {
+  > p {
     font-size: 18px;
     margin-bottom: 40px;
+  }
+
+  > label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
   }
 
   .cta-button {
@@ -55,15 +61,15 @@
   .hero-section {
     padding: 60px 20px; // Csökkentett padding a mobil eszközökhöz
 
-    h1 {
+    > h1 {
       font-size: 28px; // Kisebb cím mobilon
     }
 
-    p {
+    > p {
       font-size: 16px; // Kisebb leírás mobilon
     }
 
-    label {
+    > label {
       font-size: 20px;
       font-weight: bold;
       margin-bottom: 8px;
@@ -81,11 +87,11 @@
   .hero-section {
     padding: 40px 20px; // Még kisebb padding
 
-    h1 {
+    > h1 {
       font-size: 24px; // Még kisebb cím
     }
 
-    p {
+    > p {
       font-size: 14px; // Még kisebb leírás
     }
 
