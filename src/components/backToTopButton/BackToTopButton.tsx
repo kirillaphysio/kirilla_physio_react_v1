@@ -10,7 +10,7 @@ const BackToTopButton = () => {
   const {y} = useWindowScroll();
   const {height} = useWindowSize();
 
-  return <div className={`back-to-top-button ${(isMobile && y > height) ? "visible" : "hidden"}`}>
+  return <div className={`back-to-top-button ${(isMobile && y > height) ? "visible" : "hidden"}`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
     <FontAwesomeIcon icon={faArrowUp} />
   </div>
 }
