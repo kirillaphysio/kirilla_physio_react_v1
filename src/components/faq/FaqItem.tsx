@@ -5,7 +5,7 @@ import { useCollapse } from "react-collapsed";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
 
-export default (props: any) => {
+const FaqItem = (props: any) => {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
 
   return <div className={`faq-item ${isMobile ? "mobile" : "desktop"}`}>
@@ -13,3 +13,5 @@ export default (props: any) => {
     <section {...getCollapseProps()}>{props.entry.answer}</section>
   </div>
 }
+
+export default FaqItem
