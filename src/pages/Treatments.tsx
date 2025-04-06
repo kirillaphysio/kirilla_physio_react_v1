@@ -1,16 +1,18 @@
-import React, {RefObject, useCallback, useRef} from 'react';
-import {isMobile} from 'react-device-detect';
-import { nanoid } from 'nanoid'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination, A11y } from 'swiper/modules';
+import "../components/opinions/opinions.scss";
+import "./Treatments.scss";
 import 'swiper/scss';
 import 'swiper/scss/autoplay';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 
+import React, {RefObject, useCallback, useRef} from 'react';
+import {isMobile} from 'react-device-detect';
+import { nanoid } from 'nanoid'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination, A11y } from 'swiper/modules';
+import Faq from "../components/faq/Faq";
+
 import {opinions} from "../components/opinions/opinions";
-import "../components/opinions/opinions.scss";
-import "./Treatments.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowUpRightFromSquare} from "@fortawesome/free-solid-svg-icons";
 
@@ -121,6 +123,8 @@ const Treatments: React.FC = () => {
 
       <section ref={faqRef} className="hero-section">
         <label>Gyakori kérdések</label>
+
+        <Faq />
 
       </section>
 

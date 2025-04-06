@@ -1,0 +1,11 @@
+.faq {
+  .faq-item {
+    p {
+      height: 0;
+
+      &.active {
+        height: 100px;
+      }
+    }
+  }
+}
