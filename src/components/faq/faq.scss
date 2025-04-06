@@ -16,8 +16,11 @@
     section {
       font-size: 1rem;
       background-color: colors.$palette-neutral-o30;
-      padding: 8px;
       border-radius: 8px;
+
+      .content {
+        padding: 8px;
+      }
     }
   }
 }

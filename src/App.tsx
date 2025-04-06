@@ -7,6 +7,7 @@ import Treatments from './pages/Treatments';
 import { HashRouter, Routes, Route } from "react-router";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import BackToTopButton from "./components/backToTopButton/BackToTopButton";
 
 // TODO add fallback route and page
 
@@ -23,6 +24,7 @@ function App() {
 
           <Route element={<div className="other-page">Ez az oldal nem található</div>} />
         </Routes>
+        <BackToTopButton />
         <Footer />
       </HashRouter>
     </div>

@@ -10,7 +10,9 @@ const FaqItem = (props: any) => {
 
   return <div className={`faq-item ${isMobile ? "mobile" : "desktop"}`}>
     <h5 {...getToggleProps()}><FontAwesomeIcon className={isExpanded ? "expanded" : "collapsed"} icon={faChevronDown} />{props.entry.question}</h5>
-    <section {...getCollapseProps()}>{props.entry.answer}</section>
+    <section {...getCollapseProps()}>
+      <div className="content">{props.entry.answer}</div>
+    </section>
   </div>
 }
 

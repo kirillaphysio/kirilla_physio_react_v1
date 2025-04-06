@@ -1,0 +1,44 @@
+@use "../../styles/colors.scss";
+
+.back-to-top-button {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: colors.$font-color-primary-o90;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  padding: 12px;
+  bottom: 48px;
+  right: 20px;
+  z-index: 10;
+
+  &.hidden {
+    display: none;
+  }
+
+  svg {
+    font-size: 32px;
+    color: colors.$palette-secondary-2;
+    animation: jump 2s infinite alternate;
+  }
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0); /* Start at the original position */
+  }
+  10% {
+    transform: translateY(-4px); /* Move upwards (the jump!) */
+  }
+  20% {
+    transform: translateY(0); /* Return to the original position */
+  }
+  30% {
+    transform: translateY(-4px); /* Return to the original position */
+  }
+  40% {
+    transform: translateY(0); /* Return to the original position */
+  }
+}
