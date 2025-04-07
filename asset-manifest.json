@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/kirilla_physio_react_v1/static/css/main.6accdfc4.css",
-    "main.js": "/kirilla_physio_react_v1/static/js/main.2df8ed1c.js",
+    "main.css": "/kirilla_physio_react_v1/static/css/main.06f1e3ba.css",
+    "main.js": "/kirilla_physio_react_v1/static/js/main.204770cf.js",
     "static/js/453.63f15700.chunk.js": "/kirilla_physio_react_v1/static/js/453.63f15700.chunk.js",
     "index.html": "/kirilla_physio_react_v1/index.html",
-    "main.6accdfc4.css.map": "/kirilla_physio_react_v1/static/css/main.6accdfc4.css.map",
-    "main.2df8ed1c.js.map": "/kirilla_physio_react_v1/static/js/main.2df8ed1c.js.map",
+    "main.06f1e3ba.css.map": "/kirilla_physio_react_v1/static/css/main.06f1e3ba.css.map",
+    "main.204770cf.js.map": "/kirilla_physio_react_v1/static/js/main.204770cf.js.map",
     "453.63f15700.chunk.js.map": "/kirilla_physio_react_v1/static/js/453.63f15700.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6accdfc4.css",
-    "static/js/main.2df8ed1c.js"
+    "static/css/main.06f1e3ba.css",
+    "static/js/main.204770cf.js"
   ]
 }
