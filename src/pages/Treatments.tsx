@@ -15,6 +15,7 @@ import Faq from "../components/faq/Faq";
 import {opinions} from "../components/opinions/opinions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowUpRightFromSquare} from "@fortawesome/free-solid-svg-icons";
+import CloudinaryImage from "../components/CloudinaryImage/CloudinaryImage";
 
 const Treatments: React.FC = () => {
   const bookingRef = useRef<HTMLElement>(null);
@@ -69,6 +70,10 @@ const Treatments: React.FC = () => {
       <section ref={therapiesRef} className="hero-section">
         <label>Terápiák</label>
 
+        <p>A hagyományos gyógytornán túl számos egyéb terápiás irányt elsajátítottam és folyamatosan bővítem a tudásom, hogy a lehető legtöbb irányból tudjam megközelíteni a problémád, ezáltal méggyorsabban, és méghatékonyabban tudjam segíteni a gyógyulásod.</p>
+        <div>Alkalmazott terápiáim:</div>
+
+        <CloudinaryImage imageId="Visceral_key38l"/>
       </section>
 
       <section ref={pricesRef} className="hero-section">
