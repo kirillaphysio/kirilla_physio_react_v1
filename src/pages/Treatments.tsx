@@ -15,7 +15,7 @@ import Faq from "../components/faq/Faq";
 import {opinions} from "../components/opinions/opinions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowUpRightFromSquare} from "@fortawesome/free-solid-svg-icons";
-import CloudinaryImage from "../components/CloudinaryImage/CloudinaryImage";
+import TherapyList from "../components/therapies/TherapyList";
 
 const Treatments: React.FC = () => {
   const bookingRef = useRef<HTMLElement>(null);
@@ -73,7 +73,7 @@ const Treatments: React.FC = () => {
         <p>A hagyományos gyógytornán túl számos egyéb terápiás irányt elsajátítottam és folyamatosan bővítem a tudásom, hogy a lehető legtöbb irányból tudjam megközelíteni a problémád, ezáltal méggyorsabban, és méghatékonyabban tudjam segíteni a gyógyulásod.</p>
         <div>Alkalmazott terápiáim:</div>
 
-        <CloudinaryImage imageId="Visceral_key38l"/>
+        <TherapyList />
       </section>
 
       <section ref={pricesRef} className="hero-section">
@@ -136,16 +136,20 @@ const Treatments: React.FC = () => {
       <section ref={policyRef} className="hero-section">
         <label>Szabályzat</label>
 
+        <h5>Lemondási feltételek</h5>
+        <p>Az időpontod lemondását, vagy másik napra módosítását legkésőbb az eredeti időpont előtt 24 órával tudom elfogadni. Kérlek minél hamarabb szólj, hogy legyen lehetőségem másnak átadni a helyed! (Itt tudsz szólni: e-mailben kirillaphysio@gmail.com, vagy telefonon +26202668447)
+          24 órán belüli időpont lemondás (vagy másik napra módosítás) esetén a kezelés díját 3 napon belül szükséges megtéríteni. (Ez akkor is érvenyes, ha egyáltalán nem szólsz, de nem jelensz meg az időpontodon.)
+          Köszönöm szépen, hogy tiszteletben tartod a munkámat és az időmet!</p>
+
+        <h5>Időpont foglalás</h5>
+        <p>Ha még nem jártál nálam, vagy több mint 1 éve jártál, akkor először egy állapotfelméréssel kezdünk, kérlek arra foglalj időpontot!
+          A célom, hogy minél hatékonyabban és precízebben kezeljem a problémádat, és felderítsem a kialakulásának a valódi okát - egy alapos állapotfelmérés nélkül viszont nem lehetséges célzott kezelési tervet felállítani.
+          Ha vannak orvosi dokumentációid, kérlek hozd el őket magaddal (ha nincs, semmi gond).</p>
+
         <h5>Késés</h5>
         <p>Amennyit késel az időpontodról, annyival kevesebb időt tudok rádszánni.
           Ha miattam kezdünk késve (pl. ha megcsúsztam az előző páciensemmel), az természetesen nem a te idődből megy, annál tovább tartom a kezelésed.
-          Nagyon igyekszem tartani a menetrendet, hogy ez minél kisebb eséllyel történjen meg.</p>
-
-        <h5>Lemondási feltételek</h5>
-        <p>Az időpontod lemondását, vagy másik napra módosítását legkésőbb az eredeti időpont előtt 24 órával tudom elfogadni. Kérlek minél hamarabb szólj, hogy legyen lehetőségem másnak átadni a helyed! (Itt tudsz szólni: e-mailben kirillaphysio@gmail.com, vagy telefonon: +26202668447)
-          24 órán belüli időpont lemondás (vagy másik napra módosítás) esetén a kezelés díját 3 napon belül szükséges megtéríteni. (Ez akkor is érvenyes, ha egyáltalán nem szólsz, de nem jelensz meg az időpontodon.)</p>
-
-        <h5>Köszönöm szépen, hogy tiszteletben tartod a munkámat és az időmet!</h5>
+          Nagyon igyekszem tartani a menetrendet, hogy ez minél kisebb eséllyel történjen meg. </p>
       </section>
     </div>
   );
