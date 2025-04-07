@@ -31,7 +31,7 @@
       right: 4px;
 
       font-size: 32px;
-      opacity: 0.9;
+      //opacity: 0.9;
       z-index: 3;
 
       &.hidden {
@@ -53,12 +53,12 @@
         left: 0;
         bottom: 0;
         z-index: 2;
-        transform: translateX(110%);
-        transition: transform 0.5s ease-in-out;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
       }
 
       &.visible {
-        transform: translateX(0);
+        opacity: 0.9;
       }
     }
   }
