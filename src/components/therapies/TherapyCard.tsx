@@ -15,7 +15,7 @@ const TherapyCard = (props: Therapy) => {
   const [descriptionVisible, setDescriptionVisible] = useState(false);
 
   const maxWidth = useMemo(() => {
-    return isMobile ? width : Math.min(width, MAX_IMAGE_SIZE)
+    return isMobile ? Math.floor(width) : Math.min(Math.floor(width), MAX_IMAGE_SIZE)
   }, [width]);
 
   // @ts-ignore

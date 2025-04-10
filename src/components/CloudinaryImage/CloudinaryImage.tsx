@@ -26,7 +26,7 @@ const CloudinaryImage = (props: any) => {
   return (<AdvancedImage cldImg={img}
                          loading="lazy"
                          fetchpriority="high"
-                         onError={(event: any) => {event.target.src = `https://placehold.co/${props.width ?? DEFAULT_SIZE}`}}
+                         onError={(event: any) => {event.target.src = `https://placehold.co/${props.width ?? DEFAULT_SIZE}/5F3D44/F8EFF1?text=A+k%C3%A9p+nem+el%C3%A9rhet%C3%B6`}}
   />);
 }
 
