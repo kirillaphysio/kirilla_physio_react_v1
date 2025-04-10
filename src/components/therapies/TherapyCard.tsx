@@ -23,7 +23,7 @@ const TherapyCard = (props: Therapy) => {
     <div className="title">{props.title}</div>
     <div className={`content ${isMobile ? 'mobile' : ''}`}>
       <FontAwesomeIcon className={`info-icon ${isMobile ? '' : 'hidden'}`} icon={faCircleInfo} onClick={() => setDescriptionVisible(!descriptionVisible)} />
-      <CloudinaryImage imageId={props.imageId} width={maxWidth} height={maxWidth} />
+      {width > 0 && <CloudinaryImage imageId={props.imageId} width={maxWidth} height={maxWidth}/>}
       <div className={`description ${isMobile ? 'mobile' : ''} ${descriptionVisible && "visible"}`}>{props.short}</div>
     </div>
   </div>

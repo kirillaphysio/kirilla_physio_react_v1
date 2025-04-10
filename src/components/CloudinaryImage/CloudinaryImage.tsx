@@ -10,10 +10,12 @@ export type CloudinaryImageProps = {
   height?: number;
 }
 
-const DEFAULT_SIZE = 500;
+const DEFAULT_SIZE = 300;
 
 const CloudinaryImage = (props: any) => {
   const cld = useCloudinary();
+
+  console.log(props)
 
   const img = cld
     .image(props.imageId)
@@ -21,7 +23,11 @@ const CloudinaryImage = (props: any) => {
     .quality('auto')
     .resize(auto().gravity(autoGravity()).width(props.width ?? DEFAULT_SIZE).height(props.height ?? DEFAULT_SIZE)); // Transform the image: auto-crop to square aspect_ratio
 
-  return (<AdvancedImage cldImg={img}/>);
+  return (<AdvancedImage cldImg={img}
+                         loading="lazy"
+                         fetchpriority="high"
+                         onError={(event: any) => {event.target.src = `https://placehold.co/${props.width ?? DEFAULT_SIZE}`}}
+  />);
 }
 
 export default CloudinaryImage;
