@@ -1,4 +1,5 @@
 export type Therapy = {
+  id: string;
   title: string;
   imageId: string;
   short: string
@@ -7,6 +8,7 @@ export type Therapy = {
 
 export const therapies: Therapy[] = [
   {
+    id: "gyogytorna",
     title: "Gyógytorna",
     imageId: "Gyógytorna__zxtbrv",
     short: "Egyénre szabott, a fokozatosság elvére épülő mozgásprogram",
@@ -14,6 +16,7 @@ export const therapies: Therapy[] = [
       "A gyógytorna gyakorlatok összeállításához (az egyetemi képzésen tanultakon túl) alkalmazom a McKenzie módszert, mely a porckorongsérves panaszoknál kifejezetten hatékony. Továbbá a neurodinamikát, melynek segítségével az idegeket tudjuk mobilizálni. A szegmentális stabilizációs tréninggel pedig a gerincet stabilizáló izmokat tudjuk megerősíteni. ",
   },
   {
+    id: "fdm",
     title: "FDM (Fascia Disztorziós Modell)",
     imageId: "FDM_yoyqch",
     short: "Fascia kezelés a gyors fájdalomcsillapításra",
@@ -27,6 +30,7 @@ export const therapies: Therapy[] = [
       "- beszűkült, kötött ízület (pl. váll, csípő)",
   },
   {
+    id: "visceralis_terapia",
     title: "Visceralis terápia",
     imageId: "Visceral_key38l",
     short: "Belsőszervi eredetű panaszok manuális kezelése",
@@ -39,6 +43,7 @@ export const therapies: Therapy[] = [
       "– baba projekt előtt (a női szervek funkciójának a javításával növelni lehet a termékenységet)",
   },
   {
+    id: "vagus_terapia",
     title: "Vagus terápia",
     imageId: "Vagus_dvqu1y",
     short: "Bolygóideg kezelés az idegrendszer harmonizálására",
@@ -47,6 +52,7 @@ export const therapies: Therapy[] = [
       "Az alábbi esetekben sokat segíthet ez a kezelés: hosszabb ideig fennálló fokozott stressz, szorongás, alvászavarok, emésztési problémák, puffadás, régóta fennálló mozgásszervi fájdalmak, autoimmun betegségek, hormonális problémák.",
   },
   {
+    id: "mulligan_terapia",
     title: "Mulligan manuálterápia",
     imageId: "Mulligan_o8mzoi",
     short: "A mozgás közben jelentkező fájdalmak manuálterápiás kezelése",
@@ -54,6 +60,7 @@ export const therapies: Therapy[] = [
       "A kezelés a mozgásra fájó végtag ízületi (boka, térd, csípő, ujjak, csukló, könyök, váll), gerinc kisízületi (derék, hát, nyak), és állkapocs ízületi problémáknál is alkalmazható.",
   },
   {
+    id: "dorn_terapia",
     title: "Dorn terápia",
     imageId: "Dorn_terápia__cekv1u",
     short: "Holisztikus szemléletű ízületi korrekciós technika",
@@ -69,6 +76,7 @@ export const therapies: Therapy[] = [
       "- szervi problémák (Diabetes, májproblémák, veseproblémák)",
   },
   {
+    id: "nyirok_kezeles",
     title: "Nyirok kezelés",
     imageId: "Nyirok_kezelés__eogcem",
     short: "A nyirokkeringés támogatása komplex megközelítéssel",
@@ -81,6 +89,7 @@ export const therapies: Therapy[] = [
       "- narancsbőr",
   },
   {
+    id: "hegkezeles",
     title: "Hegkezelés",
     imageId: "Hegkezelés__wbj806",
     short: "A hegek mobilizálása/oldása manuális technikákkal és eszközökkel",
@@ -94,6 +103,7 @@ export const therapies: Therapy[] = [
       "- szülés, császármetszés",
   },
   {
+    id: "kopoly",
     title: "Köpöly",
     imageId: "Köpöly_tnfza9",
     short: "Szövetlazítás és fájdalomcsillapítás vákuumos szívóhatás segítségével",
@@ -105,6 +115,7 @@ export const therapies: Therapy[] = [
       "- beszűkült ízület",
   },
   {
+    id: "kinezio_tape",
     title: "Kinezio tape",
     imageId: "Kinezio_Tape_azwszz",
     short: "Színes tapaszok izomlazításra, ízület stabilizálásra, keringés serkentésére, és fájdalomcsillapításra",
@@ -113,9 +124,10 @@ export const therapies: Therapy[] = [
       "Használható ficamok, húzódások, sportsérülések, gerinc és végtagfájdalmak kezelésekor, valamint mozgásszervi műtétek utáni rehabilitációban is.",
   },
   {
+    id: "alkapocs_izuleti",
     title: "Állkapocs-ízületi terápia",
     imageId: "Állkapocs-ízületi_terápia__qcwsbl",
-    short: "",
+    short: "A rágóízület és a környező izmok manuális kezelése",
     long: "Az állkapocs-ízületi terápia során az ízület körüli izmokat (pl. rágóizmot) lazító, és az ízületet mobilizáló manuális fogásokat alkalmazok. Bizonyos izmokat csak a szájnyíláson keresztül lehet elérni, így szükség esetén steril gumikesztyűt használva a szájon belüli izmokat is kezelem.\n" +
       "Mikor segíthet ez a kezelés?\n" +
       "-Fájdalom, kattogás, gyulladás, mozgástartomány beszűkülés az állkapocsízületben\n" +
@@ -133,6 +145,7 @@ export const therapies: Therapy[] = [
       "-Stressz",
   },
   {
+    id: "cranio_terapia",
     title: "Cranio FDM (Fejfájás terápia)",
     imageId: "CranioFDM_v2d9nz",
     short: "Az izom/kötőszövet eredetű fejfájások terápiája",
@@ -145,6 +158,7 @@ export const therapies: Therapy[] = [
       "- ütés érte a fejed, az arcod akár küzdősportban, akár egyéb balesetben",
   },
   {
+    id: "neuro_mozgaskorrekcio",
     title: "Neuro-mozgáskorrekció",
     imageId: "Neuro-mozgáskorrekció__s2qhdv",
     short: "Az izomtónus tesztelése és helyreállítása az idegrendszeren keresztül",

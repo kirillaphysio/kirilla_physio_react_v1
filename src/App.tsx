@@ -4,6 +4,7 @@ import LandingPage from './pages/LandingPage';
 import Contacts from './pages/Contacts';
 import Programs from './pages/Programs';
 import Treatments from './pages/Treatments';
+import Therapy from './pages/Therapy';
 import { HashRouter, Routes, Route } from "react-router";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/online-programs" element={<Programs />} />
           <Route path="/individual-treatments" element={<Treatments />} />
+          <Route path="/therapy/:therapyId" element={<Therapy />} />
 
           <Route element={<div className="other-page">Ez az oldal nem található</div>} />
         </Routes>
