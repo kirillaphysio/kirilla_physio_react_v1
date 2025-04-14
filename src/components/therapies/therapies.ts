@@ -135,13 +135,23 @@ export const therapies: Therapy[] = [
   {
     title: "Cranio FDM (Fejfájás terápia)",
     imageId: "CranioFDM_v2d9nz",
-    short: "",
-    long: "",
+    short: "Az izom/kötőszövet eredetű fejfájások terápiája",
+    long: "Az FDM (Fascia Disztorziós Modell) elmélete azzal az alapfeltevéssel dolgozik, hogy a test különböző fájdalmait és funkcionális zavarait a fascia rendszeren belüli torzulások okozzák. A fascia a testünkben elhelyezkedő kötőszövetek hálózata, amely körülveszi az izmokat, ízületeket, idegeket és egyéb szöveteket, és részt vesz azok mozgásában és stabilizálásában.\n" +
+      "A cranio FDM kezelés a Fascia Disztorziós Modell alkalmazásával a fej, a nyak és a koponya körüli fájdalom és funkcionális zavarok kezelésére irányul. A terápia célja, hogy speciális manuális technikákkal a fascia rendszeren belüli torzulásokat, disztoriókat oldja, és ezáltal csökkentse a fájdalmakat. \n" +
+      "Ez a módszer különösen hasznos lehet ha:\n" +
+      "- rendszeresen fáj a fejed\n" +
+      "- szédüléssel, egyensúlyzavarral küzdesz\n" +
+      "- állkapocs-ízületi és nyak környéki panaszaid vannak (feszesség, fájdalom)\n" +
+      "- ütés érte a fejed, az arcod akár küzdősportban, akár egyéb balesetben",
   },
   {
     title: "Neuro-mozgáskorrekció",
     imageId: "Neuro-mozgáskorrekció__s2qhdv",
-    short: "",
-    long: "",
+    short: "Az izomtónus tesztelése és helyreállítása az idegrendszeren keresztül",
+    long: "A Neuro-mozgáskorrekció egy neurológiai alapú technika, amely segíti az emberi test működését, felismerve és korrigálva a receptor diszfunkciókat, amelyek fájdalmat vagy mozgáskorlátozást okozhatnak. A receptorok érzékelik a környezeti változásokat és információkat küldenek az agyba, amely döntéseket hoz az izmok mozgásának irányítására. Sérülések, műtétek vagy környezeti stressz hatására a receptorok működése megváltozhat, és kóros jelátvitelt okozhatnak, ami az izmok működésképtelenségét és fájdalmat eredményezhet. \n" +
+      "A kezelés során különböző vizuális és manuális hatások (például simítás, fény, nyomás) segítségével tesztelem és kezelem azokat a receptor diszfunkciókat, amelyek fájdalmat vagy mozgáskorlátozást okozhatnak. A célom, hogy helyreállítsam az izmok optimális működését, mivel a mozgásszervi problémák sokszor az izomtónus-szabályozási problémákból erednek. Ezenkívül, ha szükséges, életmódbeli tanácsokkal segítek az izomfunkciók további javításában. \n" +
+      "Mikor segíthet ez a technika?\n" +
+      "-Hegek, tetoválások, piercingek után\n" +
+      "-Olyan panaszoknál (krónikus fájdalom, mozgáskorlátozottság, izomfeszültség), amik nem strukturális/szöveti elváltozásból erednek",
   },
 ]
