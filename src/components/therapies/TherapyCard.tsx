@@ -21,11 +21,7 @@ const TherapyCard = (props: Therapy) => {
 
   const onCardClick = useCallback(() => {
     if(isMobile) setDescriptionVisible(!descriptionVisible)
-  }, [descriptionVisible, isMobile])
-
-  const onMoreClick = useCallback((e: Event) => {
-    e.stopPropagation();
-  }, [])
+  }, [descriptionVisible])
 
   // @ts-ignore
   return <div ref={ref} className={`therapy-card ${isMobile ? 'mobile' : ''}`} onClick={onCardClick}>
@@ -36,7 +32,6 @@ const TherapyCard = (props: Therapy) => {
       <div className={`description ${isMobile ? 'mobile' : ''} ${descriptionVisible && "visible"}`}>
         <label>{props.short}</label>
         <Link to={`/therapy/${props.id}`} className="more-btn">Részletek</Link>
-        {/*<div className="more-btn">Részletek</div>*/}
       </div>
     </div>
   </div>
