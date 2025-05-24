@@ -9,7 +9,7 @@ export const opinions = [
   },
   {
     author: "K. Júlia",
-    description: "Rékának egész életemben hálás leszek!🙏🙏❤️❤️ Neki köszönhető, hogy elkerültem 2 műtétet. Szerintem nagyobb tudással rendelkezik, mint némelyik orvos, profin és szakszerűen látja el a hozzá forduló pácienseket.\n" + "Mindenkinek bátran merem ajánlani!😊😊"
+    description: "Rékának egész életemben hálás leszek!🙏🙏❤️❤️ Neki köszönhető, hogy elkerültem 2 műtétet. Szerintem nagyobb tudással rendelkezik, mint némelyik orvos, profin és szakszerűen látja el a hozzá forduló pácienseket. Mindenkinek bátran merem ajánlani!😊😊"
   },
   {
     author: "G. Zsuzsanna",

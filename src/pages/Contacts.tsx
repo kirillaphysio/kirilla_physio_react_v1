@@ -13,7 +13,7 @@ const Contacts: React.FC = () => {
         <div className="link-container">
           <a href={"https://maps.app.goo.gl/MFLgSvpn8ttvUxos6"}><FontAwesomeIcon icon={faMapLocationDot}/>
             Kezelési helyszín Budapest, XII. kerület, Nagyenyed utca 15/A</a>
-          {!isMobile && <iframe
+          {!isMobile && <iframe title="Google maps"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2695.5671552762215!2d19.019068076417017!3d47.498344995446736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dc2759855e45%3A0x2b036953b04e80d2!2sBudapest%2C%20Nagyenyed%20u.%2015%2Fa%2C%201123!5e0!3m2!1sen!2shu!4v1748095089521!5m2!1sen!2shu"
             width="100%" height="450" style={{border: 0}} allowFullScreen={true} loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"></iframe>}
