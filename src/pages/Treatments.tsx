@@ -54,7 +54,7 @@ const Treatments: React.FC = () => {
       <section ref={helpRef} className="hero-section">
         <label>Miben tudok segíteni?</label>
 
-        <p>A leggyakorib panaszok, amikkel foglalkozom:</p>
+        <p>A leggyakoribb panaszok, amikkel foglalkozom:</p>
         <ul className="help-list">
           <li>derékfájás, nyakfájás, hátfájás (porckorongsérv/becsípődés, instabilitás, csigolyaelcsúszás, izom túlfeszülés, ízületi blokk)</li>
           <li>végtagba sugárzó fájdalom, zsibbadás, és izomerő csökkenés</li>

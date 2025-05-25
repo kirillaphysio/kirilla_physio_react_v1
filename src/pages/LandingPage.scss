@@ -2,6 +2,10 @@
 @use "../styles/colors.scss";
 
 .landing-page {
+  .profile-image {
+    border-radius: 16px;
+  }
+
   .whyme {
     padding-left: 0;
 
@@ -41,6 +45,7 @@
 
   .cards {
     display: flex;
+    justify-content: center;
 
     &.mobile {
       flex-direction: column;
@@ -75,5 +80,9 @@
         margin: 32px 0;
       }
     }
+  }
+
+  .justified {
+    text-align: justify;
   }
 }
