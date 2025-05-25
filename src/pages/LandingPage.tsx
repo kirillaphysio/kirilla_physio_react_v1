@@ -6,13 +6,15 @@ import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 
 import CloudinaryImage from "../components/CloudinaryImage/CloudinaryImage";
-import {faCheck} from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faHouse, faHouseMedicalFlag} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {isMobile} from "react-device-detect";
 import {opinions} from "../components/opinions/aboutMe";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination, A11y } from 'swiper/modules';
 import {nanoid} from "nanoid";
+import {NavLink} from "react-router";
+import {qualifications, Qualifications} from "./qualifications";
 
 const LandingPage: React.FC = () => {
   return (
@@ -23,16 +25,28 @@ const LandingPage: React.FC = () => {
         <CloudinaryImage imageId="kezdőlap__u1ybav" />
         <p>Küldetésem, hogy segítsek neked megszabadulni a fájdalmaktól, helyreállítani a mozgásképességed, és visszanyerni életminőséged. Módszereim között a gyógytorna, manuálterápia, valamint egyéb kiegészítő kezelések állnak, melyek egyaránt támogatják a fájdalomcsillapítást, a regenerálódást és a prevenciót. </p>
         <h3>Miért válassz engem?</h3>
-        <ul>
-          <li><FontAwesomeIcon icon={faCheck} />Szakértői tapasztalat és folyamatosan frissített tudás</li>
-          <li><FontAwesomeIcon icon={faCheck} />Személyre szabott, hatékony kezelések holisztikus szemléletmóddal</li>
-          <li><FontAwesomeIcon icon={faCheck} />Empatikus és figyelmes megközelítés</li>
+        <ul className={`whyme ${isMobile ? "mobile" : ""}`}>
+          <li><FontAwesomeIcon icon={faCheck} /><span>Szakértői tapasztalat és folyamatosan frissített tudás</span></li>
+          <li><FontAwesomeIcon icon={faCheck} /><span>Személyre szabott, hatékony kezelések holisztikus szemléletmóddal</span></li>
+          <li><FontAwesomeIcon icon={faCheck} /><span>Empatikus és figyelmes megközelítés</span></li>
         </ul>
       </section>
       <section className="hero-section">
         <h1>Hogyan tudok segíteni? </h1>
-        <button className="cta-button">Online programok</button>{/* TODO kartya gomb + description*/}
-        <button className="cta-button">Egyéni kezelés</button>
+        <div className={`cards ${isMobile ? "mobile" : ""}`}>
+          <NavLink className={`card ${isMobile ? "mobile" : ""}`} to={'/individual-treatments'}>
+            <FontAwesomeIcon icon={faHouseMedicalFlag} />
+            <h3>Egyéni kezelés</h3>
+            <div className="card-content">Személyes állapotfelmérés alapján kialakított komplex terápia Budapesten</div>
+            <span className="link">Tovább az egyéni kezelésekhez</span>
+          </NavLink>
+          <NavLink className="card" to={'/online-programs'}>
+            <FontAwesomeIcon icon={faHouse} />
+            <h3>Online programok</h3>
+            <div>Az otthonodból is könnyedén elvégezhető, szakszerűen felépített programok</div>
+            <span className="link">Tovább az online programokhoz</span>
+          </NavLink>
+        </div>
       </section>
       <section className="hero-section">
         <h1>Rólam:</h1>
@@ -72,7 +86,12 @@ const LandingPage: React.FC = () => {
         </Swiper>
       </section>
       <section className="hero-section">
-        <h1>Általam elvégzett képzések</h1>
+        <h1>Végzettségeim</h1>
+        <ul className={`qualifications ${isMobile ? "mobile" : ""}`}>
+          {qualifications.map((qualification: Qualifications) => (<li key={nanoid()}>
+            <span>{qualification.date}: {qualification.description}</span>
+          </li>))}
+        </ul>
       </section>
     </div>
   );
