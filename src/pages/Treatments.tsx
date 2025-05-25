@@ -48,7 +48,7 @@ const Treatments: React.FC = () => {
         <label>Időpont foglalás</label>
 
         <p>Állapotfelmérésre és az ezt követő komplex egyéni kezelésre itt tudsz bejelentkezni hozzám</p>
-        <a href="https://foryourmove.salonic.hu/employees/23854/?placeId=10890" target="_blank" rel="noreferrer" className="cta-button">Bejelentkezés</a>
+        <a href="https://kirillareka.salonic.hu/" target="_blank" rel="noreferrer" className="cta-button">Bejelentkezés</a>
       </section>
 
       <section ref={helpRef} className="hero-section">

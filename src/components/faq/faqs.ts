@@ -1,7 +1,7 @@
 export const faqs = [
   {
     question: "Hol dolgozol helyileg?",
-    answer: "Budapest, 1. kerület, Ostrom utca 31. (A Széll Kálmán térnél, a Burger Kinggel szemben.)",
+    answer: "Budapest, XII. kerület, Nagyenyed utca 15/A",
   },
   {
     question: "Visceralis / vagus / köpöly / bármelyik másik terápia előtt is kell állapotfelmérés?",
