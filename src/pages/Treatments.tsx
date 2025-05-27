@@ -45,14 +45,14 @@ const Treatments: React.FC = () => {
       </ul>
 
       <section ref={bookingRef} className="hero-section">
-        <label>Időpont foglalás</label>
+        <h4>Időpont foglalás</h4>
 
-        <p>Állapotfelmérésre és az ezt követő komplex egyéni kezelésre itt tudsz bejelentkezni hozzám</p>
+        <p className="with-gap">Állapotfelmérésre és az ezt követő komplex egyéni kezelésre itt tudsz bejelentkezni hozzám</p>
         <a href="https://kirillareka.salonic.hu/" target="_blank" rel="noreferrer" className="cta-button">Bejelentkezés</a>
       </section>
 
       <section ref={helpRef} className="hero-section">
-        <label>Miben tudok segíteni?</label>
+        <h4>Miben tudok segíteni?</h4>
 
         <p>A leggyakoribb panaszok, amikkel foglalkozom:</p>
         <ul className="help-list">
@@ -68,7 +68,7 @@ const Treatments: React.FC = () => {
       </section>
 
       <section ref={therapiesRef} className="hero-section">
-        <label>Terápiák</label>
+        <h4>Terápiák</h4>
 
         <p className="justified">A hagyományos gyógytornán túl számos egyéb terápiás irányt elsajátítottam és folyamatosan bővítem a tudásom, hogy a lehető legtöbb irányból tudjam megközelíteni a problémád, ezáltal méggyorsabban, és méghatékonyabban tudjam segíteni a gyógyulásod.</p>
         <div>Alkalmazott terápiáim:</div>
@@ -77,7 +77,7 @@ const Treatments: React.FC = () => {
       </section>
 
       <section ref={pricesRef} className="hero-section">
-        <label>Árak</label>
+        <h4>Árak</h4>
 
         <ul className="price-list">
           <li>
@@ -98,7 +98,7 @@ const Treatments: React.FC = () => {
       </section>
 
       <section ref={feedbackRef} className="hero-section">
-        <label>Visszajelzések a pácienseimtől</label>
+        <h4>Visszajelzések a pácienseimtől</h4>
 
         <Swiper
           autoplay={{
@@ -127,29 +127,29 @@ const Treatments: React.FC = () => {
       </section>
 
       <section ref={faqRef} className="hero-section">
-        <label>Gyakori kérdések</label>
+        <h4>Gyakori kérdések</h4>
 
         <Faq />
 
       </section>
 
       <section ref={policyRef} className="hero-section">
-        <label>Szabályzat</label>
+        <h4>Szabályzat</h4>
 
         <h5>Lemondási feltételek</h5>
-        <p>Az időpontod lemondását, vagy másik napra módosítását legkésőbb az eredeti időpont előtt 24 órával tudom elfogadni. Kérlek minél hamarabb szólj, hogy legyen lehetőségem másnak átadni a helyed! (Itt tudsz szólni: e-mailben kirillaphysio@gmail.com, vagy telefonon +26202668447)
-          24 órán belüli időpont lemondás (vagy másik napra módosítás) esetén a kezelés díját 3 napon belül szükséges megtéríteni. (Ez akkor is érvenyes, ha egyáltalán nem szólsz, de nem jelensz meg az időpontodon.)
-          Köszönöm szépen, hogy tiszteletben tartod a munkámat és az időmet!</p>
+        <p className="justified">Az időpontod lemondását, vagy másik napra módosítását legkésőbb az eredeti időpont előtt 24 órával tudom elfogadni. Kérlek minél hamarabb szólj, hogy legyen lehetőségem másnak átadni a helyed! (Itt tudsz szólni: e-mailben kirillaphysio@gmail.com, vagy telefonon +26202668447)</p>
+        <p className="justified">24 órán belüli időpont lemondás (vagy másik napra módosítás) esetén a kezelés díját 3 napon belül szükséges megtéríteni. (Ez akkor is érvenyes, ha egyáltalán nem szólsz, de nem jelensz meg az időpontodon.)</p>
+        <p className="justified">Köszönöm szépen, hogy tiszteletben tartod a munkámat és az időmet!</p>
 
         <h5>Időpont foglalás</h5>
-        <p>Ha még nem jártál nálam, vagy több mint 1 éve jártál, akkor először egy állapotfelméréssel kezdünk, kérlek arra foglalj időpontot!
-          A célom, hogy minél hatékonyabban és precízebben kezeljem a problémádat, és felderítsem a kialakulásának a valódi okát - egy alapos állapotfelmérés nélkül viszont nem lehetséges célzott kezelési tervet felállítani.
-          Ha vannak orvosi dokumentációid, kérlek hozd el őket magaddal (ha nincs, semmi gond).</p>
+        <p className="justified">Ha még nem jártál nálam, vagy több mint 1 éve jártál, akkor először egy állapotfelméréssel kezdünk, kérlek arra foglalj időpontot!</p>
+        <p className="justified">A célom, hogy minél hatékonyabban és precízebben kezeljem a problémádat, és felderítsem a kialakulásának a valódi okát - egy alapos állapotfelmérés nélkül viszont nem lehetséges célzott kezelési tervet felállítani.</p>
+        <p className="justified">Ha vannak orvosi dokumentációid, kérlek hozd el őket magaddal (ha nincs, semmi gond).</p>
 
         <h5>Késés</h5>
-        <p>Amennyit késel az időpontodról, annyival kevesebb időt tudok rádszánni.
-          Ha miattam kezdünk késve (pl. ha megcsúsztam az előző páciensemmel), az természetesen nem a te idődből megy, annál tovább tartom a kezelésed.
-          Nagyon igyekszem tartani a menetrendet, hogy ez minél kisebb eséllyel történjen meg. </p>
+        <p className="justified">Amennyit késel az időpontodról, annyival kevesebb időt tudok rádszánni.</p>
+        <p className="justified">Ha miattam kezdünk késve (pl. ha megcsúsztam az előző páciensemmel), az természetesen nem a te idődből megy, annál tovább tartom a kezelésed.</p>
+        <p className="justified">Nagyon igyekszem tartani a menetrendet, hogy ez minél kisebb eséllyel történjen meg. </p>
       </section>
     </div>
   );

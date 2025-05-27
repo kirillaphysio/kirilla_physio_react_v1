@@ -24,6 +24,8 @@ $cardPadding: 32px;
     display: -webkit-box;
     -webkit-line-clamp: 14;
     -webkit-box-orient: vertical;
+    white-space: pre-wrap;
+    text-align: start;
   }
 
   .author {
