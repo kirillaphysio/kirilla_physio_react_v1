@@ -42,7 +42,8 @@
     text-align: start;
 
     li {
-      list-style: "– ";
+      padding-left: 8px;
+      list-style-type: "\2014";
     }
   }
 

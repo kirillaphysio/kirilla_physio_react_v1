@@ -70,7 +70,7 @@ const Treatments: React.FC = () => {
       <section ref={therapiesRef} className="hero-section">
         <label>Terápiák</label>
 
-        <p>A hagyományos gyógytornán túl számos egyéb terápiás irányt elsajátítottam és folyamatosan bővítem a tudásom, hogy a lehető legtöbb irányból tudjam megközelíteni a problémád, ezáltal méggyorsabban, és méghatékonyabban tudjam segíteni a gyógyulásod.</p>
+        <p className="justified">A hagyományos gyógytornán túl számos egyéb terápiás irányt elsajátítottam és folyamatosan bővítem a tudásom, hogy a lehető legtöbb irányból tudjam megközelíteni a problémád, ezáltal méggyorsabban, és méghatékonyabban tudjam segíteni a gyógyulásod.</p>
         <div>Alkalmazott terápiáim:</div>
 
         <TherapyList />
