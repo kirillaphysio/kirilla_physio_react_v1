@@ -36,6 +36,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "dompurify": "^3.2.6",
     "hamburger-react": "^2.5.2",
     "nanoid": "^5.1.5",
     "react": "^19.0.0",

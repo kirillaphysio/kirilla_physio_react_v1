@@ -4,6 +4,7 @@ import {therapies, Therapy} from "../components/therapies/therapies";
 import "./therapy.scss"
 import {useMeasure} from "react-use";
 import {isMobile} from "react-device-detect";
+import DOMPurify from "dompurify";
 import CloudinaryImage from "../components/CloudinaryImage/CloudinaryImage";
 import TherapyList from "../components/therapies/TherapyList";
 
@@ -30,7 +31,7 @@ const TherapyPage: React.FC = () => {
         <h1>{therapy?.title}</h1>
         <h4>{therapy.short}</h4>
         {width > 0 && <CloudinaryImage imageId={therapy.imageId} width={maxWidth} height={maxWidth}/>}
-        <p>{therapy.long}</p>
+        <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(therapy.long)}}/>
       </div>}
 
       <TherapyList selectedTherapyId={therapy?.id} />
