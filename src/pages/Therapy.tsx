@@ -27,14 +27,17 @@ const TherapyPage: React.FC = () => {
     <div ref={ref} className="therapy-page">
       {therapy === undefined && <div>Sajnálom, ez a terápia valamiért nem található, válaszd ki az általad keresettet a lentebbi listából!</div>}
 
-      {therapy !== undefined && <div className={`therapy`}>
+      {therapy !== undefined && <section className={`hero-section therapy`}>
         <h1>{therapy?.title}</h1>
         <h4>{therapy.short}</h4>
         {width > 0 && <CloudinaryImage imageId={therapy.imageId} width={maxWidth} height={maxWidth}/>}
         <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(therapy.long)}}/>
-      </div>}
+      </section>}
 
-      <TherapyList selectedTherapyId={therapy?.id} />
+      <section className="hero-section others">
+        <h1>További kezelések</h1>
+        <TherapyList selectedTherapyId={therapy?.id} />
+      </section>
     </div>
   );
 };
