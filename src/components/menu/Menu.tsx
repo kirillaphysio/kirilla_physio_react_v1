@@ -33,12 +33,14 @@ export const Menu = () => {
 
   return (
     <div className={`menu ${isMobile ? 'mobile' : ''}`}>
-      {isMobile && <span ref={hamburgerRef} ><Hamburger rounded toggled={isOpen} toggle={setIsOpen} /></span>}
+      {isMobile && <span ref={hamburgerRef} role="button" aria-label="menu">
+        <Hamburger rounded toggled={isOpen} toggle={setIsOpen} />
+      </span>}
 
       <nav className={`menu-nav ${isMobile ? 'mobile' : ''} ${isOpen ? 'open' : ''}`}>
         <ul ref={menuRef} className={`menu-list ${isMobile ? 'mobile' : ''}`}>
           {items.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} role="menuitem">
               <NavLink to={item.href}>{item.label}</NavLink>
             </li>
           ))}

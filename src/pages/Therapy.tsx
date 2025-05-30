@@ -29,7 +29,7 @@ const TherapyPage: React.FC = () => {
 
       {therapy !== undefined && <section className={`hero-section therapy`}>
         <h1>{therapy?.title}</h1>
-        <h4>{therapy.short}</h4>
+        <h2>{therapy.short}</h2>
         {width > 0 && <CloudinaryImage imageId={therapy.imageId} width={maxWidth} height={maxWidth}/>}
         <p className="justified" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(therapy.long)}}/>
       </section>}

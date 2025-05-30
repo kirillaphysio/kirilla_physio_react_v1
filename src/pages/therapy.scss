@@ -3,7 +3,8 @@
 
 .therapy-page {
   .therapy {
-    h4 {
+    h2 {
+      font-size: 1rem;
       text-decoration: underline;
     }
 
@@ -12,11 +13,17 @@
     }
   }
 
-  .others .therapy-list {
-    color: colors.$palette-neutral;
+  .others {
+    h1 {
+      color: colors.$palette-primary;
+    }
 
-    .description {
-      background-color: colors.$palette-secondary-4-o70;
+    .therapy-list {
+      color: colors.$palette-neutral;
+
+      .description {
+        background-color: colors.$palette-secondary-4-o70;
+      }
     }
   }
 }
