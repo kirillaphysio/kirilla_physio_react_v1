@@ -23,7 +23,7 @@ const LandingPage: React.FC = () => {
         <h1>Üdvözöllek a weboldalamon! </h1>
         <p>Kirilla Réka vagyok, elhivatott gyógytornász-fizioterapeuta.</p>
         <CloudinaryImage imageId="kezdőlap__u1ybav" width={300} height={450} className="profile-image" />
-        <p>Küldetésem, hogy segítsek neked megszabadulni a fájdalmaktól, helyreállítani a mozgásképességed, és visszanyerni életminőséged. Módszereim között a gyógytorna, manuálterápia, valamint egyéb kiegészítő kezelések állnak, melyek egyaránt támogatják a fájdalomcsillapítást, a regenerálódást és a prevenciót. </p>
+        <p>Küldetésem, hogy segítsek neked megszabadulni a fájdalmaktól, helyreállítani a mozgásképességed, és visszanyerni életminőséged.<br/> Módszereim között a gyógytorna, manuálterápia, valamint egyéb kiegészítő kezelések állnak, melyek egyaránt támogatják a fájdalomcsillapítást, a regenerálódást és a prevenciót. </p>
         <h3>Miért válassz engem?</h3>
         <ul className={`whyme ${isMobile ? "mobile" : ""}`}>
           <li><FontAwesomeIcon icon={faCheck} /><span>Szakértői tapasztalat és folyamatosan frissített tudás</span></li>

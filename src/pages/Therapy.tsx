@@ -31,7 +31,7 @@ const TherapyPage: React.FC = () => {
         <h1>{therapy?.title}</h1>
         <h4>{therapy.short}</h4>
         {width > 0 && <CloudinaryImage imageId={therapy.imageId} width={maxWidth} height={maxWidth}/>}
-        <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(therapy.long)}}/>
+        <p className="justified" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(therapy.long)}}/>
       </section>}
 
       <section className="hero-section others">
