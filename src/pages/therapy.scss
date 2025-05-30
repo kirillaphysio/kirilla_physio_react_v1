@@ -2,8 +2,6 @@
 @use "../styles/heroSection.scss";
 
 .therapy-page {
-  background-color: colors.$palette-neutral-o30;
-
   .therapy {
     h4 {
       text-decoration: underline;
@@ -16,5 +14,9 @@
 
   .others .therapy-list {
     color: colors.$palette-neutral;
+
+    .description {
+      background-color: colors.$palette-secondary-4-o70;
+    }
   }
 }
