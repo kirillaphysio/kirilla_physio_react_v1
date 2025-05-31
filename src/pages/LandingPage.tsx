@@ -12,6 +12,7 @@ import {isMobile} from "react-device-detect";
 import {opinions} from "../components/opinions/aboutMe";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination, A11y } from 'swiper/modules';
+import {getSwiperStyle} from "../components/swiper/Swiper";
 import {nanoid} from "nanoid";
 import {NavLink} from "react-router";
 import {qualifications, Qualifications} from "./qualifications";
@@ -72,12 +73,8 @@ const LandingPage: React.FC = () => {
           pagination={{ dynamicBullets: true }}
           slidesPerView={isMobile ? 1 : 3}
           spaceBetween={32}
-          style={{
-            "--swiper-navigation-size": "22px",
-            "--swiper-navigation-color": "#F8EFF1",
-            "--swiper-pagination-color": "#F8EFF1",
-            "--swiper-pagination-bullet-inactive-color": "#F8EFF1"
-          }}
+          // @ts-ignore
+          style={getSwiperStyle()}
         >
           {opinions.map((opinion: any) => (<SwiperSlide key={nanoid()} className={`opinion ${isMobile ? "mobile" : "desktop"}`}>
             <p className="message">{opinion.description}</p>
