@@ -2,7 +2,7 @@
   "name": "kirilla_physio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://kirillaphysio.github.io/kirilla_physio_react_v1",
+  "homepage": "http://kirillaphysio.github.io",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
