@@ -43,7 +43,6 @@
     "react-collapsed": "^4.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.1.0",
-    "react-helmet-async": "^2.0.5",
     "react-router": "^7.6.1",
     "react-use": "^17.6.0",
     "swiper": "^11.2.8"
