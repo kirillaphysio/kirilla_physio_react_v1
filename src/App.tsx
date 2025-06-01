@@ -7,6 +7,7 @@ import Treatments from './pages/Treatments';
 import Therapy from './pages/Therapy';
 import Terms from './pages/Terms';
 import DPN from './pages/DPN';
+import Cookie from './pages/Cookie';
 import { HashRouter, Routes, Route, useLocation } from "react-router";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -36,6 +37,7 @@ function App() {
             <Route path="/therapy/:therapyId" element={<Therapy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/dpn" element={<DPN />} />
+            <Route path="/cookie" element={<Cookie />} />
 
             <Route element={<div className="other-page">Ez az oldal nem található</div>} />
           </Routes>
