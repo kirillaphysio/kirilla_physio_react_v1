@@ -2,14 +2,14 @@
   "name": "kirilla_physio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://kirillaphysio.github.io/kirilla_physio_react_v1",
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build -b main --repo https://github.com/kirillaphysio/kirillaphysio.github.io.git"
   },
   "eslintConfig": {
     "extends": [
