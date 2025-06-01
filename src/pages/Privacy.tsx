@@ -4,7 +4,7 @@ const Programs: React.FC = () => {
   return (
     <>
       <title>Adatkezelési Tájékoztató programok - Kirilla Réka gyógytornász-fizioterapeuta</title>
-      <link rel="canonical" href="https://www.kirillareka.hu/#/dpn"/>
+      <link rel="canonical" href="https://www.kirillareka.hu/#/privacy"/>
       <meta name="description" content="Kirilla Réka gyógytornász-fizioterapeuta Adatkezelési Tájékoztató.
       Gyógytornász, gyógytorna, manuálterápia, manuális terápia, derékfájás, derékfájdalom, nyakfájás, nyakfájdalom, vállfájdalom, könyökfájdalom, teniszkönyök, golfkönyök, csuklófájdalom, csípőfájdalom, térdfájás, sarkanytú, bokaficam,
       rehabilitáció, mozgásterápia, holisztikus szemléletmód, porckorongsérv, gerincsérv, becsípődés, húzódás, sérülés, baba projekt, sibo, petefészek ciszta, alternatív terápia, sibo, puffadás,
@@ -13,7 +13,7 @@ const Programs: React.FC = () => {
       <meta property="og:title" content="Online programok - Kirilla Réka gyógytornász-fizioterapeuta"/>
       <meta property="og:description" content="Kirilla Réka gyógytornász-fizioterapeuta Adatkezelési Tájékoztató."/>
       <meta property="og:image" content="https://res.cloudinary.com/dcwv2corw/image/upload/v1744007836/egye%CC%81ni_kezele%CC%81s_wkmddy.jpg"/>
-      <meta property="og:url" content="https://www.kirillareka.hu/#/dpn"/>
+      <meta property="og:url" content="https://www.kirillareka.hu/#/privacy"/>
       <meta property="og:type" content="product"/>
 
       <div>

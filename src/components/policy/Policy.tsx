@@ -5,7 +5,7 @@ const Policy = () => {
   return (
     <div className={"policy"}>
       <NavLink to={"/terms"}>Ászf</NavLink>
-      <NavLink to={"/dpn"}>Adatkezelési tájékoztató</NavLink>
+      <NavLink to={"/privacy"}>Adatkezelési tájékoztató</NavLink>
       <NavLink to={"/cookie"}>Cookie nyilatkozat</NavLink>
     </div>
   );
