@@ -17,75 +17,89 @@ const Programs: React.FC = () => {
       <meta property="og:type" content="product"/>
 
       <div>
-        <h1>Adatkezelési Tájékoztató</h1>
-        <i>
-          Ez a tájékoztató bemutatja, hogyan történik a személyes adatok kezelése az időpontfoglalással és a szolgáltatások nyújtásával összefüggésben. Az adatkezelés megfelel a vonatkozó jogszabályoknak, különösen az Európai Parlament és a Tanács (EU) 2016/679 rendeletének (GDPR) és a magyar adatvédelmi előírásoknak.
-        </i>
+        <section id="adatvedelem">
+          <h2>Adatvédelmi Tájékoztató</h2>
+          <p><strong>Utolsó frissítés:</strong> 2025. június 1.</p>
 
-        <ol>
-          <li>
-            <label>Az adatkezelő adatai</label>
-            <ul>
-              <label>Az adatkezelő:</label>
-              <li>Név: Kirilla Réka Alexandra e. v.</li>
-              <li>Nyilvántartási szám: 58178739</li>
-              <li>Adószám: 41941052-1-33</li>
-              <li>Székhely: 2030 Érd, János utca 10., Magyarország</li>
-              <li>Telephely (szolgáltatás helye): 1123 Budapest, Nagyenyed utca 15/A, Magyarország</li>
-              <li>Weboldal: www.kirillareka.hu</li>
-              <li>Telefon: +36 20 266 8447</li>
-              <li>E-mail: kirillaphysio@gmail.com</li>
-            </ul>
-          </li>
+          <h3>1. Az adatkezelő adatai</h3>
+          <ul>
+            <li><strong>Név:</strong> Kirilla Réka Alexandra e.v.</li>
+            <li><strong>Székhely:</strong> 1123 Budapest, Nagyenyed utca 15/a</li>
+            <li><strong>E-mail cím:</strong> <a href="mailto:kirillaphysio@gmail.com">kirillaphysio@gmail.com</a></li>
+            <li><strong>Telefonszám:</strong> <a href="tel:+36202668447">+36 20 266 8447</a></li>
+          </ul>
 
-          <li>
-            <label>Az adatkezelés célja, jogalapja és időtartama</label>
-            <p>Személyes adatok kezelésére az alábbi célokból kerül sor:</p>
-            <ul>
-              <li>Időpontfoglalás lebonyolítása: A név, telefonszám, e-mail cím és a választott szolgáltatás rögzítése történik. Az adatkezelés jogalapja a szerződés teljesítése (GDPR 6. cikk (1) b) pont). Az adatok megőrzési ideje legfeljebb 1 év az időpontot követően.</li>
-              <li>Szolgáltatás nyújtása és kapcsolattartás: A kapcsolattartáshoz és szolgáltatás elvégzéséhez szükséges személyes adatok (pl. név, telefonszám, e-mail cím) kezelése a szerződés teljesítése érdekében történik. Az adatokat a szolgáltatás teljesítésétől számított 1 évig kezelem.</li>
-              <li>Számlázás és jogszabályi kötelezettségek teljesítése: A számlák kiállításához szükséges adatok (név, cím, adószám, ha van) kezelése a számviteli előírásokon alapul (GDPR 6. cikk (1) c) pont). Ezeket az adatokat a hatályos jogszabályok szerint 8 évig őrzöm meg.</li>
-              <li>Panaszkezelés: Amennyiben panasz érkezik, a panaszkezeléshez szükséges adatokat (név, elérhetőség, panasz tartalma) jogszabályi kötelezettség alapján 5 évig őrzöm meg.</li>
-            </ul>
-          </li>
+          <h3>2. A weboldal célja</h3>
+          <p>
+            Ez a weboldal tájékoztató jellegű, célja a gyógytornász-fizioterapeuta szolgáltatások bemutatása.
+            A weboldal nem gyűjt és nem kezel személyes adatokat, és nem tartalmaz saját kapcsolatfelvételi vagy
+            időpontfoglalási űrlapot.
+          </p>
 
-          <li>
-            <label>Az adatok forrása</label>
-            <p>A személyes adatok közvetlenül az érintettől származnak, például időpontfoglalás során, e-mailben, telefonon vagy személyesen kerülnek megadásra.</p>
-          </li>
+          <h3>3. Időpontfoglalás</h3>
+          <p>
+            A weboldalon lehetőség van időpontfoglalásra, amely azonban egy külső szolgáltató –
+            a <strong>Salonic</strong> – rendszerén keresztül történik.
+            A látogatók a foglalás gombra kattintva átirányításra kerülnek a Salonic weboldalára.
+          </p>
+          <p>
+            A Salonic az ott megadott személyes adatokat saját adatvédelmi szabályzata szerint kezeli.
+            Kérjük, az adatmegadás előtt tekintse meg a következő oldalt: <br/>
+            <a href="https://www.salonic.hu/adatvedelem" target="_blank" rel="noreferrer">https://www.salonic.hu/adatvedelem</a>
+          </p>
 
-          <li>
-            <label>Adatfeldolgozók, adattovábbítás</label>
-            <p>
-              Az adatkezelést kizárólag én, Kirilla Réka Alexandra egyéni vállalkozó végzem. Nincs más adatkezelő bevonva.
-              Adatfeldolgozóként kizárólag a Salonic Kft. működik közre az időpontfoglalás technikai lebonyolításában. A Salonic (székhely: 1149 Budapest, Angol utca 34., cégjegyzékszám: 01-09-208470) által üzemeltetett rendszerben a megadott adatok (pl. név, elérhetőség, időpont) rögzítésre kerülnek. A Salonic kizárólag technikai szolgáltatóként működik közre, saját célra adatot nem kezel, és az adatokkal a saját adatvédelmi szabályzatának megfelelően jár el.
-              Személyes adatok harmadik országba (az Európai Unión kívülre) nem kerülnek továbbításra.
-            </p>
-          </li>
+          <h3>4. Külső szolgáltatók és sütik (cookie-k)</h3>
+          <ul>
+            <li>
+              <strong>Google Maps:</strong> A rendelő elhelyezkedésének megjelenítésére beágyazott Google Térkép
+              szolgál,
+              amely adatokat gyűjthet (pl. IP-cím, böngésző, helyadat).
+              <br/>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google adatvédelmi irányelvek</a>
+            </li>
+            <li>
+              <strong>Cloudinary:</strong> A képek a Cloudinary CDN segítségével töltődnek be,
+              amely statisztikai és technikai adatokat gyűjthet.
+              <br/>
+              <a href="https://cloudinary.com/privacy" target="_blank" rel="noreferrer">Cloudinary adatvédelmi tájékoztató</a>
+            </li>
+            <li>
+              <strong>Sütik:</strong> A weboldal technikai működéséhez szükséges sütiket alkalmaz.
+              A külső szolgáltatások szintén használhatnak sütiket, amelyek csak hozzájárulás után aktiválódnak.
+            </li>
+          </ul>
 
-          <li>
-            <label>Az érintetti jogok</label>
-            <p>A személyes adatokkal kapcsolatban az alábbi jogok illetik meg az érintettet:</p>
-            <ul>
-              <li>Hozzáférési jog: Tájékoztatást kérhet arról, hogy milyen adatokat kezelek, és milyen célból.</li>
-              <li>Helyesbítéshez való jog: Kérheti az adatok módosítását, ha azok pontatlanok.</li>
-              <li>Törléshez való jog: Kérheti az adatok törlését, amennyiben azok kezelése már nem szükséges.</li>
-              <li>Korlátozáshoz való jog: Kérheti az adatkezelés korlátozását meghatározott esetekben.</li>
-              <li>Adathordozhatósághoz való jog: Jogosult arra, hogy az általa megadott adatokat strukturált, géppel olvasható formátumban megkapja.</li>
-              <li>Tiltakozás joga: Jogos érdeken alapuló adatkezelés esetén tiltakozhat a kezelés ellen.</li>
-            </ul>
-            <p>
-              Amennyiben az adatkezeléssel kapcsolatban panasz merül fel, az érintett a következő hatósághoz fordulhat:
-              <p>
-                Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)<br/>
-                Cím: 1055 Budapest, Falk Miksa utca 9-11.<br/>
-                Weboldal: https://naih.hu<br/>
-                Telefon: +36 (1) 391-1400<br/>
-                E-mail: ugyfelszolgalat@naih.hu
-              </p>
-            </p>
-          </li>
-        </ol>
+          <h3>5. Az adatkezelés jogalapja</h3>
+          <p>
+            A weboldalon közvetlen személyes adatkezelés nem történik.
+            A külső szolgáltatók saját jogalapjuk alapján kezelik az adatokat (pl. hozzájárulás, jogos érdek).
+          </p>
+
+          <h3>6. Az érintettek jogai</h3>
+          <p>
+            Mivel a weboldal nem kezel személyes adatokat, a GDPR szerinti érintetti jogok (pl. hozzáférés, törlés) csak
+            a külső szolgáltatók esetében értelmezhetők.
+            Kérjük, forduljon közvetlenül az adott szolgáltatóhoz (pl. Salonic).
+          </p>
+
+          <h3>7. Hatósági jogorvoslat</h3>
+          <p>Jogsérelem esetén az alábbi hatósághoz fordulhat:</p>
+          <ul>
+            <li><strong>Név:</strong> Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)</li>
+            <li><strong>Web:</strong> <a href="https://naih.hu" target="_blank" rel="noreferrer">https://naih.hu</a></li>
+            <li><strong>Cím:</strong> 1055 Budapest, Falk Miksa utca 9–11.</li>
+            <li><strong>Telefon:</strong> +36 (1) 391-1400</li>
+            <li><strong>E-mail:</strong> ugyfelszolgalat@naih.hu</li>
+          </ul>
+
+          <h3>8. Kapcsolat</h3>
+          <p>
+            Ha kérdése van a weboldal működésével vagy sütikkel kapcsolatban, kérjük, vegye fel velünk a
+            kapcsolatot:<br/>
+            <strong>E-mail:</strong> <a href="mailto:kirillaphysio@gmail.com">kirillaphysio@gmail.com</a><br/>
+            <strong>Telefon:</strong> <a href="tel:+36202668447">+36 20 266 8447</a>
+          </p>
+        </section>
       </div>
     </>
   );

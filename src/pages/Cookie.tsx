@@ -1,5 +1,4 @@
 import React from 'react';
-import "../styles/orderedList.scss"
 
 const Programs: React.FC = () => {
   return (
@@ -45,8 +44,8 @@ const Programs: React.FC = () => {
         <h3>A sütik kezelése</h3>
         <p>Böngészője beállításaiban bármikor letilthatja vagy törölheti a sütiket. A részletekért kérjük, olvassa el a böngésző súgóját.</p>
 
-        <p>További információt a Google sütikről itt talál: <a href="https://policies.google.com/technologies/cookies" target="_blank">https://policies.google.com/technologies/cookies</a></p>
-        <p>A Cloudinary adatvédelmi nyilatkozata elérhető itt: <a href="https://cloudinary.com/privacy" target="_blank">https://cloudinary.com/privacy</a></p>
+        <p>További információt a Google sütikről itt talál: <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noreferrer">https://policies.google.com/technologies/cookies</a></p>
+        <p>A Cloudinary adatvédelmi nyilatkozata elérhető itt: <a href="https://cloudinary.com/privacy" target="_blank" rel="noreferrer">https://cloudinary.com/privacy</a></p>
       </div>
     </>
   );
