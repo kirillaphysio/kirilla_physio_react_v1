@@ -21,7 +21,7 @@ const LandingPage: React.FC = () => {
   return (
     <>
       <title>Kirilla Réka gyógytornász-fizioterapeuta</title>
-      <link rel="canonical" href="http://www.kirillareka.hu"/>
+      <link rel="canonical" href="https://www.kirillareka.hu"/>
       <meta name="description" content="Kirilla Réka gyógytornász-fizioterapeuta honlapjának kezdőoldala, ahol többek közt tájékozódhatsz Réka szakmai múltjáról, végzettségeiről és betekintést kaphatsz a honlap további tartalmába.
       Gyógytornász, gyógytorna, manuálterápia, manuális terápia, derékfájás, derékfájdalom, nyakfájás, nyakfájdalom, vállfájdalom, könyökfájdalom, teniszkönyök, golfkönyök, csuklófájdalom, csípőfájdalom, térdfájás, sarkanytú, bokaficam,
       rehabilitáció, mozgásterápia, holisztikus szemléletmód, porckorongsérv, gerincsérv, becsípődés, húzódás, sérülés, baba projekt, sibo, petefészek ciszta, alternatív terápia, sibo, puffadás,
@@ -30,7 +30,7 @@ const LandingPage: React.FC = () => {
       <meta property="og:title" content="Kirilla Réka gyógytornász-fizioterapeuta"/>
       <meta property="og:description" content="Kirilla Réka gyógytornász-fizioterapeuta honlapjának kezdőoldala, ahol többek közt tájékozódhatsz Réka szakmai múltjáról, végzettségeiről és betekintést kaphatsz a honlap további tartalmába."/>
       <meta property="og:image" content="https://res.cloudinary.com/dcwv2corw/image/upload/v1744007836/egye%CC%81ni_kezele%CC%81s_wkmddy.jpg"/>
-      <meta property="og:url" content="http://www.kirillareka.hu"/>
+      <meta property="og:url" content="https://www.kirillareka.hu"/>
       <meta property="og:type" content="website"/>
 
       <div className="landing-page">
