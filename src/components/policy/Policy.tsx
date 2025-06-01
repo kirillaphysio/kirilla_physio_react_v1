@@ -4,9 +4,9 @@ import {NavLink} from "react-router";
 const Policy = () => {
   return (
     <div className={"policy"}>
-      <NavLink to={"/aszf"}>Ászf</NavLink>
-      <NavLink to={"/aszf"}>Adatkezelési tájékoztató</NavLink>
-      <NavLink to={"/aszf"}>Cookie nyilatkozat</NavLink>
+      <NavLink to={"/terms"}>Ászf</NavLink>
+      <NavLink to={"/dpn"}>Adatkezelési tájékoztató</NavLink>
+      <NavLink to={"/cookie"}>Cookie nyilatkozat</NavLink>
     </div>
   );
 };
