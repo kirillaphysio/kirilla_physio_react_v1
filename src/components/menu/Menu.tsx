@@ -7,7 +7,7 @@ import {NavLink, useLocation} from "react-router";
 
 const items= [
   { id: 1, label: 'Kezdőlap', href: '/' },
-  { id: 3, label: 'Online programok', href: '/online-programs' },
+  { id: 3, label: 'Online programok', href: 'https://oktatas.kirillareka.hu/' },
   { id: 4, label: 'Egyéni kezelések', href: '/individual-treatments' },
   { id: 2, label: 'Kapcsolat', href: '/contacts' },
 ];

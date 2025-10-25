@@ -65,7 +65,7 @@ const Treatments: React.FC = () => {
           <h4>Időpont foglalás</h4>
 
           <p className="with-gap">Állapotfelmérésre és az ezt követő komplex egyéni kezelésre itt tudsz bejelentkezni hozzám</p>
-          <a href="https://kirillareka.salonic.hu/" target="_blank" rel="noreferrer" className="cta-button">Bejelentkezés</a>
+          <a href="https://kirillareka.salonic.hu/" target="_blank" rel="noreferrer" className="cta-button lg">Időpontot foglalok</a>
         </section>
 
         <section ref={helpRef} className="hero-section">

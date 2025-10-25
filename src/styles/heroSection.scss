@@ -82,7 +82,10 @@
 
     .cta-button {
       padding: 12px 24px; // Kisebb gomb mobilon
-      font-size: 14px; // Kisebb gomb szöveg
+
+      &:not(.lg) {
+        font-size: 14px; // Kisebb gomb szöveg
+      }
     }
   }
 }
@@ -102,7 +105,10 @@
 
     .cta-button {
       padding: 10px 20px; // Még kisebb gomb
-      font-size: 12px; // Még kisebb gomb szöveg
+
+      &:not(.lg) {
+        font-size: 12px; // Még kisebb gomb szöveg
+      }
     }
   }
 }
