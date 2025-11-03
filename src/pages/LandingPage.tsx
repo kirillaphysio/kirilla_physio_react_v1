@@ -60,7 +60,7 @@ const LandingPage: React.FC = () => {
               </div>
               <span className="link">Tovább az egyéni kezelésekhez</span>
             </NavLink>
-            <NavLink className="card" to={'/online-programs'}>
+            <NavLink className="card" to={'https://oktatas.kirillareka.hu/'}>
               <FontAwesomeIcon icon={faHouse}/>
               <h3>Online programok</h3>
               <div>Az otthonodból is könnyedén elvégezhető, szakszerűen felépített programok</div>
