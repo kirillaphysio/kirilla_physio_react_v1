@@ -1,7 +1,7 @@
 import React from 'react';
 import "./ContactsPage.scss"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEnvelope, faMapLocationDot, faPhone} from "@fortawesome/free-solid-svg-icons";
+import {faEnvelope, faMapLocationDot} from "@fortawesome/free-solid-svg-icons";
 import {isMobile} from "react-device-detect";
 
 const Contacts: React.FC = () => {
