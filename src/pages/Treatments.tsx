@@ -150,7 +150,7 @@ const Treatments: React.FC = () => {
           <h4>Szabályzat</h4>
 
           <h5>Lemondási feltételek</h5>
-          <p className="justified">Az időpontod lemondását, vagy másik napra módosítását legkésőbb az eredeti időpont előtt 24 órával tudom elfogadni. Kérlek minél hamarabb szólj, hogy legyen lehetőségem másnak átadni a helyed! (Itt tudsz szólni: e-mailben kirillaphysio@gmail.com, vagy telefonon +26202668447)</p>
+          <p className="justified">Az időpontod lemondását, vagy másik napra módosítását legkésőbb az eredeti időpont előtt 24 órával tudom elfogadni. Kérlek minél hamarabb szólj, hogy legyen lehetőségem másnak átadni a helyed! (Itt tudsz szólni: e-mailben kirillaphysio@gmail.com)</p>
           <p className="justified">24 órán belüli időpont lemondás (vagy másik napra módosítás) esetén a kezelés díját 3 napon belül szükséges megtéríteni. (Ez akkor is érvenyes, ha egyáltalán nem szólsz, de nem jelensz meg az időpontodon.)</p>
           <p className="justified">Köszönöm szépen, hogy tiszteletben tartod a munkámat és az időmet!</p>
 
