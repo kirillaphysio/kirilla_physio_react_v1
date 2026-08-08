@@ -1,1 +1,15 @@
-<p>TODO(step 6): port page content from the React app's src/pages/Therapy.tsx.</p>
+@if (therapy(); as t) {
+  <section class="hero-section therapy">
+    <h1>{{ t.title }}</h1>
+    <h2>{{ t.short }}</h2>
+    <app-cloudinary-image [imageId]="t.imageId" [width]="imageSize" [height]="imageSize" />
+    <p class="justified" [innerHTML]="sanitizedLong()"></p>
+  </section>
+} @else {
+  <div>Sajnálom, ez a terápia valamiért nem található, válaszd ki az általad keresettet a lentebbi listából!</div>
+}
+
+<section class="hero-section others">
+  <h1>További kezelések</h1>
+  <app-therapy-list [selectedTherapyId]="therapy()?.id" />
+</section>

@@ -1,0 +1,7 @@
+<h5 (click)="toggle()" role="button" tabindex="0" (keydown.enter)="toggle()" [attr.aria-expanded]="expanded()">
+  <fa-icon [icon]="faChevronDown" [class.expanded]="expanded()" [class.collapsed]="!expanded()" />
+  {{ entry().question }}
+</h5>
+<section class="collapse" [class.expanded]="expanded()">
+  <div class="content">{{ entry().answer }}</div>
+</section>

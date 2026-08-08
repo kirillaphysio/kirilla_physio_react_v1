@@ -1,13 +1,21 @@
 import { Component, computed, effect, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import DOMPurify from 'dompurify';
 import { map } from 'rxjs';
 import { SeoService } from '../../core/seo.service';
 import { therapies } from '../../data/therapy';
+import { CloudinaryImage } from '../../shared/cloudinary-image/cloudinary-image';
+import { TherapyList } from '../../shared/therapy-list/therapy-list';
+
+// Matches the React version's MAX_IMAGE_SIZE for this page. Same static-size simplification as
+// TherapyCard (see its comment) in place of the original's ResizeObserver-based measurement.
+const IMAGE_SIZE = 500;
 
 @Component({
   selector: 'app-therapy-page',
-  imports: [],
+  imports: [CloudinaryImage, TherapyList],
   templateUrl: './therapy-page.html',
   styleUrl: './therapy-page.scss',
   host: { class: 'therapy-page' },
@@ -15,6 +23,7 @@ import { therapies } from '../../data/therapy';
 export class TherapyPage {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SeoService);
+  private readonly sanitizer = inject(DomSanitizer);
 
   // Signal instead of the React version's useParams()/useMemo — recomputes when the route param
   // changes without the component being recreated (navigating from one /therapy/:id to another).
@@ -23,6 +32,16 @@ export class TherapyPage {
   });
 
   protected readonly therapy = computed(() => therapies.find((t) => t.id === this.therapyId()));
+  protected readonly imageSize = IMAGE_SIZE;
+
+  // DOMPurify.sanitize + DomSanitizer.bypassSecurityTrustHtml, same combination the plan called
+  // for: DOMPurify does the actual sanitizing (therapy.long contains hand-authored <strong> tags,
+  // same static data Angular itself would otherwise escape), then Angular is told the
+  // *already-sanitized* result is safe to render via [innerHTML].
+  protected readonly sanitizedLong = computed<SafeHtml | null>(() => {
+    const therapy = this.therapy();
+    return therapy ? this.sanitizer.bypassSecurityTrustHtml(DOMPurify.sanitize(therapy.long)) : null;
+  });
 
   constructor() {
     effect(() => {

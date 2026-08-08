@@ -4,6 +4,7 @@ import { Router, provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 
 import { routes } from './app.routes';
+import { stubMatchMedia } from '../testing/stub-match-media';
 import { LandingPage } from './pages/landing-page/landing-page';
 import { Contacts } from './pages/contacts/contacts';
 import { Programs } from './pages/programs/programs';
@@ -15,9 +16,14 @@ import { Cookie } from './pages/cookie/cookie';
 
 describe('app routes', () => {
   beforeEach(() => {
+    stubMatchMedia(false); // Contacts injects ViewportService, which reads matchMedia eagerly.
     TestBed.configureTestingModule({
       providers: [provideRouter(routes), provideCloudinaryLoader('https://res.cloudinary.com/dcwv2corw')],
     });
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
   });
 
   it.each([

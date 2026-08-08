@@ -1,40 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { MOBILE_MEDIA_QUERY } from './breakpoints';
+import { stubMatchMedia } from '../../testing/stub-match-media';
 import { ViewportService } from './viewport.service';
-
-type ChangeListener = (event: MediaQueryListEvent) => void;
-
-/** jsdom doesn't implement matchMedia — stub it so the service can be exercised in tests. */
-function stubMatchMedia(initialMatches: boolean) {
-  let matches = initialMatches;
-  const listeners: ChangeListener[] = [];
-
-  const mediaQueryList = {
-    get matches() {
-      return matches;
-    },
-    media: MOBILE_MEDIA_QUERY,
-    onchange: null,
-    addEventListener: (_type: string, listener: ChangeListener) => listeners.push(listener),
-    removeEventListener: (_type: string, listener: ChangeListener) => {
-      const index = listeners.indexOf(listener);
-      if (index >= 0) listeners.splice(index, 1);
-    },
-    dispatchEvent: () => true,
-    addListener: () => {},
-    removeListener: () => {},
-  } as unknown as MediaQueryList;
-
-  vi.stubGlobal('matchMedia', vi.fn().mockReturnValue(mediaQueryList));
-
-  return {
-    listenerCount: () => listeners.length,
-    emit(newMatches: boolean) {
-      matches = newMatches;
-      listeners.forEach((listener) => listener({ matches: newMatches } as MediaQueryListEvent));
-    },
-  };
-}
 
 describe('ViewportService', () => {
   afterEach(() => {

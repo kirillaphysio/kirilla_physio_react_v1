@@ -87,8 +87,60 @@ promoted to repo root at that point is a decision for when we get there.
       intentional). `ng build`/`ng test` clean (74 tests, 20 files, including a routing
       integration spec that exercises every real route + the redirect via
       `RouterTestingHarness`). Lazy chunks confirmed per-route in the production build.
-- [ ] Step 6 — page migrations
-- [ ] Step 7 — FAQ accordion / TherapyList/TherapyCard
+- [x] Step 6 — all 8 pages migrated to real content, folded together with step 7 (below) out of
+      necessity: Treatments/TherapyPage need TherapyList/TherapyCard/Faq to be anything more than
+      a stub, so those shared components got built here rather than waiting.
+
+      **Important discovery, not a decision:** the React source's `src/pages/Treatments.tsx` no
+      longer contains the MailerLite waitlist-signup embed that was present (and fully documented
+      in this plan and in memory) when the original analysis was done at the start of this
+      migration. Re-reading the file directly before porting it found it materially different —
+      confirmed via `git diff --stat` showing **no** uncommitted changes against HEAD, i.e. this
+      is the real, committed, current React page, not a stale read. The embed must have been
+      removed from the React app (by the user, outside this migration) at some point after the
+      original analysis. The Angular Treatments page was built to match the *current* React
+      source — no MailerLite embed. **This means the whole "isolate the MailerLite embed, inject
+      its `<script>` tags via Renderer2" sub-plan from steps 4–7 is now moot** — flagging clearly
+      rather than silently dropping it. If the embed is still wanted, it needs to be re-added to
+      the React source (or specified fresh) and ported as a new, separate piece of work.
+
+      Static pages (Cookie, Privacy, Terms) ported near-verbatim. `Terms` reuses
+      `styles/orderedList.scss` via `@use` (scoped to the component now, vs. truly global in
+      React — an improvement, not a behavior change, since only this page ever had an `<ol>`).
+      `Contacts` uses `ViewportService` for the one real DOM-omission case (Maps iframe absent
+      entirely on mobile). `Programs` uses a plain `<img>` for `under-construction.jpg` (not
+      `NgOptimizedImage`/`CloudinaryImage` — it's a local asset, not Cloudinary-hosted, and would
+      otherwise incorrectly route through the global `provideCloudinaryLoader`).
+
+      `LandingPage` and `Treatments` both needed a testimonial swiper — built once as a shared
+      `TestimonialCarousel` (Swiper web component wrapper) instead of duplicating the React
+      version's copy-pasted setup. `TherapyPage` sanitizes `therapy.long` with
+      `DOMPurify.sanitize()` + `DomSanitizer.bypassSecurityTrustHtml()` for `[innerHTML]`, and
+      resolves reactively via `toSignal`+`computed`+`effect` off the route param.
+
+      `TherapyCard`/`TherapyList`: dropped the React version's `useMeasure` (ResizeObserver)
+      image-sizing in favor of a fixed fetch size (300px card / 500px detail page, matching the
+      original's `MAX_IMAGE_SIZE` constants) plus CSS `max-width` for true responsive display
+      sizing — documented trade-off, not the `@media (hover: hover)` approach floated in the
+      original plan (that turned out not to fit: the original's click-to-reveal is gated on
+      screen space, not hover capability). Since Angular's view encapsulation blocks a parent's
+      stylesheet from reaching into a child component's internal DOM by design, cross-component
+      sizing/tinting (`CloudinaryImage`'s width/max-width, `TherapyCard`'s description-background
+      retint on the "further therapies" list) is done via CSS custom properties set on the child's
+      *host* element from the parent's own scope — inheritance crosses that boundary even though
+      selectors can't. `[style.aspect-ratio]` on `CloudinaryImage`'s `<img>` keeps it square as it
+      resizes, while leaving CSS's default `object-fit: fill` in place so mismatched-aspect source
+      images still stretch exactly as they did in the original (no `object-fit: cover` "fix").
+
+      Two more content bugs fixed while porting (same treatment as step 5's: fixed, disclosed
+      inline, not silently changed): both un-suffixed and desktop-only `.mobile` CSS classes that
+      several components carried but had **no matching CSS rule at all** (dead weight from the
+      React version — `FaqItem`, `TherapyCard`'s root, `TherapyList`) were dropped rather than
+      ported, confirmed dead by grepping each corresponding `.scss` file before dropping.
+
+      `ng build`/`ng test` clean (104 tests, 25 files). Every page has its own lazy chunk in the
+      production build.
+- [x] Step 7 — done together with step 6 above (dependency ordering — see that entry).
 - [ ] Step 8 — cookie-consent banner
 - [ ] Step 9 — mobile-first CSS pass
 - [ ] Step 10 — QA (Playwright comparison)
@@ -155,17 +207,12 @@ promoted to repo root at that point is a decision for when we get there.
 5. Wire routing: all 8 routes (`/`, `/contacts`, `/online-programs`, `/individual-treatments`,
    `/therapy/:therapyId`, `/terms`, `/privacy`, `/cookie`) + wildcard redirect-to-home, per-route
    `Title`/`Meta`, scroll-to-top on navigation.
-6. Migrate pages, easiest → hardest:
-   - Cookie, Privacy, Terms (static legal text)
-   - Contacts (maps iframe + mailto)
-   - Programs (placeholder)
-   - LandingPage (hero sections, testimonial swiper, qualifications list)
-   - Therapy detail (dynamic route param, DOMPurify-sanitized HTML body, TherapyList)
-   - Treatments (in-page anchor nav/scroll, 2 testimonial swipers, FAQ accordion, TherapyList,
-     pricing/policy sections, and the MailerLite embed last as its own isolated sub-step — it needs
-     manual `<script>` injection via `Renderer2` since Angular strips `<script>` from bound HTML)
-7. Build the FAQ accordion (CSS-grid `0fr`→`1fr` collapse, no animation library dependency needed)
-   and TherapyList/TherapyCard (hover-media-query description reveal).
+6. ~~Migrate pages~~ **Done, folded together with step 7** — see the Progress entry above,
+   including the MailerLite-embed discovery (it's no longer in the React source; not ported).
+7. ~~Build the FAQ accordion / TherapyList/TherapyCard~~ **Done as part of step 6** — the accordion
+   ended up as a CSS-grid `0fr`→`1fr` collapse (no animation library); TherapyCard's description
+   reveal is click-toggle gated by CSS breakpoint (not the hover-media-query floated below —
+   that didn't fit the original's actual behavior, see Progress above).
 8. Build a custom cookie-consent banner matching the current copy/behavior (no Angular port of
    `react-cookie-manager` exists).
 9. Mobile-first CSS pass across every component, verified at real breakpoints.

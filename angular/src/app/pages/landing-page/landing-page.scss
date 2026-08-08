@@ -1,0 +1,87 @@
+@use '../../../styles/heroSection';
+@use '../../../styles/colors';
+@use '../../../styles/breakpoints' as bp;
+
+.profile-image {
+  border-radius: 16px;
+}
+
+.whyme {
+  padding-left: 0;
+
+  // Desktop: centered flex column. Mobile baseline: plain block list, left-aligned (via li's own
+  // text-align below) — inverted from the React version's `&:not(.mobile)` (desktop-only) rule.
+  @include bp.desktop-up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  li {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+
+    fa-icon {
+      margin-right: 16px;
+    }
+  }
+}
+
+.qualifications {
+  padding-left: 0;
+
+  // Desktop: two columns. Mobile baseline: single column — same inversion as .whyme above.
+  @include bp.desktop-up {
+    column-count: 2;
+  }
+
+  li {
+    text-align: left;
+    margin: 0 8px;
+    padding-left: 8px;
+    list-style-type: '\2014';
+    break-inside: avoid;
+  }
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include bp.desktop-up {
+    flex-direction: row;
+  }
+
+  .card {
+    $margin: 16px;
+    margin: $margin;
+    width: 100%;
+    width: calc(335px - 2 * $margin);
+    height: calc(335px - 2 * $margin);
+    border-radius: $margin;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: colors.$font-color-primary;
+    background-color: colors.$palette-primary-o90;
+
+    &:hover {
+      background-color: colors.$palette-primary;
+    }
+
+    fa-icon {
+      height: 2em;
+    }
+
+    .link {
+      text-decoration: underline;
+      margin: 32px 0;
+    }
+  }
+}

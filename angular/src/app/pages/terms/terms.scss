@@ -1,0 +1,4 @@
+// Ported from the React app's styles/orderedList.scss (imported there as a global side-effect
+// import, since only this page uses <ol>; @use-ing it here achieves the same numbering, scoped
+// to this component instead of leaking globally — a strict improvement, not a behavior change).
+@use '../../../styles/orderedList';

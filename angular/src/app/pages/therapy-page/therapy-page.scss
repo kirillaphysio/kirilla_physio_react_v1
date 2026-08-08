@@ -1,0 +1,26 @@
+@use '../../../styles/colors';
+@use '../../../styles/heroSection';
+
+.therapy {
+  h2 {
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+
+  p {
+    white-space: pre-wrap;
+  }
+}
+
+.others {
+  h1 {
+    color: colors.$palette-primary;
+  }
+
+  app-therapy-list {
+    color: colors.$palette-neutral;
+    // See therapy-card.scss — crosses the encapsulation boundary to retint the "further
+    // therapies" cards' description overlay differently from their default.
+    --therapy-card-description-background: #{colors.$palette-secondary-4-o70};
+  }
+}

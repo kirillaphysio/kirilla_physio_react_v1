@@ -63,6 +63,12 @@ describe('CloudinaryImage', () => {
     expect(img.getAttribute('fetchpriority')).toBe('high');
   });
 
+  it('locks the aspect-ratio to width/height, so callers overriding --cloudinary-image-width stay proportional', async () => {
+    const img = await createImage({ imageId: 'sample-image_abc123', width: 200, height: 150 });
+
+    expect(img.style.aspectRatio).toBe('200 / 150');
+  });
+
   it('falls back to a placehold.co image, sized to the configured width, on load error', async () => {
     const img = await createImage({ imageId: 'sample-image_abc123', width: 200, height: 150 });
 

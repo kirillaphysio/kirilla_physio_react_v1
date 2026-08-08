@@ -1,0 +1,106 @@
+@use '../../../styles/colors';
+@use '../../../styles/breakpoints' as bp;
+
+:host {
+  display: block;
+  width: 100%;
+  margin: 16px 0;
+
+  &:nth-child(even) .content {
+    flex-direction: row-reverse;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 32px;
+    font-size: 20px;
+
+    background-color: colors.$palette-secondary-3;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+
+  .content {
+    position: relative;
+    display: flex;
+
+    // See cloudinary-image.scss — these custom properties cross the encapsulation boundary into
+    // its <img>, where plain selectors couldn't reach. Fill the card's width responsively;
+    // desktop caps at IMAGE_SIZE (300px, matching the fetched size), mobile has no cap. The
+    // image's own [style.aspect-ratio] keeps it square as it scales either way.
+    app-cloudinary-image {
+      --cloudinary-image-width: 100%;
+      --cloudinary-image-max-width: 300px;
+
+      @include bp.mobile-only {
+        --cloudinary-image-max-width: none;
+      }
+    }
+
+    .info-icon {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+
+      font-size: 32px;
+      opacity: 0.9;
+      z-index: 3;
+
+      @include bp.desktop-up {
+        display: none;
+      }
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      // Overridable from outside — see the "others" section of therapy-page.scss, which gives
+      // the "further therapies" list a different tint. Same encapsulation-crossing custom
+      // property mechanism as cloudinary-image.scss.
+      background-color: var(--therapy-card-description-background, #{colors.$palette-dark-background-o60});
+
+      // Mobile baseline: overlaid on the image, hidden until tapped (`.visible`).
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+
+      &.visible {
+        opacity: 0.9;
+      }
+
+      // Desktop: permanently visible, laid out inline instead of overlaid — `.visible` (which,
+      // per the click handler above, could in principle still get toggled here) is neutralized
+      // so it can never dim it, matching the React version where the click handler was a no-op
+      // on desktop and this state could never become true there in the first place.
+      @include bp.desktop-up {
+        position: static;
+        opacity: 1;
+        transition: none;
+
+        &.visible {
+          opacity: 1;
+        }
+      }
+
+      .more-btn {
+        font-weight: bold;
+        margin-top: 32px;
+        padding: 16px;
+        cursor: pointer;
+        border: 2px solid colors.$palette-neutral;
+        border-radius: 16px;
+      }
+    }
+  }
+}

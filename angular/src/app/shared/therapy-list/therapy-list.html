@@ -1,0 +1,5 @@
+@for (therapy of therapies; track therapy.id) {
+  @if (therapy.id !== selectedTherapyId()) {
+    <app-therapy-card [therapy]="therapy" />
+  }
+}

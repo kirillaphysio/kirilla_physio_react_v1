@@ -1,9 +1,11 @@
+import { provideCloudinaryLoader } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Meta, Title } from '@angular/platform-browser';
-import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { ActivatedRoute, convertToParamMap, provideRouter } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 import { TherapyPage } from './therapy-page';
+import { therapies } from '../../data/therapy';
 
 describe('TherapyPage', () => {
   let paramMap$: BehaviorSubject<ReturnType<typeof convertToParamMap>>;
@@ -14,7 +16,12 @@ describe('TherapyPage', () => {
 
     await TestBed.configureTestingModule({
       imports: [TherapyPage],
-      providers: [{ provide: ActivatedRoute, useValue: { paramMap: paramMap$ } }],
+      providers: [
+        // provideRouter() registers its own ActivatedRoute — ours must come after to win.
+        provideRouter([]),
+        provideCloudinaryLoader('https://res.cloudinary.com/dcwv2corw'),
+        { provide: ActivatedRoute, useValue: { paramMap: paramMap$ } },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TherapyPage);
@@ -29,6 +36,33 @@ describe('TherapyPage', () => {
   it('exposes the therapy-page class on its host element', async () => {
     await create('gyogytorna');
     expect((fixture.nativeElement as HTMLElement).classList.contains('therapy-page')).toBe(true);
+  });
+
+  it('renders the title, short description and sanitized long description as HTML', async () => {
+    await create('gyogytorna');
+    const el = fixture.nativeElement as HTMLElement;
+
+    expect(el.querySelector('.therapy h1')?.textContent).toBe('Gyógytorna');
+    expect(el.querySelector('.therapy h2')?.textContent).toContain(therapies[0].short);
+    // therapy.long contains hand-authored <strong> tags — confirms it renders as markup, not
+    // escaped text.
+    expect(el.querySelector('.therapy .justified strong')).toBeTruthy();
+  });
+
+  it('shows the not-found message instead of a therapy section for an unknown id', async () => {
+    await create('does-not-exist');
+    const el = fixture.nativeElement as HTMLElement;
+
+    expect(el.querySelector('.therapy')).toBeNull();
+    expect(el.textContent).toContain('nem található');
+  });
+
+  it('lists the other therapies, excluding the one being viewed', async () => {
+    await create('gyogytorna');
+    const cards = (fixture.nativeElement as HTMLElement).querySelectorAll('app-therapy-card');
+
+    expect(cards.length).toBe(therapies.length - 1);
+    expect(Array.from(cards).some((card) => card.textContent?.includes('Gyógytorna'))).toBe(false);
   });
 
   it('resolves the therapy matching the route param and sets its SEO tags', async () => {

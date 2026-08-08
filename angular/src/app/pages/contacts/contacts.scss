@@ -1,0 +1,38 @@
+@use '../../../styles/colors';
+
+.contacts-page {
+  background-color: colors.$palette-secondary-2;
+  color: colors.$palette-neutral;
+
+  .contacts-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+    font-size: 1.3rem;
+    gap: 1rem;
+
+    .link-container {
+      background-color: colors.$palette-secondary-3-o50;
+      border-radius: 0.8rem;
+      padding: 8px;
+
+      &:hover {
+        background-color: colors.$palette-secondary-3;
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+    }
+
+    iframe {
+      margin-top: 8px;
+    }
+
+    fa-icon {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@use '../../../styles/colors';
+@use '../../../styles/breakpoints' as bp;
+
+// Ported from swiper/Swiper.tsx's getSwiperStyle() (now plain CSS custom properties, Swiper's
+// own theming mechanism) and components/opinions/opinions.scss.
+swiper-container {
+  --swiper-navigation-size: 22px;
+  --swiper-navigation-color: #{colors.$palette-neutral};
+  --swiper-pagination-color: #{colors.$palette-neutral};
+  --swiper-pagination-bullet-inactive-color: #{colors.$palette-neutral};
+}
+
+$card-height: 300px;
+$card-padding: 32px;
+
+.opinion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px $card-padding;
+  border-radius: 18px;
+  font-size: 16px;
+  height: $card-height;
+  color: colors.$palette-neutral;
+
+  @include bp.mobile-only {
+    width: calc(100% - 2 * $card-padding) !important;
+  }
+
+  .message {
+    margin-top: 0;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 14;
+    -webkit-box-orient: vertical;
+    white-space: pre-wrap;
+    text-align: start;
+  }
+
+  .author {
+    font-style: italic;
+  }
+}
