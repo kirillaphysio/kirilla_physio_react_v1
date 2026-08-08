@@ -1,23 +1,31 @@
-import { TestBed } from '@angular/core/testing';
+import { provideCloudinaryLoader } from '@angular/common';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+
 import { App } from './app';
 
 describe('App', () => {
+  let fixture: ComponentFixture<App>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
+      providers: [provideRouter([]), provideCloudinaryLoader('https://res.cloudinary.com/dcwv2corw')],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should render title', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, kirilla-physio');
+  it('renders the header, router outlet, back-to-top button and footer in order', () => {
+    const children = Array.from((fixture.nativeElement as HTMLElement).querySelector('.app')!.children).map(
+      (el) => el.tagName.toLowerCase(),
+    );
+
+    expect(children).toEqual(['app-header', 'router-outlet', 'app-back-to-top-button', 'app-footer']);
   });
 });

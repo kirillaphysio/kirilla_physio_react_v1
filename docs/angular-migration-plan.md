@@ -38,7 +38,24 @@ promoted to repo root at that point is a decision for when we get there.
       app shell** (no component injects these yet) — that's step 4, alongside Header/Footer/
       Menu, since it's shell-assembly work, not service-building work. `ng build` and `ng test`
       (14 tests, 4 files) both clean.
-- [ ] Step 4 — shell/shared components
+- [x] Step 4 — shell/shared components built in `angular/src/app/shared/`, each with Vitest
+      specs: `Header`/`Menu` (mobile-first hamburger — always in the DOM, hidden via CSS on
+      desktop instead of conditionally rendered; closes on route navigation), `Footer`/`Social`/
+      `Policy`, `BackToTopButton` (scroll-position signal, mobile-only via CSS), `CloudinaryImage`
+      (wraps `NgOptimizedImage` + the new `provideCloudinaryLoader`, replacing
+      `@cloudinary/react`/`@cloudinary/url-gen` entirely — one fewer dependency; deliberately no
+      `object-fit` since the original didn't resize server-side either, just stretched into a CSS
+      box). Installed `@fortawesome/angular-fontawesome` (+ same icon packs as React) and `swiper`
+      (registered as a web component in `main.ts`, not yet used by any page). Wired
+      `provideCloudinaryLoader` into `app.config.ts`, and assembled the app shell in `app.ts`/
+      `app.html`/`app.scss` (Header/RouterOutlet/BackToTopButton/Footer, `AnalyticsService`
+      force-instantiated via `inject()`) — ported from `App.scss` (not `privacy.scss`, which only
+      styled the old cookie-consent library's button class, moot once step 8 replaces it).
+      Bumped the initial bundle budget in `angular.json` (500kB→700kB warning, 1MB→1.5MB error;
+      gzipped transfer is ~135kB, budgets are on raw size). `ng build`/`ng test` clean (38 tests,
+      11 files). **Known gap, intentional:** `.app > [class$="-page"]` in `app.scss` won't match
+      anything until step 6 gives each routed page component a `host: { class: '...-page' }` —
+      documented inline, not a bug.
 - [ ] Step 5 — routing
 - [ ] Step 6 — page migrations
 - [ ] Step 7 — FAQ accordion / TherapyList/TherapyCard

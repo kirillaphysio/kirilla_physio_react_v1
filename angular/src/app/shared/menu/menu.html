@@ -1,0 +1,30 @@
+<div class="menu">
+  <button
+    type="button"
+    class="hamburger"
+    [class.open]="isOpen()"
+    [attr.aria-expanded]="isOpen()"
+    aria-label="menu"
+    (click)="toggle()"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="menu-nav" [class.open]="isOpen()">
+    <ul class="menu-list" role="menu">
+      @for (item of items; track item.href) {
+        <li role="menuitem">
+          @if (item.external) {
+            <a [href]="item.href">{{ item.label }}</a>
+          } @else {
+            <a [routerLink]="item.href" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: item.href === '/' }">{{
+              item.label
+            }}</a>
+          }
+        </li>
+      }
+    </ul>
+  </nav>
+</div>

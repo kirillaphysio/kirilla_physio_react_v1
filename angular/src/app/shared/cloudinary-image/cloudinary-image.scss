@@ -1,0 +1,5 @@
+// Don't let the host element affect layout — components consuming <app-cloudinary-image> style
+// it as if it were a bare <img>, same as the React AdvancedImage it replaces.
+:host {
+  display: contents;
+}

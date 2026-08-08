@@ -1,0 +1,105 @@
+@use '../../../styles/colors';
+@use '../../../styles/breakpoints' as bp;
+
+// Mobile-first: the hamburger + dropdown nav are the mobile baseline; desktop-up switches to a
+// plain horizontal nav and hides the hamburger. Replaces the React version's isMobile-driven
+// `.mobile` class toggling (see docs/angular-migration-plan.md). The hamburger's look is a
+// from-scratch CSS approximation of the "rounded" hamburger-react icon it replaces — there was
+// no source CSS for it to port, since that came from the library itself.
+
+.menu {
+  margin: 0 -32px;
+
+  @include bp.desktop-up {
+    margin: 0;
+  }
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  margin-left: 20px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  span {
+    display: block;
+    height: 3px;
+    border-radius: 2px;
+    background-color: currentColor;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  &.open {
+    span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+
+  @include bp.desktop-up {
+    display: none;
+  }
+}
+
+.menu-nav {
+  position: absolute;
+  top: 48px;
+  left: -100%;
+  width: 100%;
+  height: calc(100% - 48px);
+  height: -webkit-fill-available;
+  background: white;
+  z-index: 1000;
+  transition: left 0.3s;
+
+  &.open {
+    left: 0;
+  }
+
+  @include bp.desktop-up {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    transition: none;
+  }
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @include bp.desktop-up {
+    display: flex;
+  }
+
+  li {
+    display: flex;
+
+    > * {
+      flex: 1;
+      padding: 10px 20px;
+
+      &.active {
+        background-color: colors.$palette-secondary-3-o50;
+      }
+
+      &:not(.active):hover {
+        background-color: colors.$palette-secondary-3-o20;
+      }
+    }
+  }
+}

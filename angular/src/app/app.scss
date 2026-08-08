@@ -1,0 +1,36 @@
+// Ported from the React app's App.scss. Note: `privacy.scss` (the other global stylesheet the
+// React app imported in App.tsx) was NOT ported — it only styled react-cookie-manager's accept
+// button by its library-specific class name, which is moot once step 8 builds a custom banner.
+.app {
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+
+  // React's version excluded by CSS class (`:not(.back-to-top-button)`, the div IS the
+  // component in React). Angular wraps it in a host element instead, so this excludes by that
+  // host tag name.
+  > *:not(app-back-to-top-button) {
+    width: fit-content;
+    width: -webkit-fill-available;
+    max-width: 1024px;
+    margin: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  // Relies on each routed page component exposing its own `-page` class on its *host* element
+  // (via `host: { class: '...' }` in the @Component decorator) — done page-by-page in step 6.
+  > [class$='-page'] {
+    flex: 1;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+}
