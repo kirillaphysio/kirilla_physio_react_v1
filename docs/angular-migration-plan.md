@@ -141,7 +141,32 @@ promoted to repo root at that point is a decision for when we get there.
       `ng build`/`ng test` clean (104 tests, 25 files). Every page has its own lazy chunk in the
       production build.
 - [x] Step 7 — done together with step 6 above (dependency ordering — see that entry).
-- [ ] Step 8 — cookie-consent banner
+- [x] Step 8 — `shared/cookie-consent/` built from scratch (no Angular port of `react-cookie-manager`
+      exists — it's a hosted/SaaS-backed library). Ported: site-wide banner (Elfogadom/Elutasítom +
+      a link to `/privacy`), and a "reopen" button surfaced only on the `/privacy` page — same
+      condition as the React version's `enableFloatingButton={location.pathname === "/privacy"}`.
+      Choice persisted in `localStorage` (not an actual cookie — a deliberate, harmless naming
+      irony; no functional reason it needed to be one).
+
+      **Two disclosed simplifications/observations, not silent:**
+      1. The original's floating button opened a 4-category manage modal (essential/analytics/
+         social/advertising). Essential is always-on, and this site doesn't actually set its own
+         social/advertising cookies — the only real toggle was ever analytics. "Reopen" here just
+         re-shows the same accept/decline choice instead of rebuilding that modal; functionally
+         equivalent for this site, less UI to maintain.
+      2. **The consent choice is decorative, matching the original exactly** — it does not block
+         `gtag.js` (loaded unconditionally in `index.html`) or `AnalyticsService`'s tracking
+         (fires on every navigation regardless of choice). This was already true of the React
+         app — the GA script tag and `AnalyticsWrapper.tsx` never checked consent either — so this
+         preserves existing behavior rather than introducing a gap. Flagging clearly since it's a
+         compliance-relevant point worth a deliberate decision, not something to fix unprompted:
+         real consent-gating (e.g. delaying `AnalyticsService`'s subscription until accepted) would
+         be a small, contained follow-up if wanted.
+
+      Wired into `app.html` as a sibling after `<app-footer>` (its own rendered content is either
+      nothing or `position: fixed`, so placement in the DOM order doesn't matter visually).
+      `ng build`/`ng test` clean (113 tests, 26 files).
+- [ ] Step 9 — mobile-first CSS pass
 - [ ] Step 9 — mobile-first CSS pass
 - [ ] Step 10 — QA (Playwright comparison)
 - [ ] Step 11 — deployment
@@ -162,12 +187,14 @@ promoted to repo root at that point is a decision for when we get there.
   - The Contacts page's Google Maps iframe (currently omitted from the DOM on mobile, not just
     hidden) needs real DOM-level conditional rendering, so it uses a viewport-width signal
     (`matchMedia` / CDK `BreakpointObserver`) — never UA sniffing.
-  - TherapyCard's "click to reveal description" is a hover-capability question, not a screen-size
-    one → `@media (hover: hover)` / `(hover: none)`, not a breakpoint.
-- **No auth/login** — the only form-like element is the MailerLite newsletter embed. No
-  `CanActivate` guards. The only routing safeguard is a wildcard redirect to home:
-  `{ path: '**', redirectTo: '' }` (this also fixes the current React app's dead catch-all route,
-  which never actually matches because it's missing `path="*"`).
+  - ~~TherapyCard's "click to reveal description" is a hover-capability question~~ — turned out
+    not to fit once built (it's gated on screen space, not hover capability); ended up as
+    click-toggle + CSS breakpoint gating instead. See step 6/7 in Progress.
+- **No auth/login.** No `CanActivate` guards. The only routing safeguard is a wildcard redirect to
+  home: `{ path: '**', redirectTo: '' }` (this also fixes the current React app's dead catch-all
+  route, which never actually matches because it's missing `path="*"`). Note: this bullet
+  originally also cited "the MailerLite newsletter embed" as the only form-like element — that
+  embed is no longer even in the React source, see step 6's Progress entry.
 - **Images**: Angular's built-in `NgOptimizedImage` (`ngSrc`) with the first-party
   `provideCloudinaryLoader` (cloud name `dcwv2corw`), replacing the manual
   `@cloudinary/react`/`@cloudinary/url-gen` wrapper. Keep the existing `(error)` → placehold.co
@@ -213,8 +240,8 @@ promoted to repo root at that point is a decision for when we get there.
    ended up as a CSS-grid `0fr`→`1fr` collapse (no animation library); TherapyCard's description
    reveal is click-toggle gated by CSS breakpoint (not the hover-media-query floated below —
    that didn't fit the original's actual behavior, see Progress above).
-8. Build a custom cookie-consent banner matching the current copy/behavior (no Angular port of
-   `react-cookie-manager` exists).
+8. ~~Build a custom cookie-consent banner~~ **Done** — see the Progress entry above, including the
+   disclosed simplifications and the "decorative, doesn't gate analytics" observation.
 9. Mobile-first CSS pass across every component, verified at real breakpoints.
 10. QA: Playwright screenshot comparison per route/breakpoint against the live React site, verify
     GA firing, all outbound/mailto links, Cloudinary fallback, MailerLite form actually submits.

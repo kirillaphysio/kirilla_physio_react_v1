@@ -21,11 +21,17 @@ describe('App', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('renders the header, router outlet, back-to-top button and footer in order', () => {
+  it('renders the header, router outlet, back-to-top button, footer and cookie consent banner in order', () => {
     const children = Array.from((fixture.nativeElement as HTMLElement).querySelector('.app')!.children).map(
       (el) => el.tagName.toLowerCase(),
     );
 
-    expect(children).toEqual(['app-header', 'router-outlet', 'app-back-to-top-button', 'app-footer']);
+    expect(children).toEqual([
+      'app-header',
+      'router-outlet',
+      'app-back-to-top-button',
+      'app-footer',
+      'app-cookie-consent',
+    ]);
   });
 });
