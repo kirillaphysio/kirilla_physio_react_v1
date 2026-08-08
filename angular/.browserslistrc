@@ -1,0 +1,17 @@
+# This file is used by the build system to adjust CSS and JS output to support the specified browsers.
+# For additional information regarding the format and rule options, please see:
+# https://github.com/browserslist/browserslist#queries
+
+# Angular's own recommended defaults — replaces the implicit browserslist fallback that was
+# pulling in ancient/unsupported browser versions Angular's build already doesn't target,
+# producing a build-time warning on every `ng build`/`ng test` since step 1. Roughly matches the
+# spirit of the React app's own `production` browserslist entry (broad modern coverage, excludes
+# dead browsers) without listing browsers Angular 22 doesn't actually support anyway.
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Edge versions
+last 2 Safari versions
+last 2 iOS versions
+Firefox ESR
+not dead
+not IE 11

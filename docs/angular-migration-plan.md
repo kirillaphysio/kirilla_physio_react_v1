@@ -269,7 +269,6 @@ promoted to repo root at that point is a decision for when we get there.
       the bugs were CSS-encapsulation issues jsdom-based unit tests structurally can't catch,
       which is exactly why this step exists as real-browser QA).
 - [ ] Step 11 — deployment
-- [ ] Step 11 — deployment
 
 ## Confirmed decisions
 
