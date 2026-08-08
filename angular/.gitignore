@@ -29,6 +29,9 @@ yarn-error.log
 !.vscode/mcp.json
 .history/*
 
+# QA comparison script output (screenshots + JSON reports) — see qa/compare-with-react.mjs
+/qa/screenshots
+
 # Miscellaneous
 /.angular/cache
 .sass-cache/

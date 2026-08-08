@@ -1,6 +1,13 @@
 @use '../../../styles/colors';
 
-.contacts-page {
+// Found via step 10 QA: this used to be wrapped in a plain `.contacts-page { ... }` class
+// selector — since `contacts-page` is applied via `host: { class: '...' }`, not written in this
+// component's own template, Angular's compiler still scopes a plain class selector with this
+// component's *content* attribute (_ngcontent-xxx), but the host element itself carries the
+// *host* attribute (_nghost-xxx) instead. The two never matched — this rule silently never
+// applied at all (transparent background instead of the intended dark rose). `:host` is the
+// selector Angular actually compiles correctly for targeting a component's own host element.
+:host {
   background-color: colors.$palette-secondary-2;
   color: colors.$palette-neutral;
 

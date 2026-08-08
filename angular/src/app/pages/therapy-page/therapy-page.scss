@@ -10,6 +10,16 @@
   p {
     white-space: pre-wrap;
   }
+
+  // Found via step 10 QA: unlike TherapyCard, this page's hero image had no responsive width
+  // constraint at all — it was rendering at its fixed 500px fetch size (IMAGE_SIZE in
+  // therapy-page.ts) regardless of viewport, overflowing on mobile. Same custom-property
+  // mechanism as TherapyCard/cloudinary-image.scss: fill the available width, capped at the
+  // fetch size on wider viewports.
+  app-cloudinary-image {
+    --cloudinary-image-width: 100%;
+    --cloudinary-image-max-width: 500px;
+  }
 }
 
 .others {

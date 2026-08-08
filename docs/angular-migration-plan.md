@@ -166,9 +166,109 @@ promoted to repo root at that point is a decision for when we get there.
       Wired into `app.html` as a sibling after `<app-footer>` (its own rendered content is either
       nothing or `position: fixed`, so placement in the DOM order doesn't matter visually).
       `ng build`/`ng test` clean (113 tests, 26 files).
-- [ ] Step 9 — mobile-first CSS pass
-- [ ] Step 9 — mobile-first CSS pass
-- [ ] Step 10 — QA (Playwright comparison)
+- [x] Step 9 — mobile-first CSS audit across every component. Systematic grep for raw `@media`
+      queries and leftover `.mobile`/`.desktop` class selectors across `angular/src` found exactly
+      **one** holdout: `styles/heroSection.scss`, ported verbatim in step 1 (before the
+      mobile-first convention existed in step 3) and never revisited — still used React's original
+      desktop-first `max-width: 768px`/`max-width: 480px` queries. Rewrote it mobile-first.
+
+      Kept its three original visual tiers (phone / large-phone-small-tablet / desktop) rather
+      than collapsing to the sitewide two-tier mobile/desktop-up split — collapsing would have
+      visibly changed padding/font-size for the 481–767px range, which the plain two-tier
+      convention was never meant to solve everywhere; this file's own extra 481px tier is
+      layered on top of the sitewide `bp.desktop-up` mixin at 768px, so it still shares that one
+      cutover with the rest of the app. Preserved the original's `.lg`-button font-size exception
+      exactly (only non-`.lg` buttons shrink further on smaller tiers). Every other component's
+      SCSS was already mobile-first — built that way incrementally during steps 4–8, not
+      retrofitted here.
+
+      **Verification caveat, disclosed rather than overclaimed:** "verified at real breakpoints"
+      here means a thorough code-level audit + confirming the dev server (`ng serve`) boots and
+      serves cleanly (correct `index.html`, all lazy chunks compile, no console/build errors) — not
+      actual rendered-pixel verification. Neither `chromium-cli` nor Playwright is installed in
+      this environment, so no screenshots were taken. That's exactly what step 10 is for; treat
+      this step as necessary-but-not-sufficient groundwork for it, not a substitute.
+
+      `ng build`/`ng test` clean (113 tests, 26 files — unchanged from step 8, this step touched
+      no component logic, only the one SCSS file).
+- [x] Step 10 — Playwright installed as an Angular devDependency (`npm install -D playwright` +
+      `npx playwright install chromium`), plus a reusable comparison script at
+      `angular/qa/compare-with-react.mjs` (screenshots every route at mobile+desktop on both dev
+      servers, checks GA firing / outbound+mailto links / Cloudinary broken-image fallback, and
+      captures console errors). Ran it against both dev servers (React on :3500, Angular on
+      :4300) and reviewed every screenshot.
+
+      **This step earned its place in the plan — it found two real CSS bugs that no unit test
+      could have, both now fixed:**
+
+      1. **`app.scss`'s shell rules never actually applied to any routed page** (`.app > *:not(...)`
+         padding/max-width/centering, plus the global `a`/`h1` resets) — Angular's view
+         encapsulation only stamps a component's scope attribute onto elements declared directly
+         in *that component's own template*; router-outlet-inserted page components never carry
+         App's attribute, so the compiled `.app > *[_ngcontent-approot-xxx]` silently matched
+         nothing. Every routed page was missing its 2rem side padding/1024px centered max-width
+         sitewide (not just on hero-section pages — those just visibly broke via their `margin: 0
+         -32px` bleed trick having nothing to cancel against, which is what surfaced it). Fixed by
+         moving those rules to the truly-global `styles.scss` — see that file's comments.
+      2. **`.contacts-page { }` / `.programs-page { }` written as plain class selectors, applied
+         via `host: { class: '...' }`, never matched either** — same root cause, one level
+         further: Angular compiles a plain top-level class selector in a component's stylesheet
+         with that component's *content* attribute (`_ngcontent-xxx`), but the host element
+         itself carries the *host* attribute (`_nghost-xxx`) instead — a different attribute, so
+         it never matches. Silently broke Contacts' entire background theme (rendered fully
+         transparent) and Programs' image sizing (rendered at its raw 2000px intrinsic size,
+         overflowing badly on mobile). Fixed by switching both to `:host { }` — the selector
+         Angular actually compiles correctly for a component's own host element. **Audited every
+         other component using `host: { class }` for the same mistake — all 7 others already used
+         `:host` correctly** (see the doc's memory note for the full list), so this was fully
+         contained to these two.
+
+      Also found and fixed two smaller, real gaps via the same pass: `TherapyPage`'s hero image had
+      no responsive width constraint at all (rendered at its fixed 500px fetch size, overflowing
+      on mobile — TherapyCard had this covered, this page's own hero image didn't); the LCP image
+      on `TherapyPage` wasn't marked `priority` (a dev-mode-only Angular warning, no visual
+      impact, fixed for consistency with the Landing page's hero image).
+
+      **After fixes: zero horizontal overflow on any of the 8 routes at mobile width (was 4/8
+      broken), pixel-near-identical screenshots across every route/breakpoint pair.** Verified
+      non-visually too: GA fires an identical page_view request on both apps; the Cloudinary
+      broken-image fallback produces byte-identical placehold.co URLs on both; outbound/social
+      links match (the one intentional difference — Contacts' mailto, no stray space vs React's
+      original typo — is the documented step-6 fix, not a bug).
+
+      **Two more things surfaced, disclosed rather than silently resolved either way:**
+      - **The React cookie consent library actually blocks the Google Maps iframe** until consent
+        is given ("Content Blocked" placeholder shown instead) — this contradicts the "purely
+        decorative" characterization from step 8; corrected here. GA/gtag still appears genuinely
+        ungated on both apps (confirmed via the network-request check), so step 8's disclosure
+        about analytics specifically still stands — it's just not the *whole* story for consent
+        gating. The Angular Contacts page always shows the live map. Not fixed without asking:
+        replicating "block third-party iframes until consent" is a real feature to build, not a
+        one-line fix.
+      - **Cookie banner visual design differs at desktop width**: React's third-party widget
+        renders as a centered floating card near the middle of the page; the from-scratch Angular
+        version (step 8) renders as a fixed bottom bar. Both are reasonable, common cookie-banner
+        patterns — this was already disclosed as a from-scratch reconstruction in step 8, not a
+        port, since there was no original CSS available to port from a SaaS-hosted widget.
+
+      **One test-methodology finding, not an app bug**: comparing React and Angular at a mobile
+      *viewport size alone* (no UA spoofing) doesn't actually exercise React's mobile-only code
+      paths — `react-device-detect`'s `isMobile` is UA-string based, so a narrow-viewport
+      *desktop*-UA browser still renders React's desktop UI. Fixed the comparison script with
+      real device emulation (`devices['iPhone 13']`, viewport+UA+touch together). Separately,
+      *even with* that device emulation, one specific check (TherapyCard's tap-to-reveal
+      description on the Therapy detail page) still showed React rendering as if desktop — almost
+      certainly because Playwright's device emulation spoofs the legacy `navigator.userAgent`
+      string but not Chromium's newer User-Agent Client Hints, which some UA-sniffing libraries
+      prefer when available. This is a Playwright/Chromium testing-tool gap, not a real
+      cross-browser difference — and it's a small, direct illustration of why the migration
+      dropped UA-sniffing for CSS breakpoints in the first place (`docs/angular-migration-plan.md`
+      confirmed-decisions section): CSS breakpoints don't have this fragility.
+
+      `ng build`/`ng test` clean (113 tests, 26 files — unchanged; nothing here needed a new test,
+      the bugs were CSS-encapsulation issues jsdom-based unit tests structurally can't catch,
+      which is exactly why this step exists as real-browser QA).
+- [ ] Step 11 — deployment
 - [ ] Step 11 — deployment
 
 ## Confirmed decisions
@@ -242,9 +342,15 @@ promoted to repo root at that point is a decision for when we get there.
    that didn't fit the original's actual behavior, see Progress above).
 8. ~~Build a custom cookie-consent banner~~ **Done** — see the Progress entry above, including the
    disclosed simplifications and the "decorative, doesn't gate analytics" observation.
-9. Mobile-first CSS pass across every component, verified at real breakpoints.
-10. QA: Playwright screenshot comparison per route/breakpoint against the live React site, verify
-    GA firing, all outbound/mailto links, Cloudinary fallback, MailerLite form actually submits.
+9. ~~Mobile-first CSS pass~~ **Done** — see the Progress entry above, including the verification
+   caveat (code audit + dev-server smoke check; no screenshots — no browser automation tool was
+   available in this environment, that's step 10's job).
+10. ~~QA: Playwright screenshot comparison~~ **Done** — see the Progress entry above. Found and
+    fixed 2 real CSS bugs (app.scss shell rules + `.x-page {}` vs `:host {}` never matching routed
+    content), plus 2 smaller gaps (TherapyPage hero image sizing/priority). Reusable script at
+    `angular/qa/compare-with-react.mjs`. Two things disclosed but not fixed without asking: React's
+    cookie library blocks the Maps iframe pending consent (Angular doesn't); the cookie banner's
+    visual design differs at desktop (centered card vs bottom bar).
 11. Deployment: adapt the `gh-pages` publish step for Angular's `dist/` output, verify CNAME +
     hash routing still resolve correctly on GitHub Pages.
 

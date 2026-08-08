@@ -2,7 +2,7 @@
   <section class="hero-section therapy">
     <h1>{{ t.title }}</h1>
     <h2>{{ t.short }}</h2>
-    <app-cloudinary-image [imageId]="t.imageId" [width]="imageSize" [height]="imageSize" />
+    <app-cloudinary-image [imageId]="t.imageId" [width]="imageSize" [height]="imageSize" [priority]="true" />
     <p class="justified" [innerHTML]="sanitizedLong()"></p>
   </section>
 } @else {

@@ -1,36 +1,17 @@
 // Ported from the React app's App.scss. Note: `privacy.scss` (the other global stylesheet the
 // React app imported in App.tsx) was NOT ported — it only styled react-cookie-manager's accept
 // button by its library-specific class name, which is moot once step 8 builds a custom banner.
+//
+// Only `.app`'s own box-model rules live here. The descendant rules that used to be here too
+// (`.app > *:not(...)`, `.app > [class$='-page']`, plus the global `a`/`h1` resets) have moved to
+// styles.scss (step 10 fix) — Angular's view encapsulation only stamps this component's scope
+// attribute onto elements declared directly in App's *own* template. Routed page components are
+// inserted by RouterOutlet at runtime, not written in app.html, so they never carry that
+// attribute; a scoped `.app > *` here silently never matched them at all. That's a global,
+// unscoped stylesheet's job — see docs/angular-migration-plan.md, step 10.
 .app {
   height: 100dvh;
 
   display: flex;
   flex-direction: column;
-
-  // React's version excluded by CSS class (`:not(.back-to-top-button)`, the div IS the
-  // component in React). Angular wraps it in a host element instead, so this excludes by that
-  // host tag name.
-  > *:not(app-back-to-top-button) {
-    width: fit-content;
-    width: -webkit-fill-available;
-    max-width: 1024px;
-    margin: auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  // Relies on each routed page component exposing its own `-page` class on its *host* element
-  // (via `host: { class: '...' }` in the @Component decorator) — done page-by-page in step 6.
-  > [class$='-page'] {
-    flex: 1;
-  }
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-h1 {
-  text-align: center;
 }
