@@ -56,7 +56,37 @@ promoted to repo root at that point is a decision for when we get there.
       11 files). **Known gap, intentional:** `.app > [class$="-page"]` in `app.scss` won't match
       anything until step 6 gives each routed page component a `host: { class: '...-page' }` —
       documented inline, not a bug.
-- [ ] Step 5 — routing
+- [x] Step 5 — routing wired in `app.routes.ts`: all 8 routes, each lazy-loaded
+      (`loadComponent`) to its own stub page component in `angular/src/app/pages/`, plus a
+      wildcard `redirectTo: ''` (fixes the React app's dead catch-all, which never matched —
+      confirmed as the intended fix). Scroll-to-top on navigation via the Router's own
+      `withInMemoryScrolling({ scrollPositionRestoration: 'top' })`, no custom wrapper code
+      needed — replaces React's `ScrollToTopWrapper`. Every page's `Title`/`Meta` wired for real
+      via `SeoService.apply()` (title, canonical, description, OG tags), even though page *body*
+      content is still a `TODO(step 6)` placeholder — SEO data was extracted from each React page
+      now since it doesn't depend on body content. Centralized the shared keyword-stuffed
+      description tail in `core/seo-keywords.ts` (7 of 8 pages use it verbatim in
+      `name="description"` but deliberately NOT in `og:description`, matching the original's
+      intentional split). `TherapyPage` resolves its therapy reactively from the route param via
+      `toSignal`+`computed`+`effect` (recomputes without remounting when navigating between two
+      `/therapy/:id` routes, same as the original's `useParams`+`useMemo`).
+
+      Each page component now also carries the `host: { class: '...-page' }` promised in step 4
+      — but only the 5 pages whose React version actually had a page-level class
+      (`landing-page`, `contacts-page`, `programs-page`, `treatment-page` — **singular**, matching
+      the original `Treatments.scss` exactly — and `therapy-page`); Terms/Privacy/Cookie had no
+      such class in React and still don't, preserving that (mildly inconsistent, but real)
+      original behavior.
+
+      Fixed two content bugs found while porting SEO tags, both flagged inline in code comments
+      rather than silently changed: Contacts' `og:description` had a duplicated-word typo
+      ("honlapjának honlapjának"); Privacy's `og:title` was a copy-paste leftover from the
+      Programs page, not matching Privacy's own title. Also gave `TherapyPage` a graceful
+      title/canonical fallback for an unknown `:therapyId` instead of the original's literal
+      `"undefined - Kirilla Réka..."` (a template-literal-over-`undefined` artifact, not
+      intentional). `ng build`/`ng test` clean (74 tests, 20 files, including a routing
+      integration spec that exercises every real route + the redirect via
+      `RouterTestingHarness`). Lazy chunks confirmed per-route in the production build.
 - [ ] Step 6 — page migrations
 - [ ] Step 7 — FAQ accordion / TherapyList/TherapyCard
 - [ ] Step 8 — cookie-consent banner
