@@ -6,8 +6,7 @@ import { existsSync } from 'node:fs';
 import { join, extname } from 'node:path';
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
-const PW = 'C:/Users/prinzm/WebstormProjects/kirilla_physio_react_v1/angular/node_modules/playwright';
-const { chromium } = require(PW);
+const { chromium } = require('playwright');
 
 const ROOT = new URL('../dist/kirilla-physio/browser', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const OUT = new URL('./shots', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');

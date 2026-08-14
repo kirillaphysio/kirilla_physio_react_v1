@@ -1,9 +1,0 @@
-<div class="title">{{ therapy().title }}</div>
-<div class="content">
-  <fa-icon class="info-icon" [icon]="faCircleInfo" />
-  <app-cloudinary-image [imageId]="therapy().imageId" [width]="imageSize" [height]="imageSize" />
-  <div class="description" [class.visible]="descriptionVisible()">
-    <label>{{ therapy().short }}</label>
-    <a [routerLink]="['/therapy', therapy().id]" class="more-btn">Részletek</a>
-  </div>
-</div>

@@ -1,15 +1,13 @@
 // Static-serve the prerendered dist and screenshot given routes at desktop + mobile widths.
-// Run from a dir where `playwright` resolves (e.g. ../angular). Usage:
-//   node shoot.mjs "/,/online-programok,/kapcsolat"
+// Usage: node qa/shoot.mjs "/,/online-programok,/kapcsolat"  (run from the project root;
+// prefix with MSYS_NO_PATHCONV=1 in Git Bash so a "/" route arg isn't rewritten to a path).
 import { createServer } from 'node:http';
 import { readFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join, extname } from 'node:path';
 import { createRequire } from 'node:module';
-// Resolve playwright from the old Angular project (which has it + browsers installed).
 const require = createRequire(import.meta.url);
-const PW = process.env.PW_PATH || 'C:/Users/prinzm/WebstormProjects/kirilla_physio_react_v1/angular/node_modules/playwright';
-const { chromium } = require(PW);
+const { chromium } = require('playwright');
 
 const ROOT = new URL('../dist/kirilla-physio/browser', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const OUT = new URL('./shots', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');

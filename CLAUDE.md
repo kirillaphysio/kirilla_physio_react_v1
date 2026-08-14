@@ -5,16 +5,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project status
 
 This repo contains a React (Create React App) marketing site for a Hungarian physiotherapist
-(Kirilla Réka) at the repo root (`src/`, `public/`), and an Angular rewrite in **`./angular/`**
-(latest stable Angular, standalone + zoneless + signals, hash routing, Vitest, mobile-first CSS)
-on the `refactor/angular_reimplement` branch. **Steps 1–10 of the migration are done** (scaffold
-through QA — see `docs/angular-migration-plan.md`'s Progress checklist); only step 11
-(deployment/cutover) remains, so the two apps still coexist deliberately (see "Directory layout"
-in that doc for why — the React app needs to stay live as the QA reference until cutover). Read
-the migration plan doc before making structural changes on this branch, especially its
-"Confirmed decisions" and per-step Progress notes — several non-obvious Angular gotchas are
-documented there (view-encapsulation traps that silently drop CSS rules, in particular) that are
-worth knowing before touching any component stylesheet.
+(Kirilla Réka) at the repo root (`src/`, `public/`), and a from-scratch Angular rebuild in
+**`./angular-design-system/`** (latest stable Angular, standalone + zoneless + signals, **clean-path
+routing**, SSG prerender, per-component SCSS) on the `refactor/angular_reimplement` branch. The React
+app stays as the content/copy reference; the Angular app is the going-forward site.
+
+An earlier, separate Angular *migration* once lived in `./angular/` (hash routing, UA-sniffing,
+a straight port of the React design). **It has been removed** — the design-system rebuild in
+`./angular-design-system/` supersedes it. Ignore any lingering reference to `./angular/`.
 
 The commands and architecture below describe the **existing React app** at repo root. For the
 Angular app, see "Angular app" further down.
@@ -71,40 +69,41 @@ Angular app, see "Angular app" further down.
   — an earlier pass of this file (and this doc) referenced one, but it was removed from the React
   source at some point outside this migration. Don't assume it's there; check the live file.
 
-## Angular app (`./angular/`)
+## Angular app (`./angular-design-system/`)
 
-Standard Angular CLI project — `npm start` (dev server, port 4200), `npm run build`
-(→ `dist/kirilla-physio/`), `npm test` (Vitest via `ng test`, add `-- --watch=false` for a single
-non-interactive run). No separate lint command configured.
+Angular CLI project (Angular 22) — `npm start` (dev server, port 4200), `npm run build`
+(SSG prerender → `dist/kirilla-physio/browser/`, runs a `postbuild` that writes `404.html`),
+`npm run deploy` (gh-pages to `kirillaphysio/kirillaphysio.github.io` — credentials not committed),
+`npm test` (Vitest via `ng test`). No separate lint command. Built from the design bundle in
+`design_handoff_angular_landing/`; pass one (landing + shell + consent + legal + all 25 design-system
+components) is done. Next-steps plan: `angular-design-system/design-source/PASS-TWO-PLAN.md`.
 
-- **Standalone + signals throughout**, no NgModules, new `@if`/`@for` control flow, `inject()` over
-  constructor DI, `input()`/`viewChild()` signal APIs over decorators. Zoneless (no `zone.js`
-  dependency).
-- **Hash routing** (`provideRouter(routes, withHashLocation())` in `app.config.ts`), matching the
-  React app's URL scheme (`/#/route`) and the GitHub Pages static-hosting deploy target.
-- **Mobile handling is CSS-breakpoint-based** (`styles/breakpoints.scss`'s `mobile-only`/
-  `desktop-up` mixins, 767/768px cutover), not UA-sniffing — deliberately different from the React
-  app. The one real exception needing a JS/DOM decision (not just CSS) is
-  `core/viewport.service.ts`, used only where a component must not render something at all on
-  mobile (e.g. the Contacts page's Maps iframe) or needs a real numeric breakpoint value (Swiper's
-  `slides-per-view`).
+- **Standalone + signals + zoneless throughout**, no NgModules, `@if`/`@for` control flow,
+  `inject()` DI, `input()`/`output()`/`model()`/`computed()` signal APIs.
+- **Clean-path routing** (`provideRouter(routes, withInMemoryScrolling(...))`, no hash) with **SSG
+  prerender** (`outputMode: "static"` in `angular.json`; `/terapia/:id` prerenders one page per
+  therapy id via `getPrerenderParams`). GitHub Pages user-page deploy at root.
+- **Design system in `src/app/ui/`** — 25 `kp-`prefixed standalone components ported from
+  `design_handoff_angular_landing/COMPONENTS.md`; tokens are global CSS custom properties under
+  `src/styles/tokens/` (never redeclared in components). Native `kp-icon` (inline SVG sprite, 37
+  glyphs in `shared/icon/icon-data.ts`) — **no third-party libs** (no FontAwesome runtime,
+  Cloudinary SDK, Swiper, or cookie-manager; all built natively).
+- **Mobile handling is CSS-breakpoint-based** (900/600px), not UA-sniffing. The one real JS/DOM
+  exception planned is a `core/viewport.service.ts` for cases a component must not render at all on
+  mobile (Contacts' Maps iframe).
 - **Static content lives in `src/app/data/`** as typed constants (`therapy.ts`, `faq.ts`,
-  `qualification.ts`, `testimonial.ts` + two testimonial datasets) — ported verbatim from the React
-  app's equivalent files, no backend/CMS here either.
-- **Angular's view encapsulation has sharp edges that have silently dropped CSS rules twice in this
-  project already** (see `docs/angular-migration-plan.md` step 10 for the full story) — a
-  component-scoped stylesheet's selectors only match elements declared in *that component's own
-  template*; content inserted by `<router-outlet>` or built via `host: { class: '...' }` needs
-  `:host { }` (to target the component's own host element) or the *global* `styles.scss` (to reach
-  arbitrary/dynamic content), never a plain class selector repeating the host's own class name.
-  Cross-component styling (one component's stylesheet needing to affect another's internals, e.g.
-  a page retinting a shared card component) goes through CSS custom properties set on the child's
-  host element — see `shared/cloudinary-image/cloudinary-image.scss` and
-  `shared/therapy-card/therapy-card.scss` for the pattern; `::ng-deep` is not used anywhere here.
-- **SEO** goes through `core/seo.service.ts` (`Title`/`Meta` wrapper) — each routed page calls
-  `SeoService.apply({ title, description, canonical, og* })` once, instead of React's inline
-  `<title>`/`<meta>` JSX. Shared keyword-stuffed description text lives in `core/seo-keywords.ts`.
-- **`angular/qa/compare-with-react.mjs`** is a reusable Playwright script that screenshots every
-  route at mobile+desktop widths on both apps side by side, and checks GA firing/outbound links/
-  the Cloudinary fallback — see the script's header comment for usage. It's what caught the
-  encapsulation bugs mentioned above; worth re-running after any non-trivial styling change.
+  `qualification.ts`, `testimonial.ts`, `region.ts`, `case.ts`, `course.ts`, `weekly.ts`), read
+  through `core/content.service.ts`. Verbatim Hungarian copy; no backend/CMS.
+- **View-encapsulation rule** (bit twice on the earlier migration): a component-scoped stylesheet
+  only matches elements in *that component's own template*. Content projected via `<ng-content>` or
+  injected via `[innerHTML]` needs `:host {}` or the *global* `styles.scss` (e.g. `.kp-rich strong`
+  for injected therapy/case markup) — never a plain class selector on dynamic content. Cross-component
+  styling goes through CSS custom properties on the child host (`--kp-card-height`, `--kp-iconbtn-*`);
+  `::ng-deep` is not used anywhere.
+- **SEO** goes through `core/seo.service.ts` — each routed page calls
+  `SeoService.apply({ title, description, canonical, og* })` once, instead of React's inline JSX.
+- **Consent + GA**: native banner (`ui/consent-banner/`) + `core/consent.service.ts`; GA
+  `G-0GWJX0SNMX` loads only after the analytics category is granted (`core/analytics.service.ts`).
+- **QA scripts** `angular-design-system/qa/*.mjs` (Playwright, self-contained devDep): `shoot`
+  (screenshots), `overflow`, `interact` (consent/carousel/reduced-motion), `errors`. Run from the
+  project dir with `MSYS_NO_PATHCONV=1` in Git Bash so a `/` route arg isn't rewritten to a path.
