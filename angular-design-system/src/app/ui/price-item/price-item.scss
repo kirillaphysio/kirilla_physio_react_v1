@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  height: 100%;
+}
+.price {
+  --kp-card-height: 100%;
+}
+.price__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+  height: 100%;
+}
+.price__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gap-inline);
+}
+.price__title {
+  font-size: var(--heading-2-size);
+  line-height: var(--heading-2-line);
+  letter-spacing: var(--heading-2-track);
+  font-weight: var(--heading-2-weight);
+  color: var(--text-strong);
+}
+.price__value {
+  font-family: var(--font-display);
+  font-size: var(--numeral-size);
+  line-height: var(--numeral-line);
+  letter-spacing: var(--numeral-track);
+  font-weight: var(--numeral-weight);
+}
+.price__includes {
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--text-muted);
+}

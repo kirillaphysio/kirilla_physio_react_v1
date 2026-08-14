@@ -1,0 +1,149 @@
+<!-- 1. Hero -->
+<div class="hero-bleed">
+  <section class="kp-section hero" data-reveal>
+    <div class="hero__text">
+      <kp-eyebrow>Gyógytornász‑fizioterapeuta · Budapest</kp-eyebrow>
+      <h1 class="hero__title">Üdvözöllek a <kp-gradient-text>weboldalamon</kp-gradient-text>!</h1>
+      <p class="hero__lead">
+        Kirilla Réka vagyok, elhivatott gyógytornász‑fizioterapeuta. Küldetésem, hogy segítsek neked
+        megszabadulni a fájdalmaktól, helyreállítani a mozgásképességed, és visszanyerni
+        életminőséged.
+      </p>
+      <p class="hero__sub">
+        Módszereim között a gyógytorna, manuálterápia, valamint egyéb kiegészítő kezelések állnak,
+        melyek egyaránt támogatják a fájdalomcsillapítást, a regenerálódást és a prevenciót.
+      </p>
+      <div class="hero__ctas">
+        <kp-button size="lg" icon="file-arrow-down" (clicked)="jumpToHirlevel()"
+          >Kérem az 5 gyakorlatot</kp-button
+        >
+        <kp-button size="lg" variant="outline" href="/online-programok">Online programok</kp-button>
+      </div>
+      <app-availability-note />
+    </div>
+
+    <div class="hero__media">
+      <kp-cloudinary-image
+        class="hero__portrait"
+        imageId="kezdőlap__u1ybav"
+        crop="c_fill"
+        [ratio]="[3, 4]"
+        [eager]="true"
+        sizes="(max-width: 900px) 100vw, 45vw"
+        placeholderSize="760x1000"
+        alt="Kirilla Réka gyógytornász‑fizioterapeuta"
+      />
+      <div class="hero__badges">
+        <kp-card surface="plain" padding="sm" radius="md" class="hero__badge">
+          <span class="badge">
+            <kp-icon name="house" class="hero__badge-icon hero__badge-icon--rose" />
+            <span class="hero__badge-text">Otthonról végezhető programok</span>
+          </span>
+        </kp-card>
+        <kp-card surface="plain" padding="sm" radius="md" class="hero__badge">
+          <span class="badge">
+            <kp-icon name="location-dot" class="hero__badge-icon hero__badge-icon--lilac" />
+            <span class="hero__badge-text">Egyéni kezelés Budapesten</span>
+          </span>
+        </kp-card>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- 2. Miért válassz engem? -->
+<section class="kp-section" data-reveal>
+  <kp-card surface="mesh" padding="lg" radius="xl">
+    <div class="why">
+      <div class="why__head">
+        <kp-section-heading eyebrow="Rólam" title="Miért válassz engem?" [level]="3" />
+        <kp-button size="sm" variant="ghost" icon="arrow-right" iconPosition="right" href="/rolam"
+          >Rólam bővebben</kp-button
+        >
+      </div>
+      <kp-benefit-list [items]="benefits" />
+    </div>
+  </kp-card>
+</section>
+
+<!-- 3. Három út, ahogy segíteni tudok -->
+<section class="kp-section" data-reveal>
+  <kp-section-heading
+    class="section-head"
+    eyebrow="Szolgáltatások"
+    title="Három út, ahogy segíteni tudok"
+    [level]="2"
+    align="center"
+  />
+  <app-course-ladder />
+</section>
+
+<!-- 4. Amit már most el tudsz kezdeni -->
+<section class="kp-section" data-reveal>
+  <kp-section-heading
+    class="section-head"
+    eyebrow="Online programok"
+    title="Amit már most el tudsz kezdeni"
+    [level]="3"
+    lead="Otthon végezhető, hetekre bontott programok. Nem kell időpontra várnod."
+  />
+  <app-course-promo />
+</section>
+
+<!-- 5. Kezdjük ott, ahol a panaszod van -->
+<section class="kp-section" data-reveal>
+  <kp-section-heading
+    class="section-head section-head--center"
+    eyebrow="Hol fáj?"
+    title="Kezdjük ott, ahol a panaszod van"
+    [level]="2"
+    align="center"
+    maxWidth="640px"
+    lead="Válaszd ki a testtájékot, és megmutatom, milyen panaszokkal találkozom ott, és melyik terápiával dolgozom rajta."
+  />
+  <app-symptom-router />
+</section>
+
+<!-- 6. Így néz ki egy kezelési folyamat -->
+<section class="kp-section" data-reveal>
+  <kp-section-heading
+    class="section-head"
+    eyebrow="Páciens történetek"
+    title="Így néz ki egy kezelési folyamat"
+    [level]="2"
+    lead="Két anonimizált eset a praxisomból — a panasztól a kezelési tervig."
+  />
+  <div class="cases">
+    @for (c of cases; track c.title) {
+      <kp-case-story
+        [meta]="c.meta"
+        [title]="c.title"
+        [blocks]="c.blocks"
+        [outcome]="c.outcome"
+        [therapies]="c.therapies"
+      />
+    }
+  </div>
+  <div class="cases__more">
+    <kp-button variant="ghost" icon="arrow-right" iconPosition="right" href="/blog"
+      >További páciens történetek a blogon</kp-button
+    >
+  </div>
+</section>
+
+<!-- 7. Rólam mondták -->
+<section class="kp-section" data-reveal>
+  <kp-section-heading
+    class="section-head"
+    eyebrow="Visszajelzések"
+    title="Rólam mondták"
+    [level]="2"
+    align="center"
+  />
+  <kp-testimonial-carousel [items]="opinions" [perView]="3" />
+</section>
+
+<!-- 8. Hírlevél — lead magnet -->
+<section id="hirlevel" class="kp-section" data-reveal>
+  <app-lead-magnet />
+</section>

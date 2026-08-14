@@ -1,0 +1,33 @@
+@if (eyebrow(); as e) {
+  <kp-eyebrow [tone]="onAccent() ? 'onAccent' : 'rose'" [align]="align()">{{ e }}</kp-eyebrow>
+}
+
+@switch (tag()) {
+  @case ('h1') {
+    <h1 class="kp-heading" [class]="headingClass()" [style.max-width]="maxWidth()">
+      <ng-container [ngTemplateOutlet]="titleTpl" />
+    </h1>
+  }
+  @case ('h3') {
+    <h3 class="kp-heading" [class]="headingClass()" [style.max-width]="maxWidth()">
+      <ng-container [ngTemplateOutlet]="titleTpl" />
+    </h3>
+  }
+  @default {
+    <h2 class="kp-heading" [class]="headingClass()" [style.max-width]="maxWidth()">
+      <ng-container [ngTemplateOutlet]="titleTpl" />
+    </h2>
+  }
+}
+
+@if (lead(); as l) {
+  <p class="kp-lead" [style.max-width]="maxWidth()">{{ l }}</p>
+}
+
+<ng-template #titleTpl>
+  @if (useGradient()) {
+    <kp-gradient-text>{{ title() }}</kp-gradient-text>
+  } @else {
+    {{ title() }}
+  }
+</ng-template>

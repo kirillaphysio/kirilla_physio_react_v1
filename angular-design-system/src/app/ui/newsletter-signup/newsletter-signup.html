@@ -1,0 +1,26 @@
+<form class="kp-news" (submit)="submit($event)">
+  <span class="kp-news__title">{{ title() }}</span>
+
+  @if (sent()) {
+    <span class="kp-news__success">
+      <kp-icon name="circle-check" class="kp-news__success-icon" />
+      {{ successMessage() }}
+    </span>
+  } @else {
+    <div class="kp-news__pill">
+      <kp-icon name="envelope" class="kp-news__pill-icon" />
+      <input
+        class="kp-news__input"
+        type="email"
+        name="email"
+        required
+        [value]="email()"
+        [placeholder]="placeholder()"
+        [attr.aria-label]="title()"
+        (input)="onInput($event)"
+      />
+      <kp-button type="submit" size="sm" [variant]="onAccent() ? 'onAccent' : 'primary'">{{ cta() }}</kp-button>
+    </div>
+    <span class="kp-news__note">{{ note() }}</span>
+  }
+</form>

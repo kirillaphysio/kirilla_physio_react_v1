@@ -1,0 +1,23 @@
+<label class="kp-field">
+  @if (label(); as l) {
+    <span class="kp-field__label">
+      {{ l }}@if (required()) {<span class="kp-field__req"> *</span>}
+    </span>
+  }
+  <textarea
+    class="kp-field__textarea"
+    [class.is-invalid]="invalid()"
+    [class.is-disabled]="disabled()"
+    [attr.name]="name()"
+    [rows]="rows()"
+    [value]="value()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled()"
+    [required]="required()"
+    [attr.aria-invalid]="invalid() ? 'true' : null"
+    (input)="onInput($event)"
+  ></textarea>
+  @if (error() || helper(); as msg) {
+    <span class="kp-field__msg" [class.is-invalid]="invalid()">{{ error() || helper() }}</span>
+  }
+</label>

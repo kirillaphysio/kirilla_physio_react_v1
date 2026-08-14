@@ -1,0 +1,49 @@
+<div class="router">
+  <kp-body-map
+    class="router__map"
+    [regions]="regions"
+    [activeId]="active()"
+    caption="A rajz sematikus, csak a tájékozódást segíti."
+    (select)="select($event)"
+  />
+
+  <kp-card surface="plain" padding="lg" radius="xl" class="router__panel">
+    <div class="panel">
+      <div class="panel__head">
+        <kp-eyebrow>Kiválasztva</kp-eyebrow>
+        <h3 class="panel__title">{{ region()?.label }}</h3>
+      </div>
+
+      <div class="panel__group">
+        <span class="panel__label">Amivel itt találkozom</span>
+        <ul class="panel__complaints">
+          @for (c of detail()?.complaints; track c) {
+            <li>{{ c }}</li>
+          }
+        </ul>
+      </div>
+
+      <div class="panel__group">
+        <div class="panel__label-row">
+          <span class="panel__label">Amivel dolgozom rajta</span>
+          <app-info-tip [text]="tipText" />
+        </div>
+        <div class="panel__therapies">
+          @for (t of therapies(); track t.id) {
+            <a class="therapy-link" [routerLink]="'/terapia/' + t.id">
+              <span class="therapy-link__title">{{ t.title }}</span>
+              <kp-icon name="arrow-right" class="therapy-link__arrow" />
+            </a>
+          }
+        </div>
+      </div>
+
+      <div class="panel__footer">
+        <kp-button [href]="salonic">Időpontot foglalok</kp-button>
+        <kp-button variant="ghost" icon="arrow-right" iconPosition="right" href="/egyeni-kezelesek"
+          >Minden terápia</kp-button
+        >
+      </div>
+    </div>
+  </kp-card>
+</div>

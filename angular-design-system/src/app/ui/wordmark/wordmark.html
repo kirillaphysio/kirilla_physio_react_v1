@@ -1,0 +1,54 @@
+@if (isInternal()) {
+  <a class="kp-wm" [routerLink]="href()"><ng-container [ngTemplateOutlet]="body" /></a>
+} @else {
+  <a class="kp-wm" [href]="href()"><ng-container [ngTemplateOutlet]="body" /></a>
+}
+
+<ng-template #body>
+  @switch (variant()) {
+    @case ('mark') {
+      <img
+        class="kp-wm__img"
+        [src]="markSrc()"
+        alt="KirillaPhysio"
+        [style.height.px]="52 * scale()"
+      />
+    }
+    @case ('lockup') {
+      <img class="kp-wm__img" [src]="lockupSrc()" [alt]="lockupAlt()" [style.height.px]="lockupHeight()" />
+    }
+    @case ('lockupTagline') {
+      <img class="kp-wm__img" [src]="lockupSrc()" [alt]="lockupAlt()" [style.height.px]="lockupHeight()" />
+    }
+    @default {
+      <span class="kp-wm__full" [style.gap.px]="10 * scale()">
+        @if (mark()) {
+          <img
+            class="kp-wm__img"
+            [src]="markSrc()"
+            alt=""
+            aria-hidden="true"
+            [style.height.px]="52 * scale()"
+          />
+        }
+        <span class="kp-wm__type">
+          <span
+            class="kp-wm__name"
+            [style.font-size.px]="21 * scale()"
+            [style.letter-spacing.px]="-0.4 * scale()"
+            [style.color]="nameColor()"
+            >Kirilla Physio</span
+          >
+          @if (subtitle()) {
+            <span
+              class="kp-wm__sub"
+              [style.font-size.px]="11.5 * scale()"
+              [style.color]="subColor()"
+              >gyógytornász‑fizioterapeuta</span
+            >
+          }
+        </span>
+      </span>
+    }
+  }
+</ng-template>

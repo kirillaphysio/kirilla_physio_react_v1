@@ -1,0 +1,37 @@
+<div class="kp-footer__top">
+  <div class="kp-footer__brand">
+    <kp-wordmark tone="onAccent" [mark]="false" href="/" />
+    <kp-newsletter-signup tone="onAccent" />
+  </div>
+
+  <div class="kp-footer__social">
+    <span class="kp-footer__social-label">{{ socialLabel() }}</span>
+    <div class="kp-footer__social-row">
+      @for (s of socials; track s.href) {
+        <kp-icon-button
+          class="kp-footer__social-btn"
+          [icon]="s.icon"
+          [ariaLabel]="s.label"
+          [href]="s.href"
+          variant="plain"
+          size="sm"
+        />
+      }
+    </div>
+  </div>
+
+  @if (weekly()) {
+    <kp-weekly-message />
+  }
+</div>
+
+<div class="kp-footer__legal">
+  <div class="kp-footer__legal-inner">
+    <div class="kp-footer__policy">
+      @for (p of policyLinks; track p.href) {
+        <a class="kp-footer__policy-link" [routerLink]="p.href">{{ p.label }}</a>
+      }
+    </div>
+    <span class="kp-footer__copy">© {{ year }} Kirilla Réka</span>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: block;
+  background: var(--surface-glass);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  box-shadow: 0 1px 0 var(--line-hairline);
+}
+
+.kp-header__bar {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 14px var(--container-pad);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.kp-header__brand {
+  flex: 0 0 auto;
+}
+
+.kp-header__nav {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.kp-header__link {
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  font-size: var(--body-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--text-body);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition-control);
+
+  &:hover {
+    background: var(--plum-100);
+    text-decoration: none;
+    color: var(--text-body);
+  }
+
+  /* Active pill carries the gradient with on-accent text. */
+  &.is-active {
+    background: var(--gradient-brand);
+    color: var(--text-on-accent);
+    font-weight: var(--weight-bold);
+    box-shadow: var(--shadow-rose);
+    &:hover {
+      background: var(--gradient-brand);
+      color: var(--text-on-accent);
+    }
+  }
+}
+
+.kp-header__cta {
+  flex: 0 0 auto;
+}
+
+.kp-header__toggle {
+  display: none;
+  margin-left: auto;
+}
+
+.kp-header__sheet {
+  display: none;
+  padding: 0 var(--container-pad) 18px;
+  flex-direction: column;
+  gap: 6px;
+}
+.kp-header__sheet-cta {
+  margin-top: 8px;
+}
+
+/* Below 900px the nav collapses to a hamburger sheet. */
+@media (max-width: 900px) {
+  .kp-header__nav,
+  .kp-header__cta {
+    display: none;
+  }
+  .kp-header__toggle {
+    display: block;
+  }
+  .kp-header__sheet {
+    display: flex;
+  }
+}

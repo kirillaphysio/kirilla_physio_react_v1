@@ -1,0 +1,14 @@
+<kp-card [surface]="featured() ? 'mesh' : 'tintCream'" padding="md" radius="lg" class="price">
+  <div class="price__inner">
+    <div class="price__head">
+      <h3 class="price__title">{{ title() }}</h3>
+      @if (duration()) {
+        <kp-chip size="sm" [tone]="featured() ? 'rose' : 'plum'" icon="clock">{{ duration() }}</kp-chip>
+      }
+    </div>
+    <div class="price__value"><kp-gradient-text>{{ price() }}</kp-gradient-text></div>
+    @if (includes()) {
+      <p class="price__includes">{{ includes() }}</p>
+    }
+  </div>
+</kp-card>

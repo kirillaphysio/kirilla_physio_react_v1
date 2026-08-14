@@ -1,0 +1,133 @@
+/* ── 1. Hero ────────────────────────────────────────────────────────────── */
+.hero-bleed {
+  background: var(--mesh-hero);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--space-16);
+  align-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.hero__title {
+  font-size: var(--display-1-size);
+  line-height: var(--display-1-line);
+  letter-spacing: var(--display-1-track);
+  font-weight: var(--display-1-weight);
+}
+
+.hero__lead {
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line);
+  color: var(--text-body);
+  max-width: 540px;
+}
+.hero__sub {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--text-muted);
+  max-width: 540px;
+}
+
+.hero__ctas {
+  display: flex;
+  gap: var(--gap-inline);
+  flex-wrap: wrap;
+}
+
+.hero__media {
+  position: relative;
+}
+
+.hero__portrait {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-card-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.hero__badges {
+  position: absolute;
+  bottom: -18px;
+  left: -22px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: calc(100% + 22px);
+  gap: var(--gap-inline);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero__badge-icon--rose {
+  color: var(--rose-500);
+}
+.hero__badge-icon--lilac {
+  color: var(--lilac-600);
+}
+.hero__badge-text {
+  font-size: var(--body-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--text-strong);
+  white-space: nowrap;
+}
+
+/* ── 2. Miért válassz engem? ────────────────────────────────────────────── */
+.why {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: var(--space-12);
+  align-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+.why__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+  align-items: flex-start;
+}
+
+/* ── Section heading rhythm ─────────────────────────────────────────────── */
+.section-head {
+  margin-bottom: var(--space-10);
+}
+.section-head--center {
+  margin-inline: auto;
+}
+
+/* ── 6. Case stories ────────────────────────────────────────────────────── */
+.cases {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-grid);
+  align-items: stretch;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+.cases__more {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-10);
+}

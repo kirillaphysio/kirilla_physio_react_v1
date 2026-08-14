@@ -1,0 +1,67 @@
+:root{
+--font-core:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif; /* @kind font */
+--font-body:var(--font-core); /* @kind font */
+--font-display:var(--font-core); /* @kind font */
+--weight-light:300; /* @kind font */
+--weight-regular:400; /* @kind font */
+--weight-medium:500; /* @kind font */
+--weight-semibold:600; /* @kind font */
+--weight-bold:700; /* @kind font */
+--weight-black:800; /* @kind font */
+
+/* Display — tight negative tracking, semibold-to-bold */
+--display-1-size:68px; /* @kind font */
+--display-1-line:1.04; /* @kind font */
+--display-1-track:-2.4px; /* @kind font */
+--display-1-weight:700; /* @kind font */
+--display-2-size:52px; /* @kind font */
+--display-2-line:1.08; /* @kind font */
+--display-2-track:-1.6px; /* @kind font */
+--display-2-weight:700; /* @kind font */
+--display-3-size:40px; /* @kind font */
+--display-3-line:1.14; /* @kind font */
+--display-3-track:-1.1px; /* @kind font */
+--display-3-weight:600; /* @kind font */
+/* Headings */
+--heading-1-size:30px; /* @kind font */
+--heading-1-line:1.22; /* @kind font */
+--heading-1-track:-.7px; /* @kind font */
+--heading-1-weight:600; /* @kind font */
+--heading-2-size:24px; /* @kind font */
+--heading-2-line:1.3; /* @kind font */
+--heading-2-track:-.5px; /* @kind font */
+--heading-2-weight:600; /* @kind font */
+--heading-3-size:19px; /* @kind font */
+--heading-3-line:1.42; /* @kind font */
+--heading-3-track:-.2px; /* @kind font */
+--heading-3-weight:600; /* @kind font */
+/* Body */
+--body-lg-size:19px; /* @kind font */
+--body-lg-line:1.62; /* @kind font */
+--body-lg-track:-.1px; /* @kind font */
+--body-md-size:16.5px; /* @kind font */
+--body-md-line:1.66; /* @kind font */
+--body-md-track:0px; /* @kind font */
+--body-sm-size:14.5px; /* @kind font */
+--body-sm-line:1.58; /* @kind font */
+--body-sm-track:.05px; /* @kind font */
+/* Utility */
+--label-size:14px; /* @kind font */
+--label-line:1.2; /* @kind font */
+--label-track:.1px; /* @kind font */
+--label-weight:600; /* @kind font */
+--caption-size:13px; /* @kind font */
+--caption-line:1.45; /* @kind font */
+--caption-track:.1px; /* @kind font */
+--eyebrow-size:11.5px; /* @kind font */
+--eyebrow-line:1; /* @kind font */
+--eyebrow-track:1.3px; /* @kind font */
+--eyebrow-weight:700; /* @kind font */
+--quote-size:21px; /* @kind font */
+--quote-line:1.55; /* @kind font */
+--quote-track:-.2px; /* @kind font */
+--numeral-size:46px; /* @kind font */
+--numeral-line:1; /* @kind font */
+--numeral-track:-1.8px; /* @kind font */
+--numeral-weight:700; /* @kind font */
+}

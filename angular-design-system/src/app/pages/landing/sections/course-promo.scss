@@ -1,0 +1,70 @@
+.promo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--gap-grid);
+  align-items: stretch;
+}
+
+.promo__card {
+  --kp-card-height: 100%;
+}
+.promo__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Neutral placeholder cover — the real cover images don't exist yet. */
+.promo__cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 190px;
+  background:
+    radial-gradient(120% 120% at 0% 0%, var(--blush-200) 0%, rgba(245, 222, 220, 0) 70%),
+    var(--surface-tint-cream);
+  color: var(--text-subtle);
+  box-shadow: inset 0 -1px 0 var(--line-hairline);
+}
+.promo__cover-icon {
+  font-size: 26px;
+  color: var(--plum-400);
+}
+.promo__cover-label {
+  font-size: var(--caption-size);
+  letter-spacing: 0.2px;
+}
+
+.promo__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+  padding: var(--space-6);
+  flex: 1;
+}
+
+.promo__title {
+  font-size: var(--heading-2-size);
+  line-height: var(--heading-2-line);
+  letter-spacing: var(--heading-2-track);
+  font-weight: var(--heading-2-weight);
+  color: var(--text-strong);
+}
+.promo__desc {
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--text-muted);
+  flex: 1;
+}
+.promo__spacer {
+  flex: 1;
+}
+
+.promo__actions {
+  display: flex;
+  gap: var(--gap-inline);
+  flex-wrap: wrap;
+}

@@ -1,0 +1,8 @@
+:root{
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;--space-24:96px;--space-32:128px;
+/* Semantic rhythm */
+--gap-inline:10px;--gap-stack:16px;--gap-card:24px;--gap-grid:24px;
+--pad-control-y:14px;--pad-control-x:28px;--pad-card:28px;--pad-card-lg:40px;--pad-band:64px;
+--section-y:96px;--section-y-tight:64px;--section-y-mobile:56px;
+--container-max:1180px;--container-narrow:760px;--container-pad:24px;
+}

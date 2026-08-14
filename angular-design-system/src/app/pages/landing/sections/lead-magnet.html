@@ -1,0 +1,51 @@
+<kp-card surface="tintLilac" padding="lg" radius="xl">
+  <div class="lead">
+    <div class="lead__intro">
+      <kp-eyebrow tone="lilac">Ingyenes PDF</kp-eyebrow>
+      <h2 class="lead__title"><kp-gradient-text>{{ pdfTitle }}</kp-gradient-text></h2>
+      <kp-benefit-list tone="lilac" [items]="pdfPoints" />
+    </div>
+
+    <kp-card surface="plain" padding="md" radius="lg" class="lead__formcard">
+      @if (state() === 'success') {
+        <div class="lead__success">
+          <div class="lead__success-row">
+            <kp-icon name="circle-check" class="lead__success-icon" />
+            <span class="lead__success-text">{{ successMessage }}</span>
+          </div>
+          <kp-button
+            size="sm"
+            variant="secondary"
+            icon="arrow-right"
+            iconPosition="right"
+            [href]="platform"
+            >Megnézem az online programokat</kp-button
+          >
+        </div>
+      } @else {
+        <form class="lead__form" (submit)="$event.preventDefault(); submit()">
+          <kp-text-field
+            label="E-mail címed"
+            type="email"
+            icon="envelope"
+            placeholder="pelda@email.hu"
+            [value]="email()"
+            (valueChange)="email.set($event)"
+            [error]="state() === 'error' ? errorMsg() : undefined"
+          />
+          <kp-button
+            type="submit"
+            size="lg"
+            [fullWidth]="true"
+            [disabled]="state() === 'submitting'"
+            >Kérem a PDF-et</kp-button
+          >
+          <span class="lead__consent">
+            A feliratkozással elfogadod az
+            <a routerLink="/adatkezeles">adatkezelési tájékoztatót</a>. Bármikor leiratkozhatsz.
+          </span>
+        </form>
+      }
+    </kp-card>
+  </div>
+</kp-card>

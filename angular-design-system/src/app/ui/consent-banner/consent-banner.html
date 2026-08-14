@@ -1,0 +1,66 @@
+@if (visible()) {
+  <div class="consent" role="dialog" aria-live="polite" aria-label="Süti beállítások">
+    <div class="consent__body">
+      <h2 class="consent__title">Ez a weboldal sütiket használ</h2>
+      <p class="consent__message">
+        Kedves látogató! Szeretném felhívni a figyelmedet, hogy a honlap a felhasználói élmény
+        fokozásának érdekében sütiket használ. További információkért kérlek olvasd el a
+        <a routerLink="/adatkezeles">Adatvédelmi Nyilatkozatot</a>.
+      </p>
+    </div>
+    <div class="consent__actions">
+      <kp-button size="sm" variant="ghost" (clicked)="openManage()">Süti beállítások</kp-button>
+      <kp-button size="sm" variant="outline" (clicked)="declineAll()">Elutasítom</kp-button>
+      <kp-button size="sm" (clicked)="acceptAll()">Elfogadom</kp-button>
+    </div>
+  </div>
+}
+
+@if (manageOpen()) {
+  <div class="modal" (click)="closeManage()">
+    <div
+      class="modal__panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="consent-manage-title"
+      (click)="$event.stopPropagation()"
+    >
+      <h2 id="consent-manage-title" class="modal__title">Süti beállítások</h2>
+      <p class="modal__message">
+        Itt módosíthatja süti beállításait. Az alapvető sütik mindig engedélyezettek, mivel
+        szükségesek a weboldal megfelelő működéséhez.
+      </p>
+
+      <ul class="cats">
+        @for (cat of categories; track cat.key) {
+          <li class="cat">
+            <div class="cat__text">
+              <span class="cat__title">{{ cat.title }}</span>
+              <span class="cat__subtitle">{{ cat.subtitle }}</span>
+            </div>
+            @if (cat.locked) {
+              <span class="cat__locked">Mindig bekapcsolva</span>
+            } @else {
+              <button
+                type="button"
+                class="switch"
+                role="switch"
+                [class.is-on]="toggleValue(cat.key)!()"
+                [attr.aria-checked]="toggleValue(cat.key)!()"
+                [attr.aria-label]="cat.title"
+                (click)="toggle(cat.key)"
+              >
+                <span class="switch__knob"></span>
+              </button>
+            }
+          </li>
+        }
+      </ul>
+
+      <div class="modal__actions">
+        <kp-button size="sm" variant="ghost" (clicked)="closeManage()">Mégse</kp-button>
+        <kp-button size="sm" (clicked)="saveManage()">Változtatások mentése</kp-button>
+      </div>
+    </div>
+  </div>
+}

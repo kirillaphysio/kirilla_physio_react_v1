@@ -1,0 +1,24 @@
+<div class="promo">
+  @for (c of courses; track c.slot) {
+    <kp-card surface="plain" padding="none" radius="lg" class="promo__card">
+      <div class="promo__inner">
+        <div class="promo__cover" role="img" aria-label="Program borítókép — hamarosan">
+          <kp-icon name="circle-play" class="promo__cover-icon" />
+          <span class="promo__cover-label">Program borítókép</span>
+        </div>
+        <div class="promo__body">
+        <h3 class="promo__title">{{ c.title }}</h3>
+        @if (c.description) {
+          <p class="promo__desc">{{ c.description }}</p>
+        } @else {
+          <span class="promo__spacer"></span>
+        }
+        <div class="promo__actions">
+          <kp-button size="sm" [href]="platform">Megnézem</kp-button>
+          <kp-button size="sm" variant="ghost" href="/online-programok">Részletek</kp-button>
+        </div>
+        </div>
+      </div>
+    </kp-card>
+  }
+</div>

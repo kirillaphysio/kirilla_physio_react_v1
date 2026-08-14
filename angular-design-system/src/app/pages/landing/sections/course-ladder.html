@@ -1,0 +1,49 @@
+<div class="ladder">
+  <kp-card surface="plain" padding="lg" radius="xl" class="ladder__card">
+    <div class="step">
+      <kp-eyebrow tone="rose">Első lépés</kp-eyebrow>
+      <h3 class="step__title">5 gyakorlat derékfájásra</h3>
+      <span class="step__meta">Ingyenes · PDF</span>
+      <p class="step__desc">
+        Öt gyakorlat, amit ma el tudsz kezdeni otthon. Ha ez segít, onnan tovább tudunk építeni.
+      </p>
+      <div>
+        <kp-button variant="secondary" icon="file-arrow-down" (clicked)="jumpToHirlevel()"
+          >Kérem a PDF-et</kp-button
+        >
+      </div>
+    </div>
+  </kp-card>
+
+  <kp-card surface="filled" padding="lg" radius="xl" class="ladder__card">
+    <div class="step">
+      <kp-eyebrow tone="onAccent">Ha egyedül dolgoznál</kp-eyebrow>
+      <h3 class="step__title on-accent">Online program</h3>
+      <span class="step__meta on-accent">Bármikor kezdheted · otthonról végezheted</span>
+      <p class="step__desc on-accent">
+        Felépített, hetekre bontott programok: videós gyakorlatok, sorrend és haladás. Nem kell
+        időpontra várnod.
+      </p>
+      <div>
+        <kp-button variant="onAccent" icon="arrow-right" iconPosition="right" href="/online-programok"
+          >Programok megtekintése</kp-button
+        >
+      </div>
+    </div>
+  </kp-card>
+
+  <kp-card surface="plain" padding="lg" radius="xl" class="ladder__card">
+    <div class="step">
+      <kp-eyebrow tone="rose">Ha kézre van szükséged</kp-eyebrow>
+      <h3 class="step__title">Személyes kezelés</h3>
+      <span class="step__meta">20.000 Ft · 60 perc · Budapest, XII.</span>
+      <p class="step__desc">
+        Állapotfelmérés és komplex kezelés a rendelőben. Akkor a legjobb választás, ha a panasz
+        vizsgálatot igényel.
+      </p>
+      <div>
+        <kp-button variant="outline" [href]="salonic">Időpontot foglalok</kp-button>
+      </div>
+    </div>
+  </kp-card>
+</div>

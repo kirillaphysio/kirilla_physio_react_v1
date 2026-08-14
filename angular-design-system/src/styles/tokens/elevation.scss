@@ -1,0 +1,18 @@
+:root{
+/* Every shadow is plum-tinted — never neutral black */
+--shadow-xs:0 1px 2px rgba(84,35,45,.06);
+--shadow-sm:0 2px 10px rgba(84,35,45,.06);
+--shadow-md:0 10px 28px rgba(84,35,45,.08);
+--shadow-lg:0 22px 56px rgba(84,35,45,.10);
+--shadow-xl:0 36px 88px rgba(84,35,45,.13);
+/* Coloured lifts for accent surfaces */
+--shadow-rose:0 14px 34px rgba(226,127,166,.30);
+--shadow-lilac:0 14px 34px rgba(160,132,174,.30);
+/* Hairlines drawn as shadows so they survive gradient fills */
+--shadow-ring-hairline:inset 0 0 0 1px rgba(138,96,104,.14);
+--shadow-ring-light:inset 0 0 0 1px rgba(255,255,255,.55);
+--shadow-ring-focus:0 0 0 3px rgba(134,104,143,.34);
+/* Glass */
+--blur-glass:saturate(140%) blur(18px); /* @kind other */
+--blur-soft:blur(40px); /* @kind other */
+}

@@ -1,0 +1,26 @@
+<kp-card [surface]="surface()" padding="md" radius="lg" class="strip">
+  <div
+    class="strip__grid"
+    [class.on-accent]="onAccent()"
+    [class]="'num-' + size()"
+    [style.grid-template-columns]="'repeat(' + items().length + ', 1fr)'"
+  >
+    @for (item of items(); track $index) {
+      <div class="strip__cell">
+        <span class="strip__value">
+          @if (onAccent()) {
+            {{ item.value }}
+          } @else {
+            <kp-gradient-text>{{ item.value }}</kp-gradient-text>
+          }
+        </span>
+        <span class="strip__label">
+          @if (item.icon) {
+            <kp-icon [name]="item.icon" class="strip__icon" />
+          }
+          {{ item.label }}
+        </span>
+      </div>
+    }
+  </div>
+</kp-card>

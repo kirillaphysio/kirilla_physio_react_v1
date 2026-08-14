@@ -1,0 +1,17 @@
+@if (href()) {
+  @if (isInternal()) {
+    <a [class]="cardClass()" [routerLink]="href()" (click)="clicked.emit($event)">
+      <ng-container [ngTemplateOutlet]="body" />
+    </a>
+  } @else {
+    <a [class]="cardClass()" [href]="href()" (click)="clicked.emit($event)">
+      <ng-container [ngTemplateOutlet]="body" />
+    </a>
+  }
+} @else {
+  <div [class]="cardClass()">
+    <ng-container [ngTemplateOutlet]="body" />
+  </div>
+}
+
+<ng-template #body><ng-content /></ng-template>

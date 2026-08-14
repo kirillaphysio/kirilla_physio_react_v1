@@ -1,0 +1,149 @@
+/* Global styles entry.
+   Design tokens are the source of truth — imported in the order the handoff specifies:
+   fonts, colors, typography, spacing, radius, gradients, elevation, motion, base, responsive.
+   Token values are never redeclared in component stylesheets; components reference var(--…). */
+@use 'styles/tokens/fonts';
+@use 'styles/tokens/colors';
+@use 'styles/tokens/typography';
+@use 'styles/tokens/spacing';
+@use 'styles/tokens/radius';
+@use 'styles/tokens/gradients';
+@use 'styles/tokens/elevation';
+@use 'styles/tokens/motion';
+@use 'styles/tokens/base';
+@use 'styles/tokens/responsive';
+
+/* Rich text injected via [innerHTML] (therapy/case copy) — emulated encapsulation can't tag
+   dynamic nodes, so <strong> emphasis is styled here at global scope. */
+.kp-rich strong {
+  font-weight: var(--weight-bold);
+  color: var(--text-strong);
+}
+
+/* ── Shared layout primitives used across page sections ─────────────────────────── */
+.kp-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-inline: var(--container-pad);
+}
+
+.kp-section {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--section-y-tight) var(--container-pad);
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Utility text roles mapped to the type ladder (used by components that render raw text) */
+.t-body-lg {
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line);
+  letter-spacing: var(--body-lg-track);
+}
+.t-body-md {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  letter-spacing: var(--body-md-track);
+}
+.t-body-sm {
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  letter-spacing: var(--body-sm-track);
+}
+.t-caption {
+  font-size: var(--caption-size);
+  line-height: var(--caption-line);
+  letter-spacing: var(--caption-track);
+}
+
+/* ── Legal / long-form prose ─────────────────────────────────────────────────────
+   Plain text pages (adatkezelés, feltételek, cookie) ported from the React repo. */
+.legal-prose {
+  max-width: var(--container-narrow);
+  color: var(--text-body);
+
+  h1 {
+    font-size: var(--display-3-size);
+    line-height: var(--display-3-line);
+    letter-spacing: var(--display-3-track);
+    font-weight: var(--display-3-weight);
+    margin-bottom: var(--space-6);
+  }
+  h2 {
+    font-size: var(--heading-1-size);
+    line-height: var(--heading-1-line);
+    letter-spacing: var(--heading-1-track);
+    font-weight: var(--heading-1-weight);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+  }
+  h3 {
+    font-size: var(--heading-3-size);
+    line-height: var(--heading-3-line);
+    font-weight: var(--heading-3-weight);
+    color: var(--text-strong);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+  }
+  p {
+    font-size: var(--body-md-size);
+    line-height: var(--body-md-line);
+    margin-bottom: var(--space-4);
+  }
+  ul,
+  ol {
+    padding-inline-start: 22px;
+    margin-bottom: var(--space-4);
+  }
+  li {
+    font-size: var(--body-md-size);
+    line-height: var(--body-md-line);
+    margin-bottom: var(--space-2);
+  }
+  ol > li > label {
+    display: block;
+    font-weight: var(--weight-semibold);
+    color: var(--text-strong);
+    margin-bottom: var(--space-2);
+  }
+  strong {
+    font-weight: var(--weight-bold);
+    color: var(--text-strong);
+  }
+  a {
+    color: var(--text-link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  i {
+    color: var(--text-muted);
+  }
+}
+
+/* ── Section reveal animation ────────────────────────────────────────────────────
+   Prerendered HTML must be visible with JS off, so [data-reveal] is only *hidden*
+   once the reveal controller has marked the document ready (html.reveal-ready).
+   Under prefers-reduced-motion it never hides. */
+html.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity var(--dur-ambient) var(--ease-soft),
+    transform var(--dur-ambient) var(--ease-soft);
+  will-change: opacity, transform;
+}
+html.reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

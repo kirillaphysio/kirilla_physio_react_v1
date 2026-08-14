@@ -1,0 +1,86 @@
+:host {
+  display: block;
+  height: 100%;
+}
+kp-card {
+  height: 100%;
+  --kp-card-height: 100%;
+}
+
+.kp-case {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  height: 100%;
+}
+
+.kp-case__title {
+  font-size: var(--heading-1-size);
+  line-height: var(--heading-1-line);
+  letter-spacing: var(--heading-1-track);
+  font-weight: var(--heading-1-weight);
+  color: var(--text-strong);
+}
+
+.kp-case__blocks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.kp-case__block {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: var(--space-5);
+  align-items: baseline;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+.kp-case__label {
+  font-size: var(--eyebrow-size);
+  line-height: var(--body-sm-line);
+  letter-spacing: var(--eyebrow-track);
+  font-weight: var(--eyebrow-weight);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.kp-case__text {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--text-body);
+  /* <strong> inside this innerHTML is styled globally (.kp-rich in styles.scss) — emulated
+     encapsulation never tags dynamically-injected nodes, so a scoped selector can't reach it. */
+}
+
+.kp-case__outcome {
+  display: flex;
+  gap: var(--gap-inline);
+  align-items: flex-start;
+  background: var(--surface-tint-lilac);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-ring-hairline);
+}
+.kp-case__outcome-icon {
+  color: var(--rose-700);
+  font-size: 15px;
+  margin-top: 3px;
+}
+.kp-case__outcome-text {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  font-weight: var(--weight-semibold);
+  color: var(--text-strong);
+}
+
+.kp-case__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-inline);
+  margin-top: auto;
+}

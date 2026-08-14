@@ -1,0 +1,42 @@
+.jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-inline);
+  justify-content: center;
+
+  &.align-left {
+    justify-content: flex-start;
+  }
+}
+
+.jump__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--rose-100);
+  color: var(--rose-700);
+  font-size: var(--body-sm-size);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+  cursor: pointer;
+  transition: var(--transition-control);
+
+  &:hover {
+    background: var(--rose-200);
+    transform: var(--lift-hover);
+  }
+  &.is-active {
+    background: var(--gradient-brand);
+    color: var(--text-on-accent);
+    box-shadow: var(--shadow-rose);
+    transform: none;
+  }
+}
+
+.jump__icon {
+  font-size: 10.5px;
+  opacity: 0.75;
+}

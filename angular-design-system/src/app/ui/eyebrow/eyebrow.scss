@@ -1,0 +1,31 @@
+.kp-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--eyebrow-size);
+  line-height: var(--eyebrow-line);
+  letter-spacing: var(--eyebrow-track);
+  font-weight: var(--eyebrow-weight);
+  text-transform: uppercase;
+}
+
+.tone-rose {
+  color: var(--text-accent);
+}
+.tone-lilac {
+  color: var(--text-accent-alt);
+}
+.tone-plum {
+  color: var(--text-muted);
+}
+.tone-onAccent {
+  color: var(--text-on-accent-muted);
+}
+
+.align-left {
+  text-align: left;
+}
+.align-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+}

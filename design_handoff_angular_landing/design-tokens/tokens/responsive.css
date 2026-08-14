@@ -1,0 +1,35 @@
+/* Mobile scale-down of the display/heading ladder and section rhythm.
+   Tokens only — layout collapse lives with each component. */
+@media (max-width:900px){:root{
+--display-1-size:46px;--display-1-track:-1.6px;
+--display-2-size:38px;--display-2-track:-1.1px;
+--display-3-size:31px;--display-3-track:-.8px;
+--heading-1-size:26px;--heading-1-track:-.5px;
+--heading-2-size:22px;
+--body-lg-size:18px;
+--numeral-size:40px;--numeral-track:-1.4px;
+--section-y:64px;--section-y-tight:48px;
+--pad-card-lg:28px;--pad-band:40px;
+}
+h1,h2,h3,h4,h5,h6{overflow-wrap:anywhere}
+}
+@media (max-width:600px){:root{
+--display-1-size:36px;--display-1-track:-1.1px;
+--display-2-size:31px;--display-2-track:-.9px;
+--display-3-size:27px;--display-3-track:-.7px;
+--heading-1-size:24px;--heading-1-track:-.4px;
+--heading-2-size:21px;
+--heading-3-size:18px;
+--body-lg-size:17.5px;
+--body-sm-size:15px;
+--caption-size:13.5px;
+--eyebrow-size:12.5px;
+--numeral-size:34px;--numeral-track:-1.1px;
+--section-y:52px;--section-y-tight:40px;
+--container-pad:18px;
+--pad-card:20px;--pad-card-lg:22px;
+}
+/* Hungarian compound words (gyógytornász‑fizioterapeuta) carry a non-breaking hyphen and
+   set a min-content width wider than a phone; headings may break inside a word here. */
+h1,h2,h3,h4,h5,h6{overflow-wrap:anywhere}
+}

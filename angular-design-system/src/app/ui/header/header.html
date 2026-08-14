@@ -1,0 +1,46 @@
+<div class="kp-header__bar">
+  <kp-wordmark class="kp-header__brand" href="/" />
+
+  <nav class="kp-header__nav" aria-label="Fő navigáció">
+    @for (item of items; track item.href) {
+      <a
+        class="kp-header__link"
+        [routerLink]="item.href"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: item.href === '/' }"
+        >{{ item.label }}</a
+      >
+    }
+  </nav>
+
+  <div class="kp-header__cta">
+    <kp-button size="sm" [href]="ctaHref">{{ ctaLabel }}</kp-button>
+  </div>
+
+  <div class="kp-header__toggle">
+    <kp-icon-button
+      [icon]="open() ? 'xmark' : 'bars'"
+      ariaLabel="menü"
+      variant="soft"
+      (clicked)="toggle()"
+    />
+  </div>
+</div>
+
+@if (open()) {
+  <div class="kp-header__sheet">
+    @for (item of items; track item.href) {
+      <a
+        class="kp-header__link"
+        [routerLink]="item.href"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: item.href === '/' }"
+        (click)="close()"
+        >{{ item.label }}</a
+      >
+    }
+    <kp-button size="md" [href]="ctaHref" [fullWidth]="true" class="kp-header__sheet-cta">{{
+      ctaLabel
+    }}</kp-button>
+  </div>
+}

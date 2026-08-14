@@ -1,0 +1,46 @@
+@if (href() && !disabled()) {
+  @if (isInternal()) {
+    <a
+      [routerLink]="href()"
+      class="kp-btn"
+      [class]="'v-' + variant() + ' s-' + size()"
+      [attr.aria-label]="ariaLabel()"
+      (click)="onClick($event)"
+    >
+      <ng-container [ngTemplateOutlet]="inner" />
+    </a>
+  } @else {
+    <a
+      [href]="href()"
+      class="kp-btn"
+      [class]="'v-' + variant() + ' s-' + size()"
+      [attr.aria-label]="ariaLabel()"
+      [attr.target]="isExternalUrl() ? '_blank' : null"
+      [attr.rel]="isExternalUrl() ? 'noopener' : null"
+      (click)="onClick($event)"
+    >
+      <ng-container [ngTemplateOutlet]="inner" />
+    </a>
+  }
+} @else {
+  <button
+    [type]="type()"
+    class="kp-btn"
+    [class]="'v-' + variant() + ' s-' + size()"
+    [disabled]="disabled()"
+    [attr.aria-label]="ariaLabel()"
+    (click)="onClick($event)"
+  >
+    <ng-container [ngTemplateOutlet]="inner" />
+  </button>
+}
+
+<ng-template #inner>
+  @if (icon() && iconPosition() === 'left') {
+    <kp-icon [name]="icon()!" />
+  }
+  <span class="kp-btn__label"><ng-content /></span>
+  @if (icon() && iconPosition() === 'right') {
+    <kp-icon [name]="icon()!" />
+  }
+</ng-template>
