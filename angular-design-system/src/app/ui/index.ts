@@ -12,6 +12,7 @@ export { Wordmark } from './wordmark/wordmark';
 // content
 export { BenefitList } from './benefit-list/benefit-list';
 export { BodyMap } from './body-map/body-map';
+export { DashList } from './dash-list/dash-list';
 export { CaseStory } from './case-story/case-story';
 export { FaqAccordion } from './faq-accordion/faq-accordion';
 export { JumpMenu } from './jump-menu/jump-menu';

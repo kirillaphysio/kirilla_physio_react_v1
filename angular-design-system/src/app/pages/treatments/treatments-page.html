@@ -1,0 +1,125 @@
+<div class="hero-wrap">
+  <section class="kp-section hero">
+    <kp-eyebrow align="center">Budapest, XII. kerület</kp-eyebrow>
+    <h1 class="hero__title">Egyéni kezelések</h1>
+    <div class="hero__jump">
+      <kp-jump-menu [items]="jump" [activeId]="active()" (select)="onSelect($event)" />
+    </div>
+  </section>
+</div>
+
+<section id="foglalas" class="kp-section">
+  <kp-card surface="mesh" padding="lg" radius="xl">
+    <div class="booking">
+      <kp-section-heading
+        eyebrow="Időpont foglalás"
+        title="Állapotfelmérésre és az ezt követő komplex egyéni kezelésre itt tudsz bejelentkezni hozzám"
+        [level]="4"
+        maxWidth="620px"
+      />
+      <kp-button size="lg" [href]="salonic">Időpontot foglalok</kp-button>
+    </div>
+  </kp-card>
+</section>
+
+<section id="elso-alkalom" class="kp-section">
+  <kp-section-heading
+    class="mb-8"
+    eyebrow="Az első alkalom"
+    title="Mi történik, ha eljössz?"
+    [level]="2"
+    lead="Az állapotfelmérés 60 perc, és három részből áll."
+  />
+  <kp-step-flow [steps]="firstVisit" />
+</section>
+
+<section id="segitseg" class="kp-section">
+  <kp-section-heading
+    class="mb-8"
+    eyebrow="Panaszok"
+    title="Miben tudok segíteni?"
+    [level]="2"
+    lead="A leggyakoribb panaszok, amikkel foglalkozom:"
+  />
+  <kp-card surface="tintCream" padding="lg" radius="xl">
+    <kp-dash-list [items]="complaints" [columns]="2" />
+  </kp-card>
+</section>
+
+<section id="terapiak" class="kp-section">
+  <kp-section-heading
+    class="mb-10"
+    eyebrow="Terápiák"
+    title="Alkalmazott terápiáim"
+    [level]="2"
+    lead="A hagyományos gyógytornán túl számos egyéb terápiás irányt elsajátítottam és folyamatosan bővítem a tudásom, hogy a lehető legtöbb irányból tudjam megközelíteni a problémád, ezáltal méggyorsabban, és méghatékonyabban tudjam segíteni a gyógyulásod."
+    maxWidth="760px"
+  />
+  <div class="grid-3">
+    @for (t of therapies; track t.id) {
+      <kp-therapy-card
+        [title]="t.title"
+        [short]="t.short"
+        [imageId]="t.imageId"
+        [href]="'/terapia/' + t.id"
+      />
+    }
+  </div>
+</section>
+
+<section id="arak" class="kp-section">
+  <kp-section-heading class="mb-8" eyebrow="Árak" title="Kezelési díjak" [level]="2" />
+  <div class="grid-2">
+    <kp-price-item
+      [featured]="true"
+      title="Állapotfelmérés"
+      price="20.000 Ft"
+      duration="60 perc"
+      includes="(Az ár tartalmazza: személyes konzultáció, leletelemzés, testtartás elemzés, speciális tesztek, egyénre szabott kezelési terv felállítása, kezelés megkezdése)"
+    />
+    <kp-price-item
+      title="Kombinált kezelés"
+      price="18.000 Ft"
+      duration="50 perc"
+      includes="(Az ár tartalmazza: az összes általam tanult terápiás irányzatot ami szükséges az egyéni állapotra szabottan - manuális terápiák, gyógytorna, köpöly, kinezio tape felhelyezés)"
+    />
+  </div>
+  <p class="price-note">Fizetés készpénzzel vagy azonnali átutalással a kezelés végén.</p>
+</section>
+
+<section id="visszajelzesek" class="kp-section">
+  <kp-section-heading
+    class="mb-10"
+    eyebrow="Visszajelzések"
+    title="Visszajelzések a pácienseimtől"
+    [level]="2"
+    align="center"
+  />
+  <kp-testimonial-carousel [items]="opinions" [perView]="3" />
+</section>
+
+<section id="faq" class="kp-section">
+  <kp-section-heading class="mb-8" eyebrow="GYIK" title="Gyakori kérdések" [level]="2" />
+  <kp-faq-accordion [items]="faqs" />
+</section>
+
+<section id="szabalyzat" class="kp-section">
+  <kp-section-heading
+    class="mb-8"
+    eyebrow="Szabályzat"
+    title="Amit érdemes előre tudnod"
+    [level]="2"
+  />
+  <div class="grid-3">
+    @for (block of policy; track block.title) {
+      <kp-card surface="plain" padding="md" radius="lg">
+        <div class="policy">
+          <h3 class="policy__title">{{ block.title }}</h3>
+          @for (p of block.paragraphs; track $index) {
+            <p class="policy__p">{{ p }}</p>
+          }
+        </div>
+      </kp-card>
+    }
+  </div>
+</section>

@@ -16,8 +16,7 @@ export const routes: Routes = [
   {
     path: 'egyeni-kezelesek',
     loadComponent: () =>
-      import('./pages/placeholder/placeholder-page').then((m) => m.PlaceholderPage),
-    data: { title: 'Egyéni kezelések' },
+      import('./pages/treatments/treatments-page').then((m) => m.TreatmentsPage),
   },
   {
     path: 'terapia/:id',

@@ -1,0 +1,93 @@
+/* ── Hero ───────────────────────────────────────────────────────────────────────── */
+.hero-wrap {
+  background: var(--mesh-hero);
+}
+
+.hero {
+  text-align: center;
+  padding-bottom: var(--space-10);
+}
+
+.hero__title {
+  font-size: var(--display-2-size);
+  line-height: var(--display-2-line);
+  letter-spacing: var(--display-2-track);
+  font-weight: var(--display-2-weight);
+  color: var(--text-strong);
+  margin: var(--space-4) 0 var(--space-6);
+}
+
+.hero__jump {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* ── Booking card ───────────────────────────────────────────────────────────────── */
+.booking {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── Section-heading spacing helpers ────────────────────────────────────────────── */
+.mb-8 {
+  display: block;
+  margin-bottom: var(--space-8);
+}
+.mb-10 {
+  display: block;
+  margin-bottom: var(--space-10);
+}
+
+/* ── Grids ──────────────────────────────────────────────────────────────────────── */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-grid);
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-grid);
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Prices ─────────────────────────────────────────────────────────────────────── */
+.price-note {
+  margin-top: var(--space-5);
+  font-style: italic;
+  font-size: var(--caption-size);
+  color: var(--text-muted);
+}
+
+/* ── Policy cards ───────────────────────────────────────────────────────────────── */
+.policy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+}
+.policy__title {
+  font-size: var(--heading-3-size);
+  line-height: var(--heading-3-line);
+  letter-spacing: var(--heading-3-track);
+  font-weight: var(--heading-3-weight);
+  color: var(--text-strong);
+}
+.policy__p {
+  font-size: var(--body-sm-size);
+  line-height: 1.66;
+  color: var(--text-body);
+}
