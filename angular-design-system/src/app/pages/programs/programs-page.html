@@ -1,0 +1,56 @@
+<div class="hero-wrap">
+  <section class="kp-section hero">
+    <div class="hero__col">
+      <kp-section-heading
+        eyebrow="Online programok"
+        title="Otthon is elkezdheted, ma"
+        [level]="2"
+        lead="Felépített, videós programok, ugyanazzal a szemlélettel, ahogy a rendelőben dolgozom. Időpontra nem kell várnod."
+      />
+      <app-availability-note />
+      <div class="hero__cta">
+        <kp-button size="lg" [href]="platform">Tovább a kurzusokhoz</kp-button>
+        <!-- Deep-links to the blog videos section; #videok fragment is wired in Session 4. -->
+        <kp-button size="lg" variant="ghost" icon="youtube" href="/blog"
+          >Ingyenes tartalmak a YouTube-on</kp-button
+        >
+      </div>
+    </div>
+    <div class="hero__media">
+      <kp-image-slot
+        class="hero__video"
+        slotId="course-preview-video"
+        label="Előzetes a programból"
+        ariaLabel="Előzetes a programból (videó borítókép)"
+      />
+      <span class="hero__caption">Előzetes: így épül fel egy lecke.</span>
+    </div>
+  </section>
+</div>
+
+<section class="kp-section">
+  <div class="cat__head">
+    <kp-section-heading
+      eyebrow="Katalógus"
+      title="Programok"
+      [level]="2"
+      lead="Az otthonodból is könnyedén elvégezhető, szakszerűen felépített programok."
+    />
+    <kp-button
+      size="md"
+      icon="arrow-up-right-from-square"
+      iconPosition="right"
+      [href]="platform"
+      >Tovább az online kurzusokhoz</kp-button
+    >
+  </div>
+  <div class="cat__grid">
+    @for (c of courses; track c.slot) {
+      <kp-course-card [course]="c" [platform]="platform" />
+    }
+  </div>
+</section>
+
+<section id="hirlevel" class="kp-section">
+  <app-lead-magnet layout="wide" />
+</section>

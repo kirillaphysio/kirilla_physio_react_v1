@@ -1,0 +1,64 @@
+/* ── Hero ───────────────────────────────────────────────────────────────────────── */
+.hero-wrap {
+  background: var(--mesh-hero);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: var(--space-16);
+  align-items: center;
+  padding-bottom: var(--space-12);
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}
+
+.hero__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.hero__cta {
+  display: flex;
+  gap: var(--gap-inline);
+  flex-wrap: wrap;
+}
+
+.hero__media {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-inline);
+}
+.hero__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.hero__caption {
+  font-size: var(--caption-size);
+  line-height: var(--caption-line);
+  color: var(--text-muted);
+}
+
+/* ── Catalogue ──────────────────────────────────────────────────────────────────── */
+.cat__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+}
+
+.cat__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  gap: var(--gap-grid);
+  align-items: stretch;
+}

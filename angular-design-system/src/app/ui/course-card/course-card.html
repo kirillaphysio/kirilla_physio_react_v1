@@ -1,0 +1,36 @@
+<kp-card surface="plain" padding="none" radius="lg" class="cc">
+  <div class="cc__inner">
+    <kp-image-slot
+      class="cc__cover"
+      [class.is-soon]="soon()"
+      [slotId]="course().slot"
+      label="Program borítókép"
+      ariaLabel="Program borítókép"
+    />
+    <div class="cc__body">
+      <span class="cc__meta">
+        <span class="cc__meta-item"><kp-icon name="calendar" /> {{ weeksLabel() }}</span>
+        <span class="cc__meta-sep" aria-hidden="true">·</span>
+        <span class="cc__meta-item"><kp-icon name="circle-play" /> {{ lessonsLabel() }}</span>
+      </span>
+      <h3 class="cc__title">{{ course().title }}</h3>
+      @if (course().description) {
+        <p class="cc__desc">{{ course().description }}</p>
+      }
+      <div class="cc__foot">
+        @if (soon()) {
+          <kp-chip tone="plum" size="sm">Hamarosan</kp-chip>
+        } @else {
+          <kp-button
+            size="sm"
+            variant="secondary"
+            icon="arrow-right"
+            iconPosition="right"
+            [href]="platform()"
+            >Megnyitom</kp-button
+          >
+        }
+      </div>
+    </div>
+  </div>
+</kp-card>

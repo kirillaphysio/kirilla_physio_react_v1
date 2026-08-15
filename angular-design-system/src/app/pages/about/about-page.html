@@ -1,0 +1,76 @@
+<div class="hero-wrap">
+  <section class="kp-section hero">
+    <kp-section-heading
+      class="hero__heading"
+      eyebrow="Rólam"
+      title="Kirilla Réka vagyok, gyógytornász-fizioterapeuta"
+      [level]="2"
+      lead="A mozgás szeretete vitt a szakma felé, és a mai napig folyamatosan tanulok. Itt elolvashatod, honnan indultam, és milyen végzettségek állnak a munkám mögött."
+      maxWidth="100%"
+    />
+    <kp-cloudinary-image
+      class="hero__portrait"
+      imageId="kezdőlap__u1ybav"
+      alt="Kirilla Réka gyógytornász-fizioterapeuta"
+      crop="c_fill"
+      [ratio]="squareRatio"
+      [eager]="true"
+      sizes="(max-width: 900px) 100vw, 360px"
+      placeholderSize="600x600"
+    />
+  </section>
+</div>
+
+<section class="kp-section about">
+  <aside class="about__aside">
+    <kp-section-heading eyebrow="Bemutatkozás" title="Az utam:" [level]="3" />
+
+    <kp-card surface="tintRose" padding="md" radius="lg">
+      <div class="edu">
+        <kp-icon name="graduation-cap" class="edu__icon" />
+        <span class="edu__name">Pécsi Tudományegyetem</span>
+      </div>
+    </kp-card>
+
+    <kp-card surface="tintLilac" padding="md" radius="lg">
+      <div class="stat">
+        <span class="stat__num"><kp-gradient-text>25+</kp-gradient-text></span>
+        <span class="stat__label">elvégzett tanfolyam</span>
+      </div>
+    </kp-card>
+
+    <div class="triad">
+      <svg class="triad__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <g fill="none" stroke="var(--rose-300)" stroke-width="1.5" stroke-linecap="round">
+          <line x1="30" y1="20" x2="70" y2="20" vector-effect="non-scaling-stroke" />
+          <line x1="26.2" y1="39.2" x2="39.8" y2="64.8" vector-effect="non-scaling-stroke" />
+          <line x1="73.8" y1="39.2" x2="60.2" y2="64.8" vector-effect="non-scaling-stroke" />
+        </g>
+      </svg>
+      @for (t of triad; track t.label) {
+        <span class="triad__node" [style.left]="t.x" [style.top]="t.y">
+          <span class="triad__disc"><kp-icon [name]="t.icon" /></span>
+          <span class="triad__label">{{ t.label }}</span>
+        </span>
+      }
+    </div>
+  </aside>
+
+  <div class="about__body">
+    @for (p of about; track $index) {
+      <p class="about__p">{{ p }}</p>
+    }
+  </div>
+</section>
+
+<section class="kp-section">
+  <kp-section-heading
+    class="mb-8"
+    eyebrow="Szakmai háttér"
+    title="Végzettségeim"
+    [level]="3"
+  />
+  <kp-card surface="plain" padding="lg" radius="xl">
+    <kp-qualification-list [items]="qualifications" [columns]="2" />
+  </kp-card>
+</section>

@@ -10,8 +10,7 @@ export const routes: Routes = [
   {
     path: 'online-programok',
     loadComponent: () =>
-      import('./pages/placeholder/placeholder-page').then((m) => m.PlaceholderPage),
-    data: { title: 'Online programok' },
+      import('./pages/programs/programs-page').then((m) => m.ProgramsPage),
   },
   {
     path: 'egyeni-kezelesek',
@@ -26,8 +25,7 @@ export const routes: Routes = [
   {
     path: 'rolam',
     loadComponent: () =>
-      import('./pages/placeholder/placeholder-page').then((m) => m.PlaceholderPage),
-    data: { title: 'Rólam' },
+      import('./pages/about/about-page').then((m) => m.AboutPage),
   },
   {
     path: 'blog',
