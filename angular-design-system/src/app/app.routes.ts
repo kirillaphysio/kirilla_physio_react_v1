@@ -38,6 +38,12 @@ export const routes: Routes = [
     data: { title: 'Blog' },
   },
   {
+    path: 'blog/:id',
+    loadComponent: () =>
+      import('./pages/placeholder/placeholder-page').then((m) => m.PlaceholderPage),
+    data: { title: 'Blog' },
+  },
+  {
     path: 'kapcsolat',
     loadComponent: () =>
       import('./pages/placeholder/placeholder-page').then((m) => m.PlaceholderPage),

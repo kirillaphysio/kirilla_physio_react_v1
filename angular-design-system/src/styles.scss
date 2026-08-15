@@ -20,6 +20,25 @@
   color: var(--text-strong);
 }
 
+/* PlaylistArt injects its <svg> poster via [innerHTML]; emulated encapsulation can't tag the
+   injected node, so its sizing + hover lift live here at global scope (same reason as .kp-rich). */
+.kp-playlist-art > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--dur-base) var(--ease-soft);
+}
+.kp-playlist-art:hover > svg {
+  transform: scale(1.04);
+}
+@media (prefers-reduced-motion: reduce) {
+  .kp-playlist-art > svg,
+  .kp-playlist-art:hover > svg {
+    transition: none;
+    transform: none;
+  }
+}
+
 /* ── Shared layout primitives used across page sections ─────────────────────────── */
 .kp-container {
   max-width: var(--container-max);
