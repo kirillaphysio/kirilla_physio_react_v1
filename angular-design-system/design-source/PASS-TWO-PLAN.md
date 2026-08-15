@@ -7,6 +7,23 @@ six `készülőben` placeholders into real pages. Sources synced from the claude
 The Angular app ships **Online fókusz only** — port the `online` branch of each screen, drop the
 `Jelenlegi` branch.
 
+## Status — Sessions 0–5 DONE (2026-08-15) ✅
+
+All six page routes plus `/terapia/:id` and `/blog/:id` are **real and off placeholders**. On branch
+`feat/pass-two-pages` (Sessions 0–5 committed). `npm run build` clean → **28 routes prerender**;
+`qa/errors.mjs`, `qa/overflow.mjs` (360–1280, all routes) and the new `qa/a11y-check.mjs` all clean;
+screenshots faithful desktop + mobile.
+
+- **S0** groundwork: `core/viewport.service.ts`, `shared/image-slot/`, `ui/playlist-art/`, `data/blog.ts`, `/blog/:id` prerender.
+- **S1** `/terapia/:id` + LeadMagnet `layout="inline"`.
+- **S2** `/egyeni-kezelesek` + scroll-spy `JumpMenu` + new `ui/dash-list/`.
+- **S3** `/rolam` (triad diagram, sticky bio) + `/online-programok` + new `ui/course-card/`.
+- **S4** `/blog` (rail scroll-spy, `#videok`/`#tortenetek` deep-links, consent-gated lazy YouTube via `playlist-card`, stories) + `/blog/:id`.
+- **S5** `/kapcsolat` (consent-gated + desktop-only Maps via ViewportService) + a11y/responsive pass (single-h1 per page, `role=banner`/`contentinfo` on shell, overflow fixes).
+
+**Remaining:** Session 6 (deploy/cutover, optional) — and the blog posts/stories in `data/blog.ts`
+are still **unreviewed drafts** awaiting Réka's sign-off before go-live.
+
 ## Routes & what each needs (all core components already exist)
 
 | Route | Screen | Reuses | Net-new work |
@@ -49,7 +66,7 @@ of its session in case the design changed.
 - New branch, e.g. `feat/pass-two-pages`.
 - Skim `design-source/website/README.md` (route map) and each screen's source in the design project.
 
-## Session 0 — Shared groundwork (do first; everything else depends on it)
+## Session 0 — Shared groundwork (do first; everything else depends on it) ✅ DONE
 1. `core/viewport.service.ts` — SSR-safe (`isPlatformBrowser`), exposes an `isMobile` signal
    (≤767px) + a numeric width signal; used to *omit* the Contacts map on mobile and for any
    `slides-per-view`-style decisions. Browser-only listener via `afterNextRender`.
@@ -63,7 +80,7 @@ of its session in case the design changed.
    Leave the six page routes on placeholders until each session swaps its own in.
 - **Done:** `npm run build` clean, 22+ routes prerender, error sweep clean.
 
-## Session 1 — `/terapia/:id`  (highest value: upgrades a live route from placeholder → real)
+## Session 1 — `/terapia/:id`  (highest value: upgrades a live route from placeholder → real) ✅ DONE
 - `pages/therapy/therapy-page`: read `:id`; hero (square `kp-cloudinary-image` `c_fill` 1:1, ghost
   "Vissza a terápiákhoz"), Online-fókusz CTA row (PDF + outline booking), long copy via
   `[innerHTML]` on `.kp-rich` (therapy.long has `<strong>`), the "Otthon is dolgozhatsz" block
@@ -73,7 +90,7 @@ of its session in case the design changed.
 - Swap the `/terapia/:id` route off the placeholder.
 - **Done:** `/terapia/fdm`, `/terapia/vagus_terapia` render real content, prerendered, screenshot vs. design.
 
-## Session 2 — `/egyeni-kezelesek`  (Treatments)
+## Session 2 — `/egyeni-kezelesek`  (Treatments) ✅ DONE
 - `pages/treatments/…`: hero + `JumpMenu` with **scroll-spy** (IntersectionObserver on section ids,
   browser-only); booking `Card`; `StepFlow` (FIRST_VISIT); `DashList` (COMPLAINTS, 2-col em-dash);
   `TherapyCard` 3-up over all 13; two `PriceItem` + italic payment note; `TestimonialCarousel`
@@ -82,7 +99,7 @@ of its session in case the design changed.
 - New tiny piece: `DashList` (or a shared `.dash-list` style).
 - **Done:** page renders, jump-menu highlights the in-view section, screenshot.
 
-## Session 3 — `/rolam` (About) + `/online-programok` (Programs)
+## Session 3 — `/rolam` (About) + `/online-programok` (Programs) ✅ DONE
 - About: sticky bio column, `TriadDiagram` (small inline SVG — Mozgás/Étkezés/Mentálhigiéné),
   "25+" gradient stat card, `QualificationList` (2-col), ABOUT paragraphs. Source: AboutScreen.jsx
   (already in LANDING_SOURCE.md).
@@ -91,7 +108,7 @@ of its session in case the design changed.
 - Swap both routes off placeholders.
 - **Done:** both render, screenshots.
 
-## Session 4 — `/blog` + `/blog/:id`
+## Session 4 — `/blog` + `/blog/:id` ✅ DONE
 - Blog: sticky `SectionRail` (scroll-spy over `#irasok`/`#videok`/`#tortenetek`); PostsPanel
   (featured + row list, `image-slot` covers); VideosPanel (`PlaylistArt` posters → lazy
   `youtube-nocookie` iframe on click — gate behind consent/social); StoriesPanel (master list +
@@ -99,7 +116,7 @@ of its session in case the design changed.
 - Blog post: hero + `image-slot` + body `[innerHTML]` `.kp-rich` + booking card + "További írások" 3-up.
 - **Done:** both render, hash deep-links scroll to the section, screenshots.
 
-## Session 5 — `/kapcsolat` (Contacts) + full a11y/responsive pass
+## Session 5 — `/kapcsolat` (Contacts) + full a11y/responsive pass ✅ DONE
 - Contacts: Maps iframe from `MAP_EMBED` — **rendered only on desktop** (`ViewportService`) and
   **gated behind consent** (third-party embed → show a "content blocked / engedélyezd" placeholder
   until granted, matching the React app's behaviour); address + email + socials cards.
