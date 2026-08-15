@@ -1,0 +1,108 @@
+/* ── Hero ───────────────────────────────────────────────────────────────────────── */
+.hero-wrap {
+  background: var(--mesh-hero);
+}
+.hero {
+  text-align: center;
+  padding-bottom: var(--space-12);
+}
+.hero__title {
+  font-size: var(--display-2-size);
+  line-height: var(--display-2-line);
+  letter-spacing: var(--display-2-track);
+  font-weight: var(--display-2-weight);
+  color: var(--text-strong);
+  max-width: 760px;
+  margin: var(--space-4) auto 0;
+}
+
+/* ── Contact grid ───────────────────────────────────────────────────────────────── */
+.contact {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: var(--gap-grid);
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Map card ───────────────────────────────────────────────────────────────────── */
+.map-card__frame {
+  display: block;
+  width: 100%;
+  height: 380px;
+  border: 0;
+}
+
+.map-blocked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-stack);
+  height: 380px;
+  padding: var(--space-8);
+  text-align: center;
+  background: var(--mesh-card);
+}
+.map-blocked__icon {
+  font-size: 26px;
+  color: var(--rose-500);
+}
+.map-blocked__text {
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--text-strong);
+  max-width: 360px;
+}
+
+.map-card__bar {
+  padding: 22px 26px;
+  display: flex;
+  gap: var(--gap-inline);
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.map-card__addr {
+  display: flex;
+  gap: var(--gap-inline);
+  align-items: center;
+}
+.map-card__addr-icon {
+  color: var(--rose-500);
+  font-size: 18px;
+}
+.map-card__addr-text {
+  font-size: var(--body-md-size);
+  font-weight: var(--weight-semibold);
+  color: var(--text-strong);
+}
+
+/* ── Side cards ─────────────────────────────────────────────────────────────────── */
+.contact__side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-grid);
+}
+.side-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+  align-items: flex-start;
+}
+.side-card__icon {
+  font-size: 20px;
+  color: var(--rose-600);
+}
+.side-card__text {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--text-body);
+}
+.socials {
+  display: flex;
+  gap: var(--gap-inline);
+}

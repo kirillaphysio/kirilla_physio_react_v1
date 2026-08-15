@@ -1,0 +1,65 @@
+<div class="hero-wrap">
+  <section class="kp-section hero">
+    <kp-eyebrow align="center">Kapcsolat</kp-eyebrow>
+    <h1 class="hero__title">Ha szükséged van a segítségemre, itt megtalálsz!</h1>
+  </section>
+</div>
+
+<section class="kp-section contact">
+  <kp-card surface="plain" padding="none" radius="xl" class="map-card">
+    @if (!viewport.isMobile()) {
+      @if (mapAllowed()) {
+        <iframe
+          class="map-card__frame"
+          title="Google Térkép — a kezelési helyszín"
+          [src]="mapEmbed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      } @else {
+        <div class="map-blocked">
+          <kp-icon name="location-dot" class="map-blocked__icon" />
+          <p class="map-blocked__text">
+            A térkép megjelenítéséhez engedélyezned kell a beágyazott (közösségi) tartalmakat.
+          </p>
+          <kp-button size="sm" (clicked)="allowMap()">Térkép megjelenítése</kp-button>
+        </div>
+      }
+    }
+    <div class="map-card__bar">
+      <div class="map-card__addr">
+        <kp-icon name="location-dot" class="map-card__addr-icon" />
+        <span class="map-card__addr-text">Kezelési helyszín {{ address }}</span>
+      </div>
+      <kp-button
+        variant="secondary"
+        size="sm"
+        icon="arrow-up-right-from-square"
+        iconPosition="right"
+        [href]="mapsLink"
+        >Térkép</kp-button
+      >
+    </div>
+  </kp-card>
+
+  <div class="contact__side">
+    <kp-card surface="tintRose" padding="md" radius="lg">
+      <div class="side-card">
+        <kp-icon name="envelope" class="side-card__icon" />
+        <p class="side-card__text">Ha bármi kérdésed van, írj egy emailt nekem!</p>
+        <kp-button size="sm" [href]="emailHref">{{ email }}</kp-button>
+      </div>
+    </kp-card>
+
+    <kp-card surface="tintLilac" padding="md" radius="lg">
+      <div class="side-card">
+        <p class="side-card__text">Vedd fel velem a kapcsolatot a közösségi média oldalaimon!</p>
+        <div class="socials">
+          @for (s of socials; track s.href) {
+            <kp-icon-button [icon]="s.icon" [ariaLabel]="s.label" [href]="s.href" variant="lilac" />
+          }
+        </div>
+      </div>
+    </kp-card>
+  </div>
+</section>

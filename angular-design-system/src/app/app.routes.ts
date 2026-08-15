@@ -39,8 +39,7 @@ export const routes: Routes = [
   {
     path: 'kapcsolat',
     loadComponent: () =>
-      import('./pages/placeholder/placeholder-page').then((m) => m.PlaceholderPage),
-    data: { title: 'Kapcsolat' },
+      import('./pages/contacts/contacts-page').then((m) => m.ContactsPage),
   },
   {
     path: 'adatkezeles',

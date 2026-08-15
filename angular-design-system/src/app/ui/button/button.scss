@@ -44,6 +44,12 @@
     cursor: not-allowed;
     transform: none;
   }
+
+  /* On very small screens allow a long label to wrap so it can't force horizontal overflow
+     (a nowrap label's min-content otherwise widens its grid/flex track past the viewport). */
+  @media (max-width: 400px) {
+    white-space: normal;
+  }
 }
 
 /* ── Sizes ──────────────────────────────────────────────────────────────── */

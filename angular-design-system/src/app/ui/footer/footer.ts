@@ -35,6 +35,7 @@ const POLICY: PolicyLink[] = [
   imports: [RouterLink, Wordmark, IconButton, WeeklyMessage, NewsletterSignup],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
+  host: { role: 'contentinfo' },
 })
 export class Footer {
   readonly socialLabel = input(

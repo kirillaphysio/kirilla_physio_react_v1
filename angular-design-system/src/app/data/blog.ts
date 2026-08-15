@@ -47,11 +47,11 @@ export const BLOG_POSTS: BlogPost[] = [
     lead: 'Ha a legrosszabb pillanat a felkelés, majd fél óra mozgás után enyhül a fájdalom, annak jellemzően nem a matrac az egyetlen oka. Végigveszem, mit jelez ez a mintázat, és mit érdemes vele tenni.',
     body: `
 <p>A reggeli derékfájás az egyik leggyakoribb panasz, amivel megkeresnek. A mintázat szinte mindig ugyanaz: a felkelés éles, az első lépések nehezek, aztán 20–40 perc mozgás után a fájdalom oldódik, és estére visszatér a hosszú ülés vagy állás után.</p>
-<h3>Mi történik éjszaka?</h3>
+<h2>Mi történik éjszaka?</h2>
 <p>Alvás közben a <strong>porckorongok</strong> visszaszívják a folyadékot, ezért reggel a gerinc kicsit "magasabb" és feszesebb. Ezzel párhuzamosan a derék körüli <strong>fascia</strong> — a kötőszöveti burok, ami az izmokat és az ízületeket összekapcsolja — mozgás nélkül veszít a csúszóképességéből. A kettő együtt adja azt a rideg, beállt érzést, ami a felkelést a nap legrosszabb pillanatává teszi.</p>
-<h3>Miért enyhül aztán?</h3>
+<h2>Miért enyhül aztán?</h2>
 <p>A mozgás beindítja a szövetek anyagcseréjét, és aktiválja a <strong>mély stabilizátorokat</strong> (harántirányú hasfal, rekeszizom, medencefenék, a gerincet szegmentálisan tartó apró izmok). Amikor ezek időben bekapcsolnak, a gerinc terhelése egyenletesen oszlik el. Ha késnek, a nagy, felszínes izmok veszik át a munkát — ezért érzed, hogy napközben "beizzik" a derekad, aztán estére elfárad.</p>
-<h3>Amikor ez neked segít</h3>
+<h2>Amikor ez neked segít</h2>
 <p>Érdemes állapotfelmérésre gondolnod, ha a fentiek mellett ezek közül bármelyiket ismerősnek találod:</p>
 <ul>
 <li>a fájdalom reggel a legerősebb, és mozgásra enyhül</li>
@@ -59,7 +59,7 @@ export const BLOG_POSTS: BlogPost[] = [
 <li>a fájdalom a fenékbe vagy a lábba sugárzik</li>
 <li>évente többször "bemegy" a derekad, látszólag ok nélkül</li>
 </ul>
-<h3>Amit a kezelésben teszünk</h3>
+<h2>Amit a kezelésben teszünk</h2>
 <p>Az állapotfelmérés után jellemzően <strong>FDM</strong>-mel oldom a kötőszöveti feszülést, ha a tapintás és a mozgásvizsgálat erre utal. Ezután <strong>szegmentális stabilizációs tréning</strong> következik: nem hasprés és nem gerincerősítés, hanem az időzítés újratanítása, kis terhelésen, pontos technikával. A harmadik elem a napi rutin — 6–8 perc otthoni gyakorlat, amit reggel felkelés előtt, még az ágyban el tudsz kezdeni.</p>
 <p>A kompetenciahatáraimat betartva: ha a vizsgálat során ideggyógyászati jelet, kisugárzó gyengeséget vagy éjszakai, mozgástól független fájdalmat találok, orvosi kivizsgálást javaslok, és a kezelést ahhoz igazítom.</p>`,
   },
@@ -72,11 +72,11 @@ export const BLOG_POSTS: BlogPost[] = [
     lead: 'A fascia a test összefüggő kötőszöveti hálója. Ha egy ponton elveszíti a csúszóképességét, a panasz gyakran attól a helytől távolabb jelentkezik. Erről szól az FDM.',
     body: `
 <p>A <strong>fascia</strong> az a kötőszöveti háló, ami minden izmot, ízületet, eret és belső szervet beburkol, és egyetlen összefüggő rendszerré kapcsol össze. Nem passzív csomagolóanyag: erősen beidegzett, érzékeny szövet, ami reagál a terhelésre, a sérülésre és a tartós mozgáshiányra is.</p>
-<h3>Miért nem ott fáj, ahol a probléma van?</h3>
+<h2>Miért nem ott fáj, ahol a probléma van?</h2>
 <p>Mivel a háló összefüggő, egy feszes, összecsúszott terület máshol változtatja meg a húzási irányokat. Ezért fordul elő, hogy egy régi bokasérülés után évekkel a csípő vagy a derék kezd fájni, vagy hogy egy hasi műtét hege a hátban okoz feszülést.</p>
-<h3>Mit jelent az FDM?</h3>
+<h2>Mit jelent az FDM?</h2>
 <p>A <strong>Fascia Distorsion Modell</strong> egy diagnosztikai és kezelési szemlélet: a páciens saját szavai, a fájdalom megmutatásának módja és a mozgásvizsgálat együtt mondja meg, milyen típusú kötőszöveti torzió áll a panasz mögött. Ez azért fontos, mert a különböző típusok különböző technikát igényelnek — nem ugyanaz a fogás jó egy vonalszerűen mutatott és egy tenyérrel körbesimított fájdalomra.</p>
-<h3>Amikor ez neked segít</h3>
+<h2>Amikor ez neked segít</h2>
 <ul>
 <li>a fájdalmat pontosan meg tudod mutatni egy vonal vagy egy pont mentén</li>
 <li>a mozgás egy adott szakaszán "elakadás" van, nem egyenletes fájdalom</li>
@@ -94,16 +94,16 @@ export const BLOG_POSTS: BlogPost[] = [
     lead: 'Nem az a cél, hogy nyolc órán át tökéletesen üljél. Az a cél, hogy a nyakad ne ugyanabban a helyzetben töltse az egész napot.',
     body: `
 <p>A leggyakoribb kép: <strong>előreesett fejtartás</strong>, felhúzott vállak, és a nap végén húzó fájdalom a tarkótól a lapockáig. Ilyenkor a fej súlya nem a csontos szerkezeten, hanem a nyak hátsó izmain ül, és ezek az izmok nem arra készültek, hogy órákig tartsák.</p>
-<h3>Miért nem a "húzd ki magad" a megoldás?</h3>
+<h2>Miért nem a "húzd ki magad" a megoldás?</h2>
 <p>Mert a kihúzott, feszes tartás ugyanolyan statikus, mint a görbe — csak más izmok fáradnak el benne. A nyaknak <strong>mozgásváltozatosság</strong> kell, nem egy jobb pozíció, amiben mozdulatlanul kitart.</p>
-<h3>Amit a munkanapba be tudsz építeni</h3>
+<h2>Amit a munkanapba be tudsz építeni</h2>
 <ul>
 <li>óránként egy 30 másodperces mozgásszünet: lapockakörzés, nyakforgatás lassan, végig fájdalom nélkül</li>
 <li>a monitor felső széle szemmagasságban — a laptop önmagában szinte mindig túl alacsony</li>
 <li>telefonos beszélgetés alatt állj fel és járkálj</li>
 <li>este 3–4 perc légzésgyakorlat: a felső bordakosár helyett a rekeszizommal</li>
 </ul>
-<h3>Amikor érdemes kezelésre jönnöd</h3>
+<h2>Amikor érdemes kezelésre jönnöd</h2>
 <p>Ha a fájdalom a karba sugárzik, zsibbadás vagy erőtlenség társul hozzá, vagy ha a nyakad reggelre már fájdalommal indul, akkor a napi rutin önmagában nem lesz elég. A kezelésben ilyenkor <strong>Mulligan terápia</strong> vagy <strong>FDM</strong> oldja az ízületi és kötőszöveti korlátot, és <strong>gyógytorna</strong> építi újra a lapockatájék tartását — mert oldani érdemes, de utána tartani is kell tudni.</p>`,
   },
   {
@@ -115,14 +115,14 @@ export const BLOG_POSTS: BlogPost[] = [
     lead: 'A tartós stressz nem csak fejben van jelen. A nervus vagus állapota a légzésen, a szívritmuson és az emésztésen keresztül is látszik — és befolyásolható.',
     body: `
 <p>A <strong>nervus vagus</strong> a leghosszabb agyidegünk: a nyaktól a mellkason át a hasi szervekig fut, és a <strong>paraszimpatikus idegrendszer</strong> fő szereplője. Ez az a rendszer, ami nyugalmi állapotban dolgozik — emészt, regenerál, lassít.</p>
-<h3>Mit érzel, ha ez a rendszer alulműködik?</h3>
+<h2>Mit érzel, ha ez a rendszer alulműködik?</h2>
 <ul>
 <li>felületes, felső mellkasi légzés, sóhajtozás</li>
 <li>tartósan emelkedett izomtónus, főleg a tarkón és a rágóizmokon</li>
 <li>emésztési panaszok, puffadás stresszes időszakban</li>
 <li>alvás, ami nem hoz kipihentséget</li>
 </ul>
-<h3>Mit teszünk a kezelésben?</h3>
+<h2>Mit teszünk a kezelésben?</h2>
 <p>A <strong>vagus terápia</strong> finom, manuális munka a nyak, a rekeszizom és a hasi terület mentén, kiegészítve <strong>légzésgyakorlatokkal</strong>, amik a kilégzést hosszabbítják meg. Ez nem relaxációs óra: a cél az, hogy az idegrendszered újra tudjon váltani a "készenlét" és a "regeneráció" között — mert a fájdalomcsillapítás is ebben az állapotban működik jobban.</p>
 <p>Ez a terápia nem helyettesíti a mentálhigiénés vagy orvosi ellátást. Ha a panaszaid hátterében elsősorban lelki nehézség áll, azt kimondom, és javaslom, hogy szakemberhez fordulj — a testi munka mellett, nem helyette.</p>`,
   },
@@ -135,14 +135,14 @@ export const BLOG_POSTS: BlogPost[] = [
     lead: 'Egy heg nem csak a felszínen van. A műtét vagy sérülés utáni kötőszöveti összenövés a mozgást és a keringést is befolyásolja — és jól reagál a kezelésre.',
     body: `
 <p>Egy <strong>heg</strong> a bőr felszínén látszik, de a szövetek több rétegében képződik: bőr, bőralatti kötőszövet, <strong>fascia</strong>, néha egészen a hasfalig vagy a hasüregi szervekig. Ahol a rétegek összetapadnak, ott a mozgás sem tud egymáson elcsúszni.</p>
-<h3>Mit okozhat egy régi heg?</h3>
+<h2>Mit okozhat egy régi heg?</h2>
 <ul>
 <li>feszülő has, derékfájás császármetszés vagy hasi műtét után</li>
 <li>a heg körüli terület érzékenysége vagy érzéketlensége</li>
 <li>beszűkült mozgás egy ízület közelében</li>
 <li>nyirokkeringési torlódás a heg mögötti területen</li>
 </ul>
-<h3>Időzítés</h3>
+<h2>Időzítés</h2>
 <p>A friss heg akkor kezelhető, amikor a seb <strong>teljesen zárt és gyógyult</strong> — ezt az operáló orvos engedélyéhez igazítom. Innentől a korai, finom munka sokat segít abban, hogy a rétegek ne tapadjanak össze. De a régi hegek is jól reagálnak: évekkel későbbi kezelésnél is helyreállítható a szövetek csúszóképessége, csak több időt kér.</p>
 <p>A munka manuális: a heg és a körülötte lévő szövetek mobilizálása, szükség szerint <strong>cranio FDM</strong> vagy <strong>nyirokkezelés</strong> mellé építve, és otthon végezhető, napi néhány perces hegmasszázzsal folytatva.</p>`,
   },
@@ -155,16 +155,16 @@ export const BLOG_POSTS: BlogPost[] = [
     lead: 'A térd a csípő és a lábfej között dolgozik. Ha bármelyik szomszédja nem végzi a munkáját, a terhelés a térdben landol.',
     body: `
 <p>A lépcsőn lefelé menet, guggolásnál vagy hosszú séta után jelentkező térdfájdalom leggyakrabban <strong>terhelési</strong>, nem szerkezeti eredetű. Ez jó hír, mert a terhelés elosztása változtatható.</p>
-<h3>Mit vizsgálok meg a térd helyett is?</h3>
+<h2>Mit vizsgálok meg a térd helyett is?</h2>
 <ul>
 <li>a <strong>csípő</strong> stabilitása és a farizom munkája egy lábon állásban</li>
 <li>a boka mozgástartománya — beszűkült bokánál a térd veszi át a mozgást</li>
 <li>a lábfej terhelési mintája, boltozat, lábujjak</li>
 <li>a lépcsőzés, guggolás, leguggolás–felállás valódi kivitelezése</li>
 </ul>
-<h3>Amit ilyenkor teszünk</h3>
+<h2>Amit ilyenkor teszünk</h2>
 <p>Ha a mozgásvizsgálat ízületi korlátot talál, <strong>Mulligan terápia</strong> segít visszaadni a térd vagy a boka szabad mozgását — jellemzően azonnal érzékelhető változással. Ezután <strong>gyógytorna</strong> következik: farizom- és csípőstabilitás, a lépcsőzés újratanítása lassú, kontrollált ismétlésekkel. Ha a terület akut és érzékeny, <strong>kinezio tape</strong> tud átmeneti támogatást adni a tanulási szakaszban.</p>
-<h3>Amikor orvoshoz irányítalak</h3>
+<h2>Amikor orvoshoz irányítalak</h2>
 <p>Ha a térd bemelegszik, bedagad, blokkolódik, vagy trauma után instabil, akkor képalkotó vizsgálat kell először. Ezt megmondom, és a kezelést a diagnózishoz igazítom.</p>`,
   },
 ];

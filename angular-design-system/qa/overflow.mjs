@@ -29,21 +29,29 @@ await new Promise((r) => server.listen(0, r));
 const base = `http://localhost:${server.address().port}`;
 const browser = await chromium.launch();
 const widths = [360, 390, 600, 768, 900, 1180, 1280];
-for (const w of widths) {
-  const ctx = await browser.newContext({ viewport: { width: w, height: 900 } });
-  const page = await ctx.newPage();
-  await page.goto(base + '/', { waitUntil: 'networkidle' });
-  await page.waitForTimeout(300);
-  const metrics = await page.evaluate(() => ({
-    scrollW: document.documentElement.scrollWidth,
-    clientW: document.documentElement.clientWidth,
-  }));
-  const overflow = metrics.scrollW - metrics.clientW;
-  console.log(`w=${w} scrollW=${metrics.scrollW} clientW=${metrics.clientW} overflow=${overflow > 1 ? 'OVERFLOW +' + overflow : 'ok'}`);
-  if (w === 600 || w === 900) {
-    await page.screenshot({ path: join(OUT, `home.${w}.png`), fullPage: false });
+const routes = (process.argv[2] || '/,/rolam,/egyeni-kezelesek,/online-programok,/terapia/fdm,/blog,/blog/reggeli-derekfajas,/kapcsolat,/adatkezeles,/feltetelek,/cookie').split(',');
+let bad = 0;
+for (const route of routes) {
+  const hits = [];
+  for (const w of widths) {
+    const ctx = await browser.newContext({ viewport: { width: w, height: 900 } });
+    const page = await ctx.newPage();
+    await page.goto(base + route, { waitUntil: 'networkidle' });
+    await page.waitForTimeout(200);
+    const m = await page.evaluate(() => ({
+      scrollW: document.documentElement.scrollWidth,
+      clientW: document.documentElement.clientWidth,
+    }));
+    const overflow = m.scrollW - m.clientW;
+    if (overflow > 1) hits.push(`${w}px(+${overflow})`);
+    if (route === '/' && (w === 600 || w === 900)) {
+      await page.screenshot({ path: join(OUT, `home.${w}.png`), fullPage: false });
+    }
+    await ctx.close();
   }
-  await ctx.close();
+  bad += hits.length;
+  console.log(`${hits.length ? 'OVERFLOW' : 'ok      '} ${route}${hits.length ? '  ' + hits.join(' ') : ''}`);
 }
+console.log(`\nRoutes with overflow: ${bad === 0 ? 'none' : bad}`);
 await browser.close();
 server.close();

@@ -33,6 +33,7 @@ export const NAV_ITEMS: NavItem[] = [
   imports: [RouterLink, RouterLinkActive, Wordmark, Button, IconButton],
   templateUrl: './header.html',
   styleUrl: './header.scss',
+  host: { role: 'banner' },
 })
 export class Header {
   readonly items = NAV_ITEMS;

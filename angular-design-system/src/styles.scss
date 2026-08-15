@@ -45,7 +45,7 @@
   font-size: var(--body-md-size);
   line-height: var(--body-md-line);
 }
-.kp-post-body h3 {
+.kp-post-body h2 {
   font-size: var(--heading-2-size);
   line-height: var(--heading-2-line);
   letter-spacing: var(--heading-2-track);
@@ -53,7 +53,7 @@
   color: var(--text-strong);
   margin: var(--space-6) 0 var(--space-3);
 }
-.kp-post-body h3:first-child {
+.kp-post-body h2:first-child {
   margin-top: 0;
 }
 .kp-post-body p {
@@ -73,6 +73,7 @@
 .kp-post-body > *:last-child {
   margin-bottom: 0;
 }
+
 
 /* ── Shared layout primitives used across page sections ─────────────────────────── */
 .kp-container {
@@ -119,6 +120,8 @@
 .legal-prose {
   max-width: var(--container-narrow);
   color: var(--text-body);
+  /* Break overlong tokens (full URLs, emails) instead of overflowing on narrow screens. */
+  overflow-wrap: anywhere;
 
   h1 {
     font-size: var(--display-3-size);
