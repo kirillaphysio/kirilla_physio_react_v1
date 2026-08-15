@@ -1,10 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   inject,
+  input,
   signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   BenefitList,
   Button,
@@ -25,15 +28,21 @@ const PDF_POINTS = [
 ];
 const SUCCESS =
   'Köszönöm! A PDF-et elküldtem a megadott címre. Ha nem érkezik meg pár percen belül, nézd meg a spam mappát is.';
+const INLINE_INTRO =
+  'Megadod az e-mail címed, és elküldöm a gyakorlatsort. Nem kell hozzá eszköz, és ma el tudod kezdeni.';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error';
 
-/** Hírlevél lead magnet (anchor #hirlevel). Client states are real: idle/submitting/success/error. */
+/**
+ * Hírlevél lead magnet (anchor #hirlevel). Client states are real: idle/submitting/success/error.
+ * `layout`: "wide" is the closing landing band (benefit list + form split); "inline" is the compact
+ * card used beside other content (e.g. the therapy page's "Otthon is dolgozhatsz" block).
+ */
 @Component({
   selector: 'app-lead-magnet',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, BenefitList, Button, Card, Eyebrow, GradientText, Icon, TextField],
+  imports: [RouterLink, NgTemplateOutlet, BenefitList, Button, Card, Eyebrow, GradientText, Icon, TextField],
   templateUrl: './lead-magnet.html',
   styleUrl: './lead-magnet.scss',
 })
@@ -41,10 +50,16 @@ export class LeadMagnet {
   private readonly newsletter = inject(NewsletterService);
   private readonly content = inject(ContentService);
 
+  readonly layout = input<'wide' | 'inline'>('wide');
+
   readonly pdfTitle = PDF_TITLE;
   readonly pdfPoints = PDF_POINTS;
+  readonly inlineIntro = INLINE_INTRO;
   readonly successMessage = SUCCESS;
   readonly platform = this.content.coursePlatform;
+
+  /** The compact inline card uses a md submit; the wide band uses a full-width lg. */
+  readonly submitSize = computed<'md' | 'lg'>(() => (this.layout() === 'inline' ? 'md' : 'lg'));
 
   readonly email = signal('');
   readonly state = signal<FormState>('idle');

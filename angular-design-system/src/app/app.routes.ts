@@ -22,8 +22,7 @@ export const routes: Routes = [
   {
     path: 'terapia/:id',
     loadComponent: () =>
-      import('./pages/placeholder/placeholder-page').then((m) => m.PlaceholderPage),
-    data: { title: 'Terápia' },
+      import('./pages/therapy/therapy-page').then((m) => m.TherapyPage),
   },
   {
     path: 'rolam',

@@ -1,0 +1,133 @@
+/* ── Hero ───────────────────────────────────────────────────────────────────────── */
+.hero-wrap {
+  background: var(--mesh-hero);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: var(--space-16);
+  align-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}
+
+.hero__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.hero__back {
+  align-self: flex-start;
+}
+
+.hero__title {
+  font-size: var(--display-2-size);
+  line-height: var(--display-2-line);
+  letter-spacing: var(--display-2-track);
+  font-weight: var(--display-2-weight);
+  color: var(--text-strong);
+}
+
+.hero__lead {
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line);
+  color: var(--text-muted);
+  max-width: 520px;
+}
+
+.hero__cta {
+  display: flex;
+  gap: var(--gap-inline);
+  flex-wrap: wrap;
+  margin-top: var(--space-2);
+}
+
+.hero__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-card-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+
+  @media (max-width: 900px) {
+    max-width: 460px;
+  }
+}
+
+/* ── Long clinical copy ─────────────────────────────────────────────────────────────
+   Narrower column. `white-space: pre-wrap` preserves the source's \n paragraph breaks and
+   "- " bullet lines; <strong> emphasis is styled globally via .kp-rich. */
+.kp-section.copy {
+  max-width: var(--container-narrow);
+}
+.copy__rich {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--text-body);
+  white-space: pre-wrap;
+}
+
+/* ── "Otthon is dolgozhatsz" block ─────────────────────────────────────────────────── */
+.home {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--gap-grid);
+  align-items: stretch;
+}
+
+.home__card {
+  height: 100%;
+  --kp-card-height: 100%;
+}
+.home__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  height: 100%;
+}
+.home__title {
+  font-size: var(--heading-1-size);
+  line-height: var(--heading-1-line);
+  letter-spacing: var(--heading-1-track);
+  font-weight: var(--heading-1-weight);
+  color: var(--text-strong);
+}
+.home__cta {
+  display: flex;
+  gap: var(--gap-inline);
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+/* ── További kezelések ──────────────────────────────────────────────────────────── */
+.others__heading {
+  display: block;
+  margin-bottom: var(--space-8);
+}
+
+.others__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-grid);
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fallback {
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line);
+  color: var(--text-body);
+  max-width: var(--container-narrow);
+  margin-bottom: var(--space-10);
+}

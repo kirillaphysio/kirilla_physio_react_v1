@@ -23,6 +23,28 @@
   font-weight: var(--heading-1-weight);
 }
 
+/* Inline layout — a single compact card (intro copy stacked above the form). Stretches to fill its
+   grid cell (equal-height row) via --kp-card-height; the flex column lives on the projected body. */
+:host {
+  display: block;
+}
+.lead-inline {
+  height: 100%;
+  --kp-card-height: 100%;
+}
+.lead-inline__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  height: 100%;
+}
+
+.lead-inline__intro {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--text-body);
+}
+
 .lead__form {
   display: flex;
   flex-direction: column;

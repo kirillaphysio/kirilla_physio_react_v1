@@ -1,0 +1,99 @@
+@if (therapy(); as t) {
+  <div class="hero-wrap">
+    <section class="kp-section hero">
+      <div class="hero__col">
+        <kp-button
+          class="hero__back"
+          variant="ghost"
+          size="sm"
+          icon="arrow-left"
+          href="/egyeni-kezelesek"
+          >Vissza a terápiákhoz</kp-button
+        >
+        <kp-eyebrow>Terápia</kp-eyebrow>
+        <h1 class="hero__title">{{ t.title }}</h1>
+        <p class="hero__lead">{{ t.short }}</p>
+        <div class="hero__cta">
+          <kp-button icon="file-arrow-down" (clicked)="jumpToHirlevel()"
+            >Kérem az 5 gyakorlatot</kp-button
+          >
+          <kp-button variant="outline" [href]="salonic">Időpontot foglalok</kp-button>
+        </div>
+      </div>
+      <kp-cloudinary-image
+        class="hero__img"
+        [imageId]="t.imageId"
+        [alt]="t.title"
+        crop="c_fill"
+        [ratio]="squareRatio"
+        [eager]="true"
+        sizes="(max-width: 900px) 100vw, 40vw"
+        placeholderSize="760x760"
+      />
+    </section>
+  </div>
+
+  <section class="kp-section copy">
+    <kp-card surface="plain" padding="lg" radius="xl">
+      <div class="kp-rich copy__rich" [innerHTML]="t.long"></div>
+    </kp-card>
+  </section>
+
+  <section id="hirlevel" class="kp-section home">
+    <app-lead-magnet layout="inline" />
+    <kp-card surface="mesh" padding="lg" radius="xl" class="home__card">
+      <div class="home__body">
+        <kp-eyebrow>Otthon is dolgozhatsz rajta</kp-eyebrow>
+        <h3 class="home__title">Online programok</h3>
+        <app-availability-note />
+        <div class="home__cta">
+          <kp-button size="md" href="/online-programok">Programok megtekintése</kp-button>
+          <kp-button
+            size="md"
+            variant="ghost"
+            icon="arrow-up-right-from-square"
+            iconPosition="right"
+            [href]="platform"
+            >Kurzusok</kp-button
+          >
+        </div>
+      </div>
+    </kp-card>
+  </section>
+
+  <section class="kp-section others">
+    <kp-section-heading
+      class="others__heading"
+      eyebrow="Terápiák"
+      title="További kezelések"
+      [level]="3"
+    />
+    <div class="others__grid">
+      @for (o of others(); track o.id) {
+        <kp-therapy-card
+          [title]="o.title"
+          [short]="o.short"
+          [imageId]="o.imageId"
+          [href]="'/terapia/' + o.id"
+        />
+      }
+    </div>
+  </section>
+} @else {
+  <section class="kp-section others">
+    <p class="fallback">
+      Sajnálom, ez a terápia valamiért nem található, válaszd ki az általad keresettet a lentebbi
+      listából!
+    </p>
+    <div class="others__grid">
+      @for (o of allTherapies; track o.id) {
+        <kp-therapy-card
+          [title]="o.title"
+          [short]="o.short"
+          [imageId]="o.imageId"
+          [href]="'/terapia/' + o.id"
+        />
+      }
+    </div>
+  </section>
+}
