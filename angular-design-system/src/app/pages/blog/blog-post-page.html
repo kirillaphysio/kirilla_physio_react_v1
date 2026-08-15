@@ -1,0 +1,63 @@
+@if (post(); as p) {
+  <div class="hero-wrap">
+    <section class="kp-section hero">
+      <kp-button class="hero__back" variant="ghost" size="sm" icon="arrow-left" href="/blog"
+        >Vissza a bloghoz</kp-button
+      >
+      <div class="hero__meta">
+        <kp-eyebrow>{{ p.category }}</kp-eyebrow>
+        <span class="hero__date">{{ p.date }} · {{ p.read }} olvasás</span>
+      </div>
+      <h1 class="hero__title">{{ p.title }}</h1>
+      <p class="hero__lead">{{ p.lead }}</p>
+    </section>
+  </div>
+
+  <section class="kp-section article">
+    <kp-image-slot
+      class="article__cover"
+      [slotId]="'blog-' + p.id"
+      [label]="'Fotó: ' + p.category"
+    />
+    <kp-card surface="plain" padding="lg" radius="xl">
+      <div class="kp-post-body" [innerHTML]="p.body"></div>
+    </kp-card>
+    <kp-card surface="tintLilac" padding="md" radius="lg">
+      <div class="cta">
+        <p class="cta__text">
+          Ha a fentiek ismerősek, egy állapotfelmérésen végig tudjuk venni, mi áll a te panaszod
+          mögött.
+        </p>
+        <kp-button [href]="salonic">Időpontot foglalok</kp-button>
+      </div>
+    </kp-card>
+  </section>
+
+  <section class="kp-section others">
+    <kp-section-heading class="mb-8" eyebrow="Blog" title="További írások" [level]="3" />
+    <div class="others__grid">
+      @for (o of others(); track o.id) {
+        <kp-card
+          [href]="'/blog/' + o.id"
+          [interactive]="true"
+          surface="plain"
+          padding="none"
+          radius="lg"
+          class="othercard"
+        >
+          <kp-image-slot class="othercard__cover" [slotId]="'blog-' + o.id" [label]="o.category" />
+          <div class="othercard__body">
+            <span class="othercard__cat">{{ o.category }}</span>
+            <h3 class="othercard__title">{{ o.title }}</h3>
+            <p class="othercard__lead">{{ o.lead }}</p>
+          </div>
+        </kp-card>
+      }
+    </div>
+  </section>
+} @else {
+  <section class="kp-section others">
+    <p class="fallback">Ez a bejegyzés nem található. Válaszd ki a listából, amelyik érdekel!</p>
+    <kp-button variant="secondary" size="sm" icon="arrow-left" href="/blog">Vissza a bloghoz</kp-button>
+  </section>
+}

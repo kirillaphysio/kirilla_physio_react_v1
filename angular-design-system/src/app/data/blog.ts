@@ -10,6 +10,15 @@
 // Kept as data (never inlined in templates) so the drafts are easy to review and swap.
 
 import { CaseStory } from './case';
+import type { PlaylistKind } from '../ui/playlist-art/playlist-art-data';
+
+/** A YouTube playlist tile on the blog: `list` is the playlist id, `art` the brand poster kind. */
+export interface BlogPlaylist {
+  list: string;
+  art: PlaylistKind;
+  title: string;
+  description?: string;
+}
 
 export interface BlogPost {
   id: string;
@@ -254,6 +263,19 @@ export const BLOG_STORIES: BlogStory[] = [
     outcome: 'A lépcsőzés fájdalommentes, a hosszú séta már nem hozza vissza a panaszt.',
     therapies: ['Mulligan terápia', 'Gyógytorna'],
   },
+];
+
+// The real YouTube playlists on the channel. `art` names the brand poster (see PlaylistArt);
+// order is editorial — body regions from the spine down, then stress, then the personal vlogs.
+export const BLOG_PLAYLISTS: BlogPlaylist[] = [
+  { list: 'PL88GCL4sFg6WSPVyvKiTFOjDdPxn_Hb3U', art: 'spine', title: 'Gerinc/derékfájás', description: 'Napi rutin gyakorlatok és magyarázatok a gerincről és a derékfájásról.' },
+  { list: 'PL88GCL4sFg6VyDscEDRWCPRwJEV29IJP2', art: 'neck', title: 'Nyak-váll-lapocka' },
+  { list: 'PL88GCL4sFg6XJnw_L2ztNxWoJQ2-e-Mnj', art: 'hip', title: 'Csípő' },
+  { list: 'PL88GCL4sFg6XAyx9mSnMizhIJ5fAS0wKK', art: 'knee', title: 'Térd' },
+  { list: 'PL88GCL4sFg6WULa6tOq5DBH5GA56RvxwV', art: 'foot', title: 'Lábfej-sarok-talp' },
+  { list: 'PL88GCL4sFg6U-OPty2kAnHOptNyXGDryz', art: 'hand', title: 'Könyök-csukló-kéz' },
+  { list: 'PLKr-ARwW4tO0', art: 'stress', title: 'Stressz', description: 'Feszültségoldás, légzés és paraszimpatikus hangolás — otthon is elvégezhető gyakorlatokkal.' },
+  { list: 'PL88GCL4sFg6XKFGftYYODQBdMqTiq_ZXQ', art: 'vlog', title: 'Vlog/sztori' },
 ];
 
 /** Lookup one post by id (used by /blog/:id and its prerender params). */

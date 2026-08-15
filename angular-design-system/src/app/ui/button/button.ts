@@ -38,6 +38,8 @@ export class Button {
   readonly icon = input<string>();
   readonly iconPosition = input<'left' | 'right'>('left');
   readonly href = input<string>();
+  /** Router fragment for internal links (e.g. "videok" → /blog#videok). Ignored for external hrefs. */
+  readonly fragment = input<string>();
   readonly disabled = input(false);
   readonly fullWidth = input(false);
   readonly type = input<'button' | 'submit' | 'reset'>('button');

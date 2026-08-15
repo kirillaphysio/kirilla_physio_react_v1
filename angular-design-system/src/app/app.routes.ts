@@ -29,15 +29,12 @@ export const routes: Routes = [
   },
   {
     path: 'blog',
-    loadComponent: () =>
-      import('./pages/placeholder/placeholder-page').then((m) => m.PlaceholderPage),
-    data: { title: 'Blog' },
+    loadComponent: () => import('./pages/blog/blog-page').then((m) => m.BlogPage),
   },
   {
     path: 'blog/:id',
     loadComponent: () =>
-      import('./pages/placeholder/placeholder-page').then((m) => m.PlaceholderPage),
-    data: { title: 'Blog' },
+      import('./pages/blog/blog-post-page').then((m) => m.BlogPostPage),
   },
   {
     path: 'kapcsolat',

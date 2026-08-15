@@ -1,0 +1,52 @@
+<kp-card surface="plain" padding="none" radius="lg" class="pc">
+  <div class="pc__media">
+    @if (playing()) {
+      <iframe
+        class="pc__frame"
+        [src]="embedUrl()"
+        [title]="playlist().title + ' — lejátszási lista'"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    } @else {
+      <button
+        type="button"
+        class="pc__poster"
+        (click)="onPlay()"
+        [attr.aria-label]="playlist().title + ' lejátszási lista indítása'"
+      >
+        <kp-playlist-art [kind]="playlist().art" />
+        <span class="pc__badge">
+          <kp-icon name="youtube" class="pc__badge-icon" />
+          Lejátszási lista
+        </span>
+        <span class="pc__play"><kp-icon name="circle-play" /></span>
+      </button>
+
+      @if (needsConsent()) {
+        <div class="pc__consent">
+          <p class="pc__consent-text">
+            A videó lejátszásához engedélyezned kell a beágyazott (közösségi) tartalmakat.
+          </p>
+          <div class="pc__consent-actions">
+            <kp-button size="sm" (clicked)="allowAndPlay()">Engedélyezem és lejátszom</kp-button>
+            <a class="pc__consent-link" [href]="youtubeUrl()" target="_blank" rel="noreferrer"
+              >Megnyitás a YouTube-on</a
+            >
+          </div>
+        </div>
+      }
+    }
+  </div>
+
+  <div class="pc__body">
+    <h3 class="pc__title">{{ playlist().title }}</h3>
+    @if (playlist().description) {
+      <p class="pc__desc">{{ playlist().description }}</p>
+    }
+    <a class="pc__link" [href]="youtubeUrl()" target="_blank" rel="noreferrer">
+      Megnyitás a YouTube-on
+      <kp-icon name="arrow-up-right-from-square" class="pc__link-icon" />
+    </a>
+  </div>
+</kp-card>

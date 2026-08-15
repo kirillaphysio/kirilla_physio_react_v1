@@ -2,6 +2,7 @@
   @if (isInternal()) {
     <a
       [routerLink]="href()"
+      [fragment]="fragment()"
       class="kp-btn"
       [class]="'v-' + variant() + ' s-' + size()"
       [attr.aria-label]="ariaLabel()"

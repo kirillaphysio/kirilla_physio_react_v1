@@ -6,7 +6,7 @@ import { CASES, CaseStory } from '../data/case';
 import { LANDING_OPINIONS, TREATMENTS_OPINIONS, Testimonial } from '../data/testimonial';
 import { FAQS, Faq } from '../data/faq';
 import { QUALIFICATIONS, Qualification } from '../data/qualification';
-import { BLOG_POSTS, BLOG_STORIES, BlogPost, BlogStory, blogPostById } from '../data/blog';
+import { BLOG_POSTS, BLOG_PLAYLISTS, BLOG_STORIES, BlogPlaylist, BlogPost, BlogStory, blogPostById } from '../data/blog';
 
 /**
  * Static content, read straight from the typed `data/` modules — no HTTP, no state library.
@@ -73,5 +73,8 @@ export class ContentService {
   }
   blogStories(): BlogStory[] {
     return BLOG_STORIES;
+  }
+  blogPlaylists(): BlogPlaylist[] {
+    return BLOG_PLAYLISTS;
   }
 }

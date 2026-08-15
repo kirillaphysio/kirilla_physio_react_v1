@@ -39,6 +39,41 @@
   }
 }
 
+/* Blog article body injected via [innerHTML] — global prose styling (encapsulation can't tag it). */
+.kp-post-body {
+  color: var(--text-body);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+}
+.kp-post-body h3 {
+  font-size: var(--heading-2-size);
+  line-height: var(--heading-2-line);
+  letter-spacing: var(--heading-2-track);
+  font-weight: var(--heading-2-weight);
+  color: var(--text-strong);
+  margin: var(--space-6) 0 var(--space-3);
+}
+.kp-post-body h3:first-child {
+  margin-top: 0;
+}
+.kp-post-body p {
+  margin: 0 0 var(--space-4);
+}
+.kp-post-body ul {
+  margin: 0 0 var(--space-4);
+  padding-inline-start: 22px;
+}
+.kp-post-body li {
+  margin-bottom: 8px;
+}
+.kp-post-body strong {
+  font-weight: var(--weight-bold);
+  color: var(--text-strong);
+}
+.kp-post-body > *:last-child {
+  margin-bottom: 0;
+}
+
 /* ── Shared layout primitives used across page sections ─────────────────────────── */
 .kp-container {
   max-width: var(--container-max);

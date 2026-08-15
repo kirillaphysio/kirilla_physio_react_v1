@@ -47,6 +47,21 @@ export class ConsentService {
   save(categories: Record<ConsentCategory, boolean>): void {
     this.persist({ essential: true, ...categories });
   }
+  /** True once the given category is granted. Reactive — reads the consent signal. */
+  isGranted(category: ConsentCategory): boolean {
+    return this.state()?.[category] === true;
+  }
+  /** Grant a single category, preserving the others (used by consent-gated embeds like blog videos). */
+  grant(category: ConsentCategory): void {
+    const c = this.state();
+    this.persist({
+      essential: true,
+      analytics: c?.analytics ?? false,
+      social: c?.social ?? false,
+      advertising: c?.advertising ?? false,
+      [category]: true,
+    });
+  }
   /** Clear the saved choice so the banner shows again (used by the cookie page). */
   revoke(): void {
     if (this.isBrowser) {

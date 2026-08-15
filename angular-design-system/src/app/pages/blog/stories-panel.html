@@ -1,0 +1,51 @@
+<div class="stories">
+  <kp-section-heading
+    eyebrow="Páciens történetek"
+    title="Így néz ki egy kezelési folyamat"
+    as="h2"
+    [level]="2"
+    lead="Anonimizált esetek a praxisomból — a panasztól a kezelési tervig. Válaszd ki, amelyik a legközelebb áll a te panaszodhoz."
+  />
+  <div class="stories__shell">
+    <kp-card surface="tintCream" padding="sm" radius="xl" class="stories__list">
+      <div class="stories__list-inner">
+        @for (s of stories; track s.id) {
+          <button
+            type="button"
+            class="storyrow"
+            [class.is-active]="s.id === openId()"
+            [attr.aria-current]="s.id === openId() ? 'true' : null"
+            (click)="select(s.id)"
+          >
+            <span class="storyrow__label">{{ s.label }}</span>
+            <span class="storyrow__title">{{ s.title }}</span>
+          </button>
+        }
+      </div>
+    </kp-card>
+
+    <div class="stories__detail">
+      <kp-case-story
+        [meta]="story().meta"
+        [title]="story().title"
+        [blocks]="story().blocks"
+        [outcome]="story().outcome"
+        [therapies]="story().therapies"
+      />
+      <div class="stories__nav">
+        <kp-button variant="ghost" size="sm" icon="arrow-left" (clicked)="step(-1)"
+          >Előző eset</kp-button
+        >
+        <span class="stories__count">{{ index() + 1 }} / {{ stories.length }}</span>
+        <kp-button
+          variant="ghost"
+          size="sm"
+          icon="arrow-right"
+          iconPosition="right"
+          (clicked)="step(1)"
+          >Következő eset</kp-button
+        >
+      </div>
+    </div>
+  </div>
+</div>

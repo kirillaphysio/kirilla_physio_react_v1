@@ -1,0 +1,129 @@
+/* ── Hero ───────────────────────────────────────────────────────────────────────── */
+.hero-wrap {
+  background: var(--mesh-hero);
+}
+.kp-section.hero {
+  max-width: var(--container-narrow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.hero__back {
+  align-self: flex-start;
+}
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.hero__date {
+  font-size: var(--caption-size);
+  color: var(--text-muted);
+}
+.hero__title {
+  font-size: var(--display-2-size);
+  line-height: var(--display-2-line);
+  letter-spacing: var(--display-2-track);
+  font-weight: var(--display-2-weight);
+  color: var(--text-strong);
+  text-wrap: pretty;
+}
+.hero__lead {
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line);
+  color: var(--text-muted);
+}
+
+/* ── Article ────────────────────────────────────────────────────────────────────── */
+.kp-section.article {
+  max-width: var(--container-narrow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+.article__cover {
+  display: block;
+  height: 340px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+
+  @media (max-width: 600px) {
+    height: 220px;
+  }
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+.cta__text {
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--text-body);
+  max-width: 460px;
+}
+
+/* ── További írások ─────────────────────────────────────────────────────────────── */
+.mb-8 {
+  display: block;
+  margin-bottom: var(--space-8);
+}
+.others__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-grid);
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.othercard {
+  display: block;
+}
+.othercard__cover {
+  display: block;
+  height: 150px;
+}
+.othercard__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--space-6);
+}
+.othercard__cat {
+  font-size: var(--eyebrow-size);
+  font-weight: var(--eyebrow-weight);
+  letter-spacing: var(--eyebrow-track);
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+.othercard__title {
+  font-size: var(--heading-3-size);
+  line-height: var(--heading-3-line);
+  letter-spacing: var(--heading-3-track);
+  font-weight: var(--heading-3-weight);
+  color: var(--text-strong);
+  text-wrap: pretty;
+}
+.othercard__lead {
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.fallback {
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line);
+  color: var(--text-body);
+  max-width: var(--container-narrow);
+  margin-bottom: var(--space-6);
+}

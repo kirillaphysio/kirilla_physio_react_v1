@@ -18,6 +18,7 @@ export { CourseCard } from './course-card/course-card';
 export { FaqAccordion } from './faq-accordion/faq-accordion';
 export { JumpMenu } from './jump-menu/jump-menu';
 export { LinkTile } from './link-tile/link-tile';
+export { PlaylistArt } from './playlist-art/playlist-art';
 export { PriceItem } from './price-item/price-item';
 export { QualificationList } from './qualification-list/qualification-list';
 export { SelfCheckQuiz } from './self-check-quiz/self-check-quiz';

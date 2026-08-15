@@ -1,0 +1,103 @@
+<div class="hero-wrap">
+  <section class="kp-section hero">
+    <kp-eyebrow>Blog</kp-eyebrow>
+    <h1 class="hero__title">Írások, videók, páciens történetek</h1>
+    <p class="hero__lead">
+      Hasznos és tudományosan megalapozott információkat, tippeket, gyakorlatokat osztok meg. Ugorj
+      arra a részre, amelyik érdekel.
+    </p>
+  </section>
+</div>
+
+<section class="kp-section shell">
+  <app-section-rail
+    class="shell__rail"
+    [tabs]="tabs"
+    [activeId]="active()"
+    [counts]="counts"
+    (select)="onSelect($event)"
+  />
+
+  <div class="shell__panels">
+    <!-- Írások -->
+    <div id="irasok" class="panel">
+      <kp-section-heading
+        class="panel__head"
+        eyebrow="Írások"
+        title="Blog bejegyzések"
+        as="h2"
+        [level]="2"
+        lead="Egy-egy téma röviden, érthetően: mi történik a testben, és mikor érdemes vele foglalkozni."
+      />
+      <div class="posts">
+        <kp-card
+          [href]="'/blog/' + featured.id"
+          [interactive]="true"
+          surface="plain"
+          padding="none"
+          radius="xl"
+          class="posts__featured"
+        >
+          <kp-image-slot
+            class="featured__cover"
+            [slotId]="'blog-' + featured.id"
+            [label]="'Fotó: ' + featured.category"
+          />
+          <div class="featured__body">
+            <span class="postmeta">
+              <span class="postmeta__cat">{{ featured.category }}</span>
+              <span aria-hidden="true">·</span>
+              <span>{{ featured.date }}</span>
+              <span aria-hidden="true">·</span>
+              <span>{{ featured.read }} olvasás</span>
+            </span>
+            <h3 class="featured__title">{{ featured.title }}</h3>
+            <p class="featured__lead">{{ featured.lead }}</p>
+            <span class="featured__cta">Elolvasom <kp-icon name="arrow-right" /></span>
+          </div>
+        </kp-card>
+
+        <div class="posts__rows">
+          @for (p of rest; track p.id) {
+            <a class="postrow" [routerLink]="'/blog/' + p.id">
+              <kp-image-slot class="postrow__cover" [slotId]="'blog-' + p.id" [label]="p.category" />
+              <span class="postrow__text">
+                <span class="postmeta postmeta--muted">
+                  <span class="postmeta__cat">{{ p.category }}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{{ p.date }}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{{ p.read }} olvasás</span>
+                </span>
+                <span class="postrow__title">{{ p.title }}</span>
+                <span class="postrow__cta">Elolvasom <kp-icon name="arrow-right" /></span>
+              </span>
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Videók -->
+    <div id="videok" class="panel">
+      <kp-section-heading
+        class="panel__head"
+        eyebrow="Témák"
+        title="Lejátszási listák"
+        as="h2"
+        [level]="2"
+        lead="Minden héten új videókkal várlak a csatornámon. Itt témák szerint találod meg őket."
+      />
+      <div class="videos">
+        @for (pl of playlists; track pl.list) {
+          <app-playlist-card [playlist]="pl" />
+        }
+      </div>
+    </div>
+
+    <!-- Történetek -->
+    <div id="tortenetek" class="panel">
+      <app-stories-panel />
+    </div>
+  </div>
+</section>
