@@ -15,7 +15,13 @@
         (click)="onPlay()"
         [attr.aria-label]="playlist().title + ' lejátszási lista indítása'"
       >
-        <kp-playlist-art [kind]="playlist().art" />
+        <img
+          class="pc__art"
+          [src]="playlist().image"
+          [alt]="playlist().title + ' lejátszási lista'"
+          loading="lazy"
+          decoding="async"
+        />
         <span class="pc__badge">
           <kp-icon name="youtube" class="pc__badge-icon" />
           Lejátszási lista

@@ -12,10 +12,14 @@
 import { CaseStory } from './case';
 import type { PlaylistKind } from '../ui/playlist-art/playlist-art-data';
 
-/** A YouTube playlist tile on the blog: `list` is the playlist id, `art` the brand poster kind. */
+/**
+ * A YouTube playlist tile on the blog: `list` is the playlist id, `image` the real thumbnail
+ * (served from `public/assets/images/`), `art` the brand SVG poster kept as a fallback.
+ */
 export interface BlogPlaylist {
   list: string;
   art: PlaylistKind;
+  image: string;
   title: string;
   description?: string;
 }
@@ -268,14 +272,14 @@ export const BLOG_STORIES: BlogStory[] = [
 // The real YouTube playlists on the channel. `art` names the brand poster (see PlaylistArt);
 // order is editorial — body regions from the spine down, then stress, then the personal vlogs.
 export const BLOG_PLAYLISTS: BlogPlaylist[] = [
-  { list: 'PL88GCL4sFg6WSPVyvKiTFOjDdPxn_Hb3U', art: 'spine', title: 'Gerinc/derékfájás', description: 'Napi rutin gyakorlatok és magyarázatok a gerincről és a derékfájásról.' },
-  { list: 'PL88GCL4sFg6VyDscEDRWCPRwJEV29IJP2', art: 'neck', title: 'Nyak-váll-lapocka' },
-  { list: 'PL88GCL4sFg6XJnw_L2ztNxWoJQ2-e-Mnj', art: 'hip', title: 'Csípő' },
-  { list: 'PL88GCL4sFg6XAyx9mSnMizhIJ5fAS0wKK', art: 'knee', title: 'Térd' },
-  { list: 'PL88GCL4sFg6WULa6tOq5DBH5GA56RvxwV', art: 'foot', title: 'Lábfej-sarok-talp' },
-  { list: 'PL88GCL4sFg6U-OPty2kAnHOptNyXGDryz', art: 'hand', title: 'Könyök-csukló-kéz' },
-  { list: 'PLKr-ARwW4tO0', art: 'stress', title: 'Stressz', description: 'Feszültségoldás, légzés és paraszimpatikus hangolás — otthon is elvégezhető gyakorlatokkal.' },
-  { list: 'PL88GCL4sFg6XKFGftYYODQBdMqTiq_ZXQ', art: 'vlog', title: 'Vlog/sztori' },
+  { list: 'PL88GCL4sFg6WSPVyvKiTFOjDdPxn_Hb3U', art: 'spine', image: 'assets/images/gerinc.JPG', title: 'Gerinc/derékfájás', description: 'Napi rutin gyakorlatok és magyarázatok a gerincről és a derékfájásról.' },
+  { list: 'PL88GCL4sFg6VyDscEDRWCPRwJEV29IJP2', art: 'neck', image: 'assets/images/nyak-vall-lapocka.JPG', title: 'Nyak-váll-lapocka' },
+  { list: 'PL88GCL4sFg6XJnw_L2ztNxWoJQ2-e-Mnj', art: 'hip', image: 'assets/images/csipo.JPG', title: 'Csípő' },
+  { list: 'PL88GCL4sFg6XAyx9mSnMizhIJ5fAS0wKK', art: 'knee', image: 'assets/images/terd.JPG', title: 'Térd' },
+  { list: 'PL88GCL4sFg6WULa6tOq5DBH5GA56RvxwV', art: 'foot', image: 'assets/images/labfej-sarok-talp.JPG', title: 'Lábfej-sarok-talp' },
+  { list: 'PL88GCL4sFg6U-OPty2kAnHOptNyXGDryz', art: 'hand', image: 'assets/images/konyok-csuklo-kez.JPG', title: 'Könyök-csukló-kéz' },
+  { list: 'PLKr-ARwW4tO0', art: 'stress', image: 'assets/images/stressz.JPG', title: 'Stressz', description: 'Feszültségoldás, légzés és paraszimpatikus hangolás — otthon is elvégezhető gyakorlatokkal.' },
+  { list: 'PL88GCL4sFg6XKFGftYYODQBdMqTiq_ZXQ', art: 'vlog', image: 'assets/images/vlog.JPG', title: 'Vlog/sztori' },
 ];
 
 /** Lookup one post by id (used by /blog/:id and its prerender params). */

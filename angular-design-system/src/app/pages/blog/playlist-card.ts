@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Button, Card, Icon, PlaylistArt } from '../../ui';
+import { Button, Card, Icon } from '../../ui';
 import { BlogPlaylist } from '../../data/blog';
 import { ConsentService } from '../../core/consent.service';
 
@@ -20,7 +20,7 @@ import { ConsentService } from '../../core/consent.service';
 @Component({
   selector: 'app-playlist-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Button, Card, Icon, PlaylistArt],
+  imports: [Button, Card, Icon],
   templateUrl: './playlist-card.html',
   styleUrl: './playlist-card.scss',
 })
