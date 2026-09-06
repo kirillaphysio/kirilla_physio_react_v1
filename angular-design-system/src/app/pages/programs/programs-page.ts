@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Button, CourseCard, SectionHeading } from '../../ui';
-import { ImageSlot } from '../../shared/image-slot/image-slot';
+import { VideoEmbed } from '../../shared/video-embed/video-embed';
 import { LeadMagnet } from '../landing/sections/lead-magnet';
 import { AvailabilityNote } from '../landing/sections/availability-note';
 import { ContentService } from '../../core/content.service';
@@ -11,7 +11,7 @@ const SEO_DESCRIPTION =
 
 /**
  * /online-programok — Programs (Online fókusz). Hero (heading + availability note + CTAs + a
- * neutral preview-video slot), the full course catalogue (`kp-course-card`, incl. "soon" chips),
+ * consent-gated intro video, `kp-video-embed`), the full course catalogue (`kp-course-card`, incl. "soon" chips),
  * and the wide PDF lead magnet under the catalogue.
  */
 @Component({
@@ -21,7 +21,7 @@ const SEO_DESCRIPTION =
     Button,
     CourseCard,
     SectionHeading,
-    ImageSlot,
+    VideoEmbed,
     LeadMagnet,
     AvailabilityNote,
   ],
