@@ -31,13 +31,14 @@
   justify-content: space-between;
 }
 
-/* ── Section-heading spacing helpers ────────────────────────────────────────────── */
+/* ── Section-heading spacing helpers ──────────────────────────────────────────────
+   Applied only to <kp-section-heading>, which is already display:flex via its own :host.
+   Don't set `display` here — a component-scoped `display:block` outranks that :host rule
+   and would defeat the heading's centering (align-items) when align="center". */
 .mb-8 {
-  display: block;
   margin-bottom: var(--space-8);
 }
 .mb-10 {
-  display: block;
   margin-bottom: var(--space-10);
 }
 
