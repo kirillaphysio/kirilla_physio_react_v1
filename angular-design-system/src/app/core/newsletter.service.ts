@@ -1,25 +1,27 @@
 import { Injectable } from '@angular/core';
 
 /**
- * The mailing-list endpoint is not in the design bundle yet — Réka supplies it. It lives here as
- * a single constant so wiring the real provider is a one-line change; every caller keeps its real
- * idle/submitting/success/error states. Until an endpoint is set, submit() resolves as a no-op
- * success so the client flow is exercisable.
+ * MailerLite's "Basic" embed form action — posts straight to the account's form/group, no API
+ * key involved (a secret key can't live in client-side JS on a static, backend-less site). Taken
+ * from the account's Forms → Embed → HTML snippet; the form itself is bound to the target group
+ * in the MailerLite dashboard, not here.
  */
-export const LEAD_MAGNET_ENDPOINT = '';
+const MAILERLITE_FORM_ACTION =
+  'https://assets.mailerlite.com/jsonp/2553842/forms/198881653379040736/subscribe';
 
 @Injectable({ providedIn: 'root' })
 export class NewsletterService {
   /** Subscribe an address to the list. Resolves on success, rejects on failure. */
   async submit(email: string): Promise<void> {
-    if (!LEAD_MAGNET_ENDPOINT) {
-      // No provider wired yet — treat as a successful no-op so the UI states still work.
-      return;
-    }
-    const res = await fetch(LEAD_MAGNET_ENDPOINT, {
+    const body = new URLSearchParams({
+      'fields[email]': email,
+      'ml-submit': '1',
+      anticsrf: 'true',
+    });
+    const res = await fetch(MAILERLITE_FORM_ACTION, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
     });
     if (!res.ok) {
       throw new Error(`Subscribe failed: ${res.status}`);

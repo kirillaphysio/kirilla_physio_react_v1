@@ -19,7 +19,9 @@
 .hero__portrait {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 1 / 1;
+  object-fit: cover;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);

@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   Card,
-  CloudinaryImage,
   GradientText,
   Icon,
   QualificationList,
@@ -38,7 +37,6 @@ const SEO_DESCRIPTION =
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     Card,
-    CloudinaryImage,
     GradientText,
     Icon,
     QualificationList,
@@ -54,8 +52,6 @@ export class AboutPage {
   readonly about = ABOUT;
   readonly triad = TRIAD;
   readonly qualifications = this.content.qualifications();
-  /** Stable reference for CloudinaryImage's ratio input. */
-  readonly squareRatio: [number, number] = [1, 1];
 
   constructor() {
     this.seo.apply({

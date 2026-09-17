@@ -9,15 +9,14 @@
       lead="A mozgás szeretete vitt a szakma felé, és a mai napig folyamatosan tanulok. Itt elolvashatod, honnan indultam, és milyen végzettségek állnak a munkám mögött."
       maxWidth="100%"
     />
-    <kp-cloudinary-image
+    <img
       class="hero__portrait"
-      imageId="kezdőlap__u1ybav"
+      src="assets/images/about_portrait.jpg"
       alt="Kirilla Réka gyógytornász-fizioterapeuta"
-      crop="c_fill"
-      [ratio]="squareRatio"
-      [eager]="true"
-      sizes="(max-width: 900px) 100vw, 360px"
-      placeholderSize="600x600"
+      width="600"
+      height="600"
+      fetchpriority="high"
+      decoding="async"
     />
   </section>
 </div>
