@@ -55,8 +55,8 @@ export class LandingPage {
   readonly salonic = SALONIC_URL;
   readonly benefits = [
     'Szakértői tapasztalat és folyamatosan frissített tudás',
-    'Személyre szabott, hatékony kezelések holisztikus szemléletmóddal',
     'Empatikus és figyelmes megközelítés',
+    'Holisztikus szemléletmód',
   ];
   readonly cases = this.content.cases();
   readonly opinions = this.content.landingOpinions();

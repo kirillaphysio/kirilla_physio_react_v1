@@ -2,7 +2,7 @@ import {
   DOCUMENT,
   Injectable,
   PLATFORM_ID,
-  afterNextRender,
+  afterEveryRender,
   inject,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
@@ -39,7 +39,11 @@ export class RevealService {
       { threshold: 0, rootMargin: '0px 0px -6% 0px' },
     );
 
-    afterNextRender(() => this.scan());
+    // afterEveryRender (not afterNextRender) so a rescan keeps happening on every render cycle —
+    // needed because hydration can still replace the routed page's DOM (destroy+recreate) after
+    // the very first scan, which would otherwise strand already-hidden [data-reveal] blocks with
+    // no observer watching the newly-created elements.
+    afterEveryRender(() => this.scan());
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe(() => win.requestAnimationFrame(() => this.scan()));

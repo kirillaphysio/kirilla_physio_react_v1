@@ -1,6 +1,6 @@
 @if (therapy(); as t) {
   <div class="hero-wrap">
-    <section class="kp-section hero">
+    <section class="kp-section hero" data-reveal>
       <div class="hero__col">
         <kp-button
           class="hero__back"
@@ -33,13 +33,13 @@
     </section>
   </div>
 
-  <section class="kp-section copy">
+  <section class="kp-section copy" data-reveal>
     <kp-card surface="plain" padding="lg" radius="xl">
       <div class="kp-rich copy__rich" [innerHTML]="t.long"></div>
     </kp-card>
   </section>
 
-  <section id="hirlevel" class="kp-section home">
+  <section id="hirlevel" class="kp-section home" data-reveal>
     <app-lead-magnet layout="inline" />
     <kp-card surface="mesh" padding="lg" radius="xl" class="home__card">
       <div class="home__body">
@@ -61,7 +61,7 @@
     </kp-card>
   </section>
 
-  <section class="kp-section others">
+  <section class="kp-section others" data-reveal>
     <kp-section-heading
       class="others__heading"
       eyebrow="Terápiák"
@@ -80,7 +80,7 @@
     </div>
   </section>
 } @else {
-  <section class="kp-section others">
+  <section class="kp-section others" data-reveal>
     <p class="fallback">
       Sajnálom, ez a terápia valamiért nem található, válaszd ki az általad keresettet a lentebbi
       listából!

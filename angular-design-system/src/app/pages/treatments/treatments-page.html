@@ -1,5 +1,5 @@
 <div class="hero-wrap">
-  <section class="kp-section hero">
+  <section class="kp-section hero" data-reveal>
     <kp-eyebrow align="center">Budapest, XII. kerület</kp-eyebrow>
     <h1 class="hero__title">Egyéni kezelések</h1>
     <div class="hero__jump">
@@ -8,7 +8,7 @@
   </section>
 </div>
 
-<section id="foglalas" class="kp-section">
+<section id="foglalas" class="kp-section" data-reveal>
   <kp-card surface="mesh" padding="lg" radius="xl">
     <div class="booking">
       <kp-section-heading
@@ -22,7 +22,7 @@
   </kp-card>
 </section>
 
-<section id="elso-alkalom" class="kp-section">
+<section id="elso-alkalom" class="kp-section" data-reveal>
   <kp-section-heading
     class="mb-8"
     eyebrow="Az első alkalom"
@@ -33,7 +33,7 @@
   <kp-step-flow [steps]="firstVisit" />
 </section>
 
-<section id="segitseg" class="kp-section">
+<section id="segitseg" class="kp-section" data-reveal>
   <kp-section-heading
     class="mb-8"
     eyebrow="Panaszok"
@@ -46,7 +46,7 @@
   </kp-card>
 </section>
 
-<section id="terapiak" class="kp-section">
+<section id="terapiak" class="kp-section" data-reveal>
   <kp-section-heading
     class="mb-10"
     eyebrow="Terápiák"
@@ -67,7 +67,7 @@
   </div>
 </section>
 
-<section id="arak" class="kp-section">
+<section id="arak" class="kp-section" data-reveal>
   <kp-section-heading class="mb-8" eyebrow="Árak" title="Kezelési díjak" [level]="2" />
   <div class="grid-2">
     <kp-price-item
@@ -87,7 +87,7 @@
   <p class="price-note">Fizetés készpénzzel vagy azonnali átutalással a kezelés végén.</p>
 </section>
 
-<section id="visszajelzesek" class="kp-section">
+<section id="visszajelzesek" class="kp-section" data-reveal>
   <kp-section-heading
     class="mb-10"
     eyebrow="Visszajelzések"
@@ -98,12 +98,12 @@
   <kp-testimonial-carousel [items]="opinions" [perView]="3" />
 </section>
 
-<section id="faq" class="kp-section">
+<section id="faq" class="kp-section" data-reveal>
   <kp-section-heading class="mb-8" eyebrow="GYIK" title="Gyakori kérdések" [level]="2" />
   <kp-faq-accordion [items]="faqs" />
 </section>
 
-<section id="szabalyzat" class="kp-section">
+<section id="szabalyzat" class="kp-section" data-reveal>
   <kp-section-heading
     class="mb-8"
     eyebrow="Szabályzat"

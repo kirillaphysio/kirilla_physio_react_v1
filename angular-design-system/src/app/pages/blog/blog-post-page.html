@@ -1,6 +1,6 @@
 @if (post(); as p) {
   <div class="hero-wrap">
-    <section class="kp-section hero">
+    <section class="kp-section hero" data-reveal>
       <kp-button class="hero__back" variant="ghost" size="sm" icon="arrow-left" href="/blog"
         >Vissza a bloghoz</kp-button
       >
@@ -13,7 +13,7 @@
     </section>
   </div>
 
-  <section class="kp-section article">
+  <section class="kp-section article" data-reveal>
     <kp-image-slot
       class="article__cover"
       [slotId]="'blog-' + p.id"
@@ -33,7 +33,7 @@
     </kp-card>
   </section>
 
-  <section class="kp-section others">
+  <section class="kp-section others" data-reveal>
     <kp-section-heading class="mb-8" eyebrow="Blog" title="További írások" [level]="3" />
     <div class="others__grid">
       @for (o of others(); track o.id) {
@@ -56,7 +56,7 @@
     </div>
   </section>
 } @else {
-  <section class="kp-section others">
+  <section class="kp-section others" data-reveal>
     <p class="fallback">Ez a bejegyzés nem található. Válaszd ki a listából, amelyik érdekel!</p>
     <kp-button variant="secondary" size="sm" icon="arrow-left" href="/blog">Vissza a bloghoz</kp-button>
   </section>
