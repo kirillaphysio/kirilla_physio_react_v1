@@ -12,9 +12,10 @@ import { ImageSlot } from '../../shared/image-slot/image-slot';
 import { COURSE_PLATFORM, Course } from '../../data/course';
 
 /**
- * One online-course cell: neutral cover slot (covers don't exist yet), weeks/lessons meta
- * (em-dash until Réka supplies numbers), title, optional description, and a footer that is a
- * "Hamarosan" chip for `soon` courses or a "Megnyitom" button for `live` ones.
+ * One online-course cell: real platform cover when the course has one (else the neutral
+ * placeholder slot), weeks/lessons meta (em-dash when unset), title, optional description, and a
+ * footer that is a "Hamarosan" chip for `soon` courses or a "Megnyitom" button (deep-linking to
+ * the course's own page, falling back to the platform home) for `live` ones.
  */
 @Component({
   selector: 'kp-course-card',

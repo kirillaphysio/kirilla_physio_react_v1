@@ -1,12 +1,25 @@
 <kp-card surface="plain" padding="none" radius="lg" class="cc">
   <div class="cc__inner">
-    <kp-image-slot
-      class="cc__cover"
-      [class.is-soon]="soon()"
-      [slotId]="course().slot"
-      label="Program borítókép"
-      ariaLabel="Program borítókép"
-    />
+    @if (course().image; as cover) {
+      <img
+        class="cc__cover cc__cover--img"
+        [class.is-soon]="soon()"
+        [src]="cover"
+        [alt]="course().title + ' borítókép'"
+        width="1280"
+        height="720"
+        loading="lazy"
+        decoding="async"
+      />
+    } @else {
+      <kp-image-slot
+        class="cc__cover"
+        [class.is-soon]="soon()"
+        [slotId]="course().slot"
+        label="Program borítókép"
+        ariaLabel="Program borítókép"
+      />
+    }
     <div class="cc__body">
       <span class="cc__meta">
         <span class="cc__meta-item"><kp-icon name="calendar" /> {{ weeksLabel() }}</span>
@@ -26,7 +39,7 @@
             variant="secondary"
             icon="arrow-right"
             iconPosition="right"
-            [href]="platform()"
+            [href]="course().url || platform()"
             >Megnyitom</kp-button
           >
         }
