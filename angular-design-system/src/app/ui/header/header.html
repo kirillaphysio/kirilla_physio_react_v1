@@ -13,10 +13,6 @@
     }
   </nav>
 
-  <div class="kp-header__cta">
-    <kp-button size="sm" [href]="ctaHref">{{ ctaLabel }}</kp-button>
-  </div>
-
   <div class="kp-header__toggle">
     <kp-icon-button
       [icon]="open() ? 'xmark' : 'bars'"
@@ -39,8 +35,5 @@
         >{{ item.label }}</a
       >
     }
-    <kp-button size="md" [href]="ctaHref" [fullWidth]="true" class="kp-header__sheet-cta">{{
-      ctaLabel
-    }}</kp-button>
   </div>
 }

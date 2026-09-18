@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Wordmark } from '../wordmark/wordmark';
-import { Button } from '../button/button';
 import { IconButton } from '../icon-button/icon-button';
 
 export interface NavItem {
@@ -30,15 +29,13 @@ export const NAV_ITEMS: NavItem[] = [
 @Component({
   selector: 'kp-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, RouterLinkActive, Wordmark, Button, IconButton],
+  imports: [RouterLink, RouterLinkActive, Wordmark, IconButton],
   templateUrl: './header.html',
   styleUrl: './header.scss',
   host: { role: 'banner' },
 })
 export class Header {
   readonly items = NAV_ITEMS;
-  readonly ctaLabel = 'Időpontot foglalok';
-  readonly ctaHref = SALONIC_URL;
 
   readonly open = signal(false);
 
