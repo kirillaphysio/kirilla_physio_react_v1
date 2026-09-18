@@ -13,7 +13,6 @@ import {
 } from '../../ui';
 import { AvailabilityNote } from './sections/availability-note';
 import { CourseLadder } from './sections/course-ladder';
-import { CoursePromo } from './sections/course-promo';
 import { SymptomRouter } from './sections/symptom-router';
 import { LeadMagnet } from './sections/lead-magnet';
 import { ContentService } from '../../core/content.service';
@@ -40,7 +39,6 @@ const SEO_DESCRIPTION =
     TestimonialCarousel,
     AvailabilityNote,
     CourseLadder,
-    CoursePromo,
     SymptomRouter,
     LeadMagnet,
   ],
