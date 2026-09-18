@@ -25,7 +25,7 @@ import { Icon } from '../../shared/icon/icon';
 export class NewsletterSignup {
   readonly title = input('Iratkozz fel a hírlevelemre');
   readonly note = input(
-    'Havonta egy levél gyakorlatokkal és tippekkel. Bármikor leiratkozhatsz.',
+    'A feliratkozásért egy ingyenes PDF-et kapsz, és a továbbiakban is hasznos tippeket, gyakorlatokat küldök.',
   );
   readonly placeholder = input('E-mail címed');
   readonly cta = input('Feliratkozom');

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Icon } from '../../../ui';
 
 const AVAILABILITY =
-  'A naptáram gyakran hetekre előre betelt, ezért készítettem online programokat: azokat bármikor elkezdheted, és otthonról végezheted.';
+  'A naptáram gyakran telített, ezért is készítettem online programokat: ezeket bármikor elkezdheted, és otthonról végezheted.';
 
 /** Calendar icon + muted body-sm note under the hero CTAs. */
 @Component({

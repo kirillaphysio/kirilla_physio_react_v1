@@ -15,7 +15,7 @@ const server = createServer(async (req, res) => { try { const f = resolveFile(re
 await new Promise((r) => server.listen(0, r));
 const base = `http://localhost:${server.address().port}`;
 const browser = await chromium.launch();
-const routes = ['/', '/rolam', '/egyeni-kezelesek', '/online-programok', '/terapia/fdm', '/blog', '/blog/reggeli-derekfajas', '/kapcsolat'];
+const routes = ['/', '/rolam', '/egyeni-kezelesek', '/online-programok', '/terapia/fdm', '/blog', '/blog/banyapup', '/kapcsolat'];
 let problems = 0;
 for (const route of routes) {
   const page = await browser.newContext({ viewport: { width: 1280, height: 900 } }).then((c) => c.newPage());

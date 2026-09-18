@@ -29,7 +29,7 @@ await new Promise((r) => server.listen(0, r));
 const base = `http://localhost:${server.address().port}`;
 const browser = await chromium.launch();
 const widths = [360, 390, 600, 768, 900, 1180, 1280];
-const routes = (process.argv[2] || '/,/rolam,/egyeni-kezelesek,/online-programok,/terapia/fdm,/blog,/blog/reggeli-derekfajas,/kapcsolat,/adatkezeles,/feltetelek,/cookie').split(',');
+const routes = (process.argv[2] || '/,/rolam,/egyeni-kezelesek,/online-programok,/terapia/fdm,/blog,/blog/banyapup,/kapcsolat,/adatkezeles,/feltetelek,/cookie').split(',');
 let bad = 0;
 for (const route of routes) {
   const hits = [];

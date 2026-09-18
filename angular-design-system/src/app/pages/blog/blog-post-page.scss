@@ -52,6 +52,11 @@
     height: 220px;
   }
 }
+.article__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
 
 .cta {
   display: flex;

@@ -10,6 +10,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { Button, Card, Eyebrow, SectionHeading } from '../../ui';
 import { ImageSlot } from '../../shared/image-slot/image-slot';
+import { VideoEmbed } from '../../shared/video-embed/video-embed';
 import { ContentService } from '../../core/content.service';
 import { SeoService } from '../../core/seo.service';
 import { SALONIC_URL } from '../../ui/header/header';
@@ -24,7 +25,7 @@ const SITE_ORIGIN = 'https://www.kirillareka.hu';
 @Component({
   selector: 'app-blog-post-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Button, Card, Eyebrow, SectionHeading, ImageSlot],
+  imports: [Button, Card, Eyebrow, SectionHeading, ImageSlot, VideoEmbed],
   templateUrl: './blog-post-page.html',
   styleUrl: './blog-post-page.scss',
 })

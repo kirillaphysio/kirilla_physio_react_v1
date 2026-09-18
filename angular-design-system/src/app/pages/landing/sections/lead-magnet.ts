@@ -20,11 +20,11 @@ import {
 import { NewsletterService } from '../../../core/newsletter.service';
 import { ContentService } from '../../../core/content.service';
 
-const PDF_TITLE = '5 gyakorlat derékfájásra';
+const PDF_TITLE = '5 gyakorlat az egészségesebb derékért';
 const PDF_POINTS = [
   'Öt gyakorlat, amit otthon, eszköz nélkül elvégezhetsz',
-  'Mindegyikhez leírás és annyi ismétlés, amennyi valóban elég',
-  'Utána havonta egy levél arról, mit tehetsz a saját mozgásodért',
+  'Mindegyikhez fotó és rövid leírás, hogy biztosan jól csináld',
+  'Utána további hasznos tippeket és gyakorlatokat küldök',
 ];
 const SUCCESS =
   'Köszönöm! A PDF-et elküldtem a megadott címre. Ha nem érkezik meg pár percen belül, nézd meg a spam mappát is.';

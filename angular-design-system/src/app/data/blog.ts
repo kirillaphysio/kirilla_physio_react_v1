@@ -1,13 +1,14 @@
 // Blog content: written posts and the patient-story archive.
 //
-// ⚠️ UNREVIEWED DRAFTS — the posts are realistic Hungarian drafts in Réka's voice
-// (term → mechanism → "amikor ez neked segít"), written for the redesign. They need Réka's
-// sign-off before they ship. The stories follow the same rule as the landing page's two: real
-// cases, non-identifying, no promised outcome. Do NOT translate or reword the copy.
+// BLOG_POSTS are Réka's own revised articles (source: data/blog_revised/blog-1..4, raw text
+// reformatted into HTML — content/wording untouched). Body/text carry inline <strong> emphasis
+// rendered downstream via [innerHTML] on `.kp-rich` (see styles.scss). A post with a `videoId`
+// renders a consent-gated YouTube embed on its page (see blog-post-page.html).
 //
-// Ported verbatim from the design project's ui_kits/website/blog-data.js. Body/text carry inline
-// <strong> emphasis rendered downstream via [innerHTML] on `.kp-rich` (see styles.scss).
-// Kept as data (never inlined in templates) so the drafts are easy to review and swap.
+// ⚠️ UNREVIEWED DRAFTS — the patient stories below are realistic Hungarian drafts in Réka's voice,
+// written for the redesign. They need Réka's sign-off before they ship. They follow the same rule
+// as the landing page's two: real cases, non-identifying, no promised outcome. Do NOT translate or
+// reword the copy. Ported verbatim from the design project's ui_kits/website/blog-data.js.
 
 import { CaseStory } from './case';
 import type { PlaylistKind } from '../ui/playlist-art/playlist-art-data';
@@ -33,6 +34,10 @@ export interface BlogPost {
   lead: string;
   /** HTML body (headings, paragraphs, lists, <strong>). Rendered via [innerHTML] on `.kp-rich`. */
   body: string;
+  /** YouTube video id embedded on the post page (consent-gated `kp-video-embed`). Optional. */
+  videoId?: string;
+  /** Accessible title for the embed, taken from the post's own "Nézd meg a videót" line. */
+  videoTitle?: string;
 }
 
 /** A patient story with the blog archive's extra id/label on top of the shared CaseStory shape. */
@@ -43,133 +48,99 @@ export interface BlogStory extends CaseStory {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    id: 'reggeli-derekfajas',
-    category: 'Derék',
-    date: '2026. augusztus 4.',
-    read: '6 perc',
-    title: 'Miért fáj a derekad reggel, és mitől enyhül napközben?',
-    lead: 'Ha a legrosszabb pillanat a felkelés, majd fél óra mozgás után enyhül a fájdalom, annak jellemzően nem a matrac az egyetlen oka. Végigveszem, mit jelez ez a mintázat, és mit érdemes vele tenni.',
-    body: `
-<p>A reggeli derékfájás az egyik leggyakoribb panasz, amivel megkeresnek. A mintázat szinte mindig ugyanaz: a felkelés éles, az első lépések nehezek, aztán 20–40 perc mozgás után a fájdalom oldódik, és estére visszatér a hosszú ülés vagy állás után.</p>
-<h2>Mi történik éjszaka?</h2>
-<p>Alvás közben a <strong>porckorongok</strong> visszaszívják a folyadékot, ezért reggel a gerinc kicsit "magasabb" és feszesebb. Ezzel párhuzamosan a derék körüli <strong>fascia</strong> — a kötőszöveti burok, ami az izmokat és az ízületeket összekapcsolja — mozgás nélkül veszít a csúszóképességéből. A kettő együtt adja azt a rideg, beállt érzést, ami a felkelést a nap legrosszabb pillanatává teszi.</p>
-<h2>Miért enyhül aztán?</h2>
-<p>A mozgás beindítja a szövetek anyagcseréjét, és aktiválja a <strong>mély stabilizátorokat</strong> (harántirányú hasfal, rekeszizom, medencefenék, a gerincet szegmentálisan tartó apró izmok). Amikor ezek időben bekapcsolnak, a gerinc terhelése egyenletesen oszlik el. Ha késnek, a nagy, felszínes izmok veszik át a munkát — ezért érzed, hogy napközben "beizzik" a derekad, aztán estére elfárad.</p>
-<h2>Amikor ez neked segít</h2>
-<p>Érdemes állapotfelmérésre gondolnod, ha a fentiek mellett ezek közül bármelyiket ismerősnek találod:</p>
-<ul>
-<li>a fájdalom reggel a legerősebb, és mozgásra enyhül</li>
-<li>hosszú ülés után nehezen egyenesedsz ki</li>
-<li>a fájdalom a fenékbe vagy a lábba sugárzik</li>
-<li>évente többször "bemegy" a derekad, látszólag ok nélkül</li>
-</ul>
-<h2>Amit a kezelésben teszünk</h2>
-<p>Az állapotfelmérés után jellemzően <strong>FDM</strong>-mel oldom a kötőszöveti feszülést, ha a tapintás és a mozgásvizsgálat erre utal. Ezután <strong>szegmentális stabilizációs tréning</strong> következik: nem hasprés és nem gerincerősítés, hanem az időzítés újratanítása, kis terhelésen, pontos technikával. A harmadik elem a napi rutin — 6–8 perc otthoni gyakorlat, amit reggel felkelés előtt, még az ágyban el tudsz kezdeni.</p>
-<p>A kompetenciahatáraimat betartva: ha a vizsgálat során ideggyógyászati jelet, kisugárzó gyengeséget vagy éjszakai, mozgástól független fájdalmat találok, orvosi kivizsgálást javaslok, és a kezelést ahhoz igazítom.</p>`,
-  },
-  {
-    id: 'mi-az-a-fascia',
-    category: 'Fascia',
-    date: '2026. július 21.',
-    read: '5 perc',
-    title: 'Mi az a fascia, és miért ott fáj, ahol nem is sérültél?',
-    lead: 'A fascia a test összefüggő kötőszöveti hálója. Ha egy ponton elveszíti a csúszóképességét, a panasz gyakran attól a helytől távolabb jelentkezik. Erről szól az FDM.',
-    body: `
-<p>A <strong>fascia</strong> az a kötőszöveti háló, ami minden izmot, ízületet, eret és belső szervet beburkol, és egyetlen összefüggő rendszerré kapcsol össze. Nem passzív csomagolóanyag: erősen beidegzett, érzékeny szövet, ami reagál a terhelésre, a sérülésre és a tartós mozgáshiányra is.</p>
-<h2>Miért nem ott fáj, ahol a probléma van?</h2>
-<p>Mivel a háló összefüggő, egy feszes, összecsúszott terület máshol változtatja meg a húzási irányokat. Ezért fordul elő, hogy egy régi bokasérülés után évekkel a csípő vagy a derék kezd fájni, vagy hogy egy hasi műtét hege a hátban okoz feszülést.</p>
-<h2>Mit jelent az FDM?</h2>
-<p>A <strong>Fascia Distorsion Modell</strong> egy diagnosztikai és kezelési szemlélet: a páciens saját szavai, a fájdalom megmutatásának módja és a mozgásvizsgálat együtt mondja meg, milyen típusú kötőszöveti torzió áll a panasz mögött. Ez azért fontos, mert a különböző típusok különböző technikát igényelnek — nem ugyanaz a fogás jó egy vonalszerűen mutatott és egy tenyérrel körbesimított fájdalomra.</p>
-<h2>Amikor ez neked segít</h2>
-<ul>
-<li>a fájdalmat pontosan meg tudod mutatni egy vonal vagy egy pont mentén</li>
-<li>a mozgás egy adott szakaszán "elakadás" van, nem egyenletes fájdalom</li>
-<li>korábbi sérülés vagy műtét után maradt vissza feszülés</li>
-<li>a képalkotó vizsgálat nem magyaráz meg mindent, amit érzel</li>
-</ul>
-<p>Az FDM-kezelés lehet határozott és rövid ideig érzékeny. Ezt előre elmondom, és mindig a te visszajelzésedhez igazítom az erőt — nem a "fájjon, hogy hasson" elv alapján dolgozom.</p>`,
-  },
-  {
-    id: 'nyak-monitor-elott',
+    id: 'banyapup',
     category: 'Testtartás',
-    date: '2026. július 7.',
+    date: '2026. szeptember 15.',
     read: '4 perc',
-    title: 'Nyakfájás a monitor előtt: mit tehetsz a munkanapon belül?',
-    lead: 'Nem az a cél, hogy nyolc órán át tökéletesen üljél. Az a cél, hogy a nyakad ne ugyanabban a helyzetben töltse az egész napot.',
+    title: 'Banyapúp – mi okozza, és mit tehetsz ellene?',
+    lead: 'A nyak és hát találkozásánál kialakuló domborulat gyakran nem egyetlen okra vezethető vissza. Végigveszem, mi állhat mögötte, és mit lehet ellene tenni.',
+    videoId: 'jrYJ84CvHnk',
+    videoTitle: 'Banyapúp – mit tehetsz ellene?',
     body: `
-<p>A leggyakoribb kép: <strong>előreesett fejtartás</strong>, felhúzott vállak, és a nap végén húzó fájdalom a tarkótól a lapockáig. Ilyenkor a fej súlya nem a csontos szerkezeten, hanem a nyak hátsó izmain ül, és ezek az izmok nem arra készültek, hogy órákig tartsák.</p>
-<h2>Miért nem a "húzd ki magad" a megoldás?</h2>
-<p>Mert a kihúzott, feszes tartás ugyanolyan statikus, mint a görbe — csak más izmok fáradnak el benne. A nyaknak <strong>mozgásváltozatosság</strong> kell, nem egy jobb pozíció, amiben mozdulatlanul kitart.</p>
-<h2>Amit a munkanapba be tudsz építeni</h2>
-<ul>
-<li>óránként egy 30 másodperces mozgásszünet: lapockakörzés, nyakforgatás lassan, végig fájdalom nélkül</li>
-<li>a monitor felső széle szemmagasságban — a laptop önmagában szinte mindig túl alacsony</li>
-<li>telefonos beszélgetés alatt állj fel és járkálj</li>
-<li>este 3–4 perc légzésgyakorlat: a felső bordakosár helyett a rekeszizommal</li>
-</ul>
-<h2>Amikor érdemes kezelésre jönnöd</h2>
-<p>Ha a fájdalom a karba sugárzik, zsibbadás vagy erőtlenség társul hozzá, vagy ha a nyakad reggelre már fájdalommal indul, akkor a napi rutin önmagában nem lesz elég. A kezelésben ilyenkor <strong>Mulligan terápia</strong> vagy <strong>FDM</strong> oldja az ízületi és kötőszöveti korlátot, és <strong>gyógytorna</strong> építi újra a lapockatájék tartását — mert oldani érdemes, de utána tartani is kell tudni.</p>`,
+<p>A „banyapúp” egy hétköznapi elnevezés arra a nyak és hát találkozásánál látható domborulatra, amely sokaknál főként esztétikai problémát jelent, előrehaladottabb esetben azonban mozgásszervi panaszokkal és fájdalommal is társulhat.</p>
+<p>Fontos tudni, hogy a banyapúp nem egy pontos orvosi diagnózis, és többféle jelenséget is takarhat. A nyak alsó részén, a <strong>C7-es csigolya</strong> környékén egészséges esetben is lehet egy kisebb dudor (a C7-es csigolya hátsó tővisnyúlványa), de a látványosabb „púp” hátterében állhat a felső háti szakasz fokozott görbülete (<strong>kyphosis</strong>), illetve zsírszövet-felszaporodás is. Utóbbi hivatalos megnevezése <strong>dorsocervicalis zsírszövet-felszaporodás</strong> (dorsocervical fat pad).</p>
+<h2>Mi okozhatja a banyapúpot?</h2>
+<p>A kialakulásában több tényező is szerepet játszhat. A tartós előrebiccentett fejtartás és előreeső vállak, például sok ülőmunka vagy telefonhasználat mellett, fokozott terhelést jelenthet a nyak alsó és a hát felső szakaszának.</p>
+<p>Ha a fej és a vállak hosszú időn keresztül előreeső helyzetben vannak, megváltozhat az izmok működése is. A mellizmok feszesebbé válhatnak, miközben a lapockák körüli és egyes hátizmok gyengébbé válhatnak. Ez hozzájárulhat a testtartás megváltozásához.</p>
+<p>A nyak hátsó részén megjelenő zsírfelhalmozódásnak ugyanakkor más okai is lehetnek. Bizonyos hormonális eltérések, például a <strong>Cushing-szindróma</strong>, szintén okozhatnak dorsocervicalis zsírszövet-felszaporodást.</p>
+<h2>Lehet-e tenni a banyapúp ellen?</h2>
+<p>Igen, de az eredmény nagyban függ attól, mi áll a háttérben.</p>
+<p>Ha elsősorban mozgásszervi és tartási tényezők játszanak szerepet, a megfelelően megválasztott <strong>gyógytorna</strong> segíthet a gerinc és a vállöv mozgásának javításában, az elgyengült izmok erősítésében és a feszesebb ízületek mobilizálásában.</p>
+<p>Nincs azonban egyetlen tökéletes gyakorlat a banyapúpra. Sok hasznos gyakorlat létezik, és hogy ezek mennyit segítenek a banyapúp enyhítésében vagy akár eltüntetésében, az az adott személy állapotától és a probléma súlyosságától függ.</p>
+<p>Az is sokat számíthat, hogy a mindennapokban mennyi időt töltünk egy adott testhelyzetben. Ülőmunka esetén például érdemes a monitort megfelelő magasságba állítani, és a telefon használatakor is kerülni a hosszú ideig fennálló, erősen előrebillentett fejtartást.</p>
+<p>Ha a banyapúp mellett fájdalom, zsibbadás vagy más tartós panasz is jelentkezik, érdemes személyesen konzultálni orvossal/gyógytornásszal.</p>`,
   },
   {
-    id: 'legzes-es-stressz',
-    category: 'Stressz',
-    date: '2026. június 23.',
-    read: '5 perc',
-    title: 'Légzés és stressz: mit jelent a vagus terápia?',
-    lead: 'A tartós stressz nem csak fejben van jelen. A nervus vagus állapota a légzésen, a szívritmuson és az emésztésen keresztül is látszik — és befolyásolható.',
-    body: `
-<p>A <strong>nervus vagus</strong> a leghosszabb agyidegünk: a nyaktól a mellkason át a hasi szervekig fut, és a <strong>paraszimpatikus idegrendszer</strong> fő szereplője. Ez az a rendszer, ami nyugalmi állapotban dolgozik — emészt, regenerál, lassít.</p>
-<h2>Mit érzel, ha ez a rendszer alulműködik?</h2>
-<ul>
-<li>felületes, felső mellkasi légzés, sóhajtozás</li>
-<li>tartósan emelkedett izomtónus, főleg a tarkón és a rágóizmokon</li>
-<li>emésztési panaszok, puffadás stresszes időszakban</li>
-<li>alvás, ami nem hoz kipihentséget</li>
-</ul>
-<h2>Mit teszünk a kezelésben?</h2>
-<p>A <strong>vagus terápia</strong> finom, manuális munka a nyak, a rekeszizom és a hasi terület mentén, kiegészítve <strong>légzésgyakorlatokkal</strong>, amik a kilégzést hosszabbítják meg. Ez nem relaxációs óra: a cél az, hogy az idegrendszered újra tudjon váltani a "készenlét" és a "regeneráció" között — mert a fájdalomcsillapítás is ebben az állapotban működik jobban.</p>
-<p>Ez a terápia nem helyettesíti a mentálhigiénés vagy orvosi ellátást. Ha a panaszaid hátterében elsősorban lelki nehézség áll, azt kimondom, és javaslom, hogy szakemberhez fordulj — a testi munka mellett, nem helyette.</p>`,
-  },
-  {
-    id: 'hegkezeles',
-    category: 'Hegkezelés',
-    date: '2026. június 9.',
+    id: 'piriformis-szindroma',
+    category: 'Csípő',
+    date: '2026. szeptember 8.',
     read: '4 perc',
-    title: 'Hegkezelés: mikor érdemes elkezdeni, és miért nem késő évek után sem?',
-    lead: 'Egy heg nem csak a felszínen van. A műtét vagy sérülés utáni kötőszöveti összenövés a mozgást és a keringést is befolyásolja — és jól reagál a kezelésre.',
+    title: 'Piriformis szindróma – csípő és ülőideg fájdalom',
+    lead: 'A farpofában és a comb hátsó részén jelentkező, üléstől erősödő fájdalom hátterében gyakran a piriformis izom és az ülőideg kapcsolata áll. Megnézzük, mit jelent ez, és mit lehet vele kezdeni.',
+    videoId: 'S3Zd1YdsED4',
+    videoTitle: 'Piriformis szindróma, csípő és ülőideg fájdalom – mit csinálj?',
     body: `
-<p>Egy <strong>heg</strong> a bőr felszínén látszik, de a szövetek több rétegében képződik: bőr, bőralatti kötőszövet, <strong>fascia</strong>, néha egészen a hasfalig vagy a hasüregi szervekig. Ahol a rétegek összetapadnak, ott a mozgás sem tud egymáson elcsúszni.</p>
-<h2>Mit okozhat egy régi heg?</h2>
+<p>A piriformis szindróma egy olyan mozgásszervi probléma, amelynél a farpofa területén jelentkező fájdalomhoz akár az <strong>ülőideg</strong> irritációja is társulhat. A fájdalom emiatt nemcsak a farpofában, hanem a comb hátsó részén is érezhető lehet, és sokaknál az ülés fokozza a panaszokat.</p>
+<p>A piriformis szindrómát gyakran az úgynevezett <strong>mély farizom szindróma</strong> (deep gluteal syndrome) részeként említik. Ez egy tágabb fogalom, amely több olyan állapotot is magában foglal, amikor a farpofa mélyén az ülőideg érintetté válik.</p>
+<h2>Mi az a piriformis izom?</h2>
+<p>A <strong>piriformis</strong> egy mélyen elhelyezkedő farizom, amely a keresztcsonttól a combcsont felső részéhez fut. Anatómiai elhelyezkedése miatt közel van az ülőideghez, ezért bizonyos esetekben szerepet játszhat az ideg irritációjában vagy kompressziójában.</p>
+<p>Fontos azonban, hogy nem minden farpofába vagy lábba sugárzó fájdalom piriformis szindróma. Hasonló panaszokat okozhat például a gerincből kiinduló idegi érintettség vagy a mély farizom területének más problémája is.</p>
+<h2>Milyen tünetei lehetnek?</h2>
+<p>A leggyakoribb panasz a farpofában jelentkező fájdalom vagy érzékenység, amely esetenként a comb hátsó részébe is kisugározhat. Jellemző lehet, hogy a tünetek:</p>
 <ul>
-<li>feszülő has, derékfájás császármetszés vagy hasi műtét után</li>
-<li>a heg körüli terület érzékenysége vagy érzéketlensége</li>
-<li>beszűkült mozgás egy ízület közelében</li>
-<li>nyirokkeringési torlódás a heg mögötti területen</li>
+<li>hosszabb ülés után erősödnek</li>
+<li>bizonyos csípőmozgásoknál fokozódnak</li>
+<li>a farpofa mélyén jelentkeznek</li>
+<li>esetenként zsibbadó, bizsergő vagy idegi jellegű érzéssel is társulnak</li>
 </ul>
-<h2>Időzítés</h2>
-<p>A friss heg akkor kezelhető, amikor a seb <strong>teljesen zárt és gyógyult</strong> — ezt az operáló orvos engedélyéhez igazítom. Innentől a korai, finom munka sokat segít abban, hogy a rétegek ne tapadjanak össze. De a régi hegek is jól reagálnak: évekkel későbbi kezelésnél is helyreállítható a szövetek csúszóképessége, csak több időt kér.</p>
-<p>A munka manuális: a heg és a körülötte lévő szövetek mobilizálása, szükség szerint <strong>cranio FDM</strong> vagy <strong>nyirokkezelés</strong> mellé építve, és otthon végezhető, napi néhány perces hegmasszázzsal folytatva.</p>`,
+<h2>Hogyan lehet kezelni?</h2>
+<p>A kezelés mindig attól függ, hogy mi okozza az adott panaszokat. Ha a tünetek hátterében a mély farizom területének problémája és az ülőideg érintettsége áll, a konzervatív kezelés része lehet az érintett izmok és idegek megfelelő mozgatása, valamint a provokáló tevékenységek módosítása.</p>
+<p>Ha a fájdalom tartósan fennáll, erősödik, zsibbadással vagy más idegi tünetekkel jár, érdemes személyesen orvossal vagy gyógytornásszal konzultálni.</p>`,
   },
   {
-    id: 'terdfajdalom-lepcson',
-    category: 'Térd',
-    date: '2026. május 26.',
-    read: '5 perc',
-    title: 'Térdfájdalom lépcsőn: nem mindig a térd a hibás',
-    lead: 'A térd a csípő és a lábfej között dolgozik. Ha bármelyik szomszédja nem végzi a munkáját, a terhelés a térdben landol.',
+    id: 'uloideg-fajdalom-isiasz',
+    category: 'Ülőideg',
+    date: '2026. szeptember 1.',
+    read: '4 perc',
+    title: 'Ülőideg fájdalom, isiász – a nyújtás nem mindig jó megoldás',
+    lead: 'Isiász esetén ösztönösen nyújtanánk a feszülő combhátsót, de idegérintettség esetén ez sokszor inkább árt, mint használ. Megnézzük, miért, és mi segíthet helyette.',
+    videoId: 'NBh60da2ZTY',
+    videoTitle: 'Idegmobilizáló gyakorlatok ülőideg fájdalom ellen | Ezért ne nyújtsd!',
     body: `
-<p>A lépcsőn lefelé menet, guggolásnál vagy hosszú séta után jelentkező térdfájdalom leggyakrabban <strong>terhelési</strong>, nem szerkezeti eredetű. Ez jó hír, mert a terhelés elosztása változtatható.</p>
-<h2>Mit vizsgálok meg a térd helyett is?</h2>
-<ul>
-<li>a <strong>csípő</strong> stabilitása és a farizom munkája egy lábon állásban</li>
-<li>a boka mozgástartománya — beszűkült bokánál a térd veszi át a mozgást</li>
-<li>a lábfej terhelési mintája, boltozat, lábujjak</li>
-<li>a lépcsőzés, guggolás, leguggolás–felállás valódi kivitelezése</li>
-</ul>
-<h2>Amit ilyenkor teszünk</h2>
-<p>Ha a mozgásvizsgálat ízületi korlátot talál, <strong>Mulligan terápia</strong> segít visszaadni a térd vagy a boka szabad mozgását — jellemzően azonnal érzékelhető változással. Ezután <strong>gyógytorna</strong> következik: farizom- és csípőstabilitás, a lépcsőzés újratanítása lassú, kontrollált ismétlésekkel. Ha a terület akut és érzékeny, <strong>kinezio tape</strong> tud átmeneti támogatást adni a tanulási szakaszban.</p>
-<h2>Amikor orvoshoz irányítalak</h2>
-<p>Ha a térd bemelegszik, bedagad, blokkolódik, vagy trauma után instabil, akkor képalkotó vizsgálat kell először. Ezt megmondom, és a kezelést a diagnózishoz igazítom.</p>`,
+<p>Az ülőideg fájdalom, más néven <strong>isiász</strong> vagy ülőidegzsába, sok ember életét megkeserítheti. Tipikus tünet, amikor a derékból a csípőn és a comb hátsó részén keresztül akár a lábszárig sugárzó, éles vagy égő fájdalom jelentkezik, amelyhez zsibbadás vagy bizsergés is társulhat.</p>
+<h2>Mi okozhatja az ülőideg fájdalmat?</h2>
+<p>Az ülőideg fájdalmának többféle oka lehet. A panasz hátterében állhat például <strong>porckorongsérv</strong>, amely irritálhatja az ideggyököt, a gerinc degeneratív elváltozása miatt kialakuló szűkület, vagy a farizmok területén (például a <strong>piriformis izom</strong> környékén) jelentkező idegirritáció.</p>
+<p>A fájdalom helye nem feltétlenül mutatja meg azt, hogy pontosan hol van a probléma. Bár az irritáció gyakran a derék vagy a farpofa területén alakul ki, a fájdalom az ülőideg lefutása mentén egészen a lábszárig is sugározhat.</p>
+<h2>Miért nem mindig jó ötlet nyújtani az ülőideg fájdalmat?</h2>
+<p>Ha a comb hátsó részén vagy a farpofában feszülést érzünk, könnyű arra gondolni, hogy egyszerűen meg kell nyújtani az izmokat. Idegérintettség esetén azonban a hosszan tartó, intenzív nyújtás akár fokozhatja is a panaszokat.</p>
+<p>Az idegrendszer egy összefüggő rendszert alkot, ezért az ideg egyik szakaszának mozgatása a tőle távolabb eső részekre is hatással lehet.</p>
+<p>Ilyenkor bizonyos esetekben a nyújtás helyett az <strong>ideg mobilizálása</strong>, vagyis az ideg kíméletes mozgatása lehet megfelelőbb megközelítés.</p>
+<h2>Mit lehet tenni ülőideg fájdalom esetén?</h2>
+<p>A megfelelő kezelés mindig attól függ, mi okozza az idegirritációt. Ennek része lehet az <strong>idegmobilizáció</strong> is, amely bizonyos esetekben segíthet a tünetek enyhítésében.</p>
+<p>A gyakorlatok végzése során fontos figyelni a tünetekre: ha egy mozdulat fokozza a fájdalmat vagy a zsibbadást, nem érdemes erőltetni.</p>
+<p>Ha az ülőideg fájdalma nem javul, vagy a tünetek erősödnek, érdemes személyesen konzultálni gyógytornásszal vagy orvossal.</p>`,
+  },
+  {
+    id: 'emesztest-segito-gyakorlatok',
+    category: 'Emésztés',
+    date: '2026. augusztus 25.',
+    read: '4 perc',
+    title: 'Emésztést segítő gyakorlatok – puffadás, hasfájás és székrekedés enyhítése',
+    lead: 'A puffadás, hasfájás és székrekedés nemcsak étrendi kérdés: a törzs mozgása és a mély légzés is hatással van a hasi szervek működésére. Néhány egyszerű gyakorlattal ez otthon is támogatható.',
+    videoId: 'sST1MrrEyw8',
+    videoTitle: 'Emésztést segítő gyakorlatok – puffadás, hasfájás, székrekedés',
+    body: `
+<p>A puffadás, hasfájás és székrekedés gyakori emésztőrendszeri panaszok, amelyekre a mozgás is hatással lehet. A törzs mozgatása és a mély légzés ugyanis a hasi szervek mozgását is befolyásolhatja, és bizonyos gyakorlatok jótékonyan hathatnak az emésztésre.</p>
+<h2>Hogyan segítheti a mozgás az emésztést?</h2>
+<p>A hasüregben található szerveket kötőszövetes struktúrák veszik körül, és a test, különösen a törzs mozgása ezekre is hatással van.</p>
+<p>A törzs mozgatása mellett a mély hasi légzés is segíthet a belső szervek mobilizálásában. Belégzéskor a <strong>rekeszizom</strong> lefelé mozdul, kilégzéskor pedig visszatér eredeti helyzetébe. Ez a mozgás a rekeszizom alatt elhelyezkedő hasi szervek helyzetére is hatással van.</p>
+<h2>Milyen gyakorlatok segíthetnek puffadás és székrekedés esetén?</h2>
+<p>Az emésztést segítő gyakorlatok között lehetnek olyanok, amelyek a has területének kíméletes önmasszázsával, mély légzéssel, törzsrotációval vagy a hasi terület enyhe kompressziójával támogathatják a beleket.</p>
+<p>A has önmasszázsa például végezhető a vastagbél lefutását követve, míg bizonyos mozgásoknál a törzs helyzete és a mély légzés együttesen adhat ingert a hasi szerveknek.</p>
+<h2>A stressz és az étkezés is szerepet játszhat</h2>
+<p>A stressz is hatással lehet az emésztésre, ezért érdemes megfigyelni, hogy stresszes időszakokban rosszabbodnak-e az emésztési panaszaid. Ha azt tapasztalod, hogy a puffadás, hasfájás vagy egyéb emésztési panaszok ilyenkor erősebbek, érdemes a stressz kezelésével is foglalkozni.</p>
+<p>Emellett az elfogyasztott ételek is okozhatnak panaszokat. Ha gyakran tapasztalsz puffadást, hasfájást vagy székrekedést, érdemes lehet megfigyelni, hogy milyen ételek után jelentkeznek a tünetek. Tartós vagy visszatérő panaszok esetén dietetikus segíthet a táplálkozás személyre szabásában.</p>
+<p>Ha az emésztési panaszaid tartósan fennállnak, érdemes orvossal konzultálni, hogy kizárhatók legyenek az esetleges háttérben álló egészségügyi problémák.</p>`,
   },
 ];
 
@@ -182,9 +153,18 @@ export const BLOG_STORIES: BlogStory[] = [
     meta: '30-as évek · irodai munka · 4 hónapos panasz',
     title: 'Derékfájás, ami reggelre a legrosszabb',
     blocks: [
-      { label: 'Panasz', text: 'Reggeli felkeléskor éles derékfájás, ami napközben enyhült, de hosszú üléstől mindig visszatért.' },
-      { label: 'Mit találtam', text: 'Az állapotfelmérésen a <strong>mély stabilizátorok</strong> nem kapcsoltak be időben, a derék körüli <strong>fascia</strong> pedig feszes volt, a csípő mozgástartománya beszűkült.' },
-      { label: 'Mit tettünk', text: 'Először <strong>FDM</strong>-mel oldottam a kötőszöveti feszülést, majd <strong>szegmentális stabilizációs tréninget</strong> és otthon végezhető gyakorlatsort építettünk fel.' },
+      {
+        label: 'Panasz',
+        text: 'Reggeli felkeléskor éles derékfájás, ami napközben enyhült, de hosszú üléstől mindig visszatért.',
+      },
+      {
+        label: 'Mit találtam',
+        text: 'Az állapotfelmérésen a <strong>mély stabilizátorok</strong> nem kapcsoltak be időben, a derék körüli <strong>fascia</strong> pedig feszes volt, a csípő mozgástartománya beszűkült.',
+      },
+      {
+        label: 'Mit tettünk',
+        text: 'Először <strong>FDM</strong>-mel oldottam a kötőszöveti feszülést, majd <strong>szegmentális stabilizációs tréninget</strong> és otthon végezhető gyakorlatsort építettünk fel.',
+      },
     ],
     outcome: 'A reggeli fájdalom megszűnt, a napi ülés már nem hozza vissza.',
     therapies: ['FDM', 'Gyógytorna', 'Dorn terápia'],
@@ -195,9 +175,18 @@ export const BLOG_STORIES: BlogStory[] = [
     meta: '40-es évek · visszatérő fejfájás · 2 éve tart',
     title: 'Fejfájás, amire a fájdalomcsillapító nem hatott',
     blocks: [
-      { label: 'Panasz', text: 'Heti több alkalommal jelentkező fejfájás a tarkótól indulva, esténként erősödve.' },
-      { label: 'Mit találtam', text: 'A tarkó és a rágóizmok tónusa emelkedett volt, éjszakai <strong>fogcsikorgatás</strong> jeleivel, a <strong>paraszimpatikus idegrendszer</strong> alulműködésére utaló panaszokkal.' },
-      { label: 'Mit tettünk', text: '<strong>Cranio FDM</strong> és <strong>állkapocs-ízületi terápia</strong>, mellette <strong>vagus terápia</strong> és légzésgyakorlatok az idegrendszer nyugtatására.' },
+      {
+        label: 'Panasz',
+        text: 'Heti több alkalommal jelentkező fejfájás a tarkótól indulva, esténként erősödve.',
+      },
+      {
+        label: 'Mit találtam',
+        text: 'A tarkó és a rágóizmok tónusa emelkedett volt, éjszakai <strong>fogcsikorgatás</strong> jeleivel, a <strong>paraszimpatikus idegrendszer</strong> alulműködésére utaló panaszokkal.',
+      },
+      {
+        label: 'Mit tettünk',
+        text: '<strong>Cranio FDM</strong> és <strong>állkapocs-ízületi terápia</strong>, mellette <strong>vagus terápia</strong> és légzésgyakorlatok az idegrendszer nyugtatására.',
+      },
     ],
     outcome: 'A fejfájások száma heti többről havi egyre csökkent.',
     therapies: ['Cranio FDM', 'Állkapocs-ízületi terápia', 'Vagus terápia'],
@@ -208,9 +197,18 @@ export const BLOG_STORIES: BlogStory[] = [
     meta: '50-es évek · fizikai munka · 8 hónapos panasz',
     title: 'Váll, ami nem engedte a karját a feje fölé',
     blocks: [
-      { label: 'Panasz', text: 'Fájdalom a váll külső oldalán, és egy pont, ahol a kar emelése egyszerűen elakadt. Éjszaka az érintett oldalra fekve felébredt.' },
-      { label: 'Mit találtam', text: 'Az ízületi mozgásvizsgálat egy jól körülírt <strong>elakadást</strong> jelzett a mozgástartomány közepén, a lapocka pedig késve indult a kar mozgásával.' },
-      { label: 'Mit tettünk', text: '<strong>Mulligan terápia</strong> a mozgásív felszabadítására, majd lapocka-vezérelt <strong>gyógytorna</strong>, és a munkahelyi emelési technika átbeszélése.' },
+      {
+        label: 'Panasz',
+        text: 'Fájdalom a váll külső oldalán, és egy pont, ahol a kar emelése egyszerűen elakadt. Éjszaka az érintett oldalra fekve felébredt.',
+      },
+      {
+        label: 'Mit találtam',
+        text: 'Az ízületi mozgásvizsgálat egy jól körülírt <strong>elakadást</strong> jelzett a mozgástartomány közepén, a lapocka pedig késve indult a kar mozgásával.',
+      },
+      {
+        label: 'Mit tettünk',
+        text: '<strong>Mulligan terápia</strong> a mozgásív felszabadítására, majd lapocka-vezérelt <strong>gyógytorna</strong>, és a munkahelyi emelési technika átbeszélése.',
+      },
     ],
     outcome: 'A kar újra a feje fölé emelhető, az éjszakai fájdalom elmúlt.',
     therapies: ['Mulligan terápia', 'Gyógytorna', 'Kinezio tape'],
@@ -221,9 +219,18 @@ export const BLOG_STORIES: BlogStory[] = [
     meta: '30-as évek · hasi műtét után 3 év · visszatérő panasz',
     title: 'Puffadás és derékfeszülés egy régi heg mögött',
     blocks: [
-      { label: 'Panasz', text: 'Rendszeres puffadás, teltségérzés, és egy húzó feszülés a derék alsó szakaszán, amire a gyógytorna korábban nem hatott.' },
-      { label: 'Mit találtam', text: 'A hasi <strong>heg</strong> körüli szövetek összetapadtak, a rekeszizom mozgása beszűkült, a légzés a felső bordakosárba került.' },
-      { label: 'Mit tettünk', text: '<strong>Hegkezelés</strong> és <strong>viscerális terápia</strong>, mellé rekeszizom-légzés és napi néhány perces otthoni hegmasszázs.' },
+      {
+        label: 'Panasz',
+        text: 'Rendszeres puffadás, teltségérzés, és egy húzó feszülés a derék alsó szakaszán, amire a gyógytorna korábban nem hatott.',
+      },
+      {
+        label: 'Mit találtam',
+        text: 'A hasi <strong>heg</strong> körüli szövetek összetapadtak, a rekeszizom mozgása beszűkült, a légzés a felső bordakosárba került.',
+      },
+      {
+        label: 'Mit tettünk',
+        text: '<strong>Hegkezelés</strong> és <strong>viscerális terápia</strong>, mellé rekeszizom-légzés és napi néhány perces otthoni hegmasszázs.',
+      },
     ],
     outcome: 'A puffadás ritkult, a derékfeszülés a légzés rendezésével oldódott.',
     therapies: ['Hegkezelés', 'Viscerális terápia', 'Vagus terápia'],
@@ -234,9 +241,18 @@ export const BLOG_STORIES: BlogStory[] = [
     meta: '20-as évek · amatőr futó · 1 éves panasz',
     title: 'Bokaficam után maradt bizonytalanság',
     blocks: [
-      { label: 'Panasz', text: 'A ficam meggyógyult, de egyenetlen talajon a boka bizonytalan maradt, és futás után rendszeresen fájt.' },
-      { label: 'Mit találtam', text: 'Beszűkült boka mozgástartomány hajlításban, gyenge egylábas egyensúly, és a <strong>fascia</strong> feszülése a lábszár külső vonalán.' },
-      { label: 'Mit tettünk', text: '<strong>Mulligan terápia</strong> a mozgástartományra, <strong>FDM</strong> a lábszár vonalára, majd fokozatos egyensúly- és futóterhelés-építés.' },
+      {
+        label: 'Panasz',
+        text: 'A ficam meggyógyult, de egyenetlen talajon a boka bizonytalan maradt, és futás után rendszeresen fájt.',
+      },
+      {
+        label: 'Mit találtam',
+        text: 'Beszűkült boka mozgástartomány hajlításban, gyenge egylábas egyensúly, és a <strong>fascia</strong> feszülése a lábszár külső vonalán.',
+      },
+      {
+        label: 'Mit tettünk',
+        text: '<strong>Mulligan terápia</strong> a mozgástartományra, <strong>FDM</strong> a lábszár vonalára, majd fokozatos egyensúly- és futóterhelés-építés.',
+      },
     ],
     outcome: 'Egyenetlen talajon is biztos a boka, a futás fájdalom nélkül visszaépült.',
     therapies: ['Mulligan terápia', 'FDM', 'Gyógytorna'],
@@ -247,9 +263,18 @@ export const BLOG_STORIES: BlogStory[] = [
     meta: '30-as évek · második szülés után 9 hónap',
     title: 'Medencetáji panasz a szülés utáni visszatérésnél',
     blocks: [
-      { label: 'Panasz', text: 'Fájdalom a keresztcsont mellett járás és babahordozás közben, valamint nyomásérzés terhelésre.' },
-      { label: 'Mit találtam', text: 'Aszimmetrikus medenceterhelés, a <strong>medencefenék</strong> és a harántirányú hasfal késő bekapcsolása, feszes csípőhajlítók.' },
-      { label: 'Mit tettünk', text: '<strong>Dorn terápia</strong> a medence rendezésére, majd lépésenként felépített <strong>szegmentális stabilizációs tréning</strong> és a hordozási testhelyzetek átbeszélése.' },
+      {
+        label: 'Panasz',
+        text: 'Fájdalom a keresztcsont mellett járás és babahordozás közben, valamint nyomásérzés terhelésre.',
+      },
+      {
+        label: 'Mit találtam',
+        text: 'Aszimmetrikus medenceterhelés, a <strong>medencefenék</strong> és a harántirányú hasfal késő bekapcsolása, feszes csípőhajlítók.',
+      },
+      {
+        label: 'Mit tettünk',
+        text: '<strong>Dorn terápia</strong> a medence rendezésére, majd lépésenként felépített <strong>szegmentális stabilizációs tréning</strong> és a hordozási testhelyzetek átbeszélése.',
+      },
     ],
     outcome: 'A járás és a hordozás fájdalom nélkül megy, a terhelés újra szimmetrikus.',
     therapies: ['Dorn terápia', 'Gyógytorna', 'Kinezio tape'],
@@ -260,9 +285,18 @@ export const BLOG_STORIES: BlogStory[] = [
     meta: '40-es évek · ülő munka · 6 hónapos panasz',
     title: 'Térdfájdalom lépcsőn lefelé',
     blocks: [
-      { label: 'Panasz', text: 'Lépcsőn lefelé és guggolásnál jelentkező térdfájdalom, ami hosszú séta után is előjött.' },
-      { label: 'Mit találtam', text: 'A térd szerkezetileg rendben volt: a <strong>csípő</strong> stabilitása és a farizom munkája hiányzott, a boka mozgástartománya beszűkült.' },
-      { label: 'Mit tettünk', text: '<strong>Mulligan terápia</strong> a bokára és a térdre, utána farizom- és csípőstabilitás építése, a lépcsőzés újratanítása lassú ismétlésekkel.' },
+      {
+        label: 'Panasz',
+        text: 'Lépcsőn lefelé és guggolásnál jelentkező térdfájdalom, ami hosszú séta után is előjött.',
+      },
+      {
+        label: 'Mit találtam',
+        text: 'A térd szerkezetileg rendben volt: a <strong>csípő</strong> stabilitása és a farizom munkája hiányzott, a boka mozgástartománya beszűkült.',
+      },
+      {
+        label: 'Mit tettünk',
+        text: '<strong>Mulligan terápia</strong> a bokára és a térdre, utána farizom- és csípőstabilitás építése, a lépcsőzés újratanítása lassú ismétlésekkel.',
+      },
     ],
     outcome: 'A lépcsőzés fájdalommentes, a hosszú séta már nem hozza vissza a panaszt.',
     therapies: ['Mulligan terápia', 'Gyógytorna'],
@@ -272,14 +306,57 @@ export const BLOG_STORIES: BlogStory[] = [
 // The real YouTube playlists on the channel. `art` names the brand poster (see PlaylistArt);
 // order is editorial — body regions from the spine down, then stress, then the personal vlogs.
 export const BLOG_PLAYLISTS: BlogPlaylist[] = [
-  { list: 'PL88GCL4sFg6WSPVyvKiTFOjDdPxn_Hb3U', art: 'spine', image: 'assets/images/gerinc.JPG', title: 'Gerinc/derékfájás', description: 'Napi rutin gyakorlatok és magyarázatok a gerincről és a derékfájásról.' },
-  { list: 'PL88GCL4sFg6VyDscEDRWCPRwJEV29IJP2', art: 'neck', image: 'assets/images/nyak-vall-lapocka.JPG', title: 'Nyak-váll-lapocka' },
-  { list: 'PL88GCL4sFg6XJnw_L2ztNxWoJQ2-e-Mnj', art: 'hip', image: 'assets/images/csipo.JPG', title: 'Csípő' },
-  { list: 'PL88GCL4sFg6XAyx9mSnMizhIJ5fAS0wKK', art: 'knee', image: 'assets/images/terd.JPG', title: 'Térd' },
-  { list: 'PL88GCL4sFg6WULa6tOq5DBH5GA56RvxwV', art: 'foot', image: 'assets/images/labfej-sarok-talp.JPG', title: 'Lábfej-sarok-talp' },
-  { list: 'PL88GCL4sFg6U-OPty2kAnHOptNyXGDryz', art: 'hand', image: 'assets/images/konyok-csuklo-kez.JPG', title: 'Könyök-csukló-kéz' },
-  { list: 'PLKr-ARwW4tO0', art: 'stress', image: 'assets/images/stressz.JPG', title: 'Stressz', description: 'Feszültségoldás, légzés és paraszimpatikus hangolás — otthon is elvégezhető gyakorlatokkal.' },
-  { list: 'PL88GCL4sFg6XKFGftYYODQBdMqTiq_ZXQ', art: 'vlog', image: 'assets/images/vlog.JPG', title: 'Vlog/sztori' },
+  {
+    list: 'PL88GCL4sFg6WSPVyvKiTFOjDdPxn_Hb3U',
+    art: 'spine',
+    image: 'assets/images/gerinc.JPG',
+    title: 'Gerinc/derékfájás',
+    description: 'Napi rutin gyakorlatok és magyarázatok a gerincről és a derékfájásról.',
+  },
+  {
+    list: 'PL88GCL4sFg6VyDscEDRWCPRwJEV29IJP2',
+    art: 'neck',
+    image: 'assets/images/nyak-vall-lapocka.JPG',
+    title: 'Nyak-váll-lapocka',
+  },
+  {
+    list: 'PL88GCL4sFg6XJnw_L2ztNxWoJQ2-e-Mnj',
+    art: 'hip',
+    image: 'assets/images/csipo.JPG',
+    title: 'Csípő',
+  },
+  {
+    list: 'PL88GCL4sFg6XAyx9mSnMizhIJ5fAS0wKK',
+    art: 'knee',
+    image: 'assets/images/terd.JPG',
+    title: 'Térd',
+  },
+  {
+    list: 'PL88GCL4sFg6WULa6tOq5DBH5GA56RvxwV',
+    art: 'foot',
+    image: 'assets/images/labfej-sarok-talp.JPG',
+    title: 'Lábfej-sarok-talp',
+  },
+  {
+    list: 'PL88GCL4sFg6U-OPty2kAnHOptNyXGDryz',
+    art: 'hand',
+    image: 'assets/images/konyok-csuklo-kez.JPG',
+    title: 'Könyök-csukló-kéz',
+  },
+  {
+    list: 'PLKr-ARwW4tO0',
+    art: 'stress',
+    image: 'assets/images/stressz.JPG',
+    title: 'Stressz',
+    description:
+      'Feszültségoldás, légzés és paraszimpatikus hangolás — otthon is elvégezhető gyakorlatokkal.',
+  },
+  {
+    list: 'PL88GCL4sFg6XKFGftYYODQBdMqTiq_ZXQ',
+    art: 'vlog',
+    image: 'assets/images/vlog.JPG',
+    title: 'Vlog/sztori',
+  },
 ];
 
 /** Lookup one post by id (used by /blog/:id and its prerender params). */

@@ -14,23 +14,18 @@
   </div>
 
   <section class="kp-section article" data-reveal>
-    <kp-image-slot
-      class="article__cover"
-      [slotId]="'blog-' + p.id"
-      [label]="'Fotó: ' + p.category"
-    />
     <kp-card surface="plain" padding="lg" radius="xl">
       <div class="kp-post-body" [innerHTML]="p.body"></div>
     </kp-card>
-    <kp-card surface="tintLilac" padding="md" radius="lg">
-      <div class="cta">
-        <p class="cta__text">
-          Ha a fentiek ismerősek, egy állapotfelmérésen végig tudjuk venni, mi áll a te panaszod
-          mögött.
-        </p>
-        <kp-button [href]="salonic">Időpontot foglalok</kp-button>
-      </div>
-    </kp-card>
+    @if (p.videoId) {
+      <kp-card surface="plain" padding="none" radius="xl">
+        <kp-video-embed
+          class="article__video"
+          [videoId]="p.videoId"
+          [title]="p.videoTitle ?? p.title"
+        />
+      </kp-card>
+    }
   </section>
 
   <section class="kp-section others" data-reveal>

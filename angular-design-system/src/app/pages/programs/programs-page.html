@@ -3,14 +3,13 @@
     <div class="hero__col">
       <kp-section-heading
         eyebrow="Online programok"
-        title="Otthon is elkezdheted, ma"
+        title="Otthon is elkezdheted, akár már ma"
         as="h1"
         [level]="2"
-        lead="Felépített, videós programok, ugyanazzal a szemlélettel, ahogy a rendelőben dolgozom. Időpontra nem kell várnod."
+        lead="Szakszerűen felépített, videós programok, ugyanazzal a szemlélettel, ahogy személyesen is dolgozom. Nem kell időpontra várnod."
       />
-      <app-availability-note />
       <div class="hero__cta">
-        <kp-button size="lg" [href]="platform">Tovább a kurzusokhoz</kp-button>
+        <kp-button size="lg" [href]="platform">Tovább az oktatási felületre</kp-button>
         <kp-button size="lg" variant="ghost" icon="youtube" href="/blog" fragment="videok"
           >Ingyenes tartalmak a YouTube-on</kp-button
         >
@@ -36,13 +35,6 @@
       [level]="2"
       lead="Az otthonodból is könnyedén elvégezhető, szakszerűen felépített programok."
     />
-    <kp-button
-      size="md"
-      icon="arrow-up-right-from-square"
-      iconPosition="right"
-      [href]="platform"
-      >Tovább az online kurzusokhoz</kp-button
-    >
   </div>
   <div class="cat__grid">
     @for (c of courses; track c.slot) {
