@@ -5,6 +5,11 @@
   position: sticky;
   top: 104px;
   align-self: start;
+  /* As a grid item the host must be allowed to shrink below its content's min-content,
+     otherwise the single-column phone layout keeps the 1fr track at the full width of the
+     no-wrap tab row and the whole shell overflows the viewport. The inner .rail then
+     scrolls horizontally (overflow-x: auto) as intended. */
+  min-width: 0;
 
   /* Phones: the bar sticks just under the sticky header instead of beside the content. */
   @media (max-width: 700px) {

@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Button, CourseCard, SectionHeading } from '../../ui';
 import { VideoEmbed } from '../../shared/video-embed/video-embed';
 import { LeadMagnet } from '../landing/sections/lead-magnet';
-import { AvailabilityNote } from '../landing/sections/availability-note';
 import { ContentService } from '../../core/content.service';
 import { SeoService } from '../../core/seo.service';
 
@@ -23,7 +22,6 @@ const SEO_DESCRIPTION =
     SectionHeading,
     VideoEmbed,
     LeadMagnet,
-    AvailabilityNote,
   ],
   templateUrl: './programs-page.html',
   styleUrl: './programs-page.scss',
