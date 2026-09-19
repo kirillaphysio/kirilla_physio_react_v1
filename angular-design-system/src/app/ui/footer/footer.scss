@@ -68,3 +68,19 @@
 .kp-footer__copy {
   color: var(--text-on-accent-muted);
 }
+.kp-footer__credit-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad) 16px;
+  font-size: var(--caption-size);
+  color: var(--text-on-accent-muted);
+  text-align: center;
+}
+.kp-footer__credit-link {
+  color: var(--text-on-accent-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  &:hover {
+    color: var(--white);
+  }
+}
