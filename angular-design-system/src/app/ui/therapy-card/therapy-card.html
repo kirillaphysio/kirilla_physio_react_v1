@@ -1,0 +1,27 @@
+<kp-card surface="mesh" padding="none" radius="lg" [interactive]="true" [href]="href()" class="tcard">
+  <div class="tcard__inner">
+    <div class="tcard__media">
+      @if (imageUrl()) {
+        <img class="tcard__img" [src]="imageUrl()" [alt]="title()" loading="lazy" />
+      } @else if (imageId()) {
+        <kp-cloudinary-image
+          class="tcard__img"
+          [imageId]="imageId()!"
+          crop="c_fill"
+          [ratio]="[4, 3]"
+          sizes="(max-width: 768px) 100vw, 33vw"
+          placeholderSize="640x480"
+          [alt]="title()"
+        />
+      }
+    </div>
+    <div class="tcard__body">
+      <h3 class="tcard__title">{{ title() }}</h3>
+      <p class="tcard__short">{{ short() }}</p>
+      <span class="tcard__link">
+        {{ linkLabel() }}
+        <kp-icon name="arrow-right" class="tcard__arrow" />
+      </span>
+    </div>
+  </div>
+</kp-card>

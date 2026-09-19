@@ -1,0 +1,78 @@
+.lead {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: var(--space-12);
+  align-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+.lead__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+}
+
+.lead__title {
+  font-size: var(--heading-1-size);
+  line-height: var(--heading-1-line);
+  letter-spacing: var(--heading-1-track);
+  font-weight: var(--heading-1-weight);
+}
+
+/* Inline layout — a single compact card (intro copy stacked above the form). Stretches to fill its
+   grid cell (equal-height row) via --kp-card-height; the flex column lives on the projected body. */
+:host {
+  display: block;
+}
+.lead-inline {
+  height: 100%;
+  --kp-card-height: 100%;
+}
+.lead-inline__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  height: 100%;
+}
+
+.lead-inline__intro {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--text-body);
+}
+
+.lead__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+}
+
+.lead__consent {
+  font-size: var(--caption-size);
+  line-height: var(--caption-line);
+  color: var(--text-subtle);
+}
+
+.lead__success {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+}
+.lead__success-row {
+  display: flex;
+  gap: var(--gap-inline);
+  align-items: flex-start;
+}
+.lead__success-icon {
+  color: var(--feedback-success);
+  font-size: 19px;
+  margin-top: 2px;
+}
+.lead__success-text {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+}

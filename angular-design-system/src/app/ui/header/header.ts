@@ -1,0 +1,62 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  inject,
+  signal,
+} from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Wordmark } from '../wordmark/wordmark';
+import { IconButton } from '../icon-button/icon-button';
+import { ThemeService } from '../../core/theme.service';
+
+export interface NavItem {
+  label: string;
+  href: string;
+}
+
+export const SALONIC_URL = 'https://kirillareka.salonic.hu/';
+
+/** Nav in Online fókusz mode, in source order. */
+export const NAV_ITEMS: NavItem[] = [
+  { label: 'Kezdőlap', href: '/' },
+  { label: 'Online programok', href: '/online-programok' },
+  { label: 'Egyéni kezelések', href: '/egyeni-kezelesek' },
+  { label: 'Rólam', href: '/rolam' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Kapcsolat', href: '/kapcsolat' },
+];
+
+/** Site header: wordmark, pill nav (active pill carries the gradient), one primary CTA. */
+@Component({
+  selector: 'kp-header',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink, RouterLinkActive, Wordmark, IconButton],
+  templateUrl: './header.html',
+  styleUrl: './header.scss',
+  host: { role: 'banner' },
+})
+export class Header {
+  private readonly themeService = inject(ThemeService);
+
+  readonly items = NAV_ITEMS;
+  readonly theme = this.themeService.theme;
+
+  readonly open = signal(false);
+
+  toggle(): void {
+    this.open.update((v) => !v);
+  }
+  close(): void {
+    this.open.set(false);
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggle();
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.close();
+  }
+}

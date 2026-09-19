@@ -1,0 +1,64 @@
+<div class="hero-wrap">
+  <section class="kp-section hero" data-reveal>
+    <div class="hero__col">
+      <kp-section-heading
+        eyebrow="Online programok"
+        title="Otthon is elkezdheted, akár már ma"
+        as="h1"
+        [level]="2"
+        lead="Szakszerűen felépített, videós programok, ugyanazzal a szemlélettel, ahogy személyesen is dolgozom. Nem kell időpontra várnod."
+      />
+      <div class="hero__cta">
+        <kp-button size="lg" [href]="platform">Tovább az oktatási felületre</kp-button>
+        <kp-button size="lg" variant="ghost" icon="youtube" href="/blog" fragment="videok"
+          >Ingyenes tartalmak a YouTube-on</kp-button
+        >
+      </div>
+    </div>
+    <div class="hero__media">
+      <kp-video-embed
+        class="hero__video"
+        videoId="-327kcwYFUw"
+        title="Rövid ismertető az online programokról"
+        posterLabel="Rövid ismertető"
+      />
+      <span class="hero__caption">Rövid ismertető: miről szól ez az oldal.</span>
+    </div>
+  </section>
+</div>
+
+<section class="kp-section" data-reveal>
+  <div class="cat__head">
+    <kp-section-heading
+      eyebrow="Katalógus"
+      title="Programok"
+      [level]="2"
+      lead="Az otthonodból is könnyedén elvégezhető, szakszerűen felépített programok."
+    />
+  </div>
+  <div class="cat__grid">
+    @for (c of courses; track c.slot) {
+      <kp-course-card [course]="c" [platform]="platform" />
+    }
+  </div>
+</section>
+
+<section id="velemenyek" class="kp-section" data-reveal>
+  <kp-section-heading
+    class="mb-10"
+    eyebrow="Visszajelzések"
+    title="Vélemények a programokról"
+    [level]="2"
+    align="center"
+  />
+  <kp-testimonial-carousel [items]="opinions" [perView]="3" />
+</section>
+
+<section id="gyik" class="kp-section" data-reveal>
+  <kp-section-heading class="mb-8" eyebrow="GYIK" title="Gyakori kérdések" [level]="2" />
+  <kp-faq-accordion [items]="faqs" />
+</section>
+
+<section id="hirlevel" class="kp-section" data-reveal>
+  <app-lead-magnet layout="wide" />
+</section>

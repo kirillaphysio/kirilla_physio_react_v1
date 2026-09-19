@@ -1,0 +1,92 @@
+:host {
+  display: block;
+}
+
+.kp-card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  /* A parent can stretch the surface to fill an equal-height grid cell via --kp-card-height. */
+  height: var(--kp-card-height, auto);
+  border-radius: var(--radius-card);
+  color: var(--text-body);
+  text-decoration: none;
+  transition:
+    box-shadow var(--dur-base) var(--ease-soft),
+    transform var(--dur-base) var(--ease-soft);
+}
+
+/* ── Surfaces ───────────────────────────────────────────────────────────── */
+.surface-plain {
+  background: var(--surface-card);
+  box-shadow: var(--shadow-md), var(--shadow-ring-hairline);
+}
+.surface-mesh {
+  background: var(--mesh-card);
+  box-shadow: var(--shadow-md), var(--shadow-ring-hairline);
+}
+.surface-tintRose {
+  background: var(--surface-tint-rose);
+  box-shadow: var(--shadow-ring-hairline);
+}
+.surface-tintLilac {
+  background: var(--surface-tint-lilac);
+  box-shadow: var(--shadow-ring-hairline);
+}
+.surface-tintCream {
+  background: var(--surface-tint-cream);
+  box-shadow: var(--shadow-ring-hairline);
+}
+.surface-filled {
+  background: var(--gradient-brand);
+  color: var(--text-on-accent);
+  box-shadow: var(--shadow-rose);
+}
+.surface-band {
+  background: var(--mesh-band);
+  color: var(--text-on-accent);
+  box-shadow: var(--shadow-lg);
+}
+.surface-invert {
+  background: var(--surface-invert);
+  color: var(--text-on-accent);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Padding ────────────────────────────────────────────────────────────── */
+.pad-none {
+  padding: 0;
+}
+.pad-sm {
+  padding: 18px;
+}
+.pad-md {
+  padding: var(--pad-card);
+}
+.pad-lg {
+  padding: var(--pad-card-lg);
+}
+
+/* ── Radius ─────────────────────────────────────────────────────────────── */
+.rad-md {
+  border-radius: var(--radius-lg);
+}
+.rad-lg {
+  border-radius: var(--radius-card);
+}
+.rad-xl {
+  border-radius: var(--radius-card-lg);
+}
+.rad-band {
+  border-radius: var(--radius-band);
+}
+
+/* ── Interactive lift ───────────────────────────────────────────────────── */
+.is-interactive {
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--shadow-lg), var(--shadow-ring-hairline);
+    transform: var(--lift-hover);
+  }
+}

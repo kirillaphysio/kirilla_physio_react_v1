@@ -1,0 +1,69 @@
+:host {
+  display: block;
+  height: 100%;
+}
+.tile {
+  --kp-card-height: 100%;
+}
+.tile__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+  height: 100%;
+}
+
+.tile__disc {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-circle);
+  background: var(--gradient-brand-soft);
+  color: var(--rose-700);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+:host(.on-accent) .tile__disc {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-on-accent);
+}
+
+.tile__title {
+  font-size: var(--heading-2-size);
+  line-height: var(--heading-2-line);
+  letter-spacing: var(--heading-2-track);
+  font-weight: var(--heading-2-weight);
+  color: var(--text-strong);
+}
+:host(.on-accent) .tile__title {
+  color: var(--text-on-accent);
+}
+
+.tile__desc {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line);
+  color: var(--text-muted);
+  flex: 1;
+}
+:host(.on-accent) .tile__desc {
+  color: var(--text-on-accent-muted);
+}
+
+.tile__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: var(--label-size);
+  font-weight: var(--label-weight);
+  color: var(--text-link);
+}
+:host(.on-accent) .tile__link {
+  color: var(--text-on-accent);
+}
+.tile__arrow {
+  font-size: 11px;
+  transition: transform var(--dur-fast) var(--ease-soft);
+}
+.tile:hover .tile__arrow {
+  transform: translateX(4px);
+}

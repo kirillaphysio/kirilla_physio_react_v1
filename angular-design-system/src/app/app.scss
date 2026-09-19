@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* The page ground is the pastel mesh — full-bleed behind every section. */
+  background: var(--mesh-page);
+}
+
+main {
+  flex: 1 0 auto;
+}

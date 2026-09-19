@@ -1,0 +1,54 @@
+:host {
+  display: inline-flex;
+}
+
+.kp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-inline);
+  border-radius: var(--radius-pill);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+
+  kp-icon {
+    font-size: 0.95em;
+  }
+}
+
+.size-md {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+.size-sm {
+  padding: 5px 12px;
+  font-size: 12.5px;
+}
+
+.tone-rose {
+  background: var(--rose-100);
+  color: var(--rose-700);
+}
+.tone-lilac {
+  background: var(--lilac-100);
+  color: var(--lilac-700);
+}
+.tone-plum {
+  background: var(--plum-100);
+  color: var(--plum-700);
+}
+.tone-success {
+  background: var(--feedback-success-bg);
+  color: var(--feedback-success);
+}
+.tone-error {
+  background: var(--feedback-error-bg);
+  color: var(--feedback-error);
+}
+.tone-gradient {
+  background: var(--gradient-brand);
+  color: var(--text-on-accent);
+}
+.tone-onAccent {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--text-on-accent);
+}

@@ -1,0 +1,59 @@
+<div
+  class="kp-carousel"
+  role="group"
+  aria-roledescription="carousel"
+  aria-label="Páciens visszajelzések"
+  tabindex="0"
+  (keydown)="onKeydown($event)"
+>
+  <div class="kp-carousel__viewport">
+    <div class="kp-carousel__track" [style.transform]="trackTransform()">
+      @for (item of items(); track $index) {
+        <kp-card
+          class="kp-carousel__card"
+          surface="plain"
+          padding="md"
+          radius="lg"
+          [style.flex]="'0 0 ' + cardBasis()"
+        >
+          <div class="kp-quote">
+            <kp-icon name="quote-left" class="kp-quote__mark" />
+            <p class="kp-quote__text">{{ item.description }}</p>
+            <div class="kp-quote__author">{{ item.author }}</div>
+          </div>
+        </kp-card>
+      }
+    </div>
+  </div>
+
+  <div class="kp-carousel__controls">
+    <kp-icon-button
+      icon="chevron-left"
+      ariaLabel="Előző visszajelzés"
+      variant="soft"
+      size="sm"
+      [disabled]="clamped() === 0"
+      (clicked)="prev()"
+    />
+    <div class="kp-carousel__dots">
+      @for (i of pageDots(); track i) {
+        <button
+          type="button"
+          class="kp-carousel__dot"
+          [class.is-active]="i === clamped()"
+          [attr.aria-label]="i + 1 + '. oldal'"
+          [attr.aria-current]="i === clamped() ? 'true' : null"
+          (click)="goTo(i)"
+        ></button>
+      }
+    </div>
+    <kp-icon-button
+      icon="chevron-right"
+      ariaLabel="Következő visszajelzés"
+      variant="soft"
+      size="sm"
+      [disabled]="clamped() === pages() - 1"
+      (clicked)="next()"
+    />
+  </div>
+</div>

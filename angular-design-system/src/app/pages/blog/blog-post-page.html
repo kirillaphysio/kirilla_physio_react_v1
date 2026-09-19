@@ -1,0 +1,58 @@
+@if (post(); as p) {
+  <div class="hero-wrap">
+    <section class="kp-section hero" data-reveal>
+      <kp-button class="hero__back" variant="ghost" size="sm" icon="arrow-left" href="/blog"
+        >Vissza a bloghoz</kp-button
+      >
+      <div class="hero__meta">
+        <kp-eyebrow>{{ p.category }}</kp-eyebrow>
+        <span class="hero__date">{{ p.date }} · {{ p.read }} olvasás</span>
+      </div>
+      <h1 class="hero__title">{{ p.title }}</h1>
+      <p class="hero__lead">{{ p.lead }}</p>
+    </section>
+  </div>
+
+  <section class="kp-section article" data-reveal>
+    <kp-card surface="plain" padding="lg" radius="xl">
+      <div class="kp-post-body" [innerHTML]="p.body"></div>
+    </kp-card>
+    @if (p.videoId) {
+      <kp-card surface="plain" padding="none" radius="xl">
+        <kp-video-embed
+          class="article__video"
+          [videoId]="p.videoId"
+          [title]="p.videoTitle ?? p.title"
+        />
+      </kp-card>
+    }
+  </section>
+
+  <section class="kp-section others" data-reveal>
+    <kp-section-heading class="mb-8" eyebrow="Blog" title="További írások" [level]="3" />
+    <div class="others__grid">
+      @for (o of others(); track o.id) {
+        <kp-card
+          [href]="'/blog/' + o.id"
+          [interactive]="true"
+          surface="plain"
+          padding="none"
+          radius="lg"
+          class="othercard"
+        >
+          <kp-image-slot class="othercard__cover" [slotId]="'blog-' + o.id" [label]="o.category" />
+          <div class="othercard__body">
+            <span class="othercard__cat">{{ o.category }}</span>
+            <h3 class="othercard__title">{{ o.title }}</h3>
+            <p class="othercard__lead">{{ o.lead }}</p>
+          </div>
+        </kp-card>
+      }
+    </div>
+  </section>
+} @else {
+  <section class="kp-section others" data-reveal>
+    <p class="fallback">Ez a bejegyzés nem található. Válaszd ki a listából, amelyik érdekel!</p>
+    <kp-button variant="secondary" size="sm" icon="arrow-left" href="/blog">Vissza a bloghoz</kp-button>
+  </section>
+}

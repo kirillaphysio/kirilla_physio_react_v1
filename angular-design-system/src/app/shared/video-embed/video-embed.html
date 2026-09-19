@@ -1,0 +1,50 @@
+<div class="ve">
+  @if (playing()) {
+    <iframe
+      class="ve__frame"
+      [src]="embedUrl()"
+      [title]="title()"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  } @else {
+    <button
+      type="button"
+      class="ve__poster"
+      (click)="onPlay()"
+      [attr.aria-label]="title() + ' lejátszása'"
+    >
+      @if (thumbFailed()) {
+        <kp-image-slot class="ve__art" [label]="posterLabel()" [ariaLabel]="title()" />
+      } @else {
+        <img
+          class="ve__art ve__thumb"
+          [src]="thumbUrl()"
+          [alt]="title()"
+          (error)="onThumbError()"
+          loading="lazy"
+          decoding="async"
+        />
+      }
+      <span class="ve__badge">
+        <kp-icon name="youtube" class="ve__badge-icon" />
+        Videó
+      </span>
+      <span class="ve__play"><kp-icon name="circle-play" /></span>
+    </button>
+
+    @if (needsConsent()) {
+      <div class="ve__consent">
+        <p class="ve__consent-text">
+          A videó lejátszásához engedélyezned kell a beágyazott (közösségi) tartalmakat.
+        </p>
+        <div class="ve__consent-actions">
+          <kp-button size="sm" (clicked)="allowAndPlay()">Engedélyezem és lejátszom</kp-button>
+          <a class="ve__consent-link" [href]="youtubeUrl()" target="_blank" rel="noreferrer"
+            >Megnyitás a YouTube-on</a
+          >
+        </div>
+      </div>
+    }
+  }
+</div>

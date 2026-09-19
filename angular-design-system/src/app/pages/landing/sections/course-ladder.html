@@ -1,0 +1,44 @@
+<div class="ladder">
+  <kp-card surface="plain" padding="lg" radius="xl" class="ladder__card">
+    <div class="step">
+      <h3 class="step__title">5 gyakorlat az egészségesebb derékért</h3>
+      <span class="step__meta">Ingyenes · PDF</span>
+      <p class="step__desc">
+        Öt gyakorlat, amit már ma el tudsz kezdeni otthon.
+      </p>
+      <div>
+        <kp-button variant="secondary" icon="file-arrow-down" (clicked)="jumpToHirlevel()"
+          >Kérem a PDF-et</kp-button
+        >
+      </div>
+    </div>
+  </kp-card>
+
+  <kp-card surface="filled" padding="lg" radius="xl" class="ladder__card">
+    <div class="step">
+      <h3 class="step__title on-accent">Online programok</h3>
+      <span class="step__meta on-accent">Bármikor · otthonról</span>
+      <p class="step__desc on-accent">
+        Szakszerűen felépített, videós programok, ugyanazzal a szemlélettel, ahogy személyesen is dolgozom.
+      </p>
+      <div>
+        <kp-button variant="onAccent" icon="arrow-right" iconPosition="right" href="/online-programok"
+          >Programok megtekintése</kp-button
+        >
+      </div>
+    </div>
+  </kp-card>
+
+  <kp-card surface="plain" padding="lg" radius="xl" class="ladder__card">
+    <div class="step">
+      <h3 class="step__title">Egyéni kezelés</h3>
+      <span class="step__meta">50-60 perc · Budapest, XII.</span>
+      <p class="step__desc">
+        Állapotfelmérés és komplex kezelés személyre szabottan.
+      </p>
+      <div>
+        <kp-button variant="outline" icon="arrow-right" iconPosition="right" href="/egyeni-kezelesek">Kezelések megtekintése</kp-button>
+      </div>
+    </div>
+  </kp-card>
+</div>

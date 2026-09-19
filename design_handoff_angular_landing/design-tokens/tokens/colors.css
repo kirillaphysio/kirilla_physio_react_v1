@@ -1,0 +1,41 @@
+:root{
+/* ── Plum: the inherited brand neutral ramp (rose-tinted, never grey) ───────────── */
+--plum-900:#3A2028;--plum-800:#54232D;--plum-700:#5F3D44;--plum-600:#8A6068;--plum-500:#AB848C;--plum-400:#C3A0A7;--plum-300:#D3B5BB;--plum-200:#E9D6DA;--plum-100:#F1E3E7;--plum-50:#F8EFF1;
+/* ── Rose: the redesign's primary accent ───────────────────────────────────────── */
+--rose-700:#723056;--rose-600:#913F6E;--rose-500:#BA4E8C;--rose-400:#CB7AA9;--rose-300:#DAA8C5;--rose-200:#EBD4E2;--rose-100:#F9F4F7;
+/* ── Blush: the warm rose-beige surface tone — the palette's dominant light ground ─ */
+--blush-400:#E3A9A6;--blush-300:#EDC5C3;--blush-200:#F5DEDC;--blush-100:#FBF2F1;
+/* ── Lilac: the companion purple (periwinkle-leaning) ──────────────────────────── */
+--lilac-700:#63496C;--lilac-600:#86688F;--lilac-500:#A084AE;--lilac-400:#BCA5C6;--lilac-300:#D6C6DC;--lilac-200:#E9DFEC;--lilac-100:#F6F1F7;
+/* ── Pastel mesh stops: only ever used inside gradients, never as flat fills ────── */
+--mist-peach:#FFEDE4;--mist-pink:#FCE5EE;--mist-lilac:#F0E9F2;--mist-cream:#FBF6F1;
+/* ── Semantic ──────────────────────────────────────────────────────────────────── */
+--green-600:#2E9E7A;--green-100:#E2F4EE;--red-600:#C94A5F;--red-100:#FBE7EA;--amber-600:#D9903E;--amber-100:#FBF0E1;
+--white:#FFFFFF;
+
+/* ══ Semantic aliases — use these in components ═══════════════════════════════════ */
+/* Text */
+--text-strong:var(--plum-800);--text-body:var(--plum-700);
+/* muted/subtle sit at #6C4B54 (7.58:1 on white, 4.83:1 on blush-300) — WCAG AA on every surface
+   in the system, including the blush grounds. The hierarchy below body is carried by size and
+   weight, not by lighter colour. plum-600 and lighter are decorative only — never text. */
+--text-muted:#6C4B54;--text-subtle:#6C4B54;
+--text-accent:var(--rose-700);--text-accent-alt:var(--lilac-700);
+--text-on-accent:var(--white);--text-on-accent-muted:#F6E4EC;--text-link:var(--lilac-700);--text-link-hover:var(--rose-700);
+/* Surfaces */
+--surface-page:var(--blush-100);--surface-card:var(--white);--surface-raised:var(--white);--surface-sunken:var(--plum-100);
+--surface-tint-rose:var(--blush-300);--surface-tint-lilac:var(--lilac-100);--surface-tint-cream:var(--blush-100);
+--surface-accent:var(--rose-700);--surface-accent-deep:var(--plum-800);--surface-invert:var(--plum-800);
+--surface-glass:rgba(255,255,255,.62);
+/* Interactive */
+--accent:var(--rose-700);--accent-hover:#5F2848;--accent-press:var(--plum-800);
+--accent-alt:var(--lilac-500);--accent-alt-hover:var(--lilac-600);--accent-alt-press:var(--lilac-700);
+--accent-soft:var(--blush-300);--accent-soft-hover:var(--blush-400);
+/* Lines */
+--line-hairline:rgba(138,96,104,.14);--line-soft:var(--plum-200);--line-strong:var(--plum-300);--line-on-accent:rgba(255,255,255,.42);
+--focus-ring:var(--lilac-600);
+/* Feedback */
+--feedback-success:var(--green-600);--feedback-success-bg:var(--green-100);
+--feedback-error:var(--red-600);--feedback-error-bg:var(--red-100);
+--feedback-warning:var(--amber-600);--feedback-warning-bg:var(--amber-100);
+}

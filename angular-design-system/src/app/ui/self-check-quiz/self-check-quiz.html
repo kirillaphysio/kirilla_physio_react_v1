@@ -1,0 +1,67 @@
+@if (result(); as r) {
+  <kp-card [surface]="surface()" padding="lg" radius="xl" class="quiz">
+    <div class="quiz__inner">
+      <kp-eyebrow>{{ r.eyebrow || 'Javaslatom' }}</kp-eyebrow>
+      <h3 class="quiz__result-title">{{ r.title }}</h3>
+      @if (r.lead) {
+        <p class="quiz__lead">{{ r.lead }}</p>
+      }
+      @if (r.links?.length) {
+        <ul class="quiz__links">
+          @for (l of r.links; track l.label) {
+            <li><a [href]="l.href">{{ l.label }}</a></li>
+          }
+        </ul>
+      }
+      <div class="quiz__actions">
+        @if (r.primary; as p) {
+          <kp-button size="md" [href]="p.href">{{ p.label }}</kp-button>
+        }
+        <kp-button size="md" variant="ghost" icon="rotate-left" (clicked)="restart()">{{
+          restartLabel()
+        }}</kp-button>
+      </div>
+      @if (r.note) {
+        <p class="quiz__note">{{ r.note }}</p>
+      }
+    </div>
+  </kp-card>
+} @else if (current(); as q) {
+  <kp-card [surface]="surface()" padding="lg" radius="xl" class="quiz">
+    <div class="quiz__inner">
+      @if (eyebrow()) {
+        <kp-eyebrow>{{ eyebrow() }}</kp-eyebrow>
+      }
+      <div class="quiz__progress">
+        <span class="quiz__progress-count">{{ currentIndex() + 1 }} / {{ total() }}</span>
+        <div class="quiz__progress-track">
+          @for (i of progress(); track i) {
+            <span class="quiz__progress-seg" [class.is-on]="i <= currentIndex()"></span>
+          }
+        </div>
+      </div>
+      <h3 class="quiz__question">{{ q.question }}</h3>
+      @if (q.help) {
+        <p class="quiz__help">{{ q.help }}</p>
+      }
+      <div class="quiz__options">
+        @for (o of q.options; track o.value) {
+          <button
+            type="button"
+            class="quiz__option"
+            [class.is-selected]="isSelected(o.value)"
+            (click)="pick(o.value)"
+          >
+            <span class="quiz__radio"></span>
+            {{ o.label }}
+          </button>
+        }
+      </div>
+      @if (currentIndex() > 0) {
+        <div>
+          <kp-button size="sm" variant="ghost" icon="arrow-left" (clicked)="back()">Vissza</kp-button>
+        </div>
+      }
+    </div>
+  </kp-card>
+}

@@ -1,0 +1,109 @@
+<div class="kp-bm">
+  <!-- Wide layout: left labels | figure | right labels -->
+  <div class="kp-bm__wide" [style.height.px]="figH">
+    <div class="kp-bm__col">
+      @for (r of leftRegions(); track r.id) {
+        <button
+          type="button"
+          class="kp-bm__label side-left"
+          [class.is-active]="isActive(r)"
+          [style.top]="r.y"
+          [attr.aria-pressed]="isActive(r)"
+          (click)="onSelect(r.id)"
+        >
+          {{ r.label }}
+        </button>
+      }
+    </div>
+
+    <div class="kp-bm__figure">
+      <ng-container [ngTemplateOutlet]="figure" />
+      @for (r of regions(); track r.id) {
+        <span
+          class="kp-bm__line"
+          [class.is-active]="isActive(r)"
+          aria-hidden="true"
+          [style.top]="r.y"
+          [style.left]="r.side === 'right' ? r.x : '0'"
+          [style.right]="r.side === 'right' ? '0' : 'calc(100% - ' + r.x + ')'"
+        ></span>
+      }
+      @for (r of regions(); track r.id) {
+        <span
+          class="kp-bm__dot"
+          [class.is-active]="isActive(r)"
+          aria-hidden="true"
+          [style.left]="r.x"
+          [style.top]="r.y"
+        ></span>
+      }
+    </div>
+
+    <div class="kp-bm__col">
+      @for (r of rightRegions(); track r.id) {
+        <button
+          type="button"
+          class="kp-bm__label side-right"
+          [class.is-active]="isActive(r)"
+          [style.top]="r.y"
+          [attr.aria-pressed]="isActive(r)"
+          (click)="onSelect(r.id)"
+        >
+          {{ r.label }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Narrow layout: figure with tappable dots + wrapped pill list -->
+  <div class="kp-bm__narrow">
+    <div class="kp-bm__figure" [style.width.px]="figW" [style.height.px]="figH">
+      <ng-container [ngTemplateOutlet]="figure" />
+      @for (r of regions(); track r.id) {
+        <button
+          type="button"
+          class="kp-bm__tap"
+          [style.left]="r.x"
+          [style.top]="r.y"
+          [attr.aria-label]="r.label"
+          [attr.aria-pressed]="isActive(r)"
+          (click)="onSelect(r.id)"
+        >
+          <span class="kp-bm__dot" [class.is-active]="isActive(r)" aria-hidden="true"></span>
+        </button>
+      }
+    </div>
+    <div class="kp-bm__pills">
+      @for (r of regions(); track r.id) {
+        <button
+          type="button"
+          class="kp-bm__pill"
+          [class.is-active]="isActive(r)"
+          [attr.aria-pressed]="isActive(r)"
+          (click)="onSelect(r.id)"
+        >
+          {{ r.label }}
+        </button>
+      }
+    </div>
+  </div>
+
+  @if (caption()) {
+    <p class="kp-bm__caption">{{ caption() }}</p>
+  }
+</div>
+
+<ng-template #figure>
+  <div class="kp-bm__parts" aria-hidden="true" [style.width.px]="figW" [style.height.px]="figH">
+    @for (p of parts; track $index) {
+      <span
+        class="kp-bm__part"
+        [style.left.px]="p.left"
+        [style.top.px]="p.top"
+        [style.width.px]="p.width"
+        [style.height.px]="p.height"
+        [style.border-radius]="p.radius"
+      ></span>
+    }
+  </div>
+</ng-template>

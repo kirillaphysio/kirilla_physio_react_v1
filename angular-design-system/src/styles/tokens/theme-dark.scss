@@ -1,0 +1,56 @@
+/* Dark theme — synced verbatim from the "KirillaPhysio Design System" (ui_kits/website/theme-dark.css).
+   Activated by html[data-theme="dark"] (set by core/theme.service.ts + the no-flash script in
+   index.html). It remaps the token layer only: light surface steps go dark, text-carrying steps go
+   light, and the deep brand surfaces (footer band, gradient) stay deep, so every design-system
+   component follows without component-level edits. Do not hand-edit — re-sync from the design system. */
+
+html[data-theme='dark'] {
+  /* Ramps — light steps become dark grounds, text steps become light */
+  --plum-700: #e4d2d7; --plum-600: #c3a0a7; --plum-300: #4b2f38; --plum-200: #3b242c; --plum-100: #2e1c23; --plum-50: #281a20;
+  --rose-700: #edbcd6; --rose-600: #e7b0cc; --rose-400: #b0648f; --rose-300: #8a4a6b; --rose-200: #4a2536; --rose-100: #331b27;
+  --blush-400: #5a3540; --blush-300: #40252e; --blush-200: #2e1b22; --blush-100: #221419;
+  --lilac-700: #dccde3; --lilac-600: #c6b2cf; --lilac-400: #7a6088; --lilac-300: #3d3046; --lilac-200: #2e2434; --lilac-100: #251e2b;
+  --mist-peach: #2c1c1b; --mist-pink: #2e1a24; --mist-lilac: #241e2c; --mist-cream: #241a1b;
+  --white: #2c1b22;
+
+  /* Text */
+  --text-strong: #f7eaee; --text-body: #e8d6dc; --text-muted: #c9aeb6; --text-subtle: #c9aeb6;
+  --text-accent: #edbcd6; --text-accent-alt: #dccde3;
+  --text-on-accent: #ffffff; --text-on-accent-muted: #f6e4ec; --text-link: #dccde3; --text-link-hover: #edbcd6;
+  /* Surfaces */
+  --surface-page: #1e1216; --surface-card: #2c1b22; --surface-raised: #33202a; --surface-sunken: #180e12;
+  --surface-tint-rose: #3a222b; --surface-tint-lilac: #2a2231; --surface-tint-cream: #2a1a20;
+  --surface-accent: #7a3358; --surface-accent-deep: #3a2028; --surface-invert: #3a2028;
+  --surface-glass: rgba(34, 20, 25, 0.66);
+  /* Interactive */
+  --accent: #8e3a66; --accent-hover: #a2477a; --accent-press: #b4568a;
+  --accent-alt: #8e74a0; --accent-alt-hover: #a084ae; --accent-alt-press: #bca5c6;
+  --accent-soft: #3e2530; --accent-soft-hover: #4c2e3b;
+  /* Lines */
+  --line-hairline: rgba(237, 212, 226, 0.14); --line-soft: #3b242c; --line-strong: #4b2f38; --line-on-accent: rgba(255, 255, 255, 0.34);
+  --focus-ring: #bca5c6;
+  /* Feedback */
+  --feedback-success: #5ec9a4; --feedback-success-bg: #17342c;
+  --feedback-error: #e88396; --feedback-error-bg: #3a1e23;
+  --feedback-warning: #e7b472; --feedback-warning-bg: #38271a;
+  /* Gradients and mesh */
+  --gradient-brand: linear-gradient(135deg, #8e3a66 0%, #54232d 100%);
+  --gradient-brand-soft: linear-gradient(135deg, #3e2530 0%, #2a1a20 100%);
+  --gradient-brand-deep: linear-gradient(135deg, #2a1620 0%, #160c10 100%);
+  --gradient-rule: linear-gradient(90deg, rgba(237, 188, 214, 0) 0%, #edbcd6 32%, #8a4a6b 74%, rgba(138, 74, 107, 0) 100%);
+  --gradient-text: linear-gradient(100deg, #edbcd6 0%, #dccde3 100%);
+  --mesh-page: radial-gradient(58% 46% at 12% 8%, #3a222b 0%, rgba(58, 34, 43, 0) 62%), radial-gradient(52% 44% at 88% 4%, #2a2231 0%, rgba(42, 34, 49, 0) 60%), radial-gradient(64% 52% at 74% 88%, #331b27 0%, rgba(51, 27, 39, 0) 66%), linear-gradient(180deg, #1e1216 0%, #160c10 100%);
+  --mesh-hero: radial-gradient(46% 60% at 18% 22%, #432631 0%, rgba(67, 38, 49, 0) 64%), radial-gradient(44% 54% at 82% 16%, #2f2439 0%, rgba(47, 36, 57, 0) 60%), radial-gradient(58% 48% at 60% 96%, #5a3540 0%, rgba(90, 53, 64, 0) 68%), linear-gradient(180deg, #221419 0%, #180e12 100%);
+  --mesh-band: radial-gradient(50% 70% at 8% 12%, rgba(237, 197, 195, 0.16) 0%, rgba(237, 197, 195, 0) 60%), radial-gradient(60% 80% at 92% 90%, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 64%), linear-gradient(135deg, #5f2848 0%, #3a2028 100%);
+  --mesh-card: radial-gradient(80% 100% at 0% 0%, #3a222b 0%, rgba(58, 34, 43, 0) 70%), radial-gradient(80% 100% at 100% 100%, #2a2231 0%, rgba(42, 34, 49, 0) 70%), #2c1b22;
+  /* Elevation — deeper, since plum tints don't read on dark grounds */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.32);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 22px 56px rgba(0, 0, 0, 0.46);
+  --shadow-xl: 0 36px 88px rgba(0, 0, 0, 0.52);
+  --shadow-rose: 0 14px 34px rgba(0, 0, 0, 0.44);
+  --shadow-lilac: 0 14px 34px rgba(0, 0, 0, 0.44);
+  --shadow-ring-hairline: inset 0 0 0 1px rgba(237, 212, 226, 0.12);
+  --shadow-ring-light: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}

@@ -1,0 +1,11 @@
+<kp-card [surface]="surface()" padding="lg" radius="xl" [interactive]="true" [href]="href()" class="tile">
+  <div class="tile__inner">
+    <span class="tile__disc"><kp-icon [name]="icon()" /></span>
+    <h3 class="tile__title">{{ title() }}</h3>
+    <p class="tile__desc">{{ description() }}</p>
+    <span class="tile__link">
+      {{ linkLabel() }}
+      <kp-icon name="arrow-right" class="tile__arrow" />
+    </span>
+  </div>
+</kp-card>

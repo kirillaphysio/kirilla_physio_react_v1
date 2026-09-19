@@ -1,0 +1,129 @@
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: block;
+  background: var(--surface-glass);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  box-shadow: 0 1px 0 var(--line-hairline);
+}
+
+.kp-header__bar {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 14px var(--container-pad);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.kp-header__brand {
+  flex: 0 0 auto;
+}
+
+.kp-header__nav {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.kp-header__link {
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  font-size: var(--body-sm-size);
+  font-weight: var(--weight-semibold);
+  color: var(--text-body);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition-control);
+
+  &:hover {
+    background: var(--plum-100);
+    text-decoration: none;
+    color: var(--text-body);
+  }
+
+  /* Active pill carries the gradient with on-accent text. */
+  &.is-active {
+    background: var(--gradient-brand);
+    color: var(--text-on-accent);
+    font-weight: var(--weight-bold);
+    box-shadow: var(--shadow-rose);
+    &:hover {
+      background: var(--gradient-brand);
+      color: var(--text-on-accent);
+    }
+  }
+}
+
+.kp-header__cta {
+  flex: 0 0 auto;
+}
+
+/* Right-side controls: theme toggle (always visible) + hamburger (mobile only). */
+.kp-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-inline);
+}
+
+.kp-header__toggle {
+  display: none;
+
+  /* Subtle spin as the glyph swaps between bars and xmark. */
+  kp-icon-button {
+    display: block;
+    transition: transform 0.25s ease;
+  }
+  &.is-open kp-icon-button {
+    transform: rotate(90deg);
+  }
+}
+
+.kp-header__sheet {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+.kp-header__sheet-cta {
+  margin-top: 8px;
+}
+
+/* Below 900px the nav collapses to a hamburger sheet. */
+@media (max-width: 900px) {
+  .kp-header__nav,
+  .kp-header__cta {
+    display: none;
+  }
+  /* Nav's auto-margin is gone with it hidden, so the actions group takes over right-alignment. */
+  .kp-header__actions {
+    margin-left: auto;
+  }
+  .kp-header__toggle {
+    display: block;
+  }
+
+  /* Always rendered so it can transition; collapsed to zero height when closed.
+     max-height animates the slide, opacity/translate the subtle fade-in. */
+  .kp-header__sheet {
+    display: flex;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 var(--container-pad);
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      max-height 0.3s ease,
+      padding 0.3s ease,
+      opacity 0.2s ease,
+      transform 0.3s ease;
+
+    &.is-open {
+      max-height: 70vh;
+      padding: 0 var(--container-pad) 18px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

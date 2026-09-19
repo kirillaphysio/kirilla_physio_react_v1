@@ -1,0 +1,45 @@
+:host {
+  display: inline-flex;
+}
+
+.kp-wm {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex: 0 0 auto;
+}
+.kp-wm:hover {
+  text-decoration: none;
+}
+
+.kp-wm__img {
+  width: auto;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.kp-wm__full {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.kp-wm__type {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.kp-wm__name {
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  line-height: 1.15;
+}
+
+.kp-wm__sub {
+  letter-spacing: 0.2px;
+
+  @media (max-width: 600px) {
+    font-size: 12.5px !important;
+  }
+}

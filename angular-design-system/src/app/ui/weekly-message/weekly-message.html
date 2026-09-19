@@ -1,0 +1,14 @@
+<div class="kp-weekly">
+  <span class="kp-weekly__label">{{ label() }}</span>
+  @if (entry().text) {
+    <p class="kp-weekly__text">
+      <kp-icon [name]="topic().icon" class="kp-weekly__icon" />
+      <span>{{ entry().text }}</span>
+    </p>
+  } @else {
+    <span class="kp-weekly__slot">
+      <kp-icon [name]="topic().icon" />
+      heti üzenet · {{ resolvedWeek() }}. hét
+    </span>
+  }
+</div>

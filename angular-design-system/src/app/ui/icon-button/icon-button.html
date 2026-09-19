@@ -1,0 +1,28 @@
+@if (href() && !disabled()) {
+  @if (isInternal()) {
+    <a [class]="cls()" [routerLink]="href()" [attr.aria-label]="ariaLabel()" (click)="onClick($event)">
+      <kp-icon [name]="icon()" />
+    </a>
+  } @else {
+    <a
+      [class]="cls()"
+      [href]="href()"
+      [attr.aria-label]="ariaLabel()"
+      [attr.target]="isExternalUrl() ? '_blank' : null"
+      [attr.rel]="isExternalUrl() ? 'noopener' : null"
+      (click)="onClick($event)"
+    >
+      <kp-icon [name]="icon()" />
+    </a>
+  }
+} @else {
+  <button
+    type="button"
+    [class]="cls()"
+    [disabled]="disabled()"
+    [attr.aria-label]="ariaLabel()"
+    (click)="onClick($event)"
+  >
+    <kp-icon [name]="icon()" />
+  </button>
+}

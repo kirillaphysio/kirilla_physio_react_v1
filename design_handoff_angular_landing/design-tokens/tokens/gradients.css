@@ -1,0 +1,13 @@
+:root{
+/* Signature: rose → lilac, always 135deg on fills, 90deg on thin rules */
+--gradient-brand:linear-gradient(135deg,#723056 0%,#54232D 100%); /* @kind color */
+--gradient-brand-soft:linear-gradient(135deg,#EDC5C3 0%,#F5DEDC 100%); /* @kind color */
+--gradient-brand-deep:linear-gradient(135deg,#54232D 0%,#3A2028 100%); /* @kind color */
+--gradient-rule:linear-gradient(90deg,rgba(114,48,86,0) 0%,#723056 32%,#EDC5C3 74%,rgba(237,197,195,0) 100%); /* @kind color */
+--gradient-text:linear-gradient(100deg,#723056 0%,#54232D 100%);
+/* Pastel mesh: the system's depth. Three blurred radial stops over a cream base. */
+--mesh-page:radial-gradient(58% 46% at 12% 8%,#EDC5C3 0%,rgba(237,197,195,0) 62%),radial-gradient(52% 44% at 88% 4%,#F0E9F2 0%,rgba(240,233,242,0) 60%),radial-gradient(64% 52% at 74% 88%,#F5DEDC 0%,rgba(245,222,220,0) 66%),linear-gradient(180deg,#FBF2F1 0%,#F5E2E0 100%); /* @kind color */
+--mesh-hero:radial-gradient(46% 60% at 18% 22%,#EDC5C3 0%,rgba(237,197,195,0) 64%),radial-gradient(44% 54% at 82% 16%,#D6C6DC 0%,rgba(214,198,220,0) 60%),radial-gradient(58% 48% at 60% 96%,#E3A9A6 0%,rgba(227,169,166,0) 68%),linear-gradient(180deg,#FBF2F1 0%,#F5DEDC 100%); /* @kind color */
+--mesh-band:radial-gradient(50% 70% at 8% 12%,rgba(237,197,195,.30) 0%,rgba(237,197,195,0) 60%),radial-gradient(60% 80% at 92% 90%,rgba(58,32,40,.45) 0%,rgba(58,32,40,0) 64%),linear-gradient(135deg,#723056 0%,#54232D 100%); /* @kind color */
+--mesh-card:radial-gradient(80% 100% at 0% 0%,#F5DEDC 0%,rgba(245,222,220,0) 70%),radial-gradient(80% 100% at 100% 100%,#F6F1F7 0%,rgba(246,241,247,0) 70%),#FFFFFF; /* @kind color */
+}

@@ -1,0 +1,24 @@
+<kp-card [surface]="surface()" padding="lg" radius="xl" class="flow">
+  <div class="flow__grid" [class.is-stack]="stack()" [style.grid-template-columns]="cols()">
+    @for (step of steps(); track $index) {
+      <div class="flow__step" [class.is-stack]="stack()">
+        <div class="flow__disc-row">
+          <span class="flow__disc" [class.is-first]="$index === 0">{{ $index + 1 }}</span>
+          @if (!stack() && $index < steps().length - 1) {
+            <span class="flow__line"></span>
+          }
+        </div>
+        <div class="flow__text">
+          <h3 class="flow__title">{{ step.title }}</h3>
+          <p class="flow__desc">{{ step.description }}</p>
+          @if (step.meta) {
+            <span class="flow__meta">
+              <kp-icon [name]="step.icon || 'clock'" class="flow__meta-icon" />
+              {{ step.meta }}
+            </span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</kp-card>

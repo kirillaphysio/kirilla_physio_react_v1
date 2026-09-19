@@ -1,0 +1,91 @@
+:host {
+  display: inline-flex;
+}
+
+.kp-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--radius-circle);
+  cursor: pointer;
+  transition: var(--transition-control);
+  padding: 0;
+
+  &:hover {
+    transform: var(--lift-hover);
+  }
+  &:active {
+    transform: var(--lift-press);
+    box-shadow: var(--shadow-xs);
+  }
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+/* ── Sizes ──────────────────────────────────────────────────────────────── */
+.s-lg {
+  width: 56px;
+  height: 56px;
+  font-size: 20px;
+}
+.s-md {
+  width: 44px;
+  height: 44px;
+  font-size: 16px;
+}
+.s-sm {
+  width: 36px;
+  height: 36px;
+  font-size: 13px;
+}
+@media (max-width: 600px) {
+  .kp-iconbtn--sm {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* ── Variants ───────────────────────────────────────────────────────────── */
+.v-solid {
+  background: var(--gradient-brand);
+  color: var(--text-on-accent);
+  box-shadow: var(--shadow-rose);
+  &:hover {
+    box-shadow: 0 18px 38px rgba(226, 127, 166, 0.34);
+  }
+}
+.v-soft {
+  background: var(--accent-soft);
+  color: var(--rose-700);
+  &:hover {
+    box-shadow: var(--shadow-sm);
+  }
+}
+.v-lilac {
+  background: var(--lilac-200);
+  color: var(--lilac-700);
+  &:hover {
+    box-shadow: var(--shadow-sm);
+  }
+}
+.v-glass {
+  background: var(--surface-glass);
+  color: var(--plum-600);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: var(--blur-glass);
+  &:hover {
+    box-shadow: var(--shadow-lg);
+  }
+}
+.v-plain {
+  /* Retintable by a parent via --kp-iconbtn-bg / --kp-iconbtn-color (footer socials). */
+  background: var(--kp-iconbtn-bg, transparent);
+  color: var(--kp-iconbtn-color, var(--text-muted));
+  &:hover {
+    transform: none;
+  }
+}

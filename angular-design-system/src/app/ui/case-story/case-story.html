@@ -1,0 +1,53 @@
+<kp-card [surface]="surface()" padding="lg" radius="xl">
+  <div class="kp-case">
+    @if (meta()) {
+      <kp-eyebrow>{{ meta() }}</kp-eyebrow>
+    }
+    <h3 class="kp-case__title">{{ title() }}</h3>
+
+    <div class="kp-case__blocks">
+      @for (block of blocks(); track $index) {
+        <div class="kp-case__block">
+          <span class="kp-case__label">{{ block.label }}</span>
+          <p class="kp-case__text kp-rich" [innerHTML]="block.text"></p>
+        </div>
+      }
+    </div>
+
+    @if (outcome()) {
+      <div class="kp-case__outcome">
+        <kp-icon name="check" class="kp-case__outcome-icon" />
+        <p class="kp-case__outcome-text">{{ outcome() }}</p>
+      </div>
+    }
+
+    @if (course(); as c) {
+      <div class="kp-case__course">
+        <p class="kp-case__course-text">{{ c.text }}</p>
+        <kp-button
+          size="sm"
+          variant="secondary"
+          icon="arrow-right"
+          iconPosition="right"
+          [href]="c.href"
+          >{{ c.name }}</kp-button
+        >
+      </div>
+    }
+
+    @if (therapies().length) {
+      <div class="kp-case__chips">
+        @for (t of therapies(); track t) {
+          @let therapyId = therapyLink(t);
+          @if (therapyId) {
+            <a class="kp-case__chip-link" [routerLink]="'/terapia/' + therapyId">
+              <kp-chip size="sm" tone="plum">{{ t }}</kp-chip>
+            </a>
+          } @else {
+            <kp-chip size="sm" tone="plum">{{ t }}</kp-chip>
+          }
+        }
+      </div>
+    }
+  </div>
+</kp-card>
