@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Button, Card, Eyebrow } from '../../../ui';
+import { Button, Card } from '../../../ui';
 import { ScrollService } from '../../../core/scroll.service';
 import { SALONIC_URL } from '../../../ui/header/header';
 
@@ -7,7 +7,7 @@ import { SALONIC_URL } from '../../../ui/header/header';
 @Component({
   selector: 'app-course-ladder',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Button, Card, Eyebrow],
+  imports: [Button, Card],
   templateUrl: './course-ladder.html',
   styleUrl: './course-ladder.scss',
 })

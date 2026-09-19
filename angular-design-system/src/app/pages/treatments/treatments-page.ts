@@ -56,9 +56,9 @@ const FIRST_VISIT = [
     meta: 'kb. 20 perc',
   },
   {
-    title: 'Kezelek és tervet adok',
+    title: 'Kezdjük a kezelést',
     description:
-      'Az első kezelést is elvégzem, elmondom, mit találtam, és mit tehetünk ellene. Otthonra kapsz gyakorlatokat.',
+      'A beszélgetés és a vizsgálat alapján egyből összeállítom a problémádra szabott kezelési tervet és bele is kezdünk az első kezelésbe.',
     meta: 'kb. 25 perc',
   },
 ];

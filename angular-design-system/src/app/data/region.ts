@@ -27,35 +27,67 @@ export const REGIONS: BodyRegion[] = [
 
 export const REGION_DETAIL: Record<string, RegionDetail> = {
   fej: {
-    complaints: ['izom- és kötőszövet eredetű fejfájás', 'stresszhez kötődő, visszatérő fejfájás', 'állkapocs-ízületi panasz, fogcsikorgatás'],
+    complaints: [
+      'izom- és kötőszövet eredetű fejfájás',
+      'stresszhez kötődő, visszatérő fejfájás',
+      'állkapocs-ízületi panasz, fogcsikorgatás',
+    ],
     therapies: ['cranio_terapia', 'alkapocs_izuleti', 'vagus_terapia'],
   },
   nyak: {
-    complaints: ['nyakfájás, ízületi blokk', 'karba sugárzó fájdalom, zsibbadás', 'helytelen testtartás, előreesett fejtartás'],
-    therapies: ['gyogytorna', 'mulligan_terapia', 'fdm'],
+    complaints: [
+      'nyakfájás, ízületi blokk',
+      'karba sugárzó fájdalom, zsibbadás (idegi érintettség)',
+      'előreesett fejtartás',
+    ],
+    therapies: ['gyogytorna', 'vagus_terapia', 'fdm'],
   },
   vall: {
-    complaints: ['vállfájdalom, beszűkült mozgástartomány', 'könyök- és csuklópanasz', 'izom túlfeszülés'],
+    complaints: [
+      'vállfájdalom, beszűkült mozgástartomány',
+      'könyök- és csuklópanasz',
+      'izom túlfeszülés',
+    ],
     therapies: ['mulligan_terapia', 'fdm', 'kinezio_tape'],
   },
   derek: {
-    complaints: ['derékfájás, hátfájás (porckorongsérv, becsípődés)', 'instabilitás, csigolyaelcsúszás', 'lábba sugárzó fájdalom, zsibbadás'],
+    complaints: [
+      'derékfájás, hátfájás (porckorongsérv, becsípődés)',
+      'instabilitás, csigolyaelcsúszás',
+      'lábba sugárzó fájdalom, zsibbadás',
+    ],
     therapies: ['gyogytorna', 'fdm', 'dorn_terapia'],
   },
   has: {
-    complaints: ['puffadás, székrekedés, IBS', 'fájdalmas menstruáció, ciszták', 'műtét utáni hegek, feszülő has'],
+    complaints: [
+      'puffadás, székrekedés, IBS',
+      'fájdalmas menstruáció, ciszták',
+      'műtét utáni hegek, feszülő has',
+    ],
     therapies: ['visceralis_terapia', 'nyirok_kezeles', 'hegkezeles'],
   },
   csipo: {
-    complaints: ['csípőfájdalom, beszűkült mozgás', 'aszimmetrikus terhelés, medenceferdeség', 'terhesség utáni panaszok'],
+    complaints: [
+      'csípőfájdalom, beszűkült mozgás',
+      'aszimmetrikus terhelés, porckopás',
+      'mély gluteális szindróma (piriformis)',
+    ],
     therapies: ['dorn_terapia', 'gyogytorna', 'fdm'],
   },
   terd: {
-    complaints: ['térdfájdalom lépcsőn, guggolásban', 'műtét utáni rehabilitáció', 'húzódások, sportsérülések'],
+    complaints: [
+      'térdfájdalom lépcsőn, guggolásban',
+      'műtét utáni rehabilitáció',
+      'húzódások, sportsérülések',
+    ],
     therapies: ['mulligan_terapia', 'gyogytorna', 'kinezio_tape'],
   },
   boka: {
-    complaints: ['bokaficam után maradt panasz', 'lábfájdalom, boka instabilitás', 'beszűkült boka mozgástartomány'],
+    complaints: [
+      'bokaficam után maradt panasz',
+      'lábfájdalom, boka instabilitás',
+      'beszűkült boka mozgástartomány',
+    ],
     therapies: ['mulligan_terapia', 'fdm', 'kinezio_tape'],
   },
 };

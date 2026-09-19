@@ -3,7 +3,7 @@ import { THERAPIES, Therapy, therapyById } from '../data/therapy';
 import { COURSES, COURSE_PLATFORM, Course, liveCourses } from '../data/course';
 import { REGIONS, REGION_DETAIL, DEFAULT_REGION, BodyRegion, RegionDetail } from '../data/region';
 import { CaseStory } from '../data/case';
-import { LANDING_OPINIONS, TREATMENTS_OPINIONS, Testimonial } from '../data/testimonial';
+import { LANDING_OPINIONS, TREATMENTS_OPINIONS, COURSE_OPINIONS, Testimonial } from '../data/testimonial';
 import { FAQS, COURSE_FAQS, Faq } from '../data/faq';
 import { QUALIFICATIONS, Qualification } from '../data/qualification';
 import { BLOG_POSTS, BLOG_PLAYLISTS, BLOG_STORIES, BlogPlaylist, BlogPost, BlogStory, blogPostById } from '../data/blog';
@@ -59,6 +59,9 @@ export class ContentService {
   }
   treatmentsOpinions(): Testimonial[] {
     return TREATMENTS_OPINIONS;
+  }
+  courseOpinions(): Testimonial[] {
+    return COURSE_OPINIONS;
   }
 
   faqs(): Faq[] {

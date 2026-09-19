@@ -46,6 +46,15 @@
   color: var(--text-muted);
 }
 
+/* Section-heading spacing helpers (kp-section-heading is display:flex via its own :host, so a
+   margin-bottom here just adds the gap — don't set `display`, it would outrank that :host rule). */
+.mb-8 {
+  margin-bottom: var(--space-8);
+}
+.mb-10 {
+  margin-bottom: var(--space-10);
+}
+
 /* ── Catalogue ──────────────────────────────────────────────────────────────────── */
 .cat__head {
   display: flex;

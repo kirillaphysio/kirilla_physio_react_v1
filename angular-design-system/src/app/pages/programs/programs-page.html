@@ -43,6 +43,17 @@
   </div>
 </section>
 
+<section id="velemenyek" class="kp-section" data-reveal>
+  <kp-section-heading
+    class="mb-10"
+    eyebrow="Visszajelzések"
+    title="Vélemények a programokról"
+    [level]="2"
+    align="center"
+  />
+  <kp-testimonial-carousel [items]="opinions" [perView]="3" />
+</section>
+
 <section id="gyik" class="kp-section" data-reveal>
   <kp-section-heading class="mb-8" eyebrow="GYIK" title="Gyakori kérdések" [level]="2" />
   <kp-faq-accordion [items]="faqs" />

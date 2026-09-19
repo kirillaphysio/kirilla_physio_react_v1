@@ -89,3 +89,22 @@ export const TREATMENTS_OPINIONS: Testimonial[] = [
       'Csak ajánlani tudom, Réka egy igazi angyal. 😇 Már néhány kezelés után érezhetően javult a testtartásom és este sem sajog a hátam.',
   },
 ];
+
+/** courseOpinions — programs page "Vélemények a programokról". Verbatim from oktatas.kirillareka.hu. */
+export const COURSE_OPINIONS: Testimonial[] = [
+  {
+    author: 'B. Péter · Stabil Gerinc Program',
+    description:
+      'Csigolya elcsúszást diagnosztizáltak nálam (lumbális) gerincszakasznál. Nagyon sokat hallottam Rékáról, voltam nála személyesen is és szakmaisága meggyőzött, a videóban részletesen elmagyarázza mit miért és hogyan kell csinálni. Otthon is végezhetőek a tornák, nem kell megállítani a videót mert megvár és van rá idő. A tornák nagyon jól össze vannak rakva. Meg kell erősíteni a mélyizmokat és ez egy tényleg hasznos videó összeállítás.',
+  },
+  {
+    author: 'D. Tímea · Teljes Test Torna',
+    description:
+      '54 éves vagyok, ritkán mozgok. Ez a teljes test torna tökéletesen megfelelő arra, hogy minden testrészt megmozgassak. Nem megterhelőek a gyakorlatok, pozitív, hogy nem igényel eszközt, így bárhol elvégezhetőek. Réka minden egyes feladatot elmagyaráz, bemutat. Gyakorlás közben érzékelni lehet, hogy mely területen van szükség több gyakorlásra. Mindenkinek ajánlom, akinek kevés ideje jut a mozgásra, de szeretné tetőtöl talpig jól átmozgatni a testét!',
+  },
+  {
+    author: 'M. Erika · Stabil Gerinc Program',
+    description:
+      'Mar regota kerestem egy olyan programot ahol elvannak magyarazva a gyakorlatok, hegyrol vegere, nem csak 5 masodpercnyi bemutato. Majdnem masfel evvel ezelott hatgerincservel voltam mutve (L5-S1), az elott aktivan mozogtam ( pilates , yoga), de a mutet utan meg nem jottem teljesen helyre. Sokat kerestem kineto programokat, most megkaptam, es a masodik het utan mar erzek javulast. Mar csak a bemelegito es nyujto gaykorlatok utan erzek egy frissulest a testemben. Azoknak ajanlom akik otthon, sajat tempoban akarnak rendszeresen karbantarto gyakorlatokat vegezni.',
+  },
+];

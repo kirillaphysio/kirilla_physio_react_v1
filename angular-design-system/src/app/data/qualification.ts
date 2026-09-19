@@ -32,4 +32,5 @@ export const QUALIFICATIONS: Qualification[] = [
   { date: '2024', description: 'Neuro-mozgáskorrekció Haladó 1.' },
   { date: '2025', description: 'CranioFDM (fejfájások terápiája)' },
   { date: '2025', description: 'Állkapocs-ízületi terápia' },
+  { date: '2026', description: 'Laborleletek értékelése 1-5.' }
 ];
