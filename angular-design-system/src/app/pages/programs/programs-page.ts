@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Button, CourseCard, SectionHeading } from '../../ui';
+import { Button, CourseCard, FaqAccordion, SectionHeading } from '../../ui';
 import { VideoEmbed } from '../../shared/video-embed/video-embed';
 import { LeadMagnet } from '../landing/sections/lead-magnet';
 import { ContentService } from '../../core/content.service';
@@ -19,6 +19,7 @@ const SEO_DESCRIPTION =
   imports: [
     Button,
     CourseCard,
+    FaqAccordion,
     SectionHeading,
     VideoEmbed,
     LeadMagnet,
@@ -32,6 +33,7 @@ export class ProgramsPage {
 
   readonly courses = this.content.courses();
   readonly platform = this.content.coursePlatform;
+  readonly faqs = this.content.courseFaqs();
 
   constructor() {
     this.seo.apply({

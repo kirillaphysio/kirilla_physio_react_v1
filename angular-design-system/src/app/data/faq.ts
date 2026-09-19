@@ -47,3 +47,34 @@ export const FAQS: Faq[] = [
     answer: 'Az esetek nagy részében már az első alkalom végén, az állapotfelmérés után javasolni fogok otthon végezhető gyakorlatokat, amiket szükség esetén írásban vagy videóban rögzítünk.',
   },
 ];
+
+// FAQ for the online programs / courses page (/online-programok).
+export const COURSE_FAQS: Faq[] = [
+  {
+    question: 'Hol fogom megkapni a megvásárolt programot/kurzust?',
+    answer:
+      'Vásárláskor az általad megadott email cím és jelszó alapján a rendszer automatikusan létrehoz neked egy hallgatói fiókot.\n' +
+      'Ezekkel az adatokkal a weboldalamon (kirillareka.hu → Online programok / vagy: oktatas.kirillareka.hu) bármikor be tudsz jelentkezni, és bejelentkezés után meg fog jelenni a megvásárolt kurzus.\n' +
+      '(A jelszavad érdemes valahova felírnod magadnak, de ha elfelejtenéd, be tudsz állítani újat.)',
+  },
+  {
+    question: 'Meddig férhetek hozzá a megvásárolt tartalmakhoz?',
+    answer:
+      'Örökre. Egyszeri hozzáférést kapsz, így saját tempódban haladhatsz, és később is bármikor újrakezdheted.',
+  },
+  {
+    question: 'Teljesen kezdőként is nekiállhatok?',
+    answer:
+      'Igen. A programok nem igényelnek semmilyen előképzettséget vagy tapasztalatot. A gyakorlatokat az alapoktól kezdjük, mindig megtanítom a helyes kivitelezést, és fokozatosan építjük fel a terhelést.',
+  },
+  {
+    question: 'Mikor lehet csatlakozni?',
+    answer:
+      'Az online programok nagy előnye, hogy nem kell semennyit várnod, bármikor belekezdhetsz. A vásárlás után azonnal hozzáférhetsz a teljes oktatási anyaghoz.',
+  },
+  {
+    question: 'Tudok segítséget kérni, ha valami nem világos a program elvégzése során?',
+    answer:
+      'Igen. Az oktatási felületre bejelentkezve van lehetőség kérdést feltenni (a szövegbuborék fülnél).',
+  },
+];
