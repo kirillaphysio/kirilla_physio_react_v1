@@ -84,3 +84,20 @@ kp-card {
   gap: var(--gap-inline);
   margin-top: auto;
 }
+
+/* Optional program CTA: a case that grew into an online course. */
+.kp-case__course {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-tint-cream);
+  box-shadow: var(--shadow-ring-hairline);
+}
+.kp-case__course-text {
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line);
+  color: var(--text-body);
+}

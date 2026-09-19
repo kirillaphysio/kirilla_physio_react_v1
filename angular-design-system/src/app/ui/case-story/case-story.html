@@ -21,6 +21,20 @@
       </div>
     }
 
+    @if (course(); as c) {
+      <div class="kp-case__course">
+        <p class="kp-case__course-text">{{ c.text }}</p>
+        <kp-button
+          size="sm"
+          variant="secondary"
+          icon="arrow-right"
+          iconPosition="right"
+          [href]="c.href"
+          >{{ c.name }}</kp-button
+        >
+      </div>
+    }
+
     @if (therapies().length) {
       <div class="kp-case__chips">
         @for (t of therapies(); track t) {

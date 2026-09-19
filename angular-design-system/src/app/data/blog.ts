@@ -144,162 +144,106 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-// The patient-story archive. The first two are the same cases the landing page shows (see
-// data/case.ts); the rest extend the set. All are non-identifying drafts pending Réka's sign-off.
+// The patient-story archive — Réka's revised cases. The first two are the ones the landing page
+// shows (ContentService.cases() returns BLOG_STORIES.slice(0, 2)); the rest extend the set.
+// Non-identifying, no promised outcome. Block text carries <strong> emphasis and, where a case led
+// to a program, an <a> link — both rendered via [innerHTML] on `.kp-rich`.
 export const BLOG_STORIES: BlogStory[] = [
   {
-    id: 'derekfajas-reggel',
-    label: 'Derékfájás',
-    meta: '30-as évek · irodai munka · 4 hónapos panasz',
-    title: 'Derékfájás, ami reggelre a legrosszabb',
+    id: 'konyok-visceralis',
+    label: 'Könyök',
+    meta: 'Tinédzser zongorista · kétoldali könyökfájás · több hónapos panasz',
+    title: 'Könyökfájás, ami nem a könyökből eredt',
     blocks: [
       {
         label: 'Panasz',
-        text: 'Reggeli felkeléskor éles derékfájás, ami napközben enyhült, de hosszú üléstől mindig visszatért.',
+        text: 'Egy fiatal zongorista fiú körülbelül fél éve küzdött kétoldali könyök/alkar fájdalommal és görcsökkel, amikor hozzám került állapotfelmérésre.',
       },
       {
         label: 'Mit találtam',
-        text: 'Az állapotfelmérésen a <strong>mély stabilizátorok</strong> nem kapcsoltak be időben, a derék körüli <strong>fascia</strong> pedig feszes volt, a csípő mozgástartománya beszűkült.',
+        text: 'A panaszai közvetlenül egy betegség után kezdődtek, amikor sok gyógyszert szedett. Se a pihentetés, se a hagyományos fizioterápiás kezelések (kitartó nyújtás, erősítés, masszázs, kinezio tape) nem segítettek. A kórtörténet és a viscerális terápián tanultak alapján a kétoldali, terápiarezisztens könyökfájás hátterében a <strong>máj körüli kötőszövetek "diszfunkciójára"</strong> kezdtem gyanakodni.',
       },
       {
         label: 'Mit tettünk',
-        text: 'Először <strong>FDM</strong>-mel oldottam a kötőszöveti feszülést, majd <strong>szegmentális stabilizációs tréninget</strong> és otthon végezhető gyakorlatsort építettünk fel.',
+        text: 'A májra fókuszált <strong>viscerális terápiával</strong> hétről hétre fokozatosan oldódott az alkar táji fájdalom és a görcs.',
       },
     ],
-    outcome: 'A reggeli fájdalom megszűnt, a napi ülés már nem hozza vissza.',
-    therapies: ['FDM', 'Gyógytorna', 'Dorn terápia'],
+    outcome:
+      'Az 5. kezelés végére teljesen elmúltak a panaszok, és a fiú végre újra tudott zongorázni.',
+    therapies: ['Viscerális terápia'],
   },
   {
-    id: 'fejfajas',
+    id: 'fejfajas-stressz',
     label: 'Fejfájás',
-    meta: '40-es évek · visszatérő fejfájás · 2 éve tart',
-    title: 'Fejfájás, amire a fájdalomcsillapító nem hatott',
+    meta: '30 év körüli vállalkozó nő · rendszeres fejfájás · stresszes mindennapok',
+    title: 'Fejfájás a folyamatos stressz mögött',
     blocks: [
       {
         label: 'Panasz',
-        text: 'Heti több alkalommal jelentkező fejfájás a tarkótól indulva, esténként erősödve.',
+        text: 'Rendszeres fejfájás miatt jelentkezett hozzám egy hölgy, akiről az állapotfelmérés során kiderült, hogy rendkívül stresszesek a mindennapjai.',
       },
       {
         label: 'Mit találtam',
-        text: 'A tarkó és a rágóizmok tónusa emelkedett volt, éjszakai <strong>fogcsikorgatás</strong> jeleivel, a <strong>paraszimpatikus idegrendszer</strong> alulműködésére utaló panaszokkal.',
+        text: 'A nyak, állkapocs és halánték környékén kifejezetten feszesek, tónusosak voltak az izmai.',
       },
       {
         label: 'Mit tettünk',
-        text: '<strong>Cranio FDM</strong> és <strong>állkapocs-ízületi terápia</strong>, mellette <strong>vagus terápia</strong> és légzésgyakorlatok az idegrendszer nyugtatására.',
+        text: '<strong>Manuális technikákkal</strong> kezdtem lazítani a feszes izmokat. A stressz okozta szimpatikus tónus oldására <strong>vagus (bolygóideg) technikákkal</strong> egészítettem ki a kezelést. Heti 1 kezeléssel folytattuk 5 héten keresztül, mellette kapott pár perces, naponta végzendő házi feladatokat.',
       },
     ],
-    outcome: 'A fejfájások száma heti többről havi egyre csökkent.',
-    therapies: ['Cranio FDM', 'Állkapocs-ízületi terápia', 'Vagus terápia'],
+    outcome:
+      'A fejfájások ritkultak, enyhültek, majd teljesen megszűntek — a mindennapokba beépített házi gyakorlatokkal hosszú távon is fenntartható lett ez az állapot.',
+    therapies: ['Cranio FDM', 'Vagus terápia'],
   },
   {
-    id: 'vall-beszukult',
-    label: 'Váll',
-    meta: '50-es évek · fizikai munka · 8 hónapos panasz',
-    title: 'Váll, ami nem engedte a karját a feje fölé',
+    id: 'derekfajas-stabilizacio',
+    label: 'Derékfájás',
+    meta: 'Évek óta tartó derékfájás · a korábbi kezelések nem segítettek',
+    title: 'Derékfájás, amin a nyújtás nem segített',
     blocks: [
       {
         label: 'Panasz',
-        text: 'Fájdalom a váll külső oldalán, és egy pont, ahol a kar emelése egyszerűen elakadt. Éjszaka az érintett oldalra fekve felébredt.',
+        text: 'Évek óta tartó derékfájás miatt fordult hozzám egy páciensem, akinek a masszázs és a nyújtó gyakorlatok nem oldották meg a panaszait.',
       },
       {
         label: 'Mit találtam',
-        text: 'Az ízületi mozgásvizsgálat egy jól körülírt <strong>elakadást</strong> jelzett a mozgástartomány közepén, a lapocka pedig késve indult a kar mozgásával.',
+        text: 'A tesztek alapján a mozgástartományával nem volt probléma, a <strong>gerincstabilizáló izmai</strong> viszont gyengébbek voltak, ami miatt instabilabb lehetett az ágyéki gerince.',
       },
       {
         label: 'Mit tettünk',
-        text: '<strong>Mulligan terápia</strong> a mozgásív felszabadítására, majd lapocka-vezérelt <strong>gyógytorna</strong>, és a munkahelyi emelési technika átbeszélése.',
+        text: 'Az állapotának megfelelő, könnyebb <strong>gerincstabilizáló gyakorlatokkal</strong> kezdtünk, majd hétről hétre egyre nehezebb gyakorlatokat kapott. Az izomereje szépen fejlődött, és ezzel együtt a derékfájása is végre elmúlt.',
       },
     ],
-    outcome: 'A kar újra a feje fölé emelhető, az éjszakai fájdalom elmúlt.',
-    therapies: ['Mulligan terápia', 'Gyógytorna', 'Kinezio tape'],
+    outcome: 'A derékfájás elmúlt, ahogy a gerincstabilizáló izmok fokozatosan megerősödtek.',
+    course: {
+      text: 'A pácienseimnél legjobban bevált gerincstabilizáló gyakorlatokat összegyűjtöttem, és rendszerbe szedve, fokozatosan felépítve egy videós online tananyagba csomagoltam. Így már azok is tornázhatnak velem, akik személyesen nem tudnak eljönni hozzám:',
+      name: 'Stabil Gerinc Program',
+      href: 'https://oktatas.kirillareka.hu/products/course/stabil-gerinc-program-12-het',
+    },
+    therapies: ['Gyógytorna', 'Gerincstabilizáció'],
   },
   {
-    id: 'hasi-panasz',
-    label: 'Belsőszervi',
-    meta: '30-as évek · hasi műtét után 3 év · visszatérő panasz',
-    title: 'Puffadás és derékfeszülés egy régi heg mögött',
-    blocks: [
-      {
-        label: 'Panasz',
-        text: 'Rendszeres puffadás, teltségérzés, és egy húzó feszülés a derék alsó szakaszán, amire a gyógytorna korábban nem hatott.',
-      },
-      {
-        label: 'Mit találtam',
-        text: 'A hasi <strong>heg</strong> körüli szövetek összetapadtak, a rekeszizom mozgása beszűkült, a légzés a felső bordakosárba került.',
-      },
-      {
-        label: 'Mit tettünk',
-        text: '<strong>Hegkezelés</strong> és <strong>viscerális terápia</strong>, mellé rekeszizom-légzés és napi néhány perces otthoni hegmasszázs.',
-      },
-    ],
-    outcome: 'A puffadás ritkult, a derékfeszülés a légzés rendezésével oldódott.',
-    therapies: ['Hegkezelés', 'Viscerális terápia', 'Vagus terápia'],
-  },
-  {
-    id: 'boka-instabil',
-    label: 'Boka',
-    meta: '20-as évek · amatőr futó · 1 éves panasz',
-    title: 'Bokaficam után maradt bizonytalanság',
-    blocks: [
-      {
-        label: 'Panasz',
-        text: 'A ficam meggyógyult, de egyenetlen talajon a boka bizonytalan maradt, és futás után rendszeresen fájt.',
-      },
-      {
-        label: 'Mit találtam',
-        text: 'Beszűkült boka mozgástartomány hajlításban, gyenge egylábas egyensúly, és a <strong>fascia</strong> feszülése a lábszár külső vonalán.',
-      },
-      {
-        label: 'Mit tettünk',
-        text: '<strong>Mulligan terápia</strong> a mozgástartományra, <strong>FDM</strong> a lábszár vonalára, majd fokozatos egyensúly- és futóterhelés-építés.',
-      },
-    ],
-    outcome: 'Egyenetlen talajon is biztos a boka, a futás fájdalom nélkül visszaépült.',
-    therapies: ['Mulligan terápia', 'FDM', 'Gyógytorna'],
-  },
-  {
-    id: 'terhesseg-utan',
-    label: 'Szülés után',
-    meta: '30-as évek · második szülés után 9 hónap',
-    title: 'Medencetáji panasz a szülés utáni visszatérésnél',
-    blocks: [
-      {
-        label: 'Panasz',
-        text: 'Fájdalom a keresztcsont mellett járás és babahordozás közben, valamint nyomásérzés terhelésre.',
-      },
-      {
-        label: 'Mit találtam',
-        text: 'Aszimmetrikus medenceterhelés, a <strong>medencefenék</strong> és a harántirányú hasfal késő bekapcsolása, feszes csípőhajlítók.',
-      },
-      {
-        label: 'Mit tettünk',
-        text: '<strong>Dorn terápia</strong> a medence rendezésére, majd lépésenként felépített <strong>szegmentális stabilizációs tréning</strong> és a hordozási testhelyzetek átbeszélése.',
-      },
-    ],
-    outcome: 'A járás és a hordozás fájdalom nélkül megy, a terhelés újra szimmetrikus.',
-    therapies: ['Dorn terápia', 'Gyógytorna', 'Kinezio tape'],
-  },
-  {
-    id: 'terd-lepcso',
+    id: 'terdfajas-fascia',
     label: 'Térd',
-    meta: '40-es évek · ülő munka · 6 hónapos panasz',
-    title: 'Térdfájdalom lépcsőn lefelé',
+    meta: 'Futó páciens · térdfájás · igazolt porckopás',
+    title: 'Térdfájás porckopással, mégis fájdalommentes futás',
     blocks: [
       {
         label: 'Panasz',
-        text: 'Lépcsőn lefelé és guggolásnál jelentkező térdfájdalom, ami hosszú séta után is előjött.',
-      },
-      {
-        label: 'Mit találtam',
-        text: 'A térd szerkezetileg rendben volt: a <strong>csípő</strong> stabilitása és a farizom munkája hiányzott, a boka mozgástartománya beszűkült.',
+        text: 'Egy futó páciensem térdfájás miatt keresett fel. Képalkotó vizsgálaton is volt, porckopást találtak a térdében.',
       },
       {
         label: 'Mit tettünk',
-        text: '<strong>Mulligan terápia</strong> a bokára és a térdre, utána farizom- és csípőstabilitás építése, a lépcsőzés újratanítása lassú ismétlésekkel.',
+        text: 'A térde körül (vádli-, comb- és farizomnál) <strong>manuális fascia technikákat</strong> alkalmaztam. A fascia kezelés magát a porckopást nem fordítja vissza, a fájdalomérzetre és a funkcióra viszont hatással lehet. A hosszú távú siker érdekében megtanítottam neki az <strong>SMR henger</strong> és a <strong>trigger labda</strong> használatát is, így otthon is tud karbantartó fascia technikákat végezni a térd körüli izmain.',
       },
     ],
-    outcome: 'A lépcsőzés fájdalommentes, a hosszú séta már nem hozza vissza a panaszt.',
-    therapies: ['Mulligan terápia', 'Gyógytorna'],
+    outcome: 'Újra fájdalom nélkül tudott futni.',
+    course: {
+      text: 'Az SMR henger és trigger labda használatáról egy online videós kurzust is készítettem, amiben elsajátíthatod az otthoni eszközös fascia technikákat a teljes testen:',
+      name: 'Hengerezz Okosan',
+      href: 'https://oktatas.kirillareka.hu/products/course/hengerezz-okosan',
+    },
+    therapies: ['FDM', 'Fascia terápia', 'SMR henger'],
   },
 ];
 

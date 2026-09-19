@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { THERAPIES, Therapy, therapyById } from '../data/therapy';
 import { COURSES, COURSE_PLATFORM, Course, liveCourses } from '../data/course';
 import { REGIONS, REGION_DETAIL, DEFAULT_REGION, BodyRegion, RegionDetail } from '../data/region';
-import { CASES, CaseStory } from '../data/case';
+import { CaseStory } from '../data/case';
 import { LANDING_OPINIONS, TREATMENTS_OPINIONS, Testimonial } from '../data/testimonial';
 import { FAQS, COURSE_FAQS, Faq } from '../data/faq';
 import { QUALIFICATIONS, Qualification } from '../data/qualification';
@@ -46,8 +46,12 @@ export class ContentService {
       .filter((t): t is Therapy => !!t);
   }
 
+  /** The two patient stories featured on the landing page (both end in an online program). */
   cases(): CaseStory[] {
-    return CASES;
+    const ids = ['terdfajas-fascia', 'derekfajas-stabilizacio'];
+    return ids
+      .map((id) => BLOG_STORIES.find((s) => s.id === id))
+      .filter((s): s is BlogStory => !!s);
   }
 
   landingOpinions(): Testimonial[] {
