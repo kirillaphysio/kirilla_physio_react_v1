@@ -1,66 +1,41 @@
 {
-  "name": "kirilla_physio",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": ".",
+  "name": "kirilla-physio",
+  "version": "0.0.0",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -b main --repo https://github.com/kirillaphysio/kirillaphysio.github.io.git"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "postbuild": "node scripts/copy-404.mjs",
+    "deploy": "npm run build && gh-pages -d dist/kirilla-physio/browser -b main --dotfiles --repo https://github.com/kirillaphysio/kirillaphysio.github.io.git"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "private": true,
+  "packageManager": "npm@11.11.1",
   "dependencies": {
-    "@cloudinary/react": "^1.14.3",
-    "@cloudinary/url-gen": "^1.21.0",
-    "@fortawesome/fontawesome-svg-core": "^6.7.2",
-    "@fortawesome/free-brands-svg-icons": "^6.7.2",
-    "@fortawesome/free-solid-svg-icons": "^6.7.2",
-    "@fortawesome/react-fontawesome": "^0.2.2",
-    "dompurify": "^3.2.6",
-    "hamburger-react": "^2.5.2",
-    "nanoid": "^5.1.5",
-    "react": "^19.1.0",
-    "react-collapsed": "^4.2.0",
-    "react-cookie-manager": "^3.7.2",
-    "react-device-detect": "^2.2.3",
-    "react-dom": "^19.1.0",
-    "react-router": "^7.6.1",
-    "react-use": "^17.6.0",
-    "swiper": "^11.2.8"
+    "@angular/common": "^22.1.0",
+    "@angular/compiler": "^22.1.0",
+    "@angular/core": "^22.1.0",
+    "@angular/forms": "^22.1.0",
+    "@angular/platform-browser": "^22.1.0",
+    "@angular/platform-server": "^22.1.0",
+    "@angular/router": "^22.1.0",
+    "@angular/ssr": "^22.1.4",
+    "express": "^5.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/jest": "^29.5.14",
-    "@types/node": "^22",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
+    "@angular/build": "^22.1.4",
+    "@angular/cli": "^22.1.4",
+    "@angular/compiler-cli": "^22.1.0",
+    "@types/express": "^5.0.1",
+    "@types/node": "^20.17.19",
     "gh-pages": "^6.3.0",
-    "react-scripts": "5.0.1",
-    "sass": "^1.89.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^5.0.2"
+    "jsdom": "^28.0.0",
+    "playwright": "^1.62.1",
+    "prettier": "^3.8.1",
+    "typescript": "~6.0.2",
+    "vitest": "^4.0.8"
   }
 }
