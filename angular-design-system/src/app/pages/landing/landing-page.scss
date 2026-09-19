@@ -34,13 +34,6 @@
   color: var(--text-body);
   max-width: 540px;
 }
-.hero__sub {
-  font-size: var(--body-md-size);
-  line-height: var(--body-md-line);
-  color: var(--text-muted);
-  max-width: 540px;
-}
-
 .hero__ctas {
   display: flex;
   gap: var(--gap-inline);
@@ -88,7 +81,23 @@
   white-space: nowrap;
 }
 
-/* ── 2. Miért válassz engem? ────────────────────────────────────────────── */
+/* ── 2. Neked szól, ha… ─────────────────────────────────────────────────── */
+.audience {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+/* Center the list as a block, but let the rows share one left edge so the
+   check marks line up (the benefit-list's own align="center" would instead
+   center each row on its own, staggering the ticks). */
+.audience kp-benefit-list {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+}
+
+/* ── 3. Miért válassz engem? ────────────────────────────────────────────── */
 .why {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;

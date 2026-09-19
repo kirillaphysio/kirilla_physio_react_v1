@@ -10,7 +10,7 @@ export { Icon } from '../shared/icon/icon';
 // brand
 export { Wordmark } from './wordmark/wordmark';
 // content
-export { BenefitList } from './benefit-list/benefit-list';
+export { BenefitList, type BenefitItem } from './benefit-list/benefit-list';
 export { BodyMap } from './body-map/body-map';
 export { DashList } from './dash-list/dash-list';
 export { CaseStory } from './case-story/case-story';

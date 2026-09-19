@@ -7,12 +7,6 @@
       <p class="hero__lead">
         Kirilla Réka vagyok, elhivatott gyógytornász‑fizioterapeuta. Segítek, hogy szabadon és fájdalommentesen mozogj, és hosszú távon is megőrizd a testi egészséged.
       </p>
-      <p class="hero__sub">
-        Szeretnéd ellensúlyozni az irodai munka és a sok ülés negatív hatásait?
-        Rendszeresen sportolsz, és szeretnéd elkerülni a sérüléseket?
-        Szeretnél megbízható információkhoz és hasznos, gyakorlatban is alkalmazható megoldásokhoz jutni?
-        Akkor jó helyen jársz!
-      </p>
       <div class="hero__ctas">
         <kp-button size="lg" icon="file-arrow-down" (clicked)="jumpToHirlevel()"
           >Ingyenes PDF</kp-button
@@ -51,7 +45,21 @@
   </section>
 </div>
 
-<!-- 2. Miért válassz engem? -->
+<!-- 2. Neked szól, ha… -->
+<section class="kp-section" data-reveal>
+  <div class="audience">
+    <kp-section-heading
+      class="section-head--center"
+      title="Neked szól, ha…"
+      [level]="2"
+      align="center"
+      maxWidth="640px"
+    />
+    <kp-benefit-list [items]="audience" />
+  </div>
+</section>
+
+<!-- 3. Miért válassz engem? -->
 <section class="kp-section" data-reveal>
   <kp-card surface="mesh" padding="lg" radius="xl">
     <div class="why">
@@ -66,7 +74,7 @@
   </kp-card>
 </section>
 
-<!-- 3. Három út, ahogy segíteni tudok -->
+<!-- 4. Három út, ahogy segíteni tudok -->
 <section class="kp-section" data-reveal>
   <kp-section-heading
     class="section-head"
@@ -78,7 +86,7 @@
   <app-course-ladder />
 </section>
 
-<!-- 4. Kezdjük ott, ahol a panaszod van -->
+<!-- 5. Kezdjük ott, ahol a panaszod van -->
 <section class="kp-section" data-reveal>
   <kp-section-heading
     class="section-head section-head--center"
@@ -92,7 +100,7 @@
   <app-symptom-router />
 </section>
 
-<!-- 5. Így néz ki egy kezelési folyamat -->
+<!-- 6. Így néz ki egy kezelési folyamat -->
 <section class="kp-section" data-reveal>
   <kp-section-heading
     class="section-head"
@@ -119,7 +127,7 @@
   </div>
 </section>
 
-<!-- 6. Rólam mondták -->
+<!-- 7. Rólam mondták -->
 <section class="kp-section" data-reveal>
   <kp-section-heading
     class="section-head"
@@ -131,7 +139,7 @@
   <kp-testimonial-carousel [items]="opinions" [perView]="3" />
 </section>
 
-<!-- 7. Hírlevél — lead magnet -->
+<!-- 8. Hírlevél — lead magnet -->
 <section id="hirlevel" class="kp-section" data-reveal>
   <app-lead-magnet />
 </section>
