@@ -13,7 +13,7 @@
     }
   </nav>
 
-  <div class="kp-header__toggle">
+  <div class="kp-header__toggle" [class.is-open]="open()">
     <kp-icon-button
       [icon]="open() ? 'xmark' : 'bars'"
       ariaLabel="menü"
@@ -23,17 +23,20 @@
   </div>
 </div>
 
-@if (open()) {
-  <div class="kp-header__sheet">
-    @for (item of items; track item.href) {
-      <a
-        class="kp-header__link"
-        [routerLink]="item.href"
-        routerLinkActive="is-active"
-        [routerLinkActiveOptions]="{ exact: item.href === '/' }"
-        (click)="close()"
-        >{{ item.label }}</a
-      >
-    }
-  </div>
-}
+<div
+  class="kp-header__sheet"
+  [class.is-open]="open()"
+  [attr.inert]="open() ? null : ''"
+  [attr.aria-hidden]="open() ? null : 'true'"
+>
+  @for (item of items; track item.href) {
+    <a
+      class="kp-header__link"
+      [routerLink]="item.href"
+      routerLinkActive="is-active"
+      [routerLinkActiveOptions]="{ exact: item.href === '/' }"
+      (click)="close()"
+      >{{ item.label }}</a
+    >
+  }
+</div>

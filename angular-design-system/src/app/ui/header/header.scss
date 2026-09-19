@@ -64,11 +64,19 @@
 .kp-header__toggle {
   display: none;
   margin-left: auto;
+
+  /* Subtle spin as the glyph swaps between bars and xmark. */
+  kp-icon-button {
+    display: block;
+    transition: transform 0.25s ease;
+  }
+  &.is-open kp-icon-button {
+    transform: rotate(90deg);
+  }
 }
 
 .kp-header__sheet {
   display: none;
-  padding: 0 var(--container-pad) 18px;
   flex-direction: column;
   gap: 6px;
 }
@@ -85,7 +93,27 @@
   .kp-header__toggle {
     display: block;
   }
+
+  /* Always rendered so it can transition; collapsed to zero height when closed.
+     max-height animates the slide, opacity/translate the subtle fade-in. */
   .kp-header__sheet {
     display: flex;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 var(--container-pad);
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      max-height 0.3s ease,
+      padding 0.3s ease,
+      opacity 0.2s ease,
+      transform 0.3s ease;
+
+    &.is-open {
+      max-height: 70vh;
+      padding: 0 var(--container-pad) 18px;
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
