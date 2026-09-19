@@ -11,6 +11,7 @@ import {
   Button,
   Card,
   DashList,
+  type DashItem,
   Eyebrow,
   FaqAccordion,
   JumpMenu,
@@ -62,15 +63,24 @@ const FIRST_VISIT = [
   },
 ];
 
-const COMPLAINTS = [
-  'derékfájás, nyakfájás, hátfájás (porckorongsérv/becsípődés, instabilitás, csigolyaelcsúszás, izom túlfeszülés, ízületi blokk)',
-  'végtagba sugárzó fájdalom, zsibbadás, és izomerő csökkenés',
-  'ízületi fájdalmak és mozgástartomány beszűkülés (gerinc, váll, könyök, csukló, kéz, csípő, térd, boka, láb)',
-  'helytelen testtartás',
-  'belsőszervi panaszok (pl. puffadás, székrekedés, IBS, folyadékkal telt ciszták, fájdalmas menstruáció)',
-  'sérülések (pl. bokaficam, húzódások)',
-  'műtétek után (pl. térd, kéz, hasi műtétek)',
-  'stressz, fejfájás, állkapocs ízületi panaszok',
+const COMPLAINTS: DashItem[] = [
+  {
+    label: 'derékfájás, nyakfájás, hátfájás',
+    detail: 'porckorongsérv/becsípődés, instabilitás, csigolyaelcsúszás, izom túlfeszülés, ízületi blokk',
+  },
+  { label: 'végtagba sugárzó fájdalom, zsibbadás, és izomerő csökkenés' },
+  {
+    label: 'ízületi fájdalmak és mozgástartomány beszűkülés',
+    detail: 'gerinc, váll, könyök, csukló, kéz, csípő, térd, boka, láb',
+  },
+  { label: 'helytelen testtartás' },
+  {
+    label: 'belsőszervi panaszok',
+    detail: 'pl. puffadás, székrekedés, IBS, folyadékkal telt ciszták, fájdalmas menstruáció',
+  },
+  { label: 'sérülések', detail: 'pl. bokaficam, húzódások' },
+  { label: 'műtétek után', detail: 'pl. térd, kéz, hasi műtétek' },
+  { label: 'stressz, fejfájás, állkapocs ízületi panaszok' },
 ];
 
 const POLICY: PolicyBlock[] = [
