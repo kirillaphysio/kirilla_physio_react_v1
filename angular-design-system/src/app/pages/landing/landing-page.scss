@@ -63,10 +63,10 @@
 .hero__badges {
   position: absolute;
   bottom: -18px;
-  left: -22px;
+  left: -14px;
   display: flex;
   flex-wrap: wrap;
-  max-width: calc(100% + 22px);
+  max-width: calc(100% + 14px);
   gap: var(--gap-inline);
 }
 
