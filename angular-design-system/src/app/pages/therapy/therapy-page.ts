@@ -1,23 +1,8 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  effect,
-  inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
-import {
-  Button,
-  Card,
-  CloudinaryImage,
-  Eyebrow,
-  SectionHeading,
-  TherapyCard,
-} from '../../ui';
-import { LeadMagnet } from '../landing/sections/lead-magnet';
-import { AvailabilityNote } from '../landing/sections/availability-note';
+import { Button, Card, CloudinaryImage, Eyebrow, SectionHeading, TherapyCard } from '../../ui';
 import { ContentService } from '../../core/content.service';
 import { ScrollService } from '../../core/scroll.service';
 import { SeoService } from '../../core/seo.service';
@@ -34,16 +19,7 @@ const SITE_ORIGIN = 'https://www.kirillareka.hu';
 @Component({
   selector: 'app-therapy-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    Button,
-    Card,
-    CloudinaryImage,
-    Eyebrow,
-    SectionHeading,
-    TherapyCard,
-    LeadMagnet,
-    AvailabilityNote,
-  ],
+  imports: [Button, Card, CloudinaryImage, Eyebrow, SectionHeading, TherapyCard],
   templateUrl: './therapy-page.html',
   styleUrl: './therapy-page.scss',
 })
@@ -58,10 +34,9 @@ export class TherapyPage {
   /** Bound to CloudinaryImage — a stable reference so the srcset isn't recomputed each check. */
   readonly squareRatio: [number, number] = [1, 1];
 
-  readonly therapyId = toSignal(
-    this.route.paramMap.pipe(map((p) => p.get('id') ?? '')),
-    { initialValue: this.route.snapshot.paramMap.get('id') ?? '' },
-  );
+  readonly therapyId = toSignal(this.route.paramMap.pipe(map((p) => p.get('id') ?? '')), {
+    initialValue: this.route.snapshot.paramMap.get('id') ?? '',
+  });
 
   readonly therapy = computed(() => this.content.therapy(this.therapyId()));
   readonly allTherapies = this.content.therapies();
