@@ -37,7 +37,17 @@ export class BackToTop {
     afterNextRender(() => {
       const win = this.doc.defaultView;
       if (!win) return;
-      const update = () => this.visible.set(win.scrollY > 260);
+      // Hide the button while the footer is in view so it never overlaps the footer's links/CTA
+      // (it's fixed bottom-right and would otherwise sit on top of them on mobile).
+      let footerInView = false;
+      const footer = this.doc.querySelector('footer, [role="contentinfo"]');
+      if (footer && 'IntersectionObserver' in win) {
+        new IntersectionObserver((entries) => {
+          footerInView = entries[0].isIntersecting;
+          update();
+        }).observe(footer);
+      }
+      const update = () => this.visible.set(win.scrollY > 260 && !footerInView);
       update();
       win.addEventListener('scroll', update, { passive: true });
     });
