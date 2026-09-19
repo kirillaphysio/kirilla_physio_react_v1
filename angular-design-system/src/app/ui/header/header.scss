@@ -61,9 +61,15 @@
   flex: 0 0 auto;
 }
 
+/* Right-side controls: theme toggle (always visible) + hamburger (mobile only). */
+.kp-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-inline);
+}
+
 .kp-header__toggle {
   display: none;
-  margin-left: auto;
 
   /* Subtle spin as the glyph swaps between bars and xmark. */
   kp-icon-button {
@@ -89,6 +95,10 @@
   .kp-header__nav,
   .kp-header__cta {
     display: none;
+  }
+  /* Nav's auto-margin is gone with it hidden, so the actions group takes over right-alignment. */
+  .kp-header__actions {
+    margin-left: auto;
   }
   .kp-header__toggle {
     display: block;

@@ -2,11 +2,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   HostListener,
+  inject,
   signal,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Wordmark } from '../wordmark/wordmark';
 import { IconButton } from '../icon-button/icon-button';
+import { ThemeService } from '../../core/theme.service';
 
 export interface NavItem {
   label: string;
@@ -35,7 +37,10 @@ export const NAV_ITEMS: NavItem[] = [
   host: { role: 'banner' },
 })
 export class Header {
+  private readonly themeService = inject(ThemeService);
+
   readonly items = NAV_ITEMS;
+  readonly theme = this.themeService.theme;
 
   readonly open = signal(false);
 
@@ -44,6 +49,10 @@ export class Header {
   }
   close(): void {
     this.open.set(false);
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggle();
   }
 
   @HostListener('document:keydown.escape')

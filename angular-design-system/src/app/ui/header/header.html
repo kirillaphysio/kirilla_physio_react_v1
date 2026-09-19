@@ -13,13 +13,22 @@
     }
   </nav>
 
-  <div class="kp-header__toggle" [class.is-open]="open()">
+  <div class="kp-header__actions">
     <kp-icon-button
-      [icon]="open() ? 'xmark' : 'bars'"
-      ariaLabel="menü"
+      class="kp-header__theme"
+      [icon]="theme() === 'dark' ? 'sun' : 'moon'"
+      [ariaLabel]="theme() === 'dark' ? 'Világos mód' : 'Sötét mód'"
       variant="soft"
-      (clicked)="toggle()"
+      (clicked)="toggleTheme()"
     />
+    <div class="kp-header__toggle" [class.is-open]="open()">
+      <kp-icon-button
+        [icon]="open() ? 'xmark' : 'bars'"
+        ariaLabel="menü"
+        variant="soft"
+        (clicked)="toggle()"
+      />
+    </div>
   </div>
 </div>
 

@@ -15,6 +15,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta name="theme-color" content="#FBF2F1">
+  <script>
+    /* Set the theme before first paint to avoid a light→dark flash. Mirrors core/theme.service.ts:
+       an explicit saved choice wins, otherwise follow the OS preference. */
+    (function () {
+      try {
+        var saved = localStorage.getItem('kp-theme');
+        var theme =
+          saved === 'light' || saved === 'dark'
+            ? saved
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', '#1E1216');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>

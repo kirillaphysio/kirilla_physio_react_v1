@@ -12,6 +12,8 @@
 @use 'styles/tokens/motion';
 @use 'styles/tokens/base';
 @use 'styles/tokens/responsive';
+/* Dark-mode overrides last — html[data-theme="dark"] outranks the :root token defaults. */
+@use 'styles/tokens/theme-dark';
 
 /* Rich text injected via [innerHTML] (therapy/case copy) — emulated encapsulation can't tag
    dynamic nodes, so <strong> emphasis is styled here at global scope. */
