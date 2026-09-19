@@ -84,6 +84,18 @@ kp-card {
   gap: var(--gap-inline);
   margin-top: auto;
 }
+/* A chip that maps to a therapy page is a link — lift slightly on hover to signal it's clickable. */
+.kp-case__chip-link {
+  display: inline-flex;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  transition: transform var(--dur-fast) var(--ease-soft);
+
+  &:hover {
+    transform: var(--lift-hover);
+    text-decoration: none;
+  }
+}
 
 /* Optional program CTA: a case that grew into an online course. */
 .kp-case__course {

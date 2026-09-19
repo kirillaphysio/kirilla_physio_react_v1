@@ -192,3 +192,26 @@ export const THERAPIES: Therapy[] = [
 export function therapyById(id: string): Therapy | undefined {
   return THERAPIES.find((t) => t.id === id);
 }
+
+/** Lowercase, strip accents and any "(…)" qualifier, collapse spaces — for loose title matching. */
+function normalizeTherapyName(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/\(.*?\)/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Resolve a free-text therapy chip label (e.g. "Viscerális terápia", "FDM", "Cranio FDM") to a
+ * therapy id, when it names an actual therapy page. Returns undefined for labels that have no page
+ * (e.g. "Gerincstabilizáció", "SMR henger") so the chip stays non-clickable.
+ */
+export function therapyIdByLabel(label: string): string | undefined {
+  const n = normalizeTherapyName(label);
+  if (!n) return undefined;
+  return THERAPIES.find((t) => normalizeTherapyName(t.title) === n || t.id === n.replace(/ /g, '_'))
+    ?.id;
+}

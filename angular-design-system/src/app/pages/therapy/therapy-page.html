@@ -8,15 +8,13 @@
           size="sm"
           icon="arrow-left"
           href="/egyeni-kezelesek"
+          fragment="terapiak"
           >Vissza a terápiákhoz</kp-button
         >
         <kp-eyebrow>Terápia</kp-eyebrow>
         <h1 class="hero__title">{{ t.title }}</h1>
         <p class="hero__lead">{{ t.short }}</p>
         <div class="hero__cta">
-          <kp-button icon="file-arrow-down" (clicked)="jumpToHirlevel()"
-            >Kérem az 5 gyakorlatot</kp-button
-          >
           <kp-button variant="outline" [href]="salonic">Időpontot foglalok</kp-button>
         </div>
       </div>
@@ -36,28 +34,6 @@
   <section class="kp-section copy" data-reveal>
     <kp-card surface="plain" padding="lg" radius="xl">
       <div class="kp-rich copy__rich" [innerHTML]="t.long"></div>
-    </kp-card>
-  </section>
-
-  <section id="hirlevel" class="kp-section home" data-reveal>
-    <app-lead-magnet layout="inline" />
-    <kp-card surface="mesh" padding="lg" radius="xl" class="home__card">
-      <div class="home__body">
-        <kp-eyebrow>Otthon is dolgozhatsz rajta</kp-eyebrow>
-        <h2 class="home__title">Online programok</h2>
-        <app-availability-note />
-        <div class="home__cta">
-          <kp-button size="md" href="/online-programok">Programok megtekintése</kp-button>
-          <kp-button
-            size="md"
-            variant="ghost"
-            icon="arrow-up-right-from-square"
-            iconPosition="right"
-            [href]="platform"
-            >Kurzusok</kp-button
-          >
-        </div>
-      </div>
     </kp-card>
   </section>
 

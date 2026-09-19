@@ -38,7 +38,14 @@
     @if (therapies().length) {
       <div class="kp-case__chips">
         @for (t of therapies(); track t) {
-          <kp-chip size="sm" tone="plum">{{ t }}</kp-chip>
+          @let therapyId = therapyLink(t);
+          @if (therapyId) {
+            <a class="kp-case__chip-link" [routerLink]="'/terapia/' + therapyId">
+              <kp-chip size="sm" tone="plum">{{ t }}</kp-chip>
+            </a>
+          } @else {
+            <kp-chip size="sm" tone="plum">{{ t }}</kp-chip>
+          }
         }
       </div>
     }

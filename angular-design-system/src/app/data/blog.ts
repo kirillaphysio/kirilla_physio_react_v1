@@ -243,7 +243,7 @@ export const BLOG_STORIES: BlogStory[] = [
       name: 'Hengerezz Okosan',
       href: 'https://oktatas.kirillareka.hu/products/course/hengerezz-okosan',
     },
-    therapies: ['FDM', 'Fascia terápia', 'SMR henger'],
+    therapies: ['FDM', 'SMR henger'],
   },
 ];
 

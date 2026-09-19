@@ -3,6 +3,9 @@
   height: 100%;
 }
 .tcard {
+  /* Fill the stretched grid cell (the host is height:100%); --kp-card-height then makes the inner
+     .kp-card fill this too, so every card in a row is the same height. */
+  height: 100%;
   --kp-card-height: 100%;
 }
 .tcard__inner {
@@ -16,6 +19,9 @@
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: var(--plum-100);
+  /* Never let the image shrink to absorb taller text — keeps every card's image the same size;
+     the body (flex:1) takes up the height difference instead. */
+  flex: 0 0 auto;
 }
 .tcard__img {
   display: block;
