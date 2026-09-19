@@ -21,9 +21,12 @@
 }
 
 .tip__bubble {
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%;
+  /* Top-layer popover, positioned from the button's viewport rect (top/left set inline).
+     inset/margin/border reset the UA popover defaults (which would center it). */
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  border: 0;
   transform: translateX(-50%);
   width: min(290px, 62vw);
   padding: 12px 14px;
@@ -36,6 +39,6 @@
   letter-spacing: normal;
   text-transform: none;
   font-weight: var(--weight-regular);
-  z-index: 5;
+  z-index: 100;
   pointer-events: none;
 }

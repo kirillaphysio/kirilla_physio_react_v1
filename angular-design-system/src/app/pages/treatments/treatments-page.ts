@@ -134,6 +134,8 @@ export class TreatmentsPage {
   private readonly seo = inject(SeoService);
 
   readonly salonic = SALONIC_URL;
+  readonly waitlistTip =
+    'Amennyiben nem találsz szabad időpontot, várólistára van lehetőség feliratkozni';
   readonly jump = JUMP;
   readonly firstVisit = FIRST_VISIT;
   readonly complaints = COMPLAINTS;

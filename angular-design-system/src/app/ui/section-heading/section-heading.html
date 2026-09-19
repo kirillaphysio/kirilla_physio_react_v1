@@ -1,5 +1,10 @@
 @if (eyebrow(); as e) {
-  <kp-eyebrow [tone]="onAccent() ? 'onAccent' : 'rose'" [align]="align()">{{ e }}</kp-eyebrow>
+  <span class="kp-eyebrow-row">
+    <kp-eyebrow [tone]="onAccent() ? 'onAccent' : 'rose'" [align]="align()">{{ e }}</kp-eyebrow>
+    @if (infoTip(); as tip) {
+      <kp-info-tip class="kp-heading__tip" [text]="tip" />
+    }
+  </span>
 }
 
 @switch (tag()) {

@@ -7,22 +7,28 @@ import {
 import { NgTemplateOutlet } from '@angular/common';
 import { Eyebrow } from '../eyebrow/eyebrow';
 import { GradientText } from '../gradient-text/gradient-text';
+import { InfoTip } from '../info-tip/info-tip';
 
 /** Eyebrow + display heading + lead paragraph, as one block with the system's stack rhythm. */
 @Component({
   selector: 'kp-section-heading',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Eyebrow, GradientText, NgTemplateOutlet],
+  imports: [Eyebrow, GradientText, NgTemplateOutlet, InfoTip],
   templateUrl: './section-heading.html',
   styleUrl: './section-heading.scss',
   host: {
     '[class.align-center]': "align() === 'center'",
     '[class.on-accent]': 'onAccent()',
+    // The `title` input name collides with the global HTML title attribute, which the browser
+    // would otherwise surface as a native tooltip of the heading text on hover. Strip it.
+    '[attr.title]': 'null',
   },
 })
 export class SectionHeading {
   readonly eyebrow = input<string>();
   readonly title = input.required<string>();
+  /** Optional info tooltip shown as a small ⓘ next to the title. */
+  readonly infoTip = input<string>();
   readonly lead = input<string>();
   readonly level = input<1 | 2 | 3 | 4>(2);
   readonly as = input<'h1' | 'h2' | 'h3'>();

@@ -16,6 +16,15 @@
   color: var(--text-strong);
   min-width: 0;
 }
+/* Eyebrow + its optional info tip sit on one row. */
+.kp-eyebrow-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.kp-heading__tip {
+  display: inline-flex;
+}
 :host(.on-accent) .kp-heading {
   color: var(--text-on-accent);
 }

@@ -6,8 +6,7 @@ import {
   signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Button, BodyMap, Card, Eyebrow, Icon } from '../../../ui';
-import { InfoTip } from './info-tip';
+import { Button, BodyMap, Card, Eyebrow, Icon, InfoTip } from '../../../ui';
 import { ContentService } from '../../../core/content.service';
 import { SALONIC_URL } from '../../../ui/header/header';
 

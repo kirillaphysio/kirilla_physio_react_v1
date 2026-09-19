@@ -16,6 +16,7 @@ export { DashList } from './dash-list/dash-list';
 export { CaseStory } from './case-story/case-story';
 export { CourseCard } from './course-card/course-card';
 export { FaqAccordion } from './faq-accordion/faq-accordion';
+export { InfoTip } from './info-tip/info-tip';
 export { JumpMenu } from './jump-menu/jump-menu';
 export { LinkTile } from './link-tile/link-tile';
 export { PlaylistArt } from './playlist-art/playlist-art';

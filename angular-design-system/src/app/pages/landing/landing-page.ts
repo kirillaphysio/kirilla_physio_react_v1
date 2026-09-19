@@ -55,7 +55,7 @@ export class LandingPage {
   readonly audience: BenefitItem[] = [
     { icon: 'chair', text: 'Ellensúlyoznád az irodai munka és a sok ülés negatív hatásait' },
     { icon: 'dumbbell', text: 'Rendszeresen sportolsz, és szeretnéd elkerülni a sérüléseket' },
-    { icon: 'graduation-cap', text: 'Megbízható információkat és a gyakorlatban is alkalmazható megoldásokat keresel' },
+    { icon: 'graduation-cap', text: 'Megbízható információkat és gyakorlatban is alkalmazható megoldásokat keresel' },
   ];
   readonly benefits = [
     'Szakértői tapasztalat és folyamatosan frissített tudás',
